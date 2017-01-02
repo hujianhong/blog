@@ -1,0 +1,3 @@
+url=jdbc:mysql://localhost:3306/qingcailuobo
+username=root
+password=root

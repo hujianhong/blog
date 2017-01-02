@@ -1,0 +1,130 @@
+{{# var user = d.session.user || {} }}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta property="qc:admins" content="01676642316411516375" />
+<meta name="keywords" content="{{ lay.base.keywords }}">
+<meta name="description" content="{{ lay.base.description }}">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>{{ lay.base.title }}</title>
+{{ include link }}
+</head>
+<body>
+
+{{ include header }}
+
+<div class="main layui-clear">
+  <div class="wrap">
+    <div class="content">
+      <div class="fly-tab">
+        <span>
+          <a href="/jie/">全部</a>
+          <a href="/jie/unsolved/" {{d.status == 'unsolved' ? 'class="tab-this"' : '' }}>未结帖</a>
+          <a href="/jie/solved/" {{d.status == 'solved' ? 'class="tab-this"' : '' }}>已采纳</a>
+          <a href="/jie/wonderful/" {{d.status == 'wonderful' ? 'class="tab-this"' : '' }}>精帖</a>
+          {{# if(user.id){ }}
+          <a href="/user/">我的帖</a>
+          {{# } }}
+        </span>
+        <form action="http://cn.bing.com/search" class="fly-search">
+          <i class="iconfont icon-sousuo"></i>
+          <input class="layui-input" autocomplete="off" placeholder="搜索内容，回车跳转" type="text" name="q">
+        </form>
+        <a href="/jie/add/" class="layui-btn jie-add">发布问题</a>
+      </div>
+      
+      
+      <ul class="fly-list">
+      {{# var jie = d.jie || [];
+      jie.forEach(function(item, index){ 
+        var jie_user = item.user||{};
+      }}
+        <li class="fly-list-li">
+          <a href="/u/{{168*jie_user.id}}" class="fly-list-avatar">
+            <img src="{{jie_user.avatar}}" alt="{{jie_user.username}}">
+          </a>
+          <h2 class="fly-tip">
+            <a href="/jie/{{item.id}}.html">{{= item.title}}</a>
+            {{ item.stick > 0 ? '<span class="fly-tip-stick">置顶</span>' :'' }}
+            {{ item.status == 1 ? '<span class="fly-tip-jing">精帖</span>' : ''}}
+          </h2>
+          <p>
+            <span><a href="/u/{{168*jie_user.id}}">{{jie_user.username}}</a></span>
+            <span>{{lay.time(item.time, true)}}</span>
+            <span>{{ lay.base.classes[item.class]||'' }}</span>
+            <span class="fly-list-hint"> 
+              <i class="iconfont" title="回答">&#xe60c;</i> {{item.comment}}
+              <i class="iconfont" title="人气">&#xe60b;</i> {{item.hits}}
+            </span>
+          </p>
+        </li>
+      {{# }); }}
+      </ul>
+      
+      <div style="text-align: center">
+        <div class="laypage-main">
+          <a href="/jie/page/2/" class="laypage-next">更多求解</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="edge">
+    
+  
+    <h3 class="page-title">月度雷锋 - TOP 12</h3>
+    <div class="user-looklog leifeng-rank">
+      <span>
+      {{# d.leifeng.forEach(function(item){ }}
+        <a href="/u/{{168*item.uid}}">
+          <img src="{{item.user.avatar}}">
+          <cite>{{item.user.username}}</cite>
+          <i>{{item['count(*)']}}次回答</i>
+        </a> 
+      {{# }); }}
+      </span> 
+    </div>
+    
+    <h3 class="page-title">最近热帖</h3>
+    <ol class="fly-list-one">
+    {{# d.hot.forEach(function(item){ }}
+      <li>
+        <a href="/jie/{{item.id}}.html">{{= item.title }}</a>
+        <span><i class="iconfont">&#xe60b;</i> {{item.hits}}</span>
+      </li>
+    {{# }); }}
+    </ol>
+    
+    {{ include ad/edge }}
+    
+    <h3 class="page-title">近期热议</h3>
+    <ol class="fly-list-one">
+    {{# d.hotda.forEach(function(item){ }}
+      <li>
+        <a href="/jie/{{item.id}}.html">{{= item.title }}</a>
+        <span><i class="iconfont">&#xe60c;</i> {{item.comment}}</span>
+      </li>
+    {{# }); }}
+    </ol>
+    
+    <div class="fly-link">
+      <span>友情链接：</span>
+      <a href="http://layim.layui.com/" target="_blank">LayIM</a>
+      <a href="http://layer.layui.com/" target="_blank">layer</a>
+      <a href="http://www.ttlutuan.com" target="_blank">天天撸团</a>
+      <a href="http://www.hotcn.top/" target="_blank">国际热点</a>
+      <a href="http://www.bejson.com/" target="_blank">JSON在线工具</a>
+    </div>
+    
+
+  </div>
+</div>
+
+{{ include footer }}
+
+</body>
+</html>

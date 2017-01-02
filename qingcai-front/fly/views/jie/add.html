@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>{{d.edit ? '编辑问题' : '发表问题'}} - {{lay.base.name}}</title>
+{{ include ../link }}
+</head>
+<body>
+
+{{ include ../header }}
+
+<div class="main layui-clear">
+  <h2 class="page-title">{{d.edit ? '编辑问题' : '发表问题'}}</h2>
+
+  {{# if(d.edit && !d.myself){ }}
+  <div class="fly-none">并无权限</div>
+  {{# } else { }}
+  <div class="layui-form layui-form-pane">
+    <form action="{{d.edit ? '/jie/edit/' : ''}}" method="post">
+      <div class="layui-form-item">
+        <label for="L_title" class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+          {{# if(d.edit){ }}
+          <input type="text" id="L_title" name="title" required lay-verify="required" autocomplete="off" value="{{d.edit.title}}" {{ user.auth >= 1 ? 'required' : 'readonly' }} title="标题不可修改" class="layui-input">
+          <input type="hidden" name="id" value="{{d.edit.id}}">
+          {{# } else { }}
+          <input type="text" id="L_title" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+          {{# } }}
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <div class="layui-input-block">
+          <textarea id="L_content" name="content" required lay-verify="required" placeholder="请输入内容" class="layui-textarea fly-editor" style="height: 260px;">{{d.edit ? d.edit.content : ''}}</textarea>
+        </div>
+        <label for="L_content" class="layui-form-label" style="top: -2px;">描述</label>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-inline">
+          <label class="layui-form-label">所在类别</label>
+          <div class="layui-input-block">
+            <select lay-verify="required" name="class">
+              <option></option>
+            {{# for(var key in lay.base.classes){ }}
+              <option value="{{ key }}" {{(d.edit && d.edit['class'] == key) ? 'selected' : ''}}>{{ lay.base.classes[key] }}</option>
+            {{# } }}
+            </select>
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">悬赏飞吻</label>
+          <div class="layui-input-block">
+            <select name="experience">
+              <option value="5" {{(d.edit && d.edit.experience == 5) ? 'selected' : ''}}>5</option>
+              <option value="20" {{(d.edit && d.edit.experience == 20) ? 'selected' : ''}}>20</option>
+              <option value="50" {{(d.edit && d.edit.experience == 50) ? 'selected' : ''}}>50</option>
+              <option value="100" {{(d.edit && d.edit.experience == 100) ? 'selected' : ''}}>100</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label for="L_vercode" class="layui-form-label">人类验证</label>
+        <div class="layui-input-inline">
+          <input type="text" id="L_vercode" name="vercode" required lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid">
+          <span style="color: #c00;">{{d.vercode}}</span>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <button class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
+      </div>
+    </form>
+  </div>
+  {{# } }}
+</div>
+
+{{ include ../footer }}
+
+</body>
+</html>

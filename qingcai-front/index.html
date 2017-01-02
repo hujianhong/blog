@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="青菜萝卜 | 个人博客">
+  <meta name="keywords" content="青菜萝卜 | 个人博客">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>青菜萝卜 | 个人博客</title>
+  <meta name="renderer" content="webkit">
+  <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="青菜萝卜"/>
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  
+  <link rel="stylesheet" href="static/css/amazeui.min.css">
+  <link rel="stylesheet" href="static/layui/css/layui.css"/>
+  <link rel="stylesheet" href="static/css/qingcai.css"/>
+</head>
+
+<body id="blog">
+	<header class="am-topbar am-topbar-fixed-top blog-header">
+		<div class="am-g am-g-fixed">
+		  <h1 class="am-topbar-brand">
+	      <a class="qing-logo" href="index.html"></a>
+	    </h1>
+			<!-- nav start -->
+			<nav class="am-g am-g-fixed blog-fixed blog-nav">
+				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+			  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+			    <ul class="am-nav am-nav-pills am-topbar-nav">
+			      <li class="am-active"><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
+			      <li><a href="about.html"><i class="am-icon-info"></i> 关于本站</a></li>
+			      <li><a href="articles.html"><i class="am-icon-folder"></i> 文章存档</a></li>
+			      <li><a href="resources.html"><i class="am-icon-share"></i> 实用资源</a></li>
+			      <li><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
+			      <li><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
+			    </ul>
+			    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+			      <div class="am-form-group">
+			        <input id="search" type="text" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
+			        <button id="btn-search"  type="button" class="layui-btn layui-btn-small">搜索</button>
+			      </div>
+			    </form>
+			  </div>
+			</nav>
+		</div>
+	<!-- nav end -->
+	</header>
+	<!-- content srart -->
+	<div class="am-g am-g-fixed blog-fixed">
+	    <div class="am-u-md-8 am-u-sm-12">
+	    		<!-- 博文列表 -->
+					<div id="blog-list" class="qing-list"></div>
+					<!-- 博文分页-->
+					<div id="blog-pager" class="qing-text-center"></div>
+	    </div>
+			<!-- 侧边栏 -->
+	    <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
+	    	<div class="qing-slider-top">
+	        <div class="am-panel am-panel-default">
+					  <div class="am-panel-hd">文章分类</div>
+					  <div class="am-panel-bd">
+					  	<div class="fly-tip" id="blog-tags"></div>
+					  </div>
+					</div>
+					<div class="am-panel am-panel-default">
+					  <div class="am-panel-hd">最热文章</div>
+					  <div class="am-panel-bd">
+					  	<ol class="qing-list-one" id="hotest-blogs"></ol>
+					  </div>
+					</div>
+					<div class="am-panel am-panel-default">
+					  <div class="am-panel-hd">最新文章</div>
+					  <div class="am-panel-bd">
+					  	<ol class="qing-list-one" id="lastest-blogs"></ol>
+					  </div>
+					</div>
+					<!-- 广告占位 -->
+					<div class="qing-slider-ad">
+						<div class="qing-text-center">广告占位</div>
+					</div>
+	        <div class="am-panel am-panel-default">
+					  <div class="am-panel-hd">联系我</div>
+					  <div class="am-panel-bd">
+					    <p class="am-text-left">邮箱：1043244432@qq.com</p>
+	            <p class="am-text-left">QQ交流群：545418785</p>
+	            <p class="am-text-left">
+	            	       社交账号：
+	                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+	                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
+	                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
+	                <a href=""><span class="am-icon-twitter am-icon-fw blog-icon blog-icon"></span></a>
+	            </p>
+	  				</div>
+					</div>
+					<div class="am-panel am-panel-default">
+					  <div class="am-panel-hd">友情链接</div>
+					  <div class="am-panel-bd">
+					  	<p>
+					  		<ul>
+                    <li><a class="" href="https://www.oschina.net" target="_blank">开源中国社区</a></li>
+                    <li><a href="http://amazeui.org" target="_blank">Amaze ~ 妹子 UI</a></li>
+                    <li><a href="https://github.com/hujianhong" target="_blank">我的GitHub</a></li>
+                    <li><a href="https://www.qiniu.com" target="_blank">七牛云存储</a></li>
+                </ul>
+					  	</p>
+	  				</div>
+					</div>
+				</div>
+	    </div>
+	</div>
+	<!-- content end -->
+
+  <footer class="blog-footer">
+    <div class="qing-text-center">
+       <h3>青菜萝卜简介</h3>
+       <p class="am-text-sm">青菜萝卜定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
+    </div>
+    <div class="qing-text-center">Copyright © 2016 青菜萝卜  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+  </footer>
+	
+	<script src="http://static.huding.name/js/jquery.min.js"></script>
+	<script src="http://static.huding.name/js/amazeui.min.js"></script>
+	<script src="static/layui/layui.js"></script>
+	<script>
+		layui.config({base:'static/js/'}).use('index');
+	</script>
+	<script type="text/javascript" src="static/js/badutongji.js" ></script>
+	
+	<script id="blog-list-template" type="text/template">
+		{{#  layui.each(d.list, function(index, item){ }}
+			<article class="qing-entry-article">
+		    <div class="am-u-lg-12 am-u-md-12 am-u-sm-12 qing-entry-text">
+		    	 <div class="qing-list-title"><span class="layui-btn layui-btn-mini">{{item.categoryName}} </span><a href="{{item.url}}"> {{item.title}}</a></div>
+		       <div class="qing-list-hint">
+			       	<span><i class="am-icon-user qing-list-author" title="作者"></i> {{item.author}} &nbsp;</span>
+				      <span><i class="am-icon-clock-o qing-list-clock" title="时间"></i> {{item.publishTime}}</span>
+				      <span><i class="am-icon-eye-slash qing-list-eye" title="阅读"></i> 阅读({{item.readNum}})</span>
+			        <span><i class="am-icon-comments-o qing-list-comment" title="评论"></i> 评论({{item.readNum}})</span>
+			        <span><i class="am-icon-heart-o qing-list-heart" title="点赞"></i> 点赞({{item.readNum}})</span>
+		       </div>
+		       
+		       <p class="qing-list-summary">{{item.summary}}</p>
+		       <div class="fly-tip">
+		       		{{#  layui.each(item.tags, function(index, tag){ }}
+		       			{{# if((index + 1) % 2 == 0) { }}
+		       				<span class="am-badge am-badge-primary am-radius qing-list-tags">#{{tag}}</span>
+		       			{{# } else if((index + 1) % 3 == 0) { }}
+		       				<span class="am-badge am-badge-secondary am-radius qing-list-tags">#{{tag}}</span>
+		       			{{# } else { }}
+		       				<span class="am-badge am-badge-success am-radius qing-list-tags">#{{tag}}</span>
+		       			{{# } }}
+		       	  {{# });}}
+	            <a href="{{item.url}}" class="qing-read-more">阅读全文>></a>
+		       </div> 
+		    </div>
+			</article>
+		{{# });}}
+	</script>
+	
+	<script id="blog-tags-template" type="text/template">
+		{{#  layui.each(d.data, function(index, item){ }}
+			{{# if(index % 2 == 0) { }}
+				<span class="am-badge am-badge-secondary" >
+					<a href="" >{{item.tagName}}({{item.blogNum}})</a>
+				</span>
+			{{# } else { }}
+				<span class="am-badge am-badge-success" >
+					<a href="" >{{item.tagName}}({{item.blogNum}})</a>
+				</span>
+			{{# }; }}
+		{{# });}}
+	</script>
+	
+	<script id="hotest-blogs-template" type="text/template">
+		{{#  layui.each(d.data.list, function(index, item){ }}
+			<li>
+				<a href="{{item.url}}">{{item.title}}</a>
+				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.readNum}}</span>
+			</li>
+		{{# });}}
+	</script>
+	
+	<script id="lastest-blogs-template" type="text/template">
+		{{#  layui.each(d.data.list, function(index, item){ }}
+			<li>
+				<a href="{{item.url}}">{{item.title}}</a>
+				<span><i class="am-icon-eye" title="阅读数"> </i> {{item.readNum}}</span>
+			</li>
+		{{# });}}
+	</script>
+</body>
+</html>

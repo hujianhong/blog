@@ -1,0 +1,347 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>青菜萝卜 | 个人博客</title>
+  <meta name="renderer" content="webkit">
+  <link rel="shortcut icon" type="image/png" href="http://static.huding.name/i/favicon.png">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="青菜萝卜"/>
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <link rel="stylesheet" href="http://static.huding.name/css/amazeui.min.css">
+  <!--<link rel="stylesheet" href="http://static.huding.name/css/app.css">-->
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+
+<body id="blog">
+<header class="am-topbar am-topbar-inverse am-topbar-fixed-top blog-text-center">
+	<div class="am-g am-g-fixed">
+	  <h1 class="am-topbar-brand">
+      <a href="index.html">青菜萝卜</a>
+    </h1>
+		<!-- nav start -->
+		<nav class="am-g am-g-fixed blog-fixed blog-nav">
+		<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+		  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+		    <ul class="am-nav am-nav-pills am-topbar-nav">
+		      <li class="am-active"><a href="index.html">首页</a></li>
+		      <li><a href="message.html">给我留言</a></li>
+		      <li><a href="about.html">关于本站</a></li>
+		      <li><a href="articles.html">文章存档</a></li>
+		      <li><a href="resources.html">实用资源</a></li>
+		      <li><a href="works.html">我的作品</a></li>
+		    </ul>
+		    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+		      <div class="am-form-group">
+		        <input id="index-search" type="text" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
+		        <button id="btn-search"type="button" class="am-btn am-btn-default am-btn-sm am-radius">搜索</button>
+		      </div>
+		    </form>
+		  </div>
+		</nav>
+	</div>
+<!-- nav end -->
+</header>
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed">
+    <div class="am-u-md-8 am-u-sm-12">
+    		<!-- 博文列表 -->
+				<div id="blog-list" class="blog-list"></div>
+				<div class="am-g am-u-md-2"><span class="blog-tag" id="load-more">单击加载更多</span></div>
+       <!-- <ul class="am-pagination">
+  				<li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>
+ 				 	<li class="am-pagination-next"><a href="">Next &raquo;</a></li>
+				</ul>-->
+    </div>
+
+    <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
+  	<div class="am-tabs blog-clear-margin" data-am-tabs >
+		  <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+		    <li class="am-active"><a href="#tab1">最热文章</a></li>
+		    <li><a href="#tab2">推荐文章</a></li>
+		    <li><a href="#tab3">最新文章</a></li>
+		  </ul>
+		
+		  <div class="am-tabs-bd am-panel am-panel-bd">
+		    <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+		      置身人群中<br>你只需要被淹没 享受 沉默<br>退到人群后<br>你只需给予双手 微笑 等候
+		    </div>
+		    <div class="am-tab-panel am-fade" id="tab2">
+		      走在忠孝东路<br>徘徊在茫然中<br>在我的人生旅途<br>选择了多少错误<br>我在睡梦中惊醒<br>感叹悔言无尽<br>恨我不能说服自己<br>接受一切教训<br>让生命去等候<br>等候下一个漂流<br>让生命去等候<br>等候下一个伤口
+		    </div>
+		    <div class="am-tab-panel am-fade" id="tab3">
+		      我就这样告别山下的家，我实在不愿轻易让眼泪留下。我以为我并不差不会害怕，我就这样自己照顾自己长大。我不想因为现实把头低下，我以为我并不差能学会虚假。怎样才能够看穿面具里的谎话？别让我的真心散的像沙。如果有一天我变得更复杂，还能不能唱出歌声里的那幅画？
+		    </div>
+		  </div>
+		</div>
+    		<div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
+            <h2 class="blog-title"><span>最新文章</span></h2>
+            <ul class="am-list">
+                <li><a href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
+                <li><a href="#">我把最深沉的秘密放在那里。</a></li>
+                <li><a href="#">你不懂我，我不怪你。</a></li>
+                <li><a href="#">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a></li>
+            </ul>
+      	</div>
+    		<div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
+            <h2 class="blog-title"><span>分类标签</span></h2>
+            <div class="am-u-sm-12 blog-clear-padding" id="blog-tags">
+            </div>
+        </div>
+        <!--<div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-title"><span>微信公众号</span></h2>
+            <img src="http://static.huding.name/img/weixin_qrcode.jpg" alt="微信公众号" class="blog-entry-img"/>
+            <p>青菜萝卜程序员社区</p>
+        </div>-->
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-title"><span>生活精选</span></h2>
+            <ul class="am-list">
+                <li><a href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
+                <li><a href="#">我把最深沉的秘密放在那里。</a></li>
+                <li><a href="#">你不懂我，我不怪你。</a></li>
+                <li><a href="#">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a></li>
+            </ul>
+        </div>
+        <div class="am-panel am-panel-default">
+				  <div class="am-panel-hd">联系我</div>
+				  <div class="am-panel-bd">
+				    <p class="am-text-left">邮箱：1043244432@qq.com</p>
+            <p class="am-text-left">QQ交流群：545418785</p>
+            <p class="am-text-left">
+            	       社交账号：
+                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-twitter am-icon-fw blog-icon blog-icon"></span></a>
+            </p>
+  				</div>
+				</div>
+    </div>
+</div>
+<!-- content end -->
+
+  <footer class="blog-footer">
+    <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>青菜萝卜简介</h3>
+            <p class="am-text-sm">本站定位为IT技术博客站，博客内容主要涉及编程语言、机器学习、推荐算法、数据挖掘等方面，同时分享实用的学习和开发资料。
+								<br><br>
+								嗯嗯嗯，不知道说啥了。外面的世界真精彩<br><br>
+            </p>
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>社交账号</h3>
+            <p>
+                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-twitter am-icon-fw blog-icon blog-icon"></span></a>
+            </p>
+            <p class="am-text-sm">由于时间、经验、能力有限，本站有很多不足的地方，希望大家包容、不吝赐教，给出你们宝贵的意见和建议，谢谢！</p>          
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>友情链接</h3>
+            <p>
+                <ul>
+                    <li><a class="" href="https://www.oschina.net" target="_blank">开源中国社区</a></li>
+                    <li><a href="http://amazeui.org" target="_blank">Amaze ~ 妹子 UI</a></li>
+                    <li><a href="https://github.com/hujianhong" target="_blank">我的GitHub</a></li>
+                    <li><a href="https://www.qiniu.com" target="_blank">七牛云存储</a></li>
+                </ul>
+            </p>
+        </div>
+    </div>    
+    <div class="blog-text-center">Copyright © 2016 青菜萝卜  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+  </footer>
+	<!-- 回到顶部-->
+	<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+	  <a href="#top" title="">
+	    <img class="am-gotop-icon-custom" src="http://static.huding.name/img/ico-rocket.png"/>
+	  </a>
+	</div>
+	<script src="http://static.huding.name/js/jquery.min.js"></script>
+	<script src="http://static.huding.name/js/amazeui.min.js"></script>
+	<script src="http://static.huding.name/js/juicer-min.js"></script>
+	<!-- Juicer 前端模板-->
+	<script id="blog-list-template" type="text/template">
+		{@each list as item}
+			{@if item.type==0}
+				{@include "#basic-blog-template",item}
+			{@else}
+				{@include "#rich-blog-template",item}
+			{@/if}
+		{@/each}
+	</script>
+	<script id="basic-blog-template" type="text/template">
+			<article class="am-g blog-entry-article">
+		    <div class="am-u-lg-12 am-u-md-12 am-u-sm-12 blog-entry-text">
+		    	 <h3><a href="${url}">${title}</a></h3>
+		       <span><a href="${url}" class="blog-color">${categoryName} &nbsp;</a></span>
+		       <span>${author} &nbsp;</span>
+		       <span>${publishTime}</span>
+		       <span>阅读(${readNum})</span>
+	         <span>评论(${readNum})</span>
+		       <p>${summary}</p>
+		       <p> 
+		       	  {@each tags as tag}
+		       			<span>${tag}</span>
+		       	  {@/each}
+	            <a href="${url}" class="hu-read-more">阅读全文>></a>
+		       </p>
+		    </div>
+			</article>
+	</script>
+	<script id="rich-blog-template" type="text/template">
+			<article class="am-g blog-entry-article">
+	        <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+	            <img src="${coverURL}" alt="" class="am-u-sm-12">
+	        </div>
+	        <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+	        		<h3><a href="${url}">${title}</a></h3>
+	            <span><a href="${url}" class="blog-color">${categoryName} &nbsp;</a></span>
+	            <span> ${author} &nbsp;</span>
+	            <span>${publishTime}</span>
+	            <span>阅读(${readNum})</span>
+	            <span>评论(${readNum})</span>
+	            <p>${summary}</p>
+	            {@each tags as tag}
+		       			<span>${tag}</span>
+		       	  {@/each}
+	            <p><a href="${url}" class="hu-read-more">阅读全文>></a></p>
+	        </div>
+	    </article>
+	</script>
+	<script id="blog-tags-template" type="text/template">
+		{@each data as item}
+			<a href="" class="blog-tag">${item.tagName}(${item.blogNum})</a>
+		{@/each}
+	</script>
+	<script>
+	  /**
+	   * 博文列表请求地址
+	   */
+		var BLOG_DISPLAY_URL = "/luobo/showBlogs";
+		
+		/**
+	   * 博文标签请求地址
+	   */
+		var TAGS_DISPLAY_URL = "/luobo/showTags";
+		
+		var isEnd = false; /*结束标志*/
+		var isAjax = false; /*防止滚动过快，服务端没来得及响应造成多次请求*/
+		
+		var blogPageNum = 1;
+		var blogPageSize = 10;
+		
+		/**
+		 * 初始化数据
+		 */
+		$(function(){
+			loadBlogList(blogPageNum,blogPageSize);
+			blogPageNum ++;
+			
+			loadBlogTags();
+		});
+		
+		/**
+		 * 
+		 */
+		$("#load-more").click(function(){
+			loadBlogList(blogPageNum,blogPageSize);
+			blogPageNum ++;
+		});
+				  
+		$(window).scroll(function(){
+			/*滚动加载时如果已经没有更多的数据了、正在发生请求时，不能继续进行*/
+			if(isEnd == true || isAjax == true){
+				return;
+			}
+			/*当滚动到最底部以上100像素时， 加载新内容*/
+			if ($(document).height() - $(this).scrollTop() - $(this).height()<100){
+				loadBlogList(blogPageNum,blogPageSize);
+				blogPageNum ++;
+			}
+		});
+		
+		function loadBlogList(pageNum,pageSize){
+			isAjax = true;
+			$("#load-more").html("正在加载中...");
+			var params = {pageNum:pageNum,pageSize:pageSize};
+			$.post(BLOG_DISPLAY_URL,params,function(result){
+				if(result.code == 1000){
+					// 渲染数据
+					render(result.data);
+					// 其他处理
+					isAjax = false;
+					if(result.data.lastPage) {
+						isEnd = true;
+						$("#load-more").hide();
+					} else {
+						$("#load-more").html("单击加载更多...");
+						$("#load-more").show();
+					}
+				} else {
+					alert("服务器端发生错误...");
+				}
+			});
+		}
+		
+		function loadBlogTags(){
+			$.post(TAGS_DISPLAY_URL,function(result){
+				if(result.code == 1000){
+					// 渲染数据
+					// 加载模板
+				  var tpl = juicer($("#blog-tags-template").html());
+				  // 渲染数据
+					var html = tpl.render(result);
+					// 显示内容
+					$("#blog-tags").html(html);
+					// 其他处理
+				} else {
+					alert("服务器端发生错误...");
+				}
+			});
+		}
+		
+		function render(data){
+			// 加载模板
+		  var tpl = juicer($("#blog-list-template").html());
+		  // 渲染数据
+			var html = tpl.render(data);
+			// 显示内容
+			$("#blog-list").append(html);
+		}
+	</script>
+	<!--百度站长统计 实现访问统计-->
+	<script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?d2aa4dc60247f9f5c173748e3f9ac548";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+	<!--百度页面主动推送 实现页面百度索引-->
+	<script>
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+	</script>
+</body>
+</html>

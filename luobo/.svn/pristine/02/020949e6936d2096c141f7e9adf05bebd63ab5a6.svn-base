@@ -1,0 +1,93 @@
+/**
+ * Copyright (c) 2015-2016, Silly Boy 胡建洪(1043244432@qq.com).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package me.huding.luobo.admin;
+
+import java.io.IOException;
+import java.util.Date;
+
+import me.huding.luobo.BaseController;
+import me.huding.luobo.ResConsts;
+import me.huding.luobo.model.Blog;
+import me.huding.luobo.utils.DateUtils;
+import me.huding.luobo.utils.HtmlStaticUtils;
+import me.huding.luobo.utils.KeyUtils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
+ *
+ *
+ * @author JianhongHu
+ * @version 1.0
+ * @date 2016年10月28日
+ */
+public class BlogController extends BaseController {
+	public static final Logger LOG = LoggerFactory.getLogger(BlogController.class);
+	
+	
+	public static final String PARAM_HTML = "html";
+	
+	/**
+	 * 
+	 */
+	public void publish(){
+		try {
+			//
+			String html = getPara(PARAM_HTML);
+			//
+			Blog blog = getModel(Blog.class, "blog");
+			
+			//
+			blog.setId(KeyUtils.getUUID());
+			Date curDate = DateUtils.getCurrentDate();
+			blog.setPublishTime(curDate);
+			blog.setLastUpdateTime(curDate);
+			
+			String title = blog.getTitle();
+			
+			String sign = KeyUtils.sign(title);
+			
+			// 持久化到数据库
+			boolean flag = blog.save();
+			// 
+			if(flag){
+				// 进行静态化
+				HtmlStaticUtils.render(blog.getContent());
+				setAttr("status", true);
+				setCode(ResConsts.Code.SUCCESS);
+			} else {
+				
+			}
+			renderJson();
+		} catch (IOException e){
+			LOG.error(e.getMessage(), e);
+		}
+	}
+	
+	/**
+	 * 检查文章是否重复
+	 */
+	public void checkDuplicate(){
+		String value = getPara("");
+		
+	}
+	
+	
+	
+	
+	
+
+}

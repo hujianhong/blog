@@ -1,0 +1,26 @@
+{{# var user = d.session.user || {} }}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>我的消息 - {{lay.base.name}}</title>
+{{ include ../link }}
+</head>
+<body>
+
+{{ include ../header }}
+
+<div class="main layui-clear">
+    <h2 class="page-title">
+      我的消息
+      <button class="layui-btn layui-btn-small layui-hide" id="LAY_delallmsg" style="position: absolute; right: 0;">清空全部消息</button>
+    </h2>
+    <div id="LAY_minemsg"></div>
+</div>
+
+{{ include ../footer }}
+
+</body>
+</html>

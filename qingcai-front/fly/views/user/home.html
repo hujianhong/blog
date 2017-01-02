@@ -1,0 +1,111 @@
+{{# 
+var info = d.info || {}, jie = d.jie, da = d.da;
+}}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>{{info.username}} - {{lay.base.name}}</title>
+{{ include ../link }}
+</head>
+<body style="margin-top: 65px;">
+
+{{ include ../header }}
+
+<div class="fly-home" style="background-image: url();">
+  <img src="{{info.avatar}}" alt="{{info.username}}">
+  <h1>{{info.username}} 
+  <i class="iconfont 
+  {{# if(info.sex == 0){ }}
+  icon-nan
+  {{# } else if(info.sex == 1){ }}
+  icon-nv
+  {{# } }}
+  "></i> 
+  {{# if(info.rmb) { }}
+  <span style="color: #FF7200;">VIP{{ lay.util.vip(info.rmb) }}</span>
+  {{# } }}
+  {{# if(info.auth == 1){ }}
+  <span style="color:#c00;">（超级码农）</span>
+  {{# } else if(info.auth == 2) { }}
+  <span style="color:#5FB878;">（活雷锋）</span>
+  {{# } else if(info.auth == -1) { }}
+  <span>（该号已被封）</span>
+  {{# } }}
+  </h1>
+  <div class="layui-main">
+    <p style="display: inline-block; max-width: 800px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #999; margin-top: 10px;">（{{= info.sign||'这个人懒得留下签名' }}）</p>
+  </div>
+  <!--<div class="fly-sns">
+    <span lay-event="">添加好友</span>
+  </div>-->
+</div>
+
+<div class="main layui-clear">
+  <div class="fly-main layui-clear">
+  
+  <div class="home-nav">
+    <a href="">主页</a>
+    <!--<a href="">求解</a>-->
+  </div>
+  <div class="home-left">
+    <h2>最近发表的求解</h2>
+    <ul class="jie-row">
+    {{# jie.forEach(function(item, index){ }}
+      <li>
+      {{ item.status == 1 ? '<span class="fly-jing">精</span>' : ''}}
+      {{# if(item.accept >= 0){ }}
+      <span class="jie-status jie-status-ok">已解决</span>
+      {{# } else if(item.comment === 0 ){ }}
+      <span class="jie-status">求解中</span>
+      {{# } }}
+      <a href="/jie/{{item.id}}.html">{{= item.title}}</a>
+      <i>{{lay.time(item.time)}}</i>
+      <em>{{item.hits}}阅/{{item.comment}}答</em>
+      </li>
+    {{# }); }}
+    
+    {{# if(jie.length === 0){ }}
+    <li class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><i style="font-size:14px;">没有发表任何求解</i></li>
+    {{# } }}
+    </ul>
+    
+    <h2 style="margin-top:30px;">最近的回答</h2>
+    <ul class="home-jieda">
+    {{# da.forEach(function(item, index){ }}
+    <li>
+      <p>
+      <span>{{lay.time(item.time)}}</span>
+      在<a href="/jie/{{item.jid}}.html#item-{{item.time}}" target="_blank">{{= item.title||'求解'}}</a>中回答：
+      </p>
+      <div class="home-dacontent">{{d.content(item.content)}}</div>
+    </li>
+    {{# }); }}
+    
+    {{# if(da.length === 0){ }}
+    <li class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><span>没有回答任何问题</span></li>
+    {{# }; }}
+    </ul>
+  </div>
+  <div class="home-right">
+    <ul class="home-info">
+    <li><i class="iconfont icon-zuichun"></i>拥有飞吻：<span style="color: #FF7200;">{{info.experience}}</span></li>
+    <li><i class="iconfont icon-shijian"></i>加入时间：<span>{{lay.time(info.joinTime)}}</span></li>
+    <li><i class="iconfont icon-chengshi"></i>城市：<span>{{= info.city||'中国 某城'}}</span></li>
+    </ul>
+    <!-- layer-300*250 -->
+    <ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6111334333458862"
+     data-ad-slot="2182025432"></ins>
+
+  </div>
+  </div>
+</div>
+
+{{ include ../footer }}
+
+</body>
+</html>

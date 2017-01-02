@@ -1,0 +1,42 @@
+<div class="header">
+  <div class="main">
+    <a class="logo" href="/" title="Fly">Fly社区</a>
+    <div class="nav">
+      <a {{d.page === 'jie' ? 'class="nav-this"' : ''}} href="/jie/">
+        <i class="iconfont icon-wenda"></i>问答
+      </a>
+      <a href="http://www.layui.com/">
+        <i class="iconfont icon-ui"></i>框架
+      </a>
+    </div>
+    
+    <div class="nav-user">
+      {{# var user = d.session.user || {};
+      if(user.username){ }}
+      <a class="avatar" href="/user/">
+        {{# if(user.avatar){ }}
+        <img src="{{user.avatar}}">
+        {{# } else { }}
+        <i class="iconfont icon-touxiang"></i>
+        {{# } }}
+        <cite>{{user.username}}</cite>
+        {{# if(user.rmb){ }}
+        <i>VIP{{lay.util.vip(user.rmb)}}</i>
+        {{# } }}
+      </a>
+      <div class="nav">
+        <a href="/user/set/"><i class="iconfont icon-shezhi"></i>设置</a>
+        <a href="/user/logout/"><i class="iconfont icon-tuichu" style="top: 0; font-size: 22px;"></i>退了</a>
+      </div>
+      {{# } else { }}
+      
+      <a class="unlogin" href="/user/login/"><i class="iconfont icon-touxiang"></i></a>
+      <span><a href="/user/login/">登入</a><a href="/user/reg/">注册</a></span>
+      <p class="out-login">
+        <a href="http://fly.layui.com:8098/app/qq" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
+        <a href="http://fly.layui.com:8098/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
+      </p>
+      {{# } }}
+    </div>
+  </div>
+</div>

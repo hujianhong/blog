@@ -1,0 +1,12 @@
+#数据库配置信息
+[DATABASE]
+#数据库地址
+DB_URL = jdbc:mysql://localhost:3306/qingcailuobo
+#数据库连接用户名
+DB_USERNAME = root
+#数据库连接密码
+DB_PASSWORD = root
+
+
+#博文静态化存储的根目录
+STATICS_ROOT_PATH = F:/HBuilder/luobo

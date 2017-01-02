@@ -1,0 +1,115 @@
+{{# var user = d.session.user || {} }}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>用户中心 - {{lay.base.name}}</title>
+{{ include ../link }}
+</head>
+<body>
+
+{{ include ../header }}
+
+<div class="main layui-clear">
+
+  <h2 class="page-title">用心中心</h2>
+
+  <div class="wrap">
+    <div class="content">
+      
+      {{# if(user.activate == 0){ }}
+      <div class="fly-msg">您的邮箱尚未验证，这比较影响您的帐号安全，<a href="/user/activate/">立即去激活？</a></div>
+      {{# } }}
+      
+      <div class="fly-tab user-tab">
+        <span id="LAY-mine">
+          <a href="javascript:;" class="tab-this" type="mine-jie">我的求解（<cite>0</cite>）</a>
+          <a href="/user/message/">我的消息</a>
+          <a href="/u/{{168*user.id}}/">我的主页</a>
+        </span>
+      </div>
+      <div class="user-mine">
+        <ul class="mine-view jie-row" style="display:block;"></ul>
+      </div>
+      <div id="LAY-page"></div>
+    </div>
+  </div>
+  
+  <div class="edge">
+    <div class="user-about">
+      <a href="http://fly.layui.com/user/set/#avatar" title="修改头像">
+        <img class="user-avatar" src="{{user.avatar}}">
+      </a>
+      <p>
+        <span style="color:#333">{{user.username}}</span>
+        {{# if(user.rmb) { }}
+        <span style="color: #FF7200;">VIP{{ lay.util.vip(user.rmb) }}</span>
+        {{# } }}
+        {{# if(user.auth == 1){ }}
+        <span style="color:#c00;">创始人</span>
+        {{# } else if(user.auth == 2) { }}
+        <span style="color:#5FB878;">管理员</span>
+        {{# } }}
+      </p>
+      <p>
+        <span>加入时间：{{lay.time(user.joinTime, true)}}</span>
+        <span>
+          飞吻：
+          <em style="color:#FF7200">{{user.experience||100}}</em>
+        </span>
+      </p>
+      <p>
+        <span>城市：{{user.city||'中国'}}</span>
+        <span>
+        性别：
+        {{# if(user.sex == 0){ }}
+        男
+        {{# } else if(user.sex == 1){ }}
+        女
+        {{# } else { }}
+        未知性别
+        {{# } }}
+        </span>
+        
+      </p>
+      <p>
+        <span></span>
+        
+      </p>
+      
+      <div class="user-looklog" style="padding-bottom:200px;">
+        <h3>最近访客</h3>
+        <span>
+          <a href="/u/168">
+            <img src="http://fly.layui.com/avatar/168.jpg">
+            <cite>贤心</cite>
+            <i>刚刚</i>
+          </a>
+          <a href="/u/336">
+            <img src="http://res.layui.com/images/fly/avatar/00.jpg">
+            <cite>Fly官方</cite>
+            <i>5分钟前</i>
+          </a>
+          <a href="/u/26880">
+            <img src="http://res.layui.com/images/fly/avatar/5.jpg">
+            <cite>小付</cite>
+            <i>1小时前</i>
+          </a>
+          <a href="/u/11928">
+            <img src="http://fly.layui.com/avatar/11928.jpg">
+            <cite>第一把菜刀</cite>
+            <i>3天前</i>
+          </a>
+          
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ include ../footer }}
+
+</body>
+</html>
