@@ -40,6 +40,7 @@ layui.define(['laytpl', 'laypage', 'layer','util','api'], function(exports) {
 					tpl.render(result,function(html){
 						// 显示内容
 						$("#hotest-blogs").html(html);
+						$("#hotest-blogs1").html(html);
 					});
 				} else {
 					layer.msg("服务器端发生错误...");

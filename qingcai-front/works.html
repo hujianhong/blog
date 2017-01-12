@@ -21,27 +21,28 @@
 </head>
 
 <body id="blog">
-	<header class="am-topbar am-topbar-fixed-top blog-header">
+	<header class="am-topbar am-topbar-fixed-top qing-header">
 		<div class="am-g am-g-fixed">
 		  <h1 class="am-topbar-brand">
 	      <a class="qing-logo" href="index.html"></a>
 	    </h1>
 			<!-- nav start -->
-			<nav class="am-g am-g-fixed blog-fixed blog-nav">
-				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+			<nav class="am-g am-g-fixed qing-fixed qing-nav">
+				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only qing-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
 			  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
 			    <ul class="am-nav am-nav-pills am-topbar-nav">
 			      <li><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
 			      <li><a href="about.html"><i class="am-icon-info"></i> 关于本站</a></li>
-			      <li><a href="articles.html"><i class="am-icon-folder"></i> 文章存档</a></li>
-			      <li><a href="resources.html"><i class="am-icon-share"></i> 实用资源</a></li>
+			      <!--<li><a href="articles.html"><i class="am-icon-folder"></i> 文章存档</a></li>-->
+			      <!--<li><a href="resources.html"><i class="am-icon-share"></i> 实用资源</a></li>-->
 			      <li class="am-active"><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
 			      <li><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
 			    </ul>
 			    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
-			      <div class="am-form-group">
+			      <div class="am-form-group am-form-icon">
 			        <input id="search" type="text" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
-			        <button id="btn-search"  type="button" class="layui-btn layui-btn-small">搜索</button>
+			        <i class="am-icon-search"></i>
+			        <button id="btn-search"  type="button" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
 			      </div>
 			    </form>
 			  </div>
@@ -80,7 +81,7 @@
 </div>
 <!-- content end -->
 
-  <footer class="blog-footer">
+  <footer class="qing-footer">
     <div class="qing-text-center">
        <h3>青菜萝卜简介</h3>
        <p class="am-text-sm">青菜萝卜定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
@@ -97,7 +98,6 @@
 <script src="http://static.huding.name/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script src="http://static.huding.name/js/amazeui.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 <!--百度站长统计 实现访问统计-->
 <script>
 		var _hmt = _hmt || [];
