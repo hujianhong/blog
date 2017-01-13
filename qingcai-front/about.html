@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="青菜萝卜 | 关于本站">
-  <meta name="keywords" content="青菜萝卜 | 关于本站">
+  <meta name="keywords" content="青菜萝卜,关于本站">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>青菜萝卜 | 关于本站</title>
   <meta name="renderer" content="webkit">
@@ -19,8 +19,9 @@
   <link rel="stylesheet" href="static/css/amazeui.min.css" />
   <link rel="stylesheet" href="static/layui/css/layui.css"/>
   <link rel="stylesheet" href="static/css/qingcai.css" />
+  
+  
 </head>
-
 <body id="blog">
 	<header class="am-topbar am-topbar-fixed-top qing-header">
 		<div class="am-g am-g-fixed">
@@ -34,16 +35,14 @@
 			    <ul class="am-nav am-nav-pills am-topbar-nav">
 			      <li><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
 			      <li class="am-active"><a href="about.html"><i class="am-icon-info"></i> 关于本站</a></li>
-			      <!--<li><a href="articles.html"><i class="am-icon-folder"></i> 文章存档</a></li>-->
-			      <!--<li><a href="resources.html"><i class="am-icon-share"></i> 实用资源</a></li>-->
 			      <li><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
 			      <li><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
 			    </ul>
-			    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form" role="search">
 			      <div class="am-form-group am-form-icon">
-			        <input id="search" type="text" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
+			        <input id="search" name="search" type="text" required  lay-verify="required" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
 			        <i class="am-icon-search"></i>
-			        <button id="btn-search"  type="button" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
+			        <button id="btn-search"  type="button"  lay-submit lay-filter="formDemo" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
 			      </div>
 			    </form>
 			  </div>
@@ -52,82 +51,88 @@
 	<!-- nav end -->
 	</header>
 	<!-- content srart -->
-	<div class="am-g am-g-fixed blog-fixed">
-			<!-- left content start-->
-	    <div class="am-u-md-10 am-u-sm-12 am-u-md-centered am-u-sm-centered">
-	    	<article class="am-article qing-abount">
-	        <div class="am-article-hd">
-	          <h1 class="am-article-title qing-text-center">关于本站</h1>
-	          <p class="am-article-meta qing-text-center qing-abount-hint">
+	<div class="am-g am-g-fixed qing-fixed qing-container">
+		<!-- left content start-->
+    <div class="am-u-md-8 am-u-sm-12 am-u-md-centered am-u-sm-centered">
+    	<div class="qing-content">
+    		<!-- about header start -->
+				<div>
+					<h1 class="qing-text-center">关于本站</h1>
+	          <p class="qing-text-center qing-abount-hint">
 	              <span><i class="am-icon-user qing-list-author"></i> <a href="#">青菜萝卜 &nbsp;</a></span>
 	              <span><i class="am-icon-clock-o qing-list-clock"></i> <a href="#">2016/10/21 &nbsp; </a></span>
 	              <span><i class="am-icon-eye qing-list-eye"></i> <a href="#"> 阅读(19)</a></span>
 	          </p>
-	        </div>        
-	    		<div>
-	    			
-	    			<div>
-	    				<h3><strong>本站简介</strong></h3>
-							<p class="qing-abount-text">
-								本站定位为IT技术博客站，博客内容主要涉及编程语言、机器学习、推荐算法、数据挖掘等方面，同时分享实用的学习和开发资料。嗯嗯嗯，不知道说啥了。外面的世界真精彩!
-							</p>
-							<hr>
-	    			</div>
-	    			
-						<div>
-							<h3><strong>关于我</strong></h3>
-			        <p class="qing-abount-text">
-			        	一枚在校研究生，非著名程序员。主要开发语言为Java， Android，Html等。专长领域为Web开发，Android开发，服务器端开发。目前主要研究方向为海量信息处理，文本新闻挖掘等。
-			         </p>
-							<hr>
-						</div>
-						<div>
-							<h3><strong>初衷</strong></h3>
-							<p class="qing-abount-text">写博是一个思考和沉淀的过程。
-							对内：是一个solution record的地方；是自己的知识仓库。
-							对外：是别人了解你的最直接方式；是交流、分享经验的平台。</p>
-							<hr>
-						</div>
-						
-						<div>
-							<h3><strong>联系方式</strong></h3>
-							<p class="qing-abount-text">邮箱：1043244432@qq.com</p>
-							<p class="qing-abount-text">新浪微博：<a href="http://weibo.com/p/1005055576062761" target="_blank">http://weibo.com</a></p>
-							<p class="qing-abount-text">GitHub：<a href="https://github.com/hujianhong" target="_blank">https://github.com</a></p>
-						  <hr>
-						</div>
-						<div>
-							<h3><strong>文章版权声明</strong></h3>
-							<p class="qing-abount-text">1、欢迎转载本站文章，本站文章版权归作者所有，转载请声明原文出处。 请尊重他人劳动成果,共建美好的网络环境。</p>
-							<p class="qing-abount-text">2、知识共享许可协议 本站作品采用 知识共享署名-相同方式共享 3.0 中国大陆许可协议进行许可。</p>
-							<p class="qing-abount-text">3、本站转载的文章都有声明作者或文章的来源。但有部分文章找不到相关作者信息，这些文章版权为原作者所有。 如有版权等问题，原作者可发邮件给我以进行处理。</p>
-							<hr>
-						</div>
-						<div>
-							<h3><strong>友链互换</strong></h3>
-							<p class="qing-abount-text">想要互换友链的朋友可以联系我: 1043244432@qq.com。</p>
-							<hr>
-						</div>
-						<div>
-							<h3><strong>一句箴言</strong></h3>
-							<p class="qing-abount-text">天道酬勤，比你优秀的人还在努力</p>
-						</div>
+				</div>
+				<!-- about header end -->
+				<!-- about content start -->
+				<div>
+					<div>
+    				<h3><strong>本站简介</strong></h3>
+						<p class="qing-abount-text">
+							本站定位为IT技术博客站，博客内容主要涉及编程语言、机器学习、推荐算法、数据挖掘等方面，同时分享实用的学习和开发资料。嗯嗯嗯，不知道说啥了。外面的世界真精彩!
+						</p>
+						<hr>
+    			</div>
+					<div>
+						<h3><strong>关于我</strong></h3>
+		        <p class="qing-abount-text">
+		        	一枚在校研究生，非著名程序员。主要开发语言为Java， Android，Html等。专长领域为Web开发，Android开发，服务器端开发。目前主要研究方向为海量信息处理，文本新闻挖掘等。
+		         </p>
+						<hr>
 					</div>
-				</article>
+					<div>
+						<h3><strong>初衷</strong></h3>
+						<p class="qing-abount-text">写博是一个思考和沉淀的过程。
+						对内：是一个solution record的地方；是自己的知识仓库。
+						对外：是别人了解你的最直接方式；是交流、分享经验的平台。
+						</p>
+						<hr>
+					</div>
+					<div>
+						<h3><strong>联系方式</strong></h3>
+						<p class="qing-abount-text">邮箱：1043244432@qq.com</p>
+						<p class="qing-abount-text">新浪微博：<a href="http://weibo.com/p/1005055576062761" target="_blank">http://weibo.com</a></p>
+						<p class="qing-abount-text">GitHub：<a href="https://github.com/hujianhong" target="_blank">https://github.com</a></p>
+					  <hr>
+					</div>
+					<div>
+						<h3><strong>文章版权声明</strong></h3>
+						<p class="qing-abount-text">1、欢迎转载本站文章，本站文章版权归作者所有，转载请声明原文出处。 请尊重他人劳动成果,共建美好的网络环境。</p>
+						<p class="qing-abount-text">2、知识共享许可协议 本站作品采用 知识共享署名-相同方式共享 3.0 中国大陆许可协议进行许可。</p>
+						<p class="qing-abount-text">3、本站转载的文章都有声明作者或文章的来源。但有部分文章找不到相关作者信息，这些文章版权为原作者所有。 如有版权等问题，原作者可发邮件给我以进行处理。</p>
+						<hr>
+					</div>
+					<div>
+						<h3><strong>友链互换</strong></h3>
+						<p class="qing-abount-text">想要互换友链的朋友可以联系我: 1043244432@qq.com。</p>
+						<hr>
+					</div>
+					<div>
+						<h3><strong>一句箴言</strong></h3>
+						<p class="qing-abount-text">天道酬勤，比你优秀的人还在努力</p>
+					</div>
+    		</div>
     	</div>
 		</div>
-		<!-- content end -->
-	  <footer class="qing-footer">
-	    <div class="qing-text-center">
-	       <h3>青菜萝卜简介</h3>
-	       <p class="am-text-sm">青菜萝卜定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
-	    </div>
-	    <div class="qing-text-center">Copyright © 2016 青菜萝卜  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
-	  </footer>
-	  <script src="static/layui/layui.js"></script>
-	  <script>
-	  	layui.config({base:'static/js/'}).use('about');
-	  </script>
-		<script src="static/js/badutongji.js"></script>
-	</body>
+	</div>
+	<!-- content end -->
+  <footer class="qing-footer">
+    <div class="qing-text-center">
+       <h3>青菜萝卜简介</h3>
+       <p class="am-text-sm">青菜萝卜定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
+    </div>
+    <div class="qing-text-center">Copyright © 2016 青菜萝卜  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+  </footer>
+  <script src="http://static.huding.name/js/jquery.min.js"></script>
+	<script src="http://static.huding.name/js/amazeui.min.js"></script>
+  <script src="static/layui/layui.js"></script>
+	<script>
+		layui.config({base:'static/js/'}).use('index');
+	</script>
+  <script>
+  	layui.config({base:'static/js/'}).use('about');
+  </script>
+	<script src="static/js/badutongji.js"></script>
+</body>
 </html>

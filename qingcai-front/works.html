@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+   <meta name="description" content="青菜萝卜|百川博客我的作品">
+  <meta name="keywords" content="青菜萝卜,百川,博客,我的作品">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>青菜萝卜 | 实用资源</title>
+  <title>青菜萝卜 | 我的作品</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
@@ -38,11 +38,11 @@
 			      <li class="am-active"><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
 			      <li><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
 			    </ul>
-			    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form" role="search">
 			      <div class="am-form-group am-form-icon">
-			        <input id="search" type="text" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
+			        <input id="search" name="search" type="text" required  lay-verify="required" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
 			        <i class="am-icon-search"></i>
-			        <button id="btn-search"  type="button" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
+			        <button id="btn-search"  type="button"  lay-submit lay-filter="formDemo" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
 			      </div>
 			    </form>
 			  </div>
@@ -50,12 +50,13 @@
 		</div>
 	<!-- nav end -->
 	</header>
-<br><br>
 <!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed">
 	<!-- left content start-->
-    <div class="am-u-md-8 am-u-sm-12 am-u-md-centered am-u-sm-centered">
-			<P style="color: red;height: 800px;">网站正在建设中......</P>
+    <div class="am-u-md-10 am-u-sm-12 am-u-md-centered am-u-sm-centered">
+    	<div class="qing-container qing-content qing-text-center">
+    		<P style="color: red;height: 800px;">网站正在建设中......</P>
+    	</div>
     </div>
     <!-- left content end-->
     <!--<div class="am-u-md-4 am-u-sm-12 blog-sidebar">
@@ -98,6 +99,10 @@
 <script src="http://static.huding.name/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script src="http://static.huding.name/js/amazeui.min.js"></script>
+<script src="static/layui/layui.js"></script>
+	<script>
+		layui.config({base:'static/js/'}).use('index');
+	</script>
 <!--百度站长统计 实现访问统计-->
 <script>
 		var _hmt = _hmt || [];

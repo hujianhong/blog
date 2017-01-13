@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="青菜萝卜 | 个人博客">
-  <meta name="keywords" content="青菜萝卜 | 个人博客">
+  <meta name="description" content="青菜萝卜 | 百川博客首页">
+  <meta name="keywords" content="青菜萝卜,百川,博客,首页">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>青菜萝卜 | 个人博客</title>
+  <title>青菜萝卜|百川博客</title>
   <meta name="renderer" content="webkit">
   <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="青菜萝卜"/>
+  <meta name="apple-mobile-web-app-title" content="青菜萝卜|百川博客"/>
   <meta name="msapplication-TileColor" content="#0e90d2">
   
   <link rel="stylesheet" href="static/css/amazeui.min.css">
@@ -38,18 +38,29 @@
 			      <li><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
 			      <li><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
 			    </ul>
-			    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form am-hide-sm-only" role="search">
 			      <div class="am-form-group am-form-icon">
-			        <input id="search" type="text" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
+			        <input id="search" name="search" type="text" required lay-verify="required" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
 			        <i class="am-icon-search"></i>
-			        <button id="btn-search"  type="button" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
+			        <button id="btn-search"  type="button" lay-submit lay-filter="search" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
 			      </div>
 			    </form>
 			  </div>
 			</nav>
+			
 		</div>
 	<!-- nav end -->
 	</header>
+	<!--mobile search input start -->
+	<div class="am-show-sm-only am-u-sm-12 qing-sm-search">
+		<form class="m-topbar-form am-topbar-right am-form-inline layui-form" lay-submit lay-filter="search-sm" role="search">
+	      <div class="am-form-group am-form-icon">
+	        <input id="search-sm" name="search" type="text" required lay-verify="required"  class="am-form-field am-form-field am-radius" placeholder="请输入要搜索的关键词">
+	        <i class="am-icon-search"></i>
+	      </div>
+			</form>
+	</div>
+	<!--mobile search input end -->
 	<!-- content srart -->
 	<div class="am-g am-g-fixed qing-fixed qing-container">
 		  <!-- 正文内容开始-->
