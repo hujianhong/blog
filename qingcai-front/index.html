@@ -51,12 +51,13 @@
 	<!-- nav end -->
 	</header>
 	<!-- content srart -->
-	<div class="am-g am-g-fixed qing-fixed">
+	<div class="am-g am-g-fixed qing-fixed qing-container">
+		  <!-- 正文内容开始-->
 	    <div class="am-u-md-8 am-u-sm-12">
-		    	<div class="qing-hot-rank">
+		    	<div>
 		    		 <div class="qing-panel">
 		    	  	<div class="qing-panel-title">
-		    	  		<h2>热门排行</h2>
+		    	  		<h2 class="qing-hot-rank-title">热门排行</h2>
 		    	  	</div>
 		    	  	<div class="qing-panel-body">
 		    	  		<ol class="qing-list-one" id="hotest-blogs1"></ol>
@@ -68,80 +69,123 @@
 					<!-- 博文分页-->
 					<div id="blog-pager" class="qing-text-center"></div>
 	    </div>
-			<!-- 侧边栏 -->
-	    <div class="am-u-md-4 am-u-sm-12 qing-sidebar">
-	    	<div class="qing-slider-top">
-					<div class="qing-hot-rank">
-		    		 <div class="qing-panel">
-		    	  	<div class="qing-panel-title">
-		    	  		<h2>文章分类</h2>
-		    	  	</div>
-		    	  	<div class="qing-panel-body">
-		    	  		<div class="fly-tip" id="blog-tags"></div>
-		    	  	</div>
-		    	  </div>
-		    	</div>
-					<div class="qing-hot-rank">
-		    		 <div class="qing-panel">
-		    	  	<div class="qing-panel-title">
-		    	  		<h2>最热文章</h2>
-		    	  	</div>
-		    	  	<div class="qing-panel-body">
-		    	  		<ol class="qing-list-one" id="hotest-blogs"></ol>
-		    	  	</div>
-		    	  </div>
-		    	</div>
-					<div class="qing-hot-rank">
-		    		 <div class="qing-panel">
-		    	  	<div class="qing-panel-title">
-		    	  		<h2>最新文章</h2>
-		    	  	</div>
-		    	  	<div class="qing-panel-body">
-		    	  		<ol class="qing-list-one" id="lastest-blogs"></ol>
-		    	  	</div>
-		    	  </div>
-		    	</div>
-					<!-- 广告占位 -->
-					<div class="qing-slider-ad">
-						<div class="qing-text-center">广告占位</div>
-					</div>
-					<div class="qing-hot-rank">
-		    		 <div class="qing-panel">
-		    	  	<div class="qing-panel-title">
-		    	  		<h2>联系我</h2>
-		    	  	</div>
-		    	  	<div class="qing-panel-body">
-		    	  		<p class="am-text-left">邮箱：1043244432@qq.com</p>
-		            <p class="am-text-left">QQ交流群：545418785</p>
-		            <p class="am-text-left">
-		            	       社交账号：
-		                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
-		                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
-		                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
-		                <a href=""><span class="am-icon-twitter am-icon-fw blog-icon blog-icon"></span></a>
-		            </p>
-		    	  	</div>
-		    	  </div>
-		    	</div>
-					<div class="qing-hot-rank">
-		    		 <div class="qing-panel">
-		    	  	<div class="qing-panel-title">
-		    	  		<h2>友情链接</h2>
-		    	  	</div>
-		    	  	<div class="qing-panel-body">
-		    	  		<p>
-						  		<ul>
-	                    <li><a class="" href="https://www.oschina.net" target="_blank">开源中国社区</a></li>
-	                    <li><a href="http://amazeui.org" target="_blank">Amaze ~ 妹子 UI</a></li>
-	                    <li><a href="https://github.com/hujianhong" target="_blank">我的GitHub</a></li>
-	                    <li><a href="https://www.qiniu.com" target="_blank">七牛云存储</a></li>
-	                </ul>
-						  	</p>
-		    	  	</div>
-		    	  </div>
-		    	</div>
+	    <!--正文内容结束-->
+			<!-- 侧边栏 开始-->
+	    <div class="am-u-md-4 am-u-sm-12">
+				<div>
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>文章分类</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		<div class="fly-tip" id="blog-tags"></div>
+	    	  	</div>
+	    	  </div>
+	    	</div>
+	    	<div class="qing-margin-top">
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>文章归档</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		<ol class="qing-list-one" id="lastest-blogs1"></ol>
+	    	  	</div>
+	    	  </div>
+	    	</div>
+	    	<div class="qing-margin-top">
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>最新文章</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		<ol class="qing-list-one" id="lastest-blogs"></ol>
+	    	  	</div>
+	    	  </div>
+	    	</div>
+				<div class="qing-margin-top">
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>猜你喜欢</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		<ol class="qing-list-one" id="hotest-blogs"></ol>
+	    	  	</div>
+	    	  </div>
+	    	</div>
+	    	<!--<div class="qing-margin-top">
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>分享交流</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		 <div class="qing-text-center">
+	    	  		 	<span>想一起交流学习经验吗？来<span>青菜萝卜社区</span>瞧瞧吧</span>
+	    	  		 </div>
+	    	  		 <div>
+	    	  		 		<div style="float: left;">
+	    	  		 			<img src="static/img/01.jpg" class="qing-share-img" />
+	    	  		 		</div>
+	    	  		 	  <div class="text-left" style="float:left;padding-top: 10px;width:90px">
+										<p>学习？交流？分享？吐槽？</p>
+										<p>尽在</p>
+										<p style="
+										    color: #E9415A;
+										    font-size: 15px;">进击的Coder</p>
+										<p>群号</p>
+										<p style="
+										    color: #E9415A;
+										    font-size: 15px;margin-bottom:45px">99350970</p>
+										<a style="background-color: #EB586F;
+										    height: 16px;
+										    display: block;
+										    line-height: 16px;
+										    font-size: 13px;" class="btn btn-xs btn-danger" target="_blank" href="https://jq.qq.com/?_wv=1027&k=43fO0wN">立即加入</a>
+								 </div>
+	    	  		 </div>
+	    	  	</div>
+	    	  </div>
+	    	</div>-->
+				<!-- 广告占位 -->
+				<div class="qing-slider-ad qing-margin-top">
+					<div class="qing-text-center">广告占位</div>
 				</div>
+				<div class="qing-margin-top">
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>联系我</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		<p class="am-text-left">邮箱：1043244432@qq.com</p>
+	            <p class="am-text-left">QQ交流群：545418785</p>
+	            <p class="am-text-left">
+	            	       社交账号：
+	                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+	                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
+	                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
+	                <a href=""><span class="am-icon-twitter am-icon-fw blog-icon blog-icon"></span></a>
+	            </p>
+	    	  	</div>
+	    	  </div>
+	    	</div>
+				<div class="qing-margin-top">
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>友情链接</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		<p>
+					  		<ul>
+                    <li><a class="" href="https://www.oschina.net" target="_blank">开源中国社区</a></li>
+                    <li><a href="http://amazeui.org" target="_blank">Amaze ~ 妹子 UI</a></li>
+                    <li><a href="https://github.com/hujianhong" target="_blank">我的GitHub</a></li>
+                    <li><a href="https://www.qiniu.com" target="_blank">七牛云存储</a></li>
+                </ul>
+					  	</p>
+	    	  	</div>
+	    	  </div>
+	    	</div>
 	    </div>
+	    <!-- 侧边栏结束-->
 	</div>
 	<!-- content end -->
 
@@ -160,84 +204,5 @@
 		layui.config({base:'static/js/'}).use('index');
 	</script>
 	<script type="text/javascript" src="static/js/badutongji.js" ></script>
-	
-	<script id="blog-list-template" type="text/template">
-		{{#  layui.each(d.list, function(index, item){ }}
-			<article class="qing-entry-article">
-		    <div class="am-u-lg-12 am-u-md-12 am-u-sm-12 qing-entry-text">
-		    	 <div class="qing-list-title"><span class="qing-category">{{item.categoryName}}<i></i></span><a href="{{item.url}}"> {{item.title}}</a></div>
-		       <div class="qing-list-hint">
-			       	<span><i class="am-icon-user qing-list-author" title="作者"></i> {{item.author}} &nbsp;</span>
-				      <span><i class="am-icon-clock-o qing-list-clock" title="时间"></i> {{item.publishTime}}</span>
-				      <span><i class="am-icon-eye-slash qing-list-eye" title="阅读"></i> 阅读({{item.readNum}})</span>
-			        <span><i class="am-icon-comments-o qing-list-comment" title="评论"></i> 评论({{item.readNum}})</span>
-			        <span><i class="am-icon-heart-o qing-list-heart" title="点赞"></i> 点赞({{item.readNum}})</span>
-		       </div>
-		       {{# if(item.summary != null && item.summary.length > 200) { }}
-		       			{{# item.summary = item.summary.substring(0,200) + "...."}}
-		       {{# } }}
-		       <p class="qing-list-summary">{{ item.summary }}</p>
-		       <div class="qing-list-tag">
-		       		{{# if(item.tags.length > 0) { }}
-		       			<i class="am-icon-tags "></i>
-		       		{{# } }}
-		       		{{#  layui.each(item.tags, function(index, tag){ }}
-		       			{{# if((index + 1) % 4 == 0) { }}
-		       				<span class="qing-blog-tag am-radius">#{{tag}}</span>
-		       			{{# } else if((index + 1) % 3 == 0) { }}
-		       				<span class="qing-blog-tag  am-radius">#{{tag}}</span>
-		       			{{# } else if((index + 1) % 2 == 0) { }}
-		       				<span class="qing-blog-tag am-radius">#{{tag}}</span>
-		       			{{# } else { }}
-		       				<span class="qing-blog-tag am-radius">#{{tag}}</span>
-		       			{{# } }}
-		       	  {{# });}}
-	            <!--<a href="{{item.url}}" class="qing-read-more">阅读全文>></a>-->
-	            <a href="blog/article.html" class="qing-read-more">阅读全文>></a>
-		       </div> 
-		    </div>
-			</article>
-		{{# });}}
-	</script>
-	
-	<script id="blog-tags-template" type="text/template">
-		{{#  layui.each(d.data, function(index, item){ }}
-			{{# if((index + 1) % 4 == 0) { }}
-				<span class="qing-tag qing-tag-forth" >
-					{{item.tagName}}({{item.blogNum}})
-				</span>
-			{{# } else if((index + 1) % 3 == 0) { }}
-				<span class="qing-tag qing-tag-third" >
-					<a href="" >{{item.tagName}}({{item.blogNum}})</a>
-				</span>
-			{{# } else if((index + 1) % 2 == 0) { }}
-				<span class="qing-tag qing-tag-second" >
-					<a href="" >{{item.tagName}}({{item.blogNum}})</a>
-				</span>
-			{{# } else { }}
-				<span class="qing-tag qing-tag-first" >
-					<a href="" >{{item.tagName}}({{item.blogNum}})</a>
-				</span>
-			{{# }; }}
-		{{# });}}
-	</script>
-	
-	<script id="hotest-blogs-template" type="text/template">
-		{{#  layui.each(d.data.list, function(index, item){ }}
-			<li>
-				<a href="{{item.url}}">{{item.title}}</a>
-				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.readNum}}</span>
-			</li>
-		{{# });}}
-	</script>
-	
-	<script id="lastest-blogs-template" type="text/template">
-		{{#  layui.each(d.data.list, function(index, item){ }}
-			<li>
-				<a href="{{item.url}}">{{item.title}}</a>
-				<span><i class="am-icon-eye" title="阅读数"> </i> {{item.readNum}}</span>
-			</li>
-		{{# });}}
-	</script>
 </body>
 </html>

@@ -3,31 +3,29 @@
  * 青菜萝卜 主入口
  * 
  */
-layui.define(['laytpl', 'laypage', 'layer','util','api'], function(exports) {
+layui.define(['laytpl', 'laypage', 'layer','util','api','qingtpl'], function(exports) {
 	var $ = layui.jquery;
 	var laypage = layui.laypage;
 	var layer = layui.layer;
 	var util = layui.util;
 	var api = layui.api;
 	var laytpl = layui.laytpl;
+	var qingtpl = layui.qingtpl;
 	
 	var pageSize = 10;
 	
 	var gather = {
 		
 		loadBlogTags : function (){
-			$.post(api.TAGS_DISPLAY_URL, function(result) {
-				if(result.code == 1000) {
-					// 加载模板
-					var tpl = laytpl($("#blog-tags-template").html());
-					// 渲染数据
-					tpl.render(result,function(html){
-						// 显示内容
-						$("#blog-tags").html(html);
-					});
-				} else {
-					layer.msg("服务器端发生错误...");
-				}
+			api.loadBlogTags({},function(result){
+				// 加载模板
+				//var tpl = laytpl($("#blog-tags-template").html());
+				var tpl = laytpl(qingtpl.blogTagTpl);
+				// 渲染数据
+				tpl.render(result,function(html){
+					// 显示内容
+					$("#blog-tags").html(html);
+				});
 			});
 		},
 		
@@ -35,7 +33,8 @@ layui.define(['laytpl', 'laypage', 'layer','util','api'], function(exports) {
 			$.post(api.BLOG_DISPLAY_URL, function(result) {
 				if(result.code == 1000) {
 					// 加载模板
-					var tpl = laytpl($("#hotest-blogs-template").html());
+					//var tpl = laytpl($("#hotest-blogs-template").html());
+					var tpl = laytpl(qingtpl.hotestBlogsTpl);
 					// 渲染数据
 					tpl.render(result,function(html){
 						// 显示内容
@@ -52,11 +51,13 @@ layui.define(['laytpl', 'laypage', 'layer','util','api'], function(exports) {
 			$.post(api.BLOG_DISPLAY_URL, function(result) {
 				if(result.code == 1000) {
 					// 加载模板
-					var tpl = laytpl($("#lastest-blogs-template").html());
+					// var tpl = laytpl($("#lastest-blogs-template").html());
+					var tpl = laytpl(qingtpl.latestBlogsTpl);
 					// 渲染数据
 					tpl.render(result,function(html){
 						// 显示内容
 						$("#lastest-blogs").html(html);
+						$("#lastest-blogs1").html(html);
 					});
 				} else {
 					layer.msg("服务器端发生错误...");
@@ -72,7 +73,8 @@ layui.define(['laytpl', 'laypage', 'layer','util','api'], function(exports) {
 			$.post(api.BLOG_DISPLAY_URL,params,function(result){
 				if(result.code == 1000){
 					// 加载模板
-					var tpl = laytpl($("#blog-list-template").html());
+					//var tpl = laytpl($("#blog-list-template").html());
+					var tpl = laytpl(qingtpl.blogListTpl);
 					// 渲染数据
 					tpl.render(result.data,function(html){
 						// 显示内容
@@ -92,7 +94,8 @@ layui.define(['laytpl', 'laypage', 'layer','util','api'], function(exports) {
 			$.post(api.BLOG_DISPLAY_URL,params,function(result){
 				if(result.code == 1000){
 					// 加载模板
-					var tpl = laytpl($("#blog-list-template").html());
+					//var tpl = laytpl($("#blog-list-template").html());
+					var tpl = laytpl(qingtpl.blogListTpl);
 					// 渲染数据
 					tpl.render(result.data,function(html){
 						// 显示内容

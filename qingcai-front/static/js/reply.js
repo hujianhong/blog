@@ -233,41 +233,6 @@ layui.define(['layer', 'laytpl', 'form', 'upload', 'util'], function(exports) {
 			return content;
 		},
 
-		//新消息通知
-		newmsg: function() {
-			if(layui.cache.user.uid !== -1) {
-				gather.json('/api/msg-count', {
-					_: new Date().getTime()
-				}, function(res) {
-					if(res.status === 0 && res.count > 0) {
-						var msg = $('<a class="nav-message" href="javascript:;" title="您有' + res.count + '条未阅读的消息">' + res.count + '</a>');
-						$('.nav-user').append(msg);
-						msg.on('click', function() {
-							gather.json('/api/msg-read', {}, function(res) {
-								if(res.status === 0) {
-									location.href = '/user/message/';
-								}
-							});
-						});
-					}
-				});
-			}
-			return arguments.callee;
-		},
-		cookie: function(e, o, t) {
-			e = e || "";
-			var n, i, r, a, c, p, s, d, u;
-			if("undefined" == typeof o) {
-				if(p = null, document.cookie && "" != document.cookie)
-					for(s = document.cookie.split(";"), d = 0; d < s.length; d++)
-						if(u = $.trim(s[d]), u.substring(0, e.length + 1) == e + "=") {
-							p = decodeURIComponent(u.substring(e.length + 1));
-							break
-						}
-				return p
-			}
-			t = t || {}, null === o && (o = "", t.expires = -1), n = "", t.expires && ("number" == typeof t.expires || t.expires.toUTCString) && ("number" == typeof t.expires ? (i = new Date, i.setTime(i.getTime() + 864e5 * t.expires)) : i = t.expires, n = "; expires=" + i.toUTCString()), r = t.path ? "; path=" + t.path : "", a = t.domain ? "; domain=" + t.domain : "", c = t.secure ? "; secure" : "", document.cookie = [e, "=", encodeURIComponent(o), n, r, a, c].join("");
-		}
 	};
 
 	//相册
@@ -276,42 +241,10 @@ layui.define(['layer', 'laytpl', 'form', 'upload', 'util'], function(exports) {
 		zIndex: 9999999999
 	});
 
-	//搜索
-	$('.fly-search').submit(function() {
-		var input = $(this).find('input'),
-			val = input.val();
-		// 去掉首尾的空格
-		if(val.replace(/\s/g, '') === '') {
-			return false;
-		}
-		input.val('site:layui.com ' + input.val());
-	});
-
-	$('.icon-sousuo').on('click', function() {
-		$('.fly-search').submit();
-	});
-
-	//新消息通知
-	gather.newmsg();
-
-	//发送激活邮件
-	gather.activate = function(email) {
-		gather.json('/api/activate/', {}, function(res) {
-			if(res.status === 0) {
-				layer.alert('已成功将激活链接发送到了您的邮箱，接受可能会稍有延迟，请注意查收。', {
-					icon: 1
-				});
-			};
-		});
-	};
-	$('#LAY-activate').on('click', function() {
-		gather.activate($(this).attr('email'));
-	});
-
 	//点击@
 	$('body').on('click', '.fly-aite', function() {
-		var othis = $(this),
-			text = othis.text();
+		var othis = $(this);
+		var text = othis.text();
 		if(othis.attr('href') !== 'javascript:;') {
 			return;
 		}
@@ -354,16 +287,6 @@ layui.define(['layer', 'laytpl', 'form', 'upload', 'util'], function(exports) {
 	//加载编辑器
 	gather.layEditor({
 		elem: '.fly-editor'
-	});
-
-	//右下角固定Bar
-	util.fixbar({
-		bar1: false,
-		click: function(type) {
-			if(type === 'bar1') {
-				layer.msg('bar1');
-			}
-		}
 	});
 
 	exports('fly', gather);
