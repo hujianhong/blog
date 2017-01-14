@@ -57,6 +57,14 @@ public abstract class BaseBlog<M extends BaseBlog<M>> extends Model<M> implement
 		return get("commentNum");
 	}
 
+	public void setHeartNum(java.lang.Integer heartNum) {
+		set("heartNum", heartNum);
+	}
+
+	public java.lang.Integer getHeartNum() {
+		return get("heartNum");
+	}
+
 	public void setReadNum(java.lang.Integer readNum) {
 		set("readNum", readNum);
 	}

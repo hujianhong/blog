@@ -358,20 +358,20 @@ a:hover {
     background-color: #999;
 }
 
-.qing-tag-first {
-	background-color:#dd514c;
+.qing-tag0 {
+	background-color:#FF5722;
 }
 
-.qing-tag-second {
-	background-color:#F23BD5;
+.qing-tag1 {
+	background-color:#5FB878;
 }
 
-.qing-tag-third {
-	background-color:#15AFEF;
+.qing-tag2 {
+	background-color:#F7B824;
 }
 
-.qing-tag-forth {
-	background-color:#393D49;
+.qing-tag3 {
+	background-color:#01AAED;
 }
 
 .qing-slider-img {
@@ -423,6 +423,20 @@ a:hover {
 }
 
 
+.qing-slider-desc {
+    width: 50% !important;
+    height: 30px;
+    padding: 0.25rem 1rem !important;
+    overflow: hidden;
+    background-color: rgba(0,0,0,.3);
+    position: absolute;
+    left: 50%;
+    /*top: 50%;*/
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    background-color: transparent;
+}
+
 .qing-share-img {
 	width:250px;
     /*height:15rem;*/ 
@@ -435,6 +449,21 @@ a:hover {
 .qing-content {
 	padding: 1rem 2rem;
 	background: #FFF;
+}
+
+.qing-notice {
+	padding: 0.25rem 2rem;
+	background: #FFF;
+}
+
+.qing-notice i {
+	color: #FF5722;
+	margin-right: 0.625rem;
+}
+
+.qing-notice span {
+	color: #777;
+	font-size: 12px;
 }
 
 .qing-content-nav {
@@ -771,7 +800,43 @@ body .layui-edit-face .layui-layer-content {
 
 
 
+#tagsList {
+	position: relative;
+	height: 10px;
+	margin: 150px auto 150px auto;
+}
 
+#tagsList a {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-family: Microsoft YaHei;
+	color: orangered;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px 6px;
+}
+
+#tagsList a:hover {
+	color: #FF0000;
+	letter-spacing: 2px;
+}
+
+.yellow {
+	color: orangered !important;
+}
+.green {
+	color: green !important;
+}
+.blue {
+	color: blue !important;
+}
+.black {
+	color: black !important;
+}
+.red {
+	color: red !important;
+}
 
 
 

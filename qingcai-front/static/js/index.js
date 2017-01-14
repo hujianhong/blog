@@ -63,7 +63,6 @@ layui.define(['laytpl', 'laypage', 'layer','util','api','qingtpl','form'], funct
 				tpl.render(result,function(html){
 					// 显示内容
 					$("#hotest-blogs").html(html);
-//					$("#hotest-blogs1").html(html);
 				});
 			});
 		},
@@ -74,13 +73,45 @@ layui.define(['laytpl', 'laypage', 'layer','util','api','qingtpl','form'], funct
 				pageNum:1,
 				pageSize:5
 			};
-			api.load(api.BLOG_DISPLAY_URL,params,function(result){
+			api.load(api.HOT_RANK_URL,params,function(result){
 				// 加载模板
-				var tpl = laytpl(qingtpl.hotestBlogsTpl);
+				var tpl = laytpl(qingtpl.hotRankTpl);
 				// 渲染数据
 				tpl.render(result,function(html){
 					// 显示内容
 					$("#hotest-blogs1").html(html);
+				});
+			});
+		},
+		
+		
+		loadRecommedBlogs:function(){
+			var params = {
+				pageNum:1,
+				pageSize:5
+			};
+			api.load(api.BLOG_RECOMMEND_URL,params,function(result){
+				// 加载模板
+				var tpl = laytpl(qingtpl.recommendBlogsTpl);
+				// 渲染数据
+				tpl.render(result,function(html){
+					// 显示内容
+					$("#recommend-blogs").html(html);
+				});
+			});
+		},
+		
+		
+		
+		
+		loadBlogTimeline:function(){
+			api.load(api.BLOG_TIMELINE_URL,{},function(result){
+				// 加载模板
+				var tpl = laytpl(qingtpl.blogTimelineTpl);
+				// 渲染数据
+				tpl.render(result,function(html){
+					// 显示内容
+					$("#blog-timeline").html(html);
 				});
 			});
 		},
@@ -93,7 +124,6 @@ layui.define(['laytpl', 'laypage', 'layer','util','api','qingtpl','form'], funct
 				tpl.render(result,function(html){
 					// 显示内容
 					$("#lastest-blogs").html(html);
-					$("#lastest-blogs1").html(html);
 				});
 			});
 		},
@@ -144,16 +174,23 @@ layui.define(['laytpl', 'laypage', 'layer','util','api','qingtpl','form'], funct
 			});
 		}
 	}
-
-    gather.loadBlogTags();
+	gather.loadHotRankBlogs();
 	
 	gather.loadBlogs();
 	
-	gather.loadHotestBlogs();
+    gather.loadBlogTags();
+	
+	gather.loadBlogTimeline();
+	
+	//gather.loadHotestBlogs();
 	
 	gather.loadLastestBlogs();
 	
-	gather.loadHotRankBlogs();
+	gather.loadRecommedBlogs();
+	
+	
+	
+	
 	
 	//右下角固定Bar
 	util.fixbar();

@@ -6,7 +6,7 @@
 layui.define(function(exports) {
 	
 	var tpl = {
-		// 首页博客列表
+		// 首页博客列表模板
 		blogListTpl:
 		'{{#  layui.each(d.list, function(index, item){ }}\
 			<article class="qing-entry-article">\
@@ -16,10 +16,10 @@ layui.define(function(exports) {
 		    	 </div>\
 		       <div class="qing-list-hint">\
 			       	<span><i class="am-icon-user qing-list-author" title="作者"></i> {{item.author}} &nbsp;</span>\
-				      <span><i class="am-icon-clock-o qing-list-clock" title="时间"></i> {{item.publishTime}}</span>\
-				      <span><i class="am-icon-eye-slash qing-list-eye" title="阅读"></i> 阅读({{item.readNum}})</span>\
-			        <span><i class="am-icon-comments-o qing-list-comment" title="评论"></i> 评论({{item.readNum}})</span>\
-			        <span><i class="am-icon-heart-o qing-list-heart" title="点赞"></i> 点赞({{item.readNum}})</span>\
+				    <span><i class="am-icon-clock-o qing-list-clock" title="时间"></i> {{item.publishTime}}</span>\
+				    <span><i class="am-icon-eye-slash qing-list-eye" title="阅读"></i> 阅读({{item.readNum}})</span>\
+			        <span><i class="am-icon-comments-o qing-list-comment" title="评论"></i> 评论({{item.commentNum}})</span>\
+			        <span><i class="am-icon-heart-o qing-list-heart" title="点赞"></i> 点赞({{item.heartNum}})</span>\
 		       </div>\
 		       {{# if(item.summary != null && item.summary.length > 200) { }}\
 		       			{{# item.summary = item.summary.substring(0,200) + "...."}}\
@@ -42,23 +42,9 @@ layui.define(function(exports) {
 		// 博客分类标签模板
 		blogTagTpl: 
 		'{{#  layui.each(d.data, function(index, item){ }}\
-			{{# if((index + 1) % 4 == 0) { }}\
-				<span class="qing-tag qing-tag-forth" >\
-					{{item.tagName}}({{item.blogNum}})\
-				</span>\
-			{{# } else if((index + 1) % 3 == 0) { }}\
-				<span class="qing-tag qing-tag-third" >\
-					<a href="" >{{item.tagName}}({{item.blogNum}})</a>\
-				</span>\
-			{{# } else if((index + 1) % 2 == 0) { }}\
-				<span class="qing-tag qing-tag-second" >\
-					<a href="" >{{item.tagName}}({{item.blogNum}})</a>\
-				</span>\
-			{{# } else { }}\
-				<span class="qing-tag qing-tag-first" >\
-					<a href="" >{{item.tagName}}({{item.blogNum}})</a>\
-				</span>\
-			{{# }; }}\
+			<span class="qing-tag qing-tag{{ index % 4}} am-radius" >\
+				{{item.tagName}}({{item.blogNum}})\
+			</span>\
 		{{# });}}'
 		,
 		
@@ -72,6 +58,28 @@ layui.define(function(exports) {
 		{{# });}}'
 		,
 		
+		// 热门排行模板
+		hotRankTpl:
+		'{{#  layui.each(d.data, function(index, item){ }}\
+			<li>\
+				<a href="{{item.url}}">{{item.title}}</a>\
+				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
+				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.commentNum}}</span>\
+				<span><i class="am-icon-heart-o" title="评论数"> </i> {{item.heartNum}}</span>\
+			</li>\
+		{{# });}}'
+		,
+		
+		// 猜你喜欢模板
+		recommendBlogsTpl:
+		'{{#  layui.each(d.data, function(index, item){ }}\
+			<li>\
+				<a href="{{item.url}}">{{item.title}}</a>\
+				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
+			</li>\
+		{{# });}}'
+		,
+		
 		// 最新博客模板
 		latestBlogsTpl:
 		'{{#  layui.each(d.data.list, function(index, item){ }}\
@@ -79,6 +87,15 @@ layui.define(function(exports) {
 				<a href="{{item.url}}">{{item.title}}</a>\
 				<span><i class="am-icon-eye" title="阅读数"> </i> {{item.readNum}}</span>\
 			</li>\
+		{{# });}}'
+		
+		,
+		
+		blogTimelineTpl:
+		'{{#  layui.each(d.data, function(index, item){ }}\
+			<span class="qing-tag qing-tag0 am-radius" id="{{item.id}}">\
+				{{item.displayName}}\
+			</span>\
 		{{# });}}'
 		
 	}

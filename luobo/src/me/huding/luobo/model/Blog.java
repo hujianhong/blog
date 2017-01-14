@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import me.huding.luobo.back.StaticsBean.Builder;
 import me.huding.luobo.model.base.BaseBlog;
 
 import com.jfinal.plugin.activerecord.Db;
@@ -28,13 +27,17 @@ public class Blog extends BaseBlog<Blog> {
 		return dao.findFirst("select id from blog where signature = ? limit 1",signature);
 	}
 	
+	
+	public static List<Blog> hotRank(int size){
+		String sql = "select id,title,url,readNum,commentNum,heartNum from blog order by readNum DESC,commentNum DESC,heartNum DESC LIMIT ?";
+		return dao.find(sql,Math.max(5, size));
+	}
+	
 	/**
 	 * 
 	 * @return
 	 */
 	public static int count(Map<String, String[]> queryParams){
-		StringBuilder builder = new StringBuilder();
-		//if()
 		String sql = "select count(*) from blog_display order by publishTime desc";
 		return Db.queryInt(sql);
 	}
@@ -48,6 +51,7 @@ public class Blog extends BaseBlog<Blog> {
 	 * @return
 	 */
 	public static Page<Record> paginate(int pageNum,int pageSize){
+		// 默认根据时间排序
 		String sqlExceptSelect = "from blog_display order by publishTime desc";
 		String select = "select * ";
 		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect);
@@ -55,10 +59,12 @@ public class Blog extends BaseBlog<Blog> {
 			return page;
 		}
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("select * from blog_tags_display where blogID in ( ");
+		buffer.append("select * from blog_rel_tags where blogID in ( ");
 		List<Record> records = page.getList();
 		for(int i = 0,len = records.size();i < len;i ++){
-			buffer.append("\'").append(records.get(i).getStr("id")).append("\'");
+			Record rec = records.get(i);
+			String blogID = rec.getStr("id");
+			buffer.append("\'").append(blogID).append("\'");
 			if(i != len - 1){
 				buffer.append(",");
 			}
