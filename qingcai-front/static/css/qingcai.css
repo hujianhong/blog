@@ -80,6 +80,14 @@ a:hover {
     background-color:#009688;
     text-align:center;
 }
+
+/*.am-control-nav>li.am-active>a, .am-control-nav>li.am-active>a:focus,.am-control-nav>li.am-active>a:hover{
+    border-radius: 0;
+    color: #FFFFFF;
+    background-color:#009688;
+    text-align:center;
+}*/
+
 .am-topbar-nav>li>a:hover:after {
      opacity: 0; 
 }
@@ -364,6 +372,35 @@ a:hover {
 
 .qing-tag-forth {
 	background-color:#393D49;
+}
+
+.qing-slider-img {
+	height: 400px;
+}
+
+.qing-slider {
+	margin-bottom: 3rem;
+}
+
+@media only screen and (min-width: 100px) {
+	.qing-slider-img {
+		height: 200px;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.qing-slider-img {
+		height: 400px;
+	}
+}
+
+.qing-hot-rank {
+	
+}
+
+.am-active {
+	background: #1abc9c !important;
+	/*color: #1abc9c !important;*/
 }
 
 

@@ -63,6 +63,23 @@ layui.define(['laytpl', 'laypage', 'layer','util','api','qingtpl','form'], funct
 				tpl.render(result,function(html){
 					// 显示内容
 					$("#hotest-blogs").html(html);
+//					$("#hotest-blogs1").html(html);
+				});
+			});
+		},
+		
+		
+		loadHotRankBlogs:function(){
+			var params = {
+				pageNum:1,
+				pageSize:5
+			};
+			api.load(api.BLOG_DISPLAY_URL,params,function(result){
+				// 加载模板
+				var tpl = laytpl(qingtpl.hotestBlogsTpl);
+				// 渲染数据
+				tpl.render(result,function(html){
+					// 显示内容
 					$("#hotest-blogs1").html(html);
 				});
 			});
@@ -136,8 +153,32 @@ layui.define(['laytpl', 'laypage', 'layer','util','api','qingtpl','form'], funct
 	
 	gather.loadLastestBlogs();
 	
+	gather.loadHotRankBlogs();
+	
 	//右下角固定Bar
 	util.fixbar();
+	
+	
+	$('.am-slider').flexslider({
+	  playAfterPaused: 8000,
+	  before: function(slider) {
+	    if (slider._pausedTimer) {
+	      window.clearTimeout(slider._pausedTimer);
+	      slider._pausedTimer = null;
+	    }
+	  },
+	  after: function(slider) {
+	    var pauseTime = slider.vars.playAfterPaused;
+	    if (pauseTime && !isNaN(pauseTime) && !slider.playing) {
+	      if (!slider.manualPause && !slider.manualPlay && !slider.stopped) {
+	        slider._pausedTimer = window.setTimeout(function() {
+	          slider.play();
+	        }, pauseTime);
+	      }
+	    }
+	  }
+	  // 设置其他参数
+	});
 
 	exports('index', {});
 });

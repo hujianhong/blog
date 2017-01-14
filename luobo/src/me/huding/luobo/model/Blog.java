@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import me.huding.luobo.admin.StaticsBean.Builder;
+import me.huding.luobo.back.StaticsBean.Builder;
 import me.huding.luobo.model.base.BaseBlog;
 
 import com.jfinal.plugin.activerecord.Db;

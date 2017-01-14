@@ -28,7 +28,7 @@
 	    </h1>
 			<!-- nav start -->
 			<nav class="am-g am-g-fixed qing-fixed qing-nav">
-				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only qing-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only am-radius qing-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
 			  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
 			    <ul class="am-nav am-nav-pills am-topbar-nav">
 			      <li class="am-active"><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
@@ -65,7 +65,22 @@
 	<div class="am-g am-g-fixed qing-fixed qing-container">
 		  <!-- 正文内容开始-->
 	    <div class="am-u-md-8 am-u-sm-12">
-		    	<div>
+	    		<!-- 图片轮播开始-->
+	    		<div class="qing-slider">
+	    			<div class="am-slider am-slider-default" data-am-flexslider="{playAfterPaused: 8000}">
+						  <ul class="am-slides">
+						    <li><img src="static/img/21.jpg" class="qing-slider-img"/>胡建洪</li>
+						    <li><img src="static/img/22.jpg" class="qing-slider-img"/>胡建洪</li>
+						    <li><img src="static/img/23.jpg" class="qing-slider-img"/>胡建洪</li>
+						    <li><img src="static/img/24.jpg" class="qing-slider-img"/>胡建洪</li>
+						    <li><img src="static/img/05.jpg" class="qing-slider-img"/>胡建洪</li>
+						    <li><img src="static/img/06.jpg" class="qing-slider-img"/>胡建洪</li>
+						  </ul>
+						</div>
+	    		</div>
+	    		<!-- 图片轮播结束-->
+	    		<!-- 热门排行开始-->
+		    	<div class="qing-hot-rank">
 		    		 <div class="qing-panel">
 		    	  	<div class="qing-panel-title">
 		    	  		<h2 class="qing-hot-rank-title">热门排行</h2>
@@ -75,6 +90,7 @@
 		    	  	</div>
 		    	  </div>
 		    	</div>
+		    	<!-- 热门排行结束-->
 	    		<!-- 博文列表 -->
 					<div id="blog-list"></div>
 					<!-- 博文分页-->

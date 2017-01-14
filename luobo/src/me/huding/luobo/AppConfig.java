@@ -15,7 +15,7 @@
  */
 package me.huding.luobo;
 
-import me.huding.luobo.admin.AdminRoutes;
+import me.huding.luobo.back.AdminRoutes;
 import me.huding.luobo.front.FrontRoutes;
 import me.huding.luobo.interceptor.CrossDomainInterceptor;
 import me.huding.luobo.model._MappingKit;
