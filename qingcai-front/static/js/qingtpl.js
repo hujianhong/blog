@@ -15,25 +15,25 @@ layui.define(function(exports) {
 		    	 		<span class="qing-category">{{item.categoryName}}<i></i></span><a href="{{item.url}}"> {{item.title}}</a>\
 		    	 </div>\
 		       <div class="qing-list-hint">\
-			       	<span><i class="am-icon-user qing-list-author" title="作者"></i> {{item.author}} &nbsp;</span>\
-				    <span><i class="am-icon-clock-o qing-list-clock" title="时间"></i> {{item.publishTime}}</span>\
-				    <span><i class="am-icon-eye-slash qing-list-eye" title="阅读"></i> 阅读({{item.readNum}})</span>\
-			        <span><i class="am-icon-comments-o qing-list-comment" title="评论"></i> 评论({{item.commentNum}})</span>\
-			        <span><i class="am-icon-heart-o qing-list-heart" title="点赞"></i> 点赞({{item.heartNum}})</span>\
+			       	<span><i class="am-icon-user qing-color-author" title="作者"></i> {{item.author}} &nbsp;</span>\
+				    <span><i class="am-icon-clock-o qing-color-clock" title="时间"></i> {{item.publishTime}}</span>\
+				    <span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读({{item.readNum}})</span>\
+			        <span><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论({{item.commentNum}})</span>\
+			        <span><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞({{item.heartNum}})</span>\
 		       </div>\
 		       {{# if(item.summary != null && item.summary.length > 200) { }}\
 		       			{{# item.summary = item.summary.substring(0,200) + "...."}}\
 		       {{# } }}\
-		       <p class="qing-list-summary">{{ item.summary }}</p>\
-		       <div class="qing-list-tag">\
+		       <p class="qing-list-content">{{ item.summary }}</p>\
+		       <div class="qing-list-foot">\
 		       		{{# if(item.tags.length > 0) { }}\
-		       			<i class="am-icon-tags "></i>\
+		       			<i class="am-icon-tags"></i>\
 		       		{{# } }}\
 		       		{{#  layui.each(item.tags, function(index, tag){ }}\
-		       				<span class="qing-blog-tag am-radius">#{{tag}}</span>\
+		       				<span class="am-radius">#{{tag}}</span>\
 		       	  {{# });}}\
 	            <!--<a href="{{item.url}}" class="qing-read-more">阅读全文>></a>-->\
-	            <a href="article.html" class="qing-read-more">阅读全文>></a>\
+	            <a href="article.html">阅读全文>></a>\
 		       </div> \
 		    </div>\
 			</article>\
@@ -52,7 +52,8 @@ layui.define(function(exports) {
 		hotestBlogsTpl:
 		'{{#  layui.each(d.data.list, function(index, item){ }}\
 			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
+				<!--<a href="{{item.url}}">{{item.title}}</a>-->\
+				<a href="article.html">{{item.title}}</a>\
 				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.readNum}}</span>\
 			</li>\
 		{{# });}}'
@@ -62,7 +63,8 @@ layui.define(function(exports) {
 		hotRankTpl:
 		'{{#  layui.each(d.data, function(index, item){ }}\
 			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
+				<!--<a href="{{item.url}}">{{item.title}}</a>-->\
+				<a href="article.html">{{item.title}}</a>\
 				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
 				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.commentNum}}</span>\
 				<span><i class="am-icon-heart-o" title="评论数"> </i> {{item.heartNum}}</span>\
@@ -74,7 +76,8 @@ layui.define(function(exports) {
 		recommendBlogsTpl:
 		'{{#  layui.each(d.data, function(index, item){ }}\
 			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
+				<!--<a href="{{item.url}}">{{item.title}}</a>-->\
+				<a href="article.html">{{item.title}}</a>\
 				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
 			</li>\
 		{{# });}}'
@@ -84,7 +87,8 @@ layui.define(function(exports) {
 		latestBlogsTpl:
 		'{{#  layui.each(d.data.list, function(index, item){ }}\
 			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
+				<!--<a href="{{item.url}}">{{item.title}}</a>-->\
+				<a href="article.html">{{item.title}}</a>\
 				<span><i class="am-icon-eye" title="阅读数"> </i> {{item.readNum}}</span>\
 			</li>\
 		{{# });}}'

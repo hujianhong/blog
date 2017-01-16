@@ -6,7 +6,7 @@
   <meta name="description" content="青菜萝卜 | 个人博客">
   <meta name="keywords" content="青菜萝卜 | 个人博客">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>青菜萝卜 | 个人博客</title>
+  <title>青菜萝卜-胡丁 | 程序员技术分享博客</title>
   <meta name="renderer" content="webkit">
   <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
@@ -40,12 +40,13 @@
 			      <li><a href="about.html"><i class="am-icon-info"></i> 关于本站</a></li>
 			      <li><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
 			      <li><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
+			      <li><a href="donate.html"><i class="am-icon-share-alt"></i> 赞助作者</a></li>
 			    </ul>
-			    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form am-hide-sm-only" role="search">
 			      <div class="am-form-group am-form-icon">
-			        <input id="search" type="text" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
+			        <input id="search" name="search" type="text" required lay-verify="required" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
 			        <i class="am-icon-search"></i>
-			        <button id="btn-search"  type="button" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
+			        <button id="btn-search"  type="button" lay-submit lay-filter="search" class="layui-btn layui-btn-small am-hide-sm-only qing-btn-search">搜索</button>
 			      </div>
 			    </form>
 			  </div>
@@ -58,26 +59,26 @@
 		  <!-- 正文内容开始-->
 	    <div class="am-u-md-8 am-u-sm-12">
 	    	<!--nav start-->
-	    	<div class="qing-content qing-content-nav">
-	    		<i class="am-icon-home"></i>
+	    	<div class="qing-blog-nav">
+	    		<span>当前位置：</span><a href="index.html"><i class="am-icon-home"></i> 首页</a> >> <a href="">红衣佳人白衣友</a>
 	    	</div>
 	    	<!--nav end-->
 	    	<!--blog start -->
 	    	<div class="qing-content">
 	    		<!-- blog header start -->
-	    		<div class="qing-blog-container">
-	    				<h1 class="am-article-title qing-text-center">红衣佳人白衣友</h1>
-		          <div class="qing-list-hint qing-text-center">
-					       	<span><i class="am-icon-user qing-list-author" title="作者"></i> {{item.author}} &nbsp;</span>
-						      <span><i class="am-icon-clock-o qing-list-clock" title="时间"></i> {{item.publishTime}}</span>
-						      <span><i class="am-icon-eye-slash qing-list-eye" title="阅读"></i> 阅读({{item.readNum}})</span>
-					        <span><i class="am-icon-comments-o qing-list-comment" title="评论"></i> 评论({{item.readNum}})</span>
-					        <span><i class="am-icon-heart-o qing-list-heart" title="点赞"></i> 点赞({{item.readNum}})</span>
+	    		<div class="qing-blog-container qing-text-center">
+	    				<h1 class="am-article-title">红衣佳人白衣友</h1>
+		          <div class="qing-blog-tips">
+					       	<span><i class="am-icon-user qing-color-author" title="作者"></i> {{item.author}} &nbsp;</span>
+						      <span><i class="am-icon-clock-o qing-color-clock" title="时间"></i> {{item.publishTime}}</span>
+						      <span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读({{item.readNum}})</span>
+					        <span><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论({{item.readNum}})</span>
+					        <span><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞({{item.readNum}})</span>
 				      </div>
-				      <div class="qing-text-center">
-				      	<span class="am-icon-tags"> &nbsp;</span>
-				      	<a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
-				      </div>
+			      	<div class="qing-blog-tag">
+			      		<span class="am-icon-tags"> &nbsp;</span>
+			      		<a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
+			      	</div>
 	    		</div>
 	    		<!-- blog header end -->
 	    		<hr>
@@ -115,49 +116,74 @@
 	    		</div>
 	    		<!-- blog content end -->
 	    		
+	    		<div class="qing-blog-zhuanzai">
+	    			转载请注明：<a href="http://www.huding.name">青菜萝卜-胡丁博客</a> » <a href="{{}}">中国股市融资过猛有什么后果？郭施亮</a>
+	    		</div>
 	    		
-	    		<div>
-	    			<div class="qing-text-center qing-margin-top">
-	    				<div>
-	    					<p>您的支持是博主写作最大的动力，如果您喜欢我的文章，感觉我的文章对您有帮助，请狠狠点击下面的</p>
-	    				</div>
-	    				<div class="qing-margin-top">
-	    					<a href="" >我要小额赞助</a>
-	    				</div>
-	    			</div>
-	    			
+	    		<div class="qing-blog-social">
+							<a href="javascript:;" class="qing-blog-action qing-blog-like">
+								<i class="am-icon-heart"></i> 喜欢 (<span class="count">9</span>)
+							</a>
+							<span class="or">or</span>
+							<span class="qing-blog-action qing-blog-share">
+								<i class="am-icon-share-alt"></i> 分享 (<span class="bds_count" data-cmd="count" title="累计分享0次">0</span>)
+								<div class="action-popover">
+									<div class="popover top in">
+										<div class="arrow"></div>
+										<div class="popover-content">
+											<a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="" data-original-title="分享到新浪微博"></a>
+											<a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="" data-original-title="分享到QQ空间"></a>
+											<a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="" data-original-title="分享到腾讯微博"></a>
+											<a href="#" class="qq fa fa-qq" data-cmd="sqq" title="" data-original-title="分享到QQ好友"></a>
+											<a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="" data-original-title="分享到人人网"></a>
+											<a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="" data-original-title="分享到微信"></a>
+											<a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more" data-original-title="" title=""></a>
+										</div>
+									</div>
+								</div>
+							</span>	
+					</div>
+	    		
+	    		<div class="qing-blog-donate qing-text-center">
+	    				<p>您的支持是博主写作最大的动力，如果您喜欢我的文章，感觉我的文章对您有帮助，请狠狠点击下面的</p>
+	    				<input type="button" id="btn-donate" value="我要小额赞助" class="qing-btn-donate"/>
 	    		</div>
 	    		
 	    		<!-- blog tag  start -->
-	    		<div>
-	    			<div class="am-g blog-article-widget blog-article-margin">
-		            <span class="am-icon-tags"> &nbsp;</span><a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
-		        </div>
-	    		</div>
+	    		
+	    		<hr>
+    			<div class="qing-margin-top qing-blog-tag">
+	            <span class="am-icon-tags"> &nbsp;</span><a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
+	        </div>
+	        
 	    		<!-- blog tag  end -->
 	    	</div>
 	    	<!--blog end -->
+	    	<!-- blog footer start-->
+    		<div class="qing-blog-foot">
+    				<span class="qing-foot-nav-left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="">新汽车产业还有三道坎要迈刘旷</a></span>
+    				<span class="qing-foot-nav-right"><a href="">神州专车百亿融资流产可能性增大GPLP</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
+    		</div>
+	    	<!-- blog footer end-->
 	    	
 	    	<!-- dynamic more blog start-->
-	    		<div>
-	    			<div class="qing-margin-top">
-			    		 <div class="qing-panel">
-			    	  	<div class="qing-panel-title">
-			    	  		<h2>猜你喜欢</h2>
-			    	  	</div>
-			    	  	<div class="qing-panel-body">
-			    	  		<ol class="qing-list-one" id="hotest-blogs1"></ol>
-			    	  	</div>
-			    	  </div>
-			    	</div>
-	    		</div>
+				<div class="qing-margin-top">
+	    		 <div class="qing-panel">
+	    	  	<div class="qing-panel-title">
+	    	  		<h2>猜你喜欢</h2>
+	    	  	</div>
+	    	  	<div class="qing-panel-body">
+	    	  		<ol class="qing-list-one" id="hot-rank-blogs"></ol>
+	    	  	</div>
+	    	  </div>
+	    	</div>
 	    		<!-- dynamic more blog end-->
 	    		
-	    		<!-- ad start-->
-	    		<div class="qing-content-ad qing-margin-top">
-	    			广告占位
-	    		</div>
-	    		<!-- ad start-->
+    		<!-- ad start-->
+    		<div class="qing-blog-ad qing-margin-top">
+    			广告占位
+    		</div>
+    		<!-- ad start-->
 	    		
 	    		<!-- comment start-->
 	    		<div class="qing-content qing-margin-top">
@@ -269,20 +295,20 @@
 	    	<div class="qing-margin-top">
 	    		 <div class="qing-panel">
 	    	  	<div class="qing-panel-title">
-	    	  		<h2>文章归档</h2>
+	    	  		<h2>最新文章</h2>
 	    	  	</div>
 	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="lastest-blogs1"></ol>
+	    	  		<ol class="qing-list-one" id="lastest-blogs"></ol>
 	    	  	</div>
 	    	  </div>
 	    	</div>
 	    	<div class="qing-margin-top">
 	    		 <div class="qing-panel">
 	    	  	<div class="qing-panel-title">
-	    	  		<h2>最新文章</h2>
+	    	  		<h2>文章归档</h2>
 	    	  	</div>
 	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="lastest-blogs"></ol>
+	    	  		<ol class="qing-list-one" id="blog-timeline"></ol>
 	    	  	</div>
 	    	  </div>
 	    	</div>
@@ -292,7 +318,7 @@
 	    	  		<h2>猜你喜欢</h2>
 	    	  	</div>
 	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="hotest-blogs"></ol>
+	    	  		<ol class="qing-list-one" id="recommend-blogs"></ol>
 	    	  	</div>
 	    	  </div>
 	    	</div>
@@ -352,7 +378,7 @@
 	<script src="http://static.huding.name/js/amazeui.min.js"></script>
 	<script src="static/layui/layui.js"></script>
 	<script>
-		layui.config({base:'static/js/'}).use('index');
+		layui.config({base:'static/js/'}).use('qingblog');
 	</script>
 	<script>
 		layui.cache.page = 'jie';

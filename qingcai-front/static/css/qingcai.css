@@ -19,6 +19,9 @@
  * css复用 与 规范化
  */
 
+
+
+/* 公共CSS开始 TODO */
 html {
     width:100%;
     height:100%;
@@ -35,13 +38,22 @@ body {
 	margin-top: 0.5rem;
 }
 	
-
 a {
     color:#474747;
 }
 a:hover {
     color:#10D07A;
 }
+
+.qing-container {
+	margin-top:3rem;
+}
+
+.qing-content {
+	padding: 1rem 2rem;
+	background: #FFF;
+}
+
 .qing-header {
     background-color:#393D49;
     text-align:center;
@@ -64,7 +76,7 @@ a:hover {
     color:#fff;
 }
 
-.qing-search-button {
+.qing-btn-search {
 	height: 32px !important;
 }
 
@@ -81,13 +93,6 @@ a:hover {
     text-align:center;
 }
 
-/*.am-control-nav>li.am-active>a, .am-control-nav>li.am-active>a:focus,.am-control-nav>li.am-active>a:hover{
-    border-radius: 0;
-    color: #FFFFFF;
-    background-color:#009688;
-    text-align:center;
-}*/
-
 .am-topbar-nav>li>a:hover:after {
      opacity: 0; 
 }
@@ -102,14 +107,6 @@ a:hover {
         max-width: 1200px;
       }
 }
-
-/*.am-dropdown-content li a{
-    background-color:transparent;
-}
-.am-dropdown-content li a:hover {
-    background-color:#10D07A;
-}*/
-
 
 .qing-nav {
     padding:0 1.3rem;
@@ -134,52 +131,27 @@ a:hover {
     margin:0.6rem 0;
 }
 
-/**
- * 移动端显示按钮
- */
-.qing-button {
+.qing-btn-mobile {
     height:100%;
     margin-left:1.5rem;
     background-color:#009688;
     color: #FFF;
 }
 
-.qing-bor {
+/*.qing-bor {
     border:1px solid #e5e5e5;
-}
+}*/
 
 .qing-text-center {
     text-align:center;
 }
 
-.qing-category {
-    color: #fff;
-    /*background-color: #009688;*/
-    background-color: #1abc9c;
-    padding: 3px 6px;
-    font-size: 10px;
-    position: relative;
-    top: -2px;
-    margin-right: 5px;
+.qing-text-left {
+	text-align: left;
 }
 
-.qing-category i {
-    position: absolute;
-    top: 50%;
-    margin-top: -4px;
-    right: -4px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
-    /*border-left: 4px solid #009688;*/
-    border-left: 4px solid #1abc9c;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-}
-
-.qing-container {
-	margin-top:3rem;
+.qing-text-right {
+	text-align: right;
 }
 
 .qing-panel {
@@ -210,46 +182,104 @@ a:hover {
 	background: #5FB878;
 }
 
-
-/* 单行列表 */
-
-.qing-list-one {
-	margin: 5px 0;
+.qing-margin-top {
+	margin-top: 1rem !important;
 }
 
-.qing-list-one li {
-	line-height: 20px;
-	white-space: nowrap;
-	overflow: hidden;
-	list-style: decimal-leading-zero inside;
-	*list-style-type: decimal inside;
-	color: #009E94;
-	/*font-style: oblique;*/
+.qing-margin-bottom {
+	margin-bottom: 1rem !important;
 }
 
-.qing-list-one li a, .qing-list-one li span {
-	display: inline-block;
-	*display: inline;
-	*zoom: 1;
-	vertical-align: top;
-	font-style: normal
+.qing-color-author {
+	color: #01AAED;
 }
 
-.qing-list-one li a {
-	max-width: 72%;
-	margin-right: 5px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	font-size: 14px;
+.qing-color-clock {
+	color: #ED0156;
 }
 
-.qing-list-one li span {
-	font-size: 14px;
-	color: #ccc;
+.qing-color-eye {
+	color: #01AAED;
 }
 
+.qing-color-comment {
+	color: #01AAED;
+}
 
+.qing-color-heart {
+	color: #ED0156;
+}
+
+/* 公共CSS开始 结束  TODO*/
+
+
+/* 主页CSS开始 TODO */
+.qing-notice {
+	padding: 0.25rem 2rem;
+	background: #FFF;
+}
+
+.qing-notice i {
+	color: #FF5722;
+	margin-right: 0.625rem;
+}
+
+.qing-notice span {
+	color: #777;
+	font-size: 12px;
+}
+
+/* 轮播*/
+.am-active {
+	background: #1abc9c !important;
+	/*color: #1abc9c !important;*/
+}
+
+.qing-slider-desc {
+    width: 50% !important;
+    height: 30px;
+    padding: 0.25rem 1rem !important;
+    overflow: hidden;
+    background-color: rgba(0,0,0,.3);
+    position: absolute;
+    left: 50%;
+    /*top: 50%;*/
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    background-color: transparent;
+}
+
+.qing-slider-img {
+	height: 400px;
+}
+
+.qing-slider {
+	margin-bottom: 3rem;
+}
+
+@media only screen and (min-width: 100px) {
+	.qing-slider-img {
+		height: 200px;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.qing-slider-img {
+		height: 400px;
+	}
+}
+
+.qing-share-img {
+	width:250px;
+    /*height:15rem;*/ 
+}
+
+/* 热门排行 */
+.qing-hot-rank {
+	
+}
+
+/* 博文列表*/
 .qing-entry-article {
     padding: 1rem 0;
 }
@@ -270,6 +300,32 @@ a:hover {
     text-align: left;
 }
 
+.qing-category {
+    color: #fff;
+    /*background-color: #009688;*/
+    background-color: #1abc9c;
+    padding: 3px 6px;
+    font-size: 10px;
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
+}
+
+.qing-category i {
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: -4px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    /*border-left: 4px solid #009688;*/
+    border-left: 4px solid #1abc9c;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
 .qing-list-title {
 	font-size: 16px;
 }
@@ -279,31 +335,11 @@ a:hover {
 	font-size: 10px;
 }
 
-.qing-list-author {
-	color: #01AAED;
-}
-
-.qing-list-clock {
-	color: #ED0156;
-}
-
-.qing-list-eye {
-	color: #01AAED;
-}
-
-.qing-list-comment {
-	color: #01AAED;
-}
-
-.qing-list-heart {
-	color: #ED0156;
-}
-
 .qing-list-tips {
 	color: #F7B824;
 }
 
-.qing-list-summary {
+.qing-list-content {
 	padding: 0.2rem 0;
 	text-indent: 2em;
 	font-size: 14px;
@@ -311,31 +347,16 @@ a:hover {
 	color: #777;
 }
 
-.qing-list-tag {
+.qing-list-foot {
 	font-size: 8px;
 	text-align: left;
 }
 
-.qing-list-tag i {
+.qing-list-foot i {
 	margin-right: 5px;
 }
 
-.qing-read-more {
-    margin:0.15rem 0.15rem;
-    font-size: 10px;
-    float:right;
-    color:#009688;
-}
-.qing-read-more:hover {
-    color:#5FB878;
-}
-
-.qing-margin-top {
-	margin-top: 1rem !important;
-}
-
-
-.qing-blog-tag {
+.qing-list-foot span {
 	display: inline-block;
     min-width: 10px;
     padding: .25em 0.25em;
@@ -344,6 +365,19 @@ a:hover {
     white-space: nowrap;
     background-color: #EEE;
 }
+
+.qing-list-foot a {
+	margin:0.15rem 0.15rem;
+    font-size: 10px;
+    float:right;
+    color:#009688;
+}
+
+.qing-list-foot a:hover {
+	color:#5FB878;
+}
+
+/* 左侧侧边栏 */
 
 .qing-tag {
 	display: inline-block;
@@ -374,101 +408,103 @@ a:hover {
 	background-color:#01AAED;
 }
 
-.qing-slider-img {
-	height: 400px;
+/* 单行列表 */
+
+.qing-list-one {
+	margin: 5px 0;
 }
 
-.qing-slider {
-	margin-bottom: 3rem;
+.qing-list-one li {
+	line-height: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	list-style: decimal-leading-zero inside;
+	*list-style-type: decimal inside;
+	color: #009E94;
 }
 
-@media only screen and (min-width: 100px) {
-	.qing-slider-img {
-		height: 200px;
-	}
+.qing-list-one li a, .qing-list-one li span {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+	font-style: normal
 }
 
-@media only screen and (min-width: 600px) {
-	.qing-slider-img {
-		height: 400px;
-	}
+.qing-list-one li a {
+	max-width: 72%;
+	margin-right: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
 }
 
-.qing-hot-rank {
-	
+.qing-list-one li span {
+	font-size: 14px;
+	color: #ccc;
 }
 
-.am-active {
-	background: #1abc9c !important;
-	/*color: #1abc9c !important;*/
+#tagsList {
+	position: relative;
+	height: 10px;
+	margin: 150px auto 150px auto;
 }
 
-
-/*
- * 
- * slider start
- * 
- */
-.qing-slider-ad {
-    background-color: #fff;
-    border-radius: 0;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    height: 300px;
+#tagsList a {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-family: Microsoft YaHei;
+	color: orangered;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px 6px;
 }
 
-
-.qing-slider-panel {
-	padding: 0 1.25rem !important;
+#tagsList a:hover {
+	color: #FF0000;
+	letter-spacing: 2px;
 }
 
-
-.qing-slider-desc {
-    width: 50% !important;
-    height: 30px;
-    padding: 0.25rem 1rem !important;
-    overflow: hidden;
-    background-color: rgba(0,0,0,.3);
-    position: absolute;
-    left: 50%;
-    /*top: 50%;*/
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    background-color: transparent;
+.yellow {
+	color: orangered !important;
 }
-
-.qing-share-img {
-	width:250px;
-    /*height:15rem;*/ 
+.green {
+	color: green !important;
+}
+.blue {
+	color: blue !important;
+}
+.black {
+	color: black !important;
+}
+.red {
+	color: red !important;
 }
 
 
-/**
- * 
- */
-.qing-content {
-	padding: 1rem 2rem;
-	background: #FFF;
-}
+/* 主页CSS结束 TODO */
 
-.qing-notice {
+
+
+/* 详情CSS开始 TODO */
+
+.qing-blog-nav {
+	background: #FFFFFF;
 	padding: 0.25rem 2rem;
-	background: #FFF;
-}
-
-.qing-notice i {
-	color: #FF5722;
-	margin-right: 0.625rem;
-}
-
-.qing-notice span {
-	color: #777;
-	font-size: 12px;
-}
-
-.qing-content-nav {
-	height: 40px;
+	/*height: 40px;*/
     margin-bottom: 0.15rem;
+}
+
+
+.qing-blog-tips {
+	padding-top: 0.2rem;
+	font-size: 10px;
+}
+
+.qing-blog-tag {
+	font-size: 8px;
 }
 
 .qing-blog-summary {
@@ -481,7 +517,95 @@ a:hover {
 	margin: 1rem 0;
 }
 
-.qing-content-ad {
+
+.qing-blog-zhuanzai {
+	margin-top: 10rem;
+}
+.qing-blog-social {
+    margin-bottom: 30px;
+    padding-top: 40px;
+    text-align: center;
+    text-indent: 0;
+}
+
+.qing-blog-social .or {
+    background: #fff;
+    color: #455670;
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: .8725em;
+    position: absolute;
+    z-index: 2;
+    margin: 4px 0 0 -19px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+
+.qing-blog-action {
+	position: relative;
+    padding: 8px 40px;
+    display: inline-block;
+    /*border: 1px solid #d6d6d6;*/
+    border-radius: 2px;
+    background-color: #5FB878;
+    font-size: 15px;
+    margin: 0 3px;
+    color: #fff;
+}
+
+.qing-blog-like {
+	background-color: #FF5722;
+    color: #fff;
+}
+
+.qing-blog-donate {
+	margin-top: 3rem;
+}
+
+.qing-blog-donate p {
+	font-size: 12px;
+}
+
+
+.qing-btn-donate {
+	width: 310px;
+    margin: 10px auto 0px;
+    background-color: #FF5722;
+    color: #ffffff;
+    height: 40px;
+    border: none;
+    font-family: 'Microsoft Yahei';
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+
+.qing-blog-foot {
+	padding: 1rem;
+	border-top: 1px solid #f2f2f2;
+    background-color: #fbfbfb;
+}
+
+.qing-foot-nav-left {
+	/*float: left;*/
+}
+
+.qing-foot-nav-right {
+	float: right;
+}
+
+.qing-blog-foot span a  {
+	color: #009688;
+}
+
+.qing-blog-foot span a:hover {
+	color:#00a67c;
+}
+
+.qing-blog-ad {
     background-color: #fff;
     border-radius: 0;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -492,6 +616,80 @@ a:hover {
 
 
 
+
+
+
+/* 详情CSS结束 TODO */
+
+
+/* 捐赠CSS开始TODO */
+.qing-donate-header{
+	margin-bottom: 0.25rem;
+	/*height: 30px;*/
+}
+
+.qing-donate-header span {
+	font-size: 16px;
+}
+
+.qing-donate-container {
+	margin: 3rem 0 1rem 0;
+}
+
+.qing-donate-title {
+	font-size: 16px;
+	vertical-align: middle;
+	background: #F8F8F8;
+	margin: 1rem -2rem;
+	padding: 1rem 0rem;
+}
+
+.qing-donate-account {
+	width: 310px;
+    margin: 10px auto 0px;
+    background-color: #03cab1;
+    color: #ffffff;
+    height: 40px;
+    border: none;
+    font-family: 'Microsoft Yahei';
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.qing-donate-method {
+	font-size: 14px;
+	padding: 1rem 0rem;
+}
+
+.qing-donate-image {
+	height: 200px;
+	width: 200px;
+}
+
+.qing-donate-click {
+	width: 100px;
+    height: 100px;
+    margin: 30px auto;
+    color: rgb(252, 252, 252);
+    text-align: center;
+    border-radius: 50%;
+    line-height: 90px;
+    font-family: 'Microsoft Yahei';
+    background-color: #FF5722;
+    border: 1px solid #d9d9d9;
+    border-top-color: #c0c0c0;
+    border-left-color: #d0d0d0;
+}
+
+.qing-donate-comment-head {
+	height: 30px;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+	
+
+/* 捐赠CSS结束TODO */
 
 
 /* 简易编辑器 */
@@ -800,43 +998,47 @@ body .layui-edit-face .layui-layer-content {
 
 
 
-#tagsList {
-	position: relative;
-	height: 10px;
-	margin: 150px auto 150px auto;
-}
 
-#tagsList a {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	font-family: Microsoft YaHei;
-	color: orangered;
-	font-weight: bold;
-	text-decoration: none;
-	padding: 3px 6px;
-}
 
-#tagsList a:hover {
-	color: #FF0000;
-	letter-spacing: 2px;
-}
 
-.yellow {
-	color: orangered !important;
-}
-.green {
-	color: green !important;
-}
-.blue {
-	color: blue !important;
-}
-.black {
-	color: black !important;
-}
-.red {
-	color: red !important;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -901,7 +1103,6 @@ h1 span{
 .blog-color {
     color:#10D07A;
 }
-.blog-continue {
 
 
 .blog-tag {

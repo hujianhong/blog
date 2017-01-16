@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="青菜萝卜 | 百川博客首页">
-  <meta name="keywords" content="青菜萝卜,百川,博客,首页">
+  <meta name="description" content="青菜萝卜 - 胡丁 |定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料">
+  <meta name="keywords" content="青菜萝卜,胡丁,博客,程序员,程序猿,程序媛">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>青菜萝卜|百川博客</title>
+  <title>青菜萝卜-胡丁 | 程序员技术分享博客</title>
   <meta name="renderer" content="webkit">
   <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="青菜萝卜|百川博客"/>
+  <meta name="apple-mobile-web-app-title" content="青菜萝卜-胡丁 | 程序员技术分享博客"/>
   <meta name="msapplication-TileColor" content="#0e90d2">
   
   <link rel="stylesheet" href="static/css/amazeui.min.css">
@@ -28,7 +28,7 @@
 	    </h1>
 			<!-- nav start -->
 			<nav class="am-g am-g-fixed qing-fixed qing-nav">
-				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only am-radius qing-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only am-radius qing-btn-mobile" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
 			  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
 			    <ul class="am-nav am-nav-pills am-topbar-nav">
 			      <li class="am-active"><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
@@ -37,12 +37,13 @@
 			      <!--<li><a href="resources.html"><i class="am-icon-share"></i> 实用资源</a></li>-->
 			      <li><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
 			      <li><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
+			      <li><a href="donate.html"><i class="am-icon-share-alt"></i> 赞助作者</a></li>
 			    </ul>
 			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form am-hide-sm-only" role="search">
 			      <div class="am-form-group am-form-icon">
 			        <input id="search" name="search" type="text" required lay-verify="required" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
 			        <i class="am-icon-search"></i>
-			        <button id="btn-search"  type="button" lay-submit lay-filter="search" class="layui-btn layui-btn-small am-hide-sm-only qing-search-button">搜索</button>
+			        <button id="btn-search"  type="button" lay-submit lay-filter="search" class="layui-btn layui-btn-small am-hide-sm-only qing-btn-search">搜索</button>
 			      </div>
 			    </form>
 			  </div>
@@ -67,13 +68,13 @@
 	    <div class="am-u-md-8 am-u-sm-12">
 	    		<!-- 通知公告开始 -->
 	    		<div class="qing-notice">
-	    			<i class="am-icon-bell"></i><span>您好，青菜萝卜|百川博客</span>
+	    			<i class="am-icon-bell"></i><span>您好，欢迎来到青菜萝卜-胡丁 | 程序员技术分享博客</span>
 	    		</div>
 	    		<!-- 通知公告结束 -->
 	    		<!-- 图片轮播开始-->
 	    		<div class="qing-slider qing-margin-top">
 	    			<div class="am-slider am-slider-default" data-am-flexslider="{playAfterPaused: 8000}">
-						  <ul class="am-slides">
+						  <ul class="am-slides qing-text-center">
 						    <li>
 						    	<img src="static/img/21.jpg" class="qing-slider-img"/>
 						      <div class="am-slider-desc qing-slider-desc">
@@ -121,7 +122,7 @@
 		    	  		<h2 class="qing-hot-rank-title">热门排行</h2>
 		    	  	</div>
 		    	  	<div class="qing-panel-body">
-		    	  		<ol class="qing-list-one" id="hotest-blogs1"></ol>
+		    	  		<ol class="qing-list-one" id="hot-rank-blogs"></ol>
 		    	  	</div>
 		    	  </div>
 		    	</div>
@@ -239,10 +240,6 @@
 	    	  	</div>
 	    	  </div>
 	    	</div>-->
-				<!-- 广告占位 -->
-				<div class="qing-slider-ad qing-margin-top">
-					<div class="qing-text-center">广告占位</div>
-				</div>
 				<div class="qing-margin-top">
 	    		 <div class="qing-panel">
 	    	  	<div class="qing-panel-title">
@@ -278,6 +275,12 @@
 	    	  	</div>
 	    	  </div>
 	    	</div>
+	    	<!-- 广告占位 -->
+				<div class="qing-margin-top">
+					<iframe src="guanggao.html" style="height: 250px;width: 300px;">
+						
+					</iframe>
+				</div>
 	    </div>
 	    <!-- 侧边栏结束-->
 	</div>
@@ -285,10 +288,10 @@
 
   <footer class="qing-footer">
     <div class="qing-text-center">
-       <h3>青菜萝卜简介</h3>
-       <p class="am-text-sm">青菜萝卜定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
+       <h3><strong>青菜萝卜 - 胡丁</strong>简介</h3>
+       <p class="am-text-sm">青菜萝卜 - 胡丁定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
     </div>
-    <div class="qing-text-center">Copyright © 2016 青菜萝卜  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+    <div class="qing-text-center">Copyright © 2016 青菜萝卜 - 胡丁  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
   </footer>
 	
 	<script src="http://static.huding.name/js/jquery.min.js"></script>
