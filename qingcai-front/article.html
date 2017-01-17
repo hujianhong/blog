@@ -14,15 +14,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="青菜萝卜"/>
   <meta name="msapplication-TileColor" content="#0e90d2">
-  
   <link rel="stylesheet" href="static/css/amazeui.min.css">
   <link rel="stylesheet" href="static/layui/css/layui.css"/>
-  <!--<link rel="stylesheet" href="fly/res/css/global.css" />-->
-  
   <link rel="stylesheet" href="static/css/qingcai.css"/>
-  
-  <link rel="stylesheet" href="static/css/iconfont.css" />
- 
 </head>
 
 <body>
@@ -60,13 +54,19 @@
 	    <div class="am-u-md-8 am-u-sm-12">
 	    	<!--nav start-->
 	    	<div class="qing-blog-nav">
-	    		<span>当前位置：</span><a href="index.html"><i class="am-icon-home"></i> 首页</a> >> <a href="">红衣佳人白衣友</a>
+	    		<a href="index.html"><i class="am-icon-home"></i>首页</a> <i class="am-icon-angle-double-right"></i> <a href="">红衣佳人白衣友</a>
 	    	</div>
 	    	<!--nav end-->
+	    	<!-- ad start-->
+    		<div id="blog-content-top-ad" class="qing-blog-ad qing-margin-top qing-margin-bottom">
+    			广告占位
+    		</div>
+    		<!-- ad start-->
 	    	<!--blog start -->
 	    	<div class="qing-content">
 	    		<!-- blog header start -->
-	    		<div class="qing-blog-container qing-text-center">
+	    		<div class="qing-blog-header qing-text-center">
+	    				<input type="hidden" id="qing-blog-id" value="a232f9e0af9c40f9aa9e6b8882e2b94f" />
 	    				<h1 class="am-article-title">红衣佳人白衣友</h1>
 		          <div class="qing-blog-tips">
 					       	<span><i class="am-icon-user qing-color-author" title="作者"></i> {{item.author}} &nbsp;</span>
@@ -81,23 +81,20 @@
 			      	</div>
 	    		</div>
 	    		<!-- blog header end -->
-	    		<hr>
 	    		<!-- blog summary start -->
-	    		<div> 
-        		 <span><strong>内容摘要：</strong></span><p class="qing-blog-summary">我遇见了你，你一直觉得自己不够美好，充满惊慌与卑微，但是，你即使那样害怕，却守在我的身后，不曾后退。人们总是崇拜英雄，惊喜与他们随时随地的光芒，但是最真实的事情永远是我们都会恐惧都会失败，有时受尽打击，又是无能为力。你说我是英雄，其实我不敢告诉你，如果不是你，你傻傻地倔强地站在那里，我一回头就能看见你，那么，或许，我早就做了命运的逃兵。</p> 
+	    		<div class="qing-margin-top"> 
+        		 <p><div class="qing-blog-summary"><strong>内容摘要：</strong>我遇见了你，你一直觉得自己不够美好，充满惊慌与卑微，但是，你即使那样害怕，却守在我的身后，不曾后退。人们总是崇拜英雄，惊喜与他们随时随地的光芒，但是最真实的事情永远是我们都会恐惧都会失败，有时受尽打击，又是无能为力。你说我是英雄，其实我不敢告诉你，如果不是你，你傻傻地倔强地站在那里，我一回头就能看见你，那么，或许，我早就做了命运的逃兵。</div></p> 
 	    		</div>
 	    		<!-- blog summary end -->
-	    		<hr>
 	    		<!-- blog content start -->
-	    		<div class="qing-blog-container">
-	    				<div class="qing-text-center">
+	    		<div class="qing-margin-top">
+	    				<!--<div class="qing-text-center">
 	    					<img src="static/img/01.jpg" alt="" class="qing-blog-img">         
-	    				</div>
+	    				</div>-->
 	    					 
 						        <p class="class="am-article-lead"">
 						        引用blockquote：
 						        <blockquote><p>People think focus means saying yes to the thing you’ve got to focus on. But that’s not what it means at all. It means saying no to the hundred other good ideas that there are. You have to pick carefully. I’m actually as proud of the things we haven’t done as the things I have done. Innovation is saying no to 1,000 things.</p> <footer><cite>Steve Jobs</cite> – Apple Worldwide Developers’ Conference, 1997</footer></blockquote>
-						        <hr>
 						        <h1>一大段文字：</h1>
 						        <p>我遇见了你，你一直觉得自己不够美好，充满惊慌与卑微，但是，你即使那样害怕，却守在我的身后，不曾后退。人们总是崇拜英雄，惊喜与他们随时随地的光芒，但是最真实的事情永远是我们都会恐惧都会失败，有时受尽打击，又是无能为力。你说我是英雄，其实我不敢告诉你，如果不是你，你傻傻地倔强地站在那里，我一回头就能看见你，那么，或许，我早就做了命运的逃兵。<br><br>
 						        红衣佳人白衣友，朝与同歌暮同酒，世人谓我恋长安，其实只恋长安某。 ——殊同 <br>
@@ -121,9 +118,9 @@
 	    		</div>
 	    		
 	    		<div class="qing-blog-social">
-							<a href="javascript:;" class="qing-blog-action qing-blog-like">
-								<i class="am-icon-heart"></i> 喜欢 (<span class="count">9</span>)
-							</a>
+	    				<span class="qing-blog-action qing-blog-like"> 
+	    					<i class="am-icon-heart"></i> 喜欢 (<span class="count">9</span>)
+	    				</span>
 							<span class="or">or</span>
 							<span class="qing-blog-action qing-blog-share">
 								<i class="am-icon-share-alt"></i> 分享 (<span class="bds_count" data-cmd="count" title="累计分享0次">0</span>)
@@ -150,19 +147,17 @@
 	    		</div>
 	    		
 	    		<!-- blog tag  start -->
-	    		
-	    		<hr>
     			<div class="qing-margin-top qing-blog-tag">
 	            <span class="am-icon-tags"> &nbsp;</span><a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
 	        </div>
-	        
 	    		<!-- blog tag  end -->
 	    	</div>
 	    	<!--blog end -->
+	    	
 	    	<!-- blog footer start-->
     		<div class="qing-blog-foot">
-    				<span class="qing-foot-nav-left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="">新汽车产业还有三道坎要迈刘旷</a></span>
-    				<span class="qing-foot-nav-right"><a href="">神州专车百亿融资流产可能性增大GPLP</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
+    				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="">新汽车产业还有三道坎要迈刘旷</a></span>
+    				<span class="right"><a href="">神州专车百亿融资流产可能性增大GPLP</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
     		</div>
 	    	<!-- blog footer end-->
 	    	
@@ -170,114 +165,56 @@
 				<div class="qing-margin-top">
 	    		 <div class="qing-panel">
 	    	  	<div class="qing-panel-title">
-	    	  		<h2>猜你喜欢</h2>
+	    	  		<h2>热门排行</h2>
 	    	  	</div>
 	    	  	<div class="qing-panel-body">
 	    	  		<ol class="qing-list-one" id="hot-rank-blogs"></ol>
 	    	  	</div>
 	    	  </div>
 	    	</div>
-	    		<!-- dynamic more blog end-->
-	    		
+	    	<!-- dynamic more blog end-->
     		<!-- ad start-->
-    		<div class="qing-blog-ad qing-margin-top">
+    		<div id="blog-content-bottom-ad" class="qing-blog-ad qing-margin-top">
     			广告占位
     		</div>
     		<!-- ad start-->
-	    		
-	    		<!-- comment start-->
-	    		<div class="qing-content qing-margin-top">
-	    			<h2 class="page-title">热忱评论<span>（<em id="jiedaCount">18</em>）</span></h2>
-
-	      <ul class="jieda photos" id="jieda">
-        <li data-id="12" class="jieda-daan">
-          <a name="item-121212121212"></a>
-          <div class="detail-about detail-about-reply">
-            <a class="jie-user" href="">
-              <img src="static/img/ico-rocket.png" alt="">
-              <cite>
-                <i>纸飞机</i>
-                <!-- <em>(楼主)</em>
-                <em style="color:#5FB878">(管理员)</em>
-                <em style="color:#FF9E3F">（活雷锋）</em>
-                <em style="color:#999">（该号已被封）</em> -->
-              </cite>
-            </a>
-            <div class="detail-hits">
-              <span>3分钟前</span>
-            </div>
-            <i class="iconfont icon-caina" title="最佳答案"></i>
-          </div>
-          <div class="detail-body jieda-body">
-            <p>么么哒</p>
-          </div>
-          <div class="jieda-reply">
-            <span class="jieda-zan zanok" type="zan"><i class="iconfont icon-zan"></i><em>12</em></span>
-            <span type="reply"><i class="iconfont icon-svgmoban53"></i>回复</span>
-            <!-- <div class="jieda-admin">
-              <span type="edit">编辑</span>
-              <span type="del">删除</span>
-              <span class="jieda-accept" type="accept">采纳</span>
-            </div> -->
-          </div>
-        </li>
-        
-        <li data-id="13">
-          <a name="item-121212121212"></a>
-          <div class="detail-about detail-about-reply">
-            <a class="jie-user" href="">
-              <img src="static/img/ico-rocket.png" alt="">
-              <cite>
-                <i>香菇</i>
-                <em style="color:#FF9E3F">活雷锋</em>
-              </cite>
-            </a>
-            <div class="detail-hits">
-              <span>刚刚</span>
-            </div>
-          </div>
-          <div class="detail-body jieda-body">
-            <p>蓝瘦</p>
-          </div>
-          <div class="jieda-reply">
-            <span class="jieda-zan" type="zan"><i class="iconfont icon-zan"></i><em>0</em></span>
-            <span type="reply"><i class="iconfont icon-svgmoban53"></i>回复</span>
-            <div class="jieda-admin">
-              <span type="edit">编辑</span>
-              <span type="del">删除</span>
-              <span class="jieda-accept" type="accept">采纳</span>
-            </div>
-          </div>
-        </li>
-        
-        <!-- <li class="fly-none">没有任何回答</li> -->
-      </ul>
-      
-      <div class="layui-form layui-form-pane">
-        <form action="/jie/reply/" method="post">
-        	<div class="layui-form-item">
-				    <div class="layui-input-inline">
-				      <input type="text" name="username" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
-				    </div>
-				    <div class="layui-input-inline">
-				      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
-				    </div>
-				  </div>
-          <div class="layui-form-item layui-form-text">
-            <div class="layui-input-block">
-              <textarea id="L_content" name="content" required lay-verify="required" placeholder="我要回答'"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
-            </div>
-          </div>
-          <div class="layui-form-item">
-            <input type="hidden" name="jid" value="{{rows.id}}">
-            <button class="layui-btn" lay-filter="*" lay-submit>提交回答</button>
-          </div>
-        </form>
-      </div>
-	    			
-	    		</div>
-	    		<!-- comment end-->
-	    	
+    		<!-- comment start-->
+    		<div class="qing-content qing-margin-top">
+    			<div class="qing-comment-title">
+    				<h2 class="page-title">热忱评论<span>(<em id="blog-comment-num">18</em>)</span></h2>
+    			</div>
+    			<div class="qing-comment-container" id="qing-comment-list">
+    			</div>
+	    		<!-- 博文分页插件-->
+	    		<div id="comment-pager" class="qing-text-center"></div>
+      		<!-- 发表评论开始 -->
+      		<div class="qing-comment-post">
+      			发表评论
+      		</div>
+		      <div class="layui-form layui-form-pane qing-margin-top">
+		        <form action="/jie/reply/" method="post">
+		        	<div class="layui-form-item">
+						    <div class="layui-input-inline">
+						      <input type="text" name="username" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
+						    </div>
+						    <div class="layui-input-inline">
+						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
+						    </div>
+						  </div>
+		          <div class="layui-form-item layui-form-text">
+		            <div class="layui-input-block">
+		              <textarea id="L_content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
+		            </div>
+		          </div>
+		          <div class="layui-form-item">
+		            <input type="hidden" name="jid" value="{{rows.id}}">
+		            <button class="layui-btn" lay-filter="*" lay-submit>提交评论</button>
+		          </div>
+		        </form>
+		      </div>
+		      <!-- 发表评论结束 -->
+	    	</div>
+	    	<!-- comment end-->
 	    </div>
 	    <!--正文内容结束-->
 			<!-- 侧边栏 开始-->
@@ -288,7 +225,7 @@
 	    	  		<h2>文章分类</h2>
 	    	  	</div>
 	    	  	<div class="qing-panel-body">
-	    	  		<div class="fly-tip" id="blog-tags"></div>
+	    	  		<div id="blog-tags"></div>
 	    	  	</div>
 	    	  </div>
 	    	</div>
@@ -389,6 +326,8 @@
 		  ,experience: 83
 		  ,sex: '男'
 		};
+		
+		
 		layui.config({
 		  base: 'static/js/'
 		}).extend({

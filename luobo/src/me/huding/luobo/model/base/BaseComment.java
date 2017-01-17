@@ -49,20 +49,20 @@ public abstract class BaseComment<M extends BaseComment<M>> extends Model<M> imp
 		return get("cdate");
 	}
 
-	public void setUpnum(java.lang.Integer upnum) {
-		set("upnum", upnum);
+	public void setLikeNum(java.lang.Integer likeNum) {
+		set("likeNum", likeNum);
 	}
 
-	public java.lang.Integer getUpnum() {
-		return get("upnum");
+	public java.lang.Integer getLikeNum() {
+		return get("likeNum");
 	}
 
-	public void setDownum(java.lang.Integer downum) {
-		set("downum", downum);
+	public void setHateNum(java.lang.Integer hateNum) {
+		set("hateNum", hateNum);
 	}
 
-	public java.lang.Integer getDownum() {
-		return get("downum");
+	public java.lang.Integer getHateNum() {
+		return get("hateNum");
 	}
 
 	public void setParent(java.lang.String parent) {
@@ -79,6 +79,22 @@ public abstract class BaseComment<M extends BaseComment<M>> extends Model<M> imp
 
 	public java.lang.String getBlogID() {
 		return get("blogID");
+	}
+
+	public void setShareNum(java.lang.Integer shareNum) {
+		set("shareNum", shareNum);
+	}
+
+	public java.lang.Integer getShareNum() {
+		return get("shareNum");
+	}
+
+	public void setReplyNum(java.lang.Integer replyNum) {
+		set("replyNum", replyNum);
+	}
+
+	public java.lang.Integer getReplyNum() {
+		return get("replyNum");
 	}
 
 }

@@ -34,6 +34,8 @@ public class FrontRoutes extends Routes {
 		add("/blog",BlogController.class);
 		
 		add("/comment",CommentController.class);
+		
+		add("/upload",UploadController.class);
 	}
 
 }

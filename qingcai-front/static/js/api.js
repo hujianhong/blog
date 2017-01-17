@@ -10,9 +10,9 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 	var laytpl = layui.laytpl;
 	var qingtpl = layui.qingtpl;
 	
-	var BASE_PREFIX = "http://www.huding.name";
+//	var BASE_PREFIX = "http://www.huding.name";
 	
-//	var BASE_PREFIX = "http://192.168.1.102";
+	var BASE_PREFIX = "http://192.168.1.102";
 
 	var pageSize = 10;
 	
@@ -41,6 +41,22 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 		 * 猜你喜欢地址
 		 */
 		BLOG_RECOMMEND_URL: BASE_PREFIX + "/luobo/blog/recommend",
+		
+		/**
+		 * 博文评论地址
+		 */
+		BLOG_COMMENT_URL: BASE_PREFIX + "/luobo/comment/show",
+		
+		/**
+		 * 
+		 */
+		COMMENT_LIKE_URL: BASE_PREFIX + "/luobo/comment/like",
+		
+		/**
+		 * 
+		 */
+		COMMENT_HATE_URL: BASE_PREFIX + "/luobo/comment/hate",
+		
 		
 		//Ajax
 		load: function(url, data, success, options) {
@@ -197,10 +213,74 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 						if(first){
 							return;
 						}
-						gather.pageCallback(conf.curr,pageSize);
+						api.pageCallback(conf.curr,pageSize);
 					}
 				});
 			});
+		},
+		commentPageCallback : function(pageNum,pageSize){
+			var id = $("#qing-blog-id").val();
+			var params = {
+				pageNum:pageNum,
+				pageSize:pageSize,
+				id:id
+			};
+			api.load(api.BLOG_COMMENT_URL,params,function(result){
+				// 加载模板
+				//var tpl = laytpl($("#blog-list-template").html());
+				var tpl = laytpl(qingtpl.blogCommentListTpl);
+				// 渲染数据
+				tpl.render(result.data,function(html){
+					// 显示内容
+					$("#blog-comment-num").html(result.data.totalRow);
+					$("#qing-comment-list").html(html);
+					// 监听事件
+					layui.use('comment',function(comment){
+						comment.onClick();
+					});
+				});
+				// 回到顶部
+				var speed=200;//滑动的速度
+				var top = $("#qing-comment-list").offset().top;
+                $('body').animate({ scrollTop:  top - 100 }, speed);
+			});
+		},
+		
+		loadBlogComments : function(){
+			var id = $("#qing-blog-id").val();
+			var params = {
+				pageNum:1,
+				pageSize:pageSize,
+				id:id
+			};
+			api.load(api.BLOG_COMMENT_URL,params,function(result){
+				// 加载模板
+				var tpl = laytpl(qingtpl.blogCommentListTpl);
+				// 渲染数据
+				tpl.render(result.data,function(html){
+					// 显示内容
+					$("#blog-comment-num").html(result.data.totalRow);
+					$("#qing-comment-list").html(html);
+					// 监听事件
+					layui.use('comment',function(comment){
+						comment.onClick();
+					});
+				});
+				// 调用分页
+				laypage({
+					cont: 'comment-pager',
+					pages: result.data.totalPage, //得到总页数
+					jump: function(conf,first) {
+						if(first){
+							return;
+						}
+						api.commentPageCallback(conf.curr,pageSize);
+					}
+				});
+			});
+		},
+		commentLike:function(params,success){
+			api.load(api.COMMENT_LIKE_URL,params,success);
 		}
 	}
 	exports('api', api);

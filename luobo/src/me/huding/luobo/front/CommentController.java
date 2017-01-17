@@ -16,6 +16,12 @@
 package me.huding.luobo.front;
 
 import me.huding.luobo.BaseController;
+import me.huding.luobo.IConstants;
+import me.huding.luobo.Parameters;
+import me.huding.luobo.ResConsts;
+import me.huding.luobo.model.Comment;
+
+import com.jfinal.plugin.activerecord.Page;
 
 /**
  *
@@ -25,20 +31,73 @@ import me.huding.luobo.BaseController;
  * @date 2016年11月2日
  */
 public class CommentController extends BaseController {
-	
-	
+
+
 	/**
 	 * 显示评论
 	 */
 	public void show(){
+		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
+		if(pageNum == null){
+			pageNum = 1;
+		}
+		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
+		if(pageSize == null){
+			pageSize = Parameters.DEFAULT_PAGE_SIZE;
+		}
+		String blogID = getPara("id");
+		// 查询数据
+		Page<Comment> data = Comment.findByBlogID(pageNum, pageSize, blogID);
+		// 渲染结果
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
+	
+	
+	public void like() {
+		String id = getPara("id");
+		boolean ok = getParaToBoolean("ok");
+		Comment comment = Comment.dao.findById(id);
+		if(comment == null) {
+			// 渲染结果
+			render(ResConsts.Code.FAILURE, "评论不存在");
+			return;
+		}
+		int num = comment.getLikeNum();
+		// 取消赞
+		if(ok) {
+			comment.setLikeNum(num - 1);
+			if(comment.update()){
+				// 渲染结果
+				render(ResConsts.Code.SUCCESS, "取消赞成功");
+			} else {
+				render(ResConsts.Code.FAILURE, "取消赞失败");
+			}
+			return;
+		}
+		// 点赞
+		comment.setLikeNum(num + 1);
+		if(comment.update()){
+			// 渲染结果
+			render(ResConsts.Code.SUCCESS, "点赞成功");
+		} else {
+			render(ResConsts.Code.FAILURE, "点赞失败");
+		}
+	}
+	
+	public void hate() {
 		
 	}
 	
+	
+	public void reply() {
+		
+	}
+
 	/**
 	 * 发表评论
 	 */
 	public void post(){
-		
+
 	}
 
 }

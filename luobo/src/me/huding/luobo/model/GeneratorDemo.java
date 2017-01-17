@@ -53,6 +53,7 @@ public class GeneratorDemo {
 		gernerator.addExcludedTable("blog_display");
 		gernerator.addExcludedTable("blog_display_by_tag");
 		gernerator.addExcludedTable("blog_tags_display");
+		gernerator.addExcludedTable("blog_rel_tags");
 		// 设置是否在 Model 中生成 dao 对象
 		gernerator.setGenerateDaoInModel(true);
 		// 设置是否生成字典文件
@@ -162,7 +163,7 @@ public class GeneratorDemo {
 		
 		reader.close();*/
 		
-		List<Tags> tags = DBUtils.findAll(Tags.dao);
+		/*List<Tags> tags = DBUtils.findAll(Tags.dao);
 		List<Blog> blogs = DBUtils.findAll(Blog.dao);
 		int blen = blogs.size();
 		for(Tags tags2 : tags){
@@ -185,13 +186,37 @@ public class GeneratorDemo {
 				blogTags.save();
 				k ++;
 			}
+		}*/
+		
+		String t = null;
+		String[] titles = new String[100];
+		BufferedReader reader = new BufferedReader(new FileReader("temp"));
+		int in = 0;
+		while((t= reader.readLine()) != null){
+			titles[in ++] = t;
 		}
-		
-		
+		reader.close();
+		String uuid = KeyUtils.getUUID();
+		System.out.println(uuid);
+		for(int i = 0;i < 1000;i ++){
+			Comment comment = new Comment();
+			comment.setBlogID(uuid);
+			comment.setId(KeyUtils.getUUID());
+			comment.setLikeNum(rand());
+			comment.setHateNum(rand());
+			comment.setShareNum(rand());
+			comment.setReplyNum(rand());
+			comment.setCdate(new java.util.Date(System.currentTimeMillis()));
+			comment.setContent(titles[i % 30]);
+			comment.setNickname("胡建洪");
+			comment.setEmail("1043244432@qq.com");
+			comment.save();
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
 		handle();
+//		gen();
 	}
 }
 

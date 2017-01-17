@@ -3,8 +3,6 @@
  * 阿里巴巴 iconfont
  * 
  */
-
-
 @font-face {
 	font-family: "iconfont";
 	src: url('iconfont.eot?t=1477416582');
@@ -73,20 +71,28 @@
 	content: "\e617";
 }
 
-.icon-tupian:before {
-	content: "\e608";
-}
-
-.icon-logo:before {
-	content: "\e603";
-}
-
 .icon-daima:before {
 	content: "\e609";
 }
 
+.icon-tupian:before {
+	content: "\e608";
+}
+
+.icon-yulan:before {
+	content: "\e60d";
+}
+
 .icon-biaoqing:before {
 	content: "\e60f";
+}
+
+.icon-lianjie:before {
+	content: "\e620";
+}
+
+.icon-logo:before {
+	content: "\e603";
 }
 
 .icon-nan:before {
@@ -107,10 +113,6 @@
 
 .icon-charushuipingxian:before {
 	content: "\e622";
-}
-
-.icon-yulan:before {
-	content: "\e60d";
 }
 
 .icon-liulanyanjing:before {
@@ -159,10 +161,6 @@
 
 .icon-chengshi:before {
 	content: "\e61b";
-}
-
-.icon-lianjie:before {
-	content: "\e620";
 }
 
 .icon-renshu:before {

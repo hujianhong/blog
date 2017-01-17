@@ -21,7 +21,7 @@
 
 
 
-/* 公共CSS开始 TODO */
+/* TODO 公共CSS开始 */
 html {
     width:100%;
     height:100%;
@@ -32,7 +32,6 @@ body {
     line-height: 24px;
     background-color: #f2f2f2;
 }
-
 
 .qing-sm-search {
 	margin-top: 0.5rem;
@@ -138,10 +137,6 @@ a:hover {
     color: #FFF;
 }
 
-/*.qing-bor {
-    border:1px solid #e5e5e5;
-}*/
-
 .qing-text-center {
     text-align:center;
 }
@@ -210,7 +205,201 @@ a:hover {
 	color: #ED0156;
 }
 
-/* 公共CSS开始 结束  TODO*/
+
+/* TODO iconfont定义开始  */
+/**
+ * 
+ * 阿里巴巴 iconfont
+ * 
+ */
+@font-face {
+	font-family: "iconfont";
+	src: url('iconfont.eot?t=1477416582');
+	/* IE9*/
+	src: url('iconfont.eot?t=1477416582#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('iconfont.woff?t=1477416582') format('woff'), /* chrome, firefox */
+	url('iconfont.ttf?t=1477416582') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+	url('iconfont.svg?t=1477416582#iconfont') format('svg');
+	/* iOS 4.1- */
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zan:before {
+	content: "\e612";
+}
+
+.icon-jiazaizhong:before {
+	content: "\e60e";
+}
+
+.icon-sousuo:before {
+	content: "\e621";
+}
+
+.icon-quanpingpad:before {
+	content: "\e61d";
+}
+
+.icon-shezhi:before {
+	content: "\e607";
+}
+
+.icon-shijian:before {
+	content: "\e60a";
+}
+
+.icon-guanbi:before {
+	content: "\e614";
+}
+
+.icon-tianjia:before {
+	content: "\e616";
+}
+
+.icon-tuichu:before {
+	content: "\e601";
+}
+
+.icon-shui:before {
+	content: "\e602";
+}
+
+.icon-qq:before {
+	content: "\e618";
+}
+
+.icon-weibo:before {
+	content: "\e617";
+}
+
+.icon-daima:before {
+	content: "\e609";
+}
+
+.icon-tupian:before {
+	content: "\e608";
+}
+
+.icon-yulan:before {
+	content: "\e60d";
+}
+
+.icon-biaoqing:before {
+	content: "\e60f";
+}
+
+.icon-lianjie:before {
+	content: "\e620";
+}
+
+.icon-logo:before {
+	content: "\e603";
+}
+
+.icon-nan:before {
+	content: "\e619";
+}
+
+.icon-nv:before {
+	content: "\e61a";
+}
+
+.icon-quitquanping:before {
+	content: "\e61e";
+}
+
+.icon-zuichun:before {
+	content: "\e61c";
+}
+
+.icon-charushuipingxian:before {
+	content: "\e622";
+}
+
+.icon-liulanyanjing:before {
+	content: "\e60b";
+}
+
+.icon-touxiang:before {
+	content: "\e604";
+}
+
+.icon-caina:before {
+	content: "\e613";
+}
+
+.icon-room:before {
+	content: "\e615";
+}
+
+.icon-svgmoban53:before {
+	content: "\e610";
+}
+
+.icon-shichang:before {
+	content: "\e600";
+}
+
+.icon-shouye:before {
+	content: "\e605";
+}
+
+.icon-tishilian:before {
+	content: "\e629";
+}
+
+.icon-fabu:before {
+	content: "\e606";
+}
+
+.icon-pinglun:before {
+	content: "\e60c";
+}
+
+.icon-zan1:before {
+	content: "\e611";
+}
+
+.icon-chengshi:before {
+	content: "\e61b";
+}
+
+.icon-renshu:before {
+	content: "\e61f";
+}
+
+.icon-huizongzuoyoutuodong:before {
+	content: "\e623";
+}
+
+.icon-404:before {
+	content: "\e627";
+}
+
+.icon-wenda:before {
+	content: "\e626";
+}
+
+.icon-top:before {
+	content: "\e624";
+}
+
+.icon-ui:before {
+	content: "\e625";
+}
+/* TODO iconfont结束 */ 
+
+
+
+/* TODO 公共CSS结束 */
 
 
 /* 主页CSS开始 TODO */
@@ -377,7 +566,10 @@ a:hover {
 	color:#5FB878;
 }
 
-/* 左侧侧边栏 */
+/* 主页CSS结束 TODO */
+
+
+/* 左侧侧边栏k开始 TODO */
 
 .qing-tag {
 	display: inline-block;
@@ -483,20 +675,23 @@ a:hover {
 	color: red !important;
 }
 
-
-/* 主页CSS结束 TODO */
-
-
+/* 左侧侧边栏结束TODO */
 
 /* 详情CSS开始 TODO */
 
 .qing-blog-nav {
 	background: #FFFFFF;
-	padding: 0.25rem 2rem;
-	/*height: 40px;*/
-    margin-bottom: 0.15rem;
+    padding: 1rem 1rem;
+    margin-bottom: 0.5rem;
 }
 
+.qing-blog-nav a {
+	color: #1abc9c;
+}
+
+.qing-blog-nav a:hover {
+	color: #000000;
+}
 
 .qing-blog-tips {
 	padding-top: 0.2rem;
@@ -509,7 +704,7 @@ a:hover {
 
 .qing-blog-summary {
 	color: #777;
-	text-indent: 2em;
+	/*text-indent: 2em;*/
 }
 
 .qing-blog-img {
@@ -546,7 +741,7 @@ a:hover {
 
 .qing-blog-action {
 	position: relative;
-    padding: 8px 40px;
+    padding: 8px 20px;
     display: inline-block;
     /*border: 1px solid #d6d6d6;*/
     border-radius: 2px;
@@ -554,6 +749,21 @@ a:hover {
     font-size: 15px;
     margin: 0 3px;
     color: #fff;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+	.qing-blog-action {
+		position: relative;
+	    padding: 8px 40px;
+	    display: inline-block;
+	    border-radius: 2px;
+	    background-color: #5FB878;
+	    font-size: 15px;
+	    margin: 0 3px;
+	    color: #fff;
+	    cursor: pointer;
+	}
 }
 
 .qing-blog-like {
@@ -563,6 +773,8 @@ a:hover {
 
 .qing-blog-donate {
 	margin-top: 3rem;
+	border-bottom: 1px solid #E2E2E2;
+	padding-bottom: 2rem;
 }
 
 .qing-blog-donate p {
@@ -589,11 +801,7 @@ a:hover {
     background-color: #fbfbfb;
 }
 
-.qing-foot-nav-left {
-	/*float: left;*/
-}
-
-.qing-foot-nav-right {
+.qing-blog-foot .right{
 	float: right;
 }
 
@@ -611,13 +819,8 @@ a:hover {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     height: 150px;
+    display: none;
 }
-
-
-
-
-
-
 
 /* 详情CSS结束 TODO */
 
@@ -682,14 +885,103 @@ a:hover {
     border-left-color: #d0d0d0;
 }
 
-.qing-donate-comment-head {
+/* 捐赠CSS结束TODO */
+
+
+
+.qing-comment-title {
 	height: 30px;
     border-bottom: 1px solid #E2E2E2;
 }
 
-	
+.qing-comment-main {
+	margin: 1rem 0;
+	padding: 0.625rem 0;
+	border-bottom: 1px solid #E2E2E2;
+}
 
-/* 捐赠CSS结束TODO */
+.qing-comment-avatar {
+    float: left;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    padding: 0.625rem 0;
+}
+
+.qing-comment-avatar img {
+	width: 32px;
+    height: 32px;
+}
+
+@media only screen and (min-width: 641px) {
+	.qing-comment-avatar {
+	    width: 48px;
+	    height: 48px;
+	}
+	
+	.qing-comment-avatar img {
+		width: 48px;
+	    height: 48px;
+	}
+}
+
+.qing-comment-body {
+	padding-left: 60px;
+}
+
+
+.qing-comment-meta {
+	font-size: 11px;
+}
+
+.qing-comment-author {
+	color: red;
+}
+
+.qing-comment-no {
+	margin-top: 1rem;
+    border: 1px solid #B0E0F9;
+    height: 10rem;
+    background: #f8f8f8;
+    text-align: center;
+}
+
+.qing-comment-tip {
+	padding-top: 4rem;
+	color: #01AAED;
+}
+
+
+.qing-comment-content {
+	/*text-indent: 2em;*/
+    text-align: left;
+    line-height: 1.5em;
+}
+
+.qing-comment-hint {
+	font-size: 10px;
+}
+
+.qing-comment-hint>span {
+	margin: 0.25rem 0.5rem;
+	color: #666;
+	cursor: pointer;
+}
+
+.qing-comment-hint span:hover{
+	color: red;
+}
+.qing-comment-post {
+	/*height: 40px;*/
+    border-bottom: 1px solid #E2E2E2;
+    border-top: 1px solid #E2E2E2;
+    padding: 1rem 0;
+}
+
+.qing-comment-ok {
+	color: red !important;
+}
 
 
 /* 简易编辑器 */
@@ -766,133 +1058,7 @@ body .layui-edit-face .layui-layer-content {
 }
 
 
-/* Detail页 */
 
-.detail h1 {
-	font-size: 24px;
-	line-height: 30px;
-	padding: 5px 0;
-}
-
-.detail-about {
-	position: relative;
-	margin-top: 5px;
-	line-height: 20px;
-	background-color: #F2F2F2;
-	padding: 15px;
-	color: #999;
-}
-
-.detail-about span,
-.jie-about span,
-.detail-about .jie-user {
-	margin-right: 10px;
-	display: inline-block;
-	*display: inline;
-	*zoom: 1;
-	vertical-align: top;
-	font-size: 12px;
-}
-
-.detail-about .jie-status,
-.detail-about .jie-status-ok {
-	color: #fff;
-}
-
-.detail-about .fly-jing {
-	padding: 0 6px;
-	background-color: #c00;
-	color: #fff;
-}
-
-.detail-about .jie-user {
-	position: relative;
-}
-
-.detail-about .jie-user cite {
-	top: -3px;
-	left: 56px;
-	width: 260px;
-	color: #4f99cf;
-	font-size: 14px;
-}
-
-.detail-about .jie-user cite em {
-	padding-left: 5px;
-	color: #999;
-	cursor: default;
-	font-size: 12px;
-	font-style: normal;
-}
-
-.detail-about .jie-user img {
-	position: relative;
-	display: block;
-	margin: 0;
-	top: 0;
-	border-radius: 100%;
-}
-
-.detail-hits {
-	position: absolute;
-	left: 71px;
-	bottom: 15px;
-}
-
-.detail-hits span {
-	margin-top: 0;
-}
-
-.detail-body {
-	margin: 20px 0 50px;
-	min-height: 200px;
-	line-height: 26px;
-	font-size: 16px;
-}
-
-.detail-body p {
-	margin-bottom: 15px;
-}
-
-.detail-body a {
-	color: #4f99cf;
-}
-
-.detail-body img {
-	max-width: 100%;
-	cursor: crosshair;
-}
-
-.detail-body table {
-	margin: 10px 0;
-}
-
-.detail-body table thead {
-	background-color: #f2f2f2;
-}
-
-.detail-body table th,
-.detail-body table td {
-	padding: 5px 20px;
-	border: 1px solid #DFDFDF;
-	font-size: 14px;
-	font-weight: 400;
-}
-
-.detail-about-reply {
-	background: none;
-	padding: 0;
-}
-
-.detail-about-reply .detail-hits {
-	left: 56px;
-	bottom: 0;
-}
-
-.detail .page-title {
-	border: none;
-	background-color: #f2f2f2;
-}
 
 
 /* 回答 */

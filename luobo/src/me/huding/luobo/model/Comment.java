@@ -1,5 +1,7 @@
 package me.huding.luobo.model;
 
+import com.jfinal.plugin.activerecord.Page;
+
 import me.huding.luobo.model.base.BaseComment;
 
 /**
@@ -8,4 +10,11 @@ import me.huding.luobo.model.base.BaseComment;
 @SuppressWarnings("serial")
 public class Comment extends BaseComment<Comment> {
 	public static final Comment dao = new Comment();
+	
+	
+	
+	public static Page<Comment> findByBlogID(int pageNumber,int pageSize,String id){
+		String sqlExp = "from comment where blogID = ? order by cdate desc,likeNum desc,shareNum desc";
+		return dao.paginate(pageNumber, pageSize, "select * ",sqlExp,id);
+	}
 }

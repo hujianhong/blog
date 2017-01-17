@@ -19,9 +19,17 @@ layui.define(['util','api','layer','form'],function(exports) {
 	
 	api.loadRecommedBlogs();
 	
+	api.loadBlogComments();
+	
 	$(".qing-btn-donate").on("click",function(event){
 		window.open("donate.html","_blank");
 	});
+	
+	//加载特定模块
+	if(layui.cache.page && layui.cache.page !== 'index') {
+		var extend = {};
+		layui.use(layui.cache.page);
+	}
 	
 	//右下角固定Bar
 	util.fixbar();

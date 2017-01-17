@@ -22,9 +22,10 @@ layui.define(function(exports) {
 			        <span><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞({{item.heartNum}})</span>\
 		       </div>\
 		       {{# if(item.summary != null && item.summary.length > 200) { }}\
-		       			{{# item.summary = item.summary.substring(0,200) + "...."}}\
+		       		<p class="qing-list-content">{{item.summary.substring(0,200) + "......"}}</p>\
+		       {{# } else { }}\
+		      	 <p class="qing-list-content">{{ item.summary }}</p>\
 		       {{# } }}\
-		       <p class="qing-list-content">{{ item.summary }}</p>\
 		       <div class="qing-list-foot">\
 		       		{{# if(item.tags.length > 0) { }}\
 		       			<i class="am-icon-tags"></i>\
@@ -101,7 +102,41 @@ layui.define(function(exports) {
 				{{item.displayName}}\
 			</span>\
 		{{# });}}'
+		,
+		blogCommentListTpl:
+		'{{# if(d.list.length > 0) { }}\
+			{{#  layui.each(d.list, function(index, item){ }}\
+				<div class="qing-comment-main" data="{{item.id}}">\
+					<div class="qing-comment-avatar">\
+						<div class="qing-comment-img">\
+							<img src="static/img/100.jpg" />\
+						</div>\
+					</div>\
+					<div class="qing-comment-body">\
+						<div class="qing-comment-meta">\
+							<span class="qing-comment-author"><strong>{{item.nickname}}</strong></span> 评论于 <span>{{item.cdate}}</span>\
+						</div>\
+						<p class="qing-comment-content">{{item.content}}</p>\
+						<div class="qing-comment-hint">\
+							<span type="share"><i class="am-icon-share"></i> <span>分享</span>(<em>{{item.shareNum}}</em>)</span>\
+							<span type="like"><i class="am-icon-thumbs-o-up"></i> <span>点赞</span>(<em>{{item.likeNum}}</em>)</span>\
+							<span type="reply"><i class="am-icon-reply"></i> <span>回复</span>(<em>{{item.replyNum}}</em>)</span>\
+						</div>\
+					</div>\
+				</div>\
+			{{# }); }}\
+		{{# } else { }}\
+			<div class="qing-comment-no"><div class="qing-comment-tip">暂无评论,快抢沙发</div></div>\
+		{{# } }}',
 		
+		qingEditorTpl:
+		'<div class="fly-edit">\
+			<span type="face" title="插入表情"><i class=""></i>表情</span>\
+			<span type="picture" title="插入图片：img[src]"><i class="iconfont icon-tupian"></i>图片</span>\
+			<span type="href" title="超链接格式：a(href)[text]"><i class="iconfont icon-lianjie"></i>链接</span>\
+			<span type="code" title="插入代码"><i class="am-icon-code"></i>代码</span>\
+			<span type="yulan" title="预览"><i class="am-icon-"></i>预览</span>\
+		</div>'
 	}
     // 导出模板文件
 	exports('qingtpl', tpl);

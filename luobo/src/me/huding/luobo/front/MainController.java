@@ -77,7 +77,6 @@ public class MainController extends BaseController {
 	 * 显示博文列表
 	 */
 	public void showBlogs(){
-		
 		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
 		if(pageNum == null){
 			pageNum = 1;
