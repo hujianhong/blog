@@ -3,23 +3,38 @@
  * 所有前端模板的定义
  */
 
-layui.define(['util','api','layer','form'],function(exports) {
+layui.define(['util','laytpl','api','layer','qingeditor','qingcmt','form','qingleft'],function(exports) {
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var util = layui.util;
 	var api = layui.api;
+	var laytpl = layui.laytpl;
+	
+	var qingeditor = layui.qingeditor;
+	var qingleft = layui.qingleft;
+	
+	var qingcmt = layui.qingcmt;
 	
 	api.loadHotRankBlogs();
 	
-    api.loadBlogTags();
+	qingleft.edge({
+		elem:$("#qing-left")
+	});
 	
-	api.loadBlogTimeline();
+	var pageSize = 10;
 	
-	api.loadLastestBlogs();
+	var params = {
+		pageNum:1,
+		pageSize:pageSize,
+		id:$("#qing-blog-id").val()
+	};
 	
-	api.loadRecommedBlogs();
+	qingcmt.comment({
+		elem:$("#commentContainer"),
+		params:params,
+    });
 	
-	api.loadBlogComments();
+	
 	
 	$(".qing-btn-donate").on("click",function(event){
 		window.open("donate.html","_blank");
@@ -30,6 +45,11 @@ layui.define(['util','api','layer','form'],function(exports) {
 		var extend = {};
 		layui.use(layui.cache.page);
 	}
+	
+	//加载编辑器
+	/*qingeditor.layEditor({
+		elem: '.fly-editor'
+	});*/
 	
 	//右下角固定Bar
 	util.fixbar();

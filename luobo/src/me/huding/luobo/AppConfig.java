@@ -26,6 +26,7 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.core.JFinal;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
@@ -72,6 +73,11 @@ public class AppConfig extends JFinalConfig {
 	@Override
 	public void configHandler(Handlers me) {
 
+	}
+	
+	
+	public static void main(String[] args) {
+		JFinal.start("WebRoot", 8080, "/luobo", 5);
 	}
 
 }

@@ -180,13 +180,16 @@
     		<!-- ad start-->
     		<!-- comment start-->
     		<div class="qing-content qing-margin-top">
-    			<div class="qing-comment-title">
-    				<h2 class="page-title">热忱评论<span>(<em id="blog-comment-num">18</em>)</span></h2>
+    			<!--<div class="qing-comment-head">
+    				<div class="qing-comment-title">
+    					<h2 >热忱评论<span>(<em id="blog-comment-num">18</em>)</span></h2>
+    				</div>
+    				<span class="qing-comment-report">发表评论</span>
     			</div>
     			<div class="qing-comment-container" id="qing-comment-list">
     			</div>
-	    		<!-- 博文分页插件-->
-	    		<div id="comment-pager" class="qing-text-center"></div>
+	    		<div id="comment-pager" class="qing-text-center"></div>-->
+	    		<div id="commentContainer"></div>
       		<!-- 发表评论开始 -->
       		<div class="qing-comment-post">
       			发表评论
@@ -218,87 +221,7 @@
 	    </div>
 	    <!--正文内容结束-->
 			<!-- 侧边栏 开始-->
-	    <div class="am-u-md-4 am-u-sm-12">
-				<div>
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>文章分类</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<div id="blog-tags"></div>
-	    	  	</div>
-	    	  </div>
-	    	</div>
-	    	<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>最新文章</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="lastest-blogs"></ol>
-	    	  	</div>
-	    	  </div>
-	    	</div>
-	    	<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>文章归档</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="blog-timeline"></ol>
-	    	  	</div>
-	    	  </div>
-	    	</div>
-				<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>猜你喜欢</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="recommend-blogs"></ol>
-	    	  	</div>
-	    	  </div>
-	    	</div>
-				<!-- 广告占位 -->
-				<div class="qing-slider-ad qing-margin-top">
-					<div class="qing-text-center">广告占位</div>
-				</div>
-				<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>联系我</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<p class="am-text-left">邮箱：1043244432@qq.com</p>
-	            <p class="am-text-left">QQ交流群：545418785</p>
-	            <p class="am-text-left">
-	            	       社交账号：
-	                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
-	                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
-	                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
-	                <a href=""><span class="am-icon-twitter am-icon-fw blog-icon blog-icon"></span></a>
-	            </p>
-	    	  	</div>
-	    	  </div>
-	    	</div>
-				<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>友情链接</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<p>
-					  		<ul>
-                    <li><a class="" href="https://www.oschina.net" target="_blank">开源中国社区</a></li>
-                    <li><a href="http://amazeui.org" target="_blank">Amaze ~ 妹子 UI</a></li>
-                    <li><a href="https://github.com/hujianhong" target="_blank">我的GitHub</a></li>
-                    <li><a href="https://www.qiniu.com" target="_blank">七牛云存储</a></li>
-                </ul>
-					  	</p>
-	    	  	</div>
-	    	  </div>
-	    	</div>
-	    </div>
+	    <div class="am-u-md-4 am-u-sm-12" id="qing-left"></div>
 	    <!-- 侧边栏结束-->
 	</div>
 	<!-- content end -->
@@ -328,7 +251,7 @@
 		};
 		
 		
-		layui.config({
+		/*layui.config({
 		  base: 'static/js/'
 		}).extend({
 		  fly: 'message'
@@ -340,8 +263,7 @@
 		    var othis = $(this), html = othis.html();
 		    othis.html(fly.content(html));
 		  });
-		  */
-		});
+		});*/
 	</script>
 	<script type="text/javascript" src="static/js/badutongji.js" ></script>
 </body>

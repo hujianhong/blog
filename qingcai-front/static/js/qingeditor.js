@@ -2,13 +2,15 @@
 
 
 
-layui.define(['qingtpl','api','layer','form'], function(exports) {
+layui.define(['api','layer','form'], function(exports) {
 	var $ = layui.jquery,
 		layer = layui.layer,
 		laytpl = layui.laytpl,
 		form = layui.form(),
 		util = layui.util,
 		device = layui.device();
+		
+		
 	var qingtpl = layui.qingtpl;
 
 	//阻止IE7以下访问
@@ -31,7 +33,17 @@ layui.define(['qingtpl','api','layer','form'], function(exports) {
 		}
 	};
 
-	var gather = {
+	var qingeditor = {
+		
+		qingEditorTpl:
+		'<div class="fly-edit">\
+			<span type="face" title="插入表情"><i class=""></i>表情</span>\
+			<span type="picture" title="插入图片：img[src]"><i class="iconfont icon-tupian"></i>图片</span>\
+			<span type="href" title="超链接格式：a(href)[text]"><i class="iconfont icon-lianjie"></i>链接</span>\
+			<span type="code" title="插入代码"><i class="am-icon-code"></i>代码</span>\
+			<span type="yulan" title="预览"><i class="am-icon-"></i>预览</span>\
+		</div>'
+		,
 
 		//计算字符长度
 		charLen: function(val) {
@@ -48,7 +60,8 @@ layui.define(['qingtpl','api','layer','form'], function(exports) {
 		//简易编辑器
 		,
 		layEditor: function(options) {
-			var html = qingtpl.qingEditorTpl;
+			
+			var html = qingeditor.qingEditorTpl;
 			var log = {};
 			
 			var	mod = {
@@ -168,7 +181,6 @@ layui.define(['qingtpl','api','layer','form'], function(exports) {
 					});
 				});
 			});
-
 		},
 
 		escape: function(html) {
@@ -199,21 +211,9 @@ layui.define(['qingtpl','api','layer','form'], function(exports) {
 				.replace(/\n/g, '<br>') //转义换行   
 			return content;
 		},
-
-		cookie: function(e, o, t) {
-			e = e || "";
-			var n, i, r, a, c, p, s, d, u;
-			if("undefined" == typeof o) {
-				if(p = null, document.cookie && "" != document.cookie)
-					for(s = document.cookie.split(";"), d = 0; d < s.length; d++)
-						if(u = $.trim(s[d]), u.substring(0, e.length + 1) == e + "=") {
-							p = decodeURIComponent(u.substring(e.length + 1));
-							break
-						}
-				return p
-			}
-			t = t || {}, null === o && (o = "", t.expires = -1), n = "", t.expires && ("number" == typeof t.expires || t.expires.toUTCString) && ("number" == typeof t.expires ? (i = new Date, i.setTime(i.getTime() + 864e5 * t.expires)) : i = t.expires, n = "; expires=" + i.toUTCString()), r = t.path ? "; path=" + t.path : "", a = t.domain ? "; domain=" + t.domain : "", c = t.secure ? "; secure" : "", document.cookie = [e, "=", encodeURIComponent(o), n, r, a, c].join("");
-		}
 	};
+	
+	
+	exports('qingeditor',qingeditor);
 	
 });

@@ -3,12 +3,14 @@
  * 青菜萝卜 主入口
  * 
  */
-layui.define(['util','api','layer','form'], function(exports) {
+layui.define(['util','api','layer','form','qingleft'], function(exports) {
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var util = layui.util;
 	var api = layui.api;
 	var form = layui.form();
+	
+	var qingleft = layui.qingleft;
   
     //监听提交
     form.on('submit(search)', function(data){
@@ -35,13 +37,9 @@ layui.define(['util','api','layer','form'], function(exports) {
 	
 	api.loadBlogs();
 	
-    api.loadBlogTags();
-	
-	api.loadBlogTimeline();
-	
-	api.loadLastestBlogs();
-	
-	api.loadRecommedBlogs();
+	qingleft.edge({
+		elem:$("#qing-left"),
+	});
 	
 	//右下角固定Bar
 	util.fixbar();
