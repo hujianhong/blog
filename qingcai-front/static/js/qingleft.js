@@ -3,11 +3,13 @@
  * 
  */
 
-layui.define(['laytpl','api','qingad','tagcloud'],function(exports){
+layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 	var api = layui.api;
 	var qingad = layui.qingad;
-	var tagcloud = layui.tagcloud;
+	var qingbqy = layui.qingbqy;
 	var laytpl = layui.laytpl;
+	
+	var layer = layui.layer;
 	
 	
 	var blogCLTpl = {
@@ -48,17 +50,7 @@ layui.define(['laytpl','api','qingad','tagcloud'],function(exports){
 	    	  		<h2>标签云</h2>\
 	    	  	</div>\
 	    	  	<div class="qing-panel-body">\
-	    	  		<div id="tagsList">\
-						<a class="yellow" href="http://www.huding.name?kid=1" title="星级评分">星级评分</a>\
-						<a class="green" href="http://www.huding.name?kid=2" title="层特效">层特效</a>\
-						<a class="blue" href="http://www.huding.name?kid=3" title="关键字">关键字</a>\
-						<a class="black" href="http://www.huding.name?kid=4" title="拖拽">拖拽</a>\
-						<a class="yellow" href="http://www.huding.name?kid=5" title="分页插件">分页插件</a>\
-						<a class="red" href="http://www.huding.name?kid=6" title="时间插件">时间插件</a>\
-						<a class="green" href="http://www.huding.name?kid=7" title="弹出层">弹出层</a>\
-						<a class="black" href="http://www.huding.name?kid=8" title="数据统计">数据统计</a>\
-						<a class="blue" href="http://www.huding.name?kid=9" title="HTML5">HTML5</a>\
-					</div>\
+	    	  		<div class="qing-tag-cloud" id="qing-tag-cloud"></div>\
 	    	  	</div>\
 	    	</div>\
     	</div>',
@@ -156,6 +148,12 @@ layui.define(['laytpl','api','qingad','tagcloud'],function(exports){
 	}
 	
 	
+	var tagCloudListTpl = 
+	'{{# layui.each(d,function(index,item){ }}\
+		<a class="qing-tcloud-color{{index % 5}}"\
+		href="javascript:;" data="{{item.id}}"title="{{item.name}}">{{item.name}}</a>\
+	{{# });}}';
+	
 	var leftEdge = {
 		/**
 		 * 
@@ -173,11 +171,29 @@ layui.define(['laytpl','api','qingad','tagcloud'],function(exports){
 				// 显示内容
 				options.elem.html(html);
 				// 渲染数据
-				tagcloud.init();
 				api.loadBlogTags();
 				api.loadBlogTimeline();
 				api.loadLastestBlogs();
 				api.loadRecommedBlogs();
+			});
+			// 标签云数据
+			api.blogTagCloud({},function(result){
+				var tagTpl = laytpl(tagCloudListTpl);
+				tagTpl.render(result.data,function(html){
+					$("#qing-tag-cloud").html(html);
+					// 添加动画
+					qingbqy.amination({
+						cntr:'qing-tag-cloud',
+						tagElem:'a'
+					});
+					// 设置点击事件
+					$(".qing-tag-cloud a").on("click",function(event){
+						var data = $(this).attr("data");
+						var title = $(this).attr("title");
+						layer.msg("你选中了:" + title + ", sorry,尚未实现该功能....");
+						
+					});
+				});
 			});
 		}
 	}

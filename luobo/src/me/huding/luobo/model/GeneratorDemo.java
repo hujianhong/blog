@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.sql.DataSource;
+import javax.swing.text.html.ListView;
 
 import me.huding.luobo.Parameters;
 import me.huding.luobo.utils.DBUtils;
@@ -188,7 +189,7 @@ public class GeneratorDemo {
 			}
 		}*/
 		
-		String t = null;
+		/*String t = null;
 		String[] titles = new String[100];
 		BufferedReader reader = new BufferedReader(new FileReader("temp"));
 		int in = 0;
@@ -211,6 +212,21 @@ public class GeneratorDemo {
 			comment.setNickname("胡建洪");
 			comment.setEmail("1043244432@qq.com");
 			comment.save();
+		}*/
+		
+		String t = null;
+		String[] titles = new String[100];
+		BufferedReader reader = new BufferedReader(new FileReader("img"));
+		int in = 0;
+		while((t= reader.readLine()) != null){
+			titles[in ++] = t.trim();
+		}
+		reader.close();
+		List<Blog> blogs = Blog.dao.find("select * from blog where type = 1 limit ?",in);
+		for(int i = 0;i < in;i ++){
+			Blog blog = blogs.get(i);
+			blog.setCoverURL(titles[i]);
+			blog.update();
 		}
 	}
 

@@ -43,6 +43,16 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 		BLOG_RECOMMEND_URL: BASE_PREFIX + "/luobo/blog/recommend",
 		
 		/**
+		 * 博客轮播地址
+		 */
+		BLOG_LUNBO_URL: BASE_PREFIX + "/luobo/blog/lunbo",
+		
+		/**
+		 * 
+		 */
+		BLOG_TAGS_URL: BASE_PREFIX + "/luobo/blog/blogTags",
+		
+		/**
 		 * 博文评论地址
 		 */
 		BLOG_COMMENT_URL: BASE_PREFIX + "/luobo/comment/show",
@@ -87,6 +97,20 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 					});
 				}
 			});
+		},
+		
+		blogLunbo:function(params,success){
+			api.load(api.BLOG_LUNBO_URL,params,success);
+		},
+		
+		/**
+		 * 请求博文标签云数据
+		 * 
+		 * @param {Object} params
+		 * @param {Object} success
+		 */
+		blogTagCloud:function(params,success) {
+			api.load(api.BLOG_TAGS_URL,params,success);
 		},
 		
 		

@@ -20,6 +20,7 @@ import java.util.List;
 import me.huding.luobo.BaseController;
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Blog;
+import me.huding.luobo.model.Tags;
 import me.huding.luobo.model.Timeline;
 import me.huding.luobo.utils.DBUtils;
 
@@ -33,6 +34,11 @@ import me.huding.luobo.utils.DBUtils;
 public class BlogController extends BaseController {
 	
 	
+	
+	public void lunbo() {
+		List<Blog> data = Blog.lunbo();
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
 	
 	/**
 	 * 热门排行
@@ -54,6 +60,12 @@ public class BlogController extends BaseController {
 	
 	public void timeline(){
 		List<Timeline> data = DBUtils.findAll(Timeline.dao);
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
+	
+
+	public void blogTags() {
+		List<Tags> data = Tags.findAll();
 		render(ResConsts.Code.SUCCESS, null, data);
 	}
 	

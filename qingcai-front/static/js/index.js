@@ -3,12 +3,13 @@
  * 青菜萝卜 主入口
  * 
  */
-layui.define(['util','api','layer','form','qingleft'], function(exports) {
+layui.define(['util','api','layer','laytpl','form','qingleft'], function(exports) {
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var util = layui.util;
 	var api = layui.api;
 	var form = layui.form();
+	var laytpl = layui.laytpl;
 	
 	var qingleft = layui.qingleft;
   
@@ -45,26 +46,58 @@ layui.define(['util','api','layer','form','qingleft'], function(exports) {
 	util.fixbar();
 	
 	
-	$('.am-slider').flexslider({
-	  playAfterPaused: 8000,
-	  before: function(slider) {
-	    if (slider._pausedTimer) {
-	      window.clearTimeout(slider._pausedTimer);
-	      slider._pausedTimer = null;
-	    }
-	  },
-	  after: function(slider) {
-	    var pauseTime = slider.vars.playAfterPaused;
-	    if (pauseTime && !isNaN(pauseTime) && !slider.playing) {
-	      if (!slider.manualPause && !slider.manualPlay && !slider.stopped) {
-	        slider._pausedTimer = window.setTimeout(function() {
-	          slider.play();
-	        }, pauseTime);
-	      }
-	    }
-	  }
-	  // 设置其他参数
-	});
+	
+	var lunboTpl = 
+		'{{# layui.each(d,function(index,item){ }}\
+			<li>\
+		    	<img src="{{item.coverURL}}" class="qing-slider-img"/>\
+			    <div class="am-slider-desc qing-slider-desc">\
+			      <span>{{item.title}}</span>\
+			    </div>\
+		    </li>\
+	    {{# });}}';
+	    
+	var lunbo = {
+		init:function(){
+			// 加载轮播
+			api.blogLunbo({},function(result){
+				var tpl = laytpl(lunboTpl);
+				tpl.render(result.data,function(html){
+					// 渲染数据
+					$("#qing-lunbo").html(html);
+					// 轮播组件设置	
+					$('.am-slider').flexslider({
+					  playAfterPaused: 8000,
+					  before: function(slider) {
+					    if (slider._pausedTimer) {
+					      window.clearTimeout(slider._pausedTimer);
+					      slider._pausedTimer = null;
+					    }
+					  },
+					  after: function(slider) {
+					    var pauseTime = slider.vars.playAfterPaused;
+					    if (pauseTime && !isNaN(pauseTime) && !slider.playing) {
+					      if (!slider.manualPause && !slider.manualPlay && !slider.stopped) {
+					        slider._pausedTimer = window.setTimeout(function() {
+					          slider.play();
+					        }, pauseTime);
+					      }
+					    }
+					  }
+					  // 设置其他参数
+					});
+				});
+			});
+			
+		}
+	}
+	
+	lunbo.init();
+	
 
 	exports('index', {});
 });
+
+
+
+						    

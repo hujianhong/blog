@@ -113,4 +113,13 @@ public class Blog extends BaseBlog<Blog> {
 		selectBuffer.append(" from blog");
 		return dao.find(selectBuffer.toString());
 	}
+
+
+	/**
+	 * @return
+	 */
+	public static List<Blog> lunbo() {
+		String sql = "SELECT id,title,url,coverURL from blog WHERE type = 1 limit 6";
+		return dao.find(sql);
+	}
 }

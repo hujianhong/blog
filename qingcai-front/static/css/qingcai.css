@@ -637,13 +637,13 @@ a:hover {
 	color: #ccc;
 }
 
-#tagsList {
+.qing-tag-cloud {
 	position: relative;
-	height: 10px;
-	margin: 150px auto 150px auto;
+    height: 250px;
+    margin: 10px auto 30px auto;
 }
 
-#tagsList a {
+.qing-tag-cloud a {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -654,24 +654,24 @@ a:hover {
 	padding: 3px 6px;
 }
 
-#tagsList a:hover {
+.qing-tag-cloud a:hover {
 	color: #FF0000;
 	letter-spacing: 2px;
 }
 
-.yellow {
+.qing-tcloud-color0 {
 	color: orangered !important;
 }
-.green {
+.qing-tcloud-color1 {
 	color: green !important;
 }
-.blue {
+.qing-tcloud-color2 {
 	color: blue !important;
 }
-.black {
+.qing-tcloud-color3 {
 	color: black !important;
 }
-.red {
+.qing-tcloud-color4 {
 	color: red !important;
 }
 

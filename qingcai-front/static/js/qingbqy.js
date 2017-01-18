@@ -1,5 +1,7 @@
 /**
- * tag.js
+ * qingbqy.js
+ * 
+ * 青菜萝卜标签云
  * 
  */
 layui.define(function(exports) {
@@ -23,45 +25,42 @@ layui.define(function(exports) {
 	var oDiv = null;
 
 	var tagcloud = {
-		init: function() {
+		/**
+		 * 
+		 * @param {Object} options
+		 * options = {
+		 * 	 cntr:qing-tag-cloud
+		 *   tagElem:a
+		 * }
+		 */
+		amination: function(options) {
 			var i = 0;
 			var oTag = null;
-
-			oDiv = document.getElementById('tagsList');
-
-			aA = oDiv.getElementsByTagName('a');
+			oDiv = document.getElementById(options.cntr);
+			aA = oDiv.getElementsByTagName(options.tagElem);
 
 			for(i = 0; i < aA.length; i++) {
 				oTag = {};
-
 				oTag.offsetWidth = aA[i].offsetWidth;
 				oTag.offsetHeight = aA[i].offsetHeight;
-
 				mcList.push(oTag);
 			}
 
 			tagcloud.sineCosine(0, 0, 0);
-
 			tagcloud.positionAll();
-
 			oDiv.onmouseover = function() {
 				active = true;
 			};
-
 			oDiv.onmouseout = function() {
 				active = false;
 			};
-
 			oDiv.onmousemove = function(ev) {
 				var oEvent = window.event || ev;
-
 				mouseX = oEvent.clientX - (oDiv.offsetLeft + oDiv.offsetWidth / 2);
 				mouseY = oEvent.clientY - (oDiv.offsetTop + oDiv.offsetHeight / 2);
-
 				mouseX /= 5;
 				mouseY /= 5;
 			};
-
 			setInterval(tagcloud.update, 100);
 		},
 
@@ -116,6 +115,8 @@ layui.define(function(exports) {
 			tagcloud.doPosition();
 			tagcloud.depthSort();
 		},
+		
+		
 		depthSort: function() {
 			var i = 0;
 			var aTmp = [];
@@ -205,5 +206,5 @@ layui.define(function(exports) {
 			cc = Math.cos(c * dtr);
 		}
 	}
-	exports('tagcloud', tagcloud);
+	exports('qingbqy', tagcloud);
 });
