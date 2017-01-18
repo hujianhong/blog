@@ -114,7 +114,7 @@
 	    		<!-- blog content end -->
 	    		
 	    		<div class="qing-blog-zhuanzai">
-	    			转载请注明：<a href="http://www.huding.name">青菜萝卜-胡丁博客</a> » <a href="{{}}">中国股市融资过猛有什么后果？郭施亮</a>
+	    			转载请注明：<a href="http://www.huding.name">青菜萝卜-胡丁博客</a> » <a href="http://www.huding.name/article.html">中国股市融资过猛有什么后果？郭施亮</a>
 	    		</div>
 	    		
 	    		<div class="qing-blog-social">
@@ -148,7 +148,8 @@
 	    		
 	    		<!-- blog tag  start -->
     			<div class="qing-margin-top qing-blog-tag">
-	            <span class="am-icon-tags"> &nbsp;</span><a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
+	            <span class="am-icon-tags"> &nbsp;</span>
+	            <a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
 	        </div>
 	    		<!-- blog tag  end -->
 	    	</div>
@@ -180,38 +181,29 @@
     		<!-- ad start-->
     		<!-- comment start-->
     		<div class="qing-content qing-margin-top">
-    			<!--<div class="qing-comment-head">
-    				<div class="qing-comment-title">
-    					<h2 >热忱评论<span>(<em id="blog-comment-num">18</em>)</span></h2>
-    				</div>
-    				<span class="qing-comment-report">发表评论</span>
-    			</div>
-    			<div class="qing-comment-container" id="qing-comment-list">
-    			</div>
-	    		<div id="comment-pager" class="qing-text-center"></div>-->
 	    		<div id="commentContainer"></div>
       		<!-- 发表评论开始 -->
       		<div class="qing-comment-post">
       			发表评论
       		</div>
-		      <div class="layui-form layui-form-pane qing-margin-top">
-		        <form action="/jie/reply/" method="post">
+		      <div class="layui-form-pane qing-margin-top">
+		        <form class="layui-form" action="post">
 		        	<div class="layui-form-item">
 						    <div class="layui-input-inline">
-						      <input type="text" name="username" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
+						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input" value="test">
 						    </div>
 						    <div class="layui-input-inline">
-						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
+						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input" value="test@qq.com">
 						    </div>
 						  </div>
 		          <div class="layui-form-item layui-form-text">
 		            <div class="layui-input-block">
-		              <textarea id="L_content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
+		              <textarea id="qing-content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea qing-editor" style="height: 150px;"></textarea>
 		            </div>
 		          </div>
 		          <div class="layui-form-item">
-		            <input type="hidden" name="jid" value="{{rows.id}}">
-		            <button class="layui-btn" lay-filter="*" lay-submit>提交评论</button>
+		            <input type="hidden" name="qingID" value="a232f9e0af9c40f9aa9e6b8882e2b94f">
+		            <button class="layui-btn" lay-filter="comment" lay-submit>提交评论</button>
 		          </div>
 		        </form>
 		      </div>
@@ -239,31 +231,6 @@
 	<script src="static/layui/layui.js"></script>
 	<script>
 		layui.config({base:'static/js/'}).use('qingblog');
-	</script>
-	<script>
-		layui.cache.page = 'jie';
-		layui.cache.user = {
-		  username: '游客'
-		  ,uid: -1
-		  ,avatar: '../../res/images/avatar/00.jpg'
-		  ,experience: 83
-		  ,sex: '男'
-		};
-		
-		
-		/*layui.config({
-		  base: 'static/js/'
-		}).extend({
-		  fly: 'message'
-		}).use('fly', function(){
-		  var fly = layui.fly;
-		  //如果你是采用模版自带的编辑器，你需要开启以下语句来解析。
-		  /*
-		  $('.detail-body').each(function(){
-		    var othis = $(this), html = othis.html();
-		    othis.html(fly.content(html));
-		  });
-		});*/
 	</script>
 	<script type="text/javascript" src="static/js/badutongji.js" ></script>
 </body>

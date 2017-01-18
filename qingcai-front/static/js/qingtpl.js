@@ -33,8 +33,7 @@ layui.define(function(exports) {
 		       		{{#  layui.each(item.tags, function(index, tag){ }}\
 		       				<span class="am-radius">#{{tag}}</span>\
 		       	  {{# });}}\
-	            <!--<a href="{{item.url}}" class="qing-read-more">阅读全文>></a>-->\
-	            <a href="article.html">阅读全文>></a>\
+	            <a href="{{item.url}}" class="qing-read-more">阅读全文>></a>\
 		       </div> \
 		    </div>\
 			</article>\
@@ -103,32 +102,6 @@ layui.define(function(exports) {
 			</span>\
 		{{# });}}'
 		,
-		blogCommentListTpl:
-		'{{# if(d.list.length > 0) { }}\
-			{{#  layui.each(d.list, function(index, item){ }}\
-				<div class="qing-comment-main" data="{{item.id}}">\
-					<div class="qing-comment-avatar">\
-						<div class="qing-comment-img">\
-							<img src="static/img/100.jpg" />\
-						</div>\
-					</div>\
-					<div class="qing-comment-body">\
-						<div class="qing-comment-meta">\
-							<span class="qing-comment-author"><strong>{{item.nickname}}</strong></span> 评论于 <span>{{item.cdate}}</span>\
-						</div>\
-						<p class="qing-comment-content">{{item.content}}</p>\
-						<div class="qing-comment-hint">\
-							<span type="share"><i class="am-icon-share"></i> <span>分享</span>(<em>{{item.shareNum}}</em>)</span>\
-							<span type="like"><i class="am-icon-thumbs-o-up"></i> <span>点赞</span>(<em>{{item.likeNum}}</em>)</span>\
-							<span type="reply"><i class="am-icon-reply"></i> <span>回复</span>(<em>{{item.replyNum}}</em>)</span>\
-						</div>\
-					</div>\
-				</div>\
-			{{# }); }}\
-		{{# } else { }}\
-			<div class="qing-comment-no"><div class="qing-comment-tip">暂无评论,快抢沙发</div></div>\
-		{{# } }}',
-		
 	}
     // 导出模板文件
 	exports('qingtpl', tpl);

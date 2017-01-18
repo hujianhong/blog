@@ -4,6 +4,7 @@
 layui.define(['util','qingeditor','qingcmt','qingleft'],function(exports) {
 	var qingcmt = layui.qingcmt;
 	var util = layui.util;
+	var qingeditor = layui.qingeditor;
 	
 	var params = {
 		pageNum:1,
@@ -20,6 +21,11 @@ layui.define(['util','qingeditor','qingcmt','qingleft'],function(exports) {
     
     //右下角固定Bar
 	util.fixbar();
+	
+	//加载编辑器
+	qingeditor.layEditor({
+		elem: '.qing-editor'
+	});
     
 	exports('qingmsg',{});
 });

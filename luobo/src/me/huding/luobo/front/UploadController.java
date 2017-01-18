@@ -15,6 +15,9 @@
  */
 package me.huding.luobo.front;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.jfinal.upload.UploadFile;
 
 import me.huding.luobo.BaseController;
@@ -33,16 +36,13 @@ public class UploadController extends BaseController {
 	 * 上传图片
 	 */
 	public void uploadImage(){
-		UploadFile uploadFile = getFile("editormd-image-file");
-		String name = getPara("name");
-		System.out.println(name);
-		String filename = getPara("filename");
-		System.out.println(filename);
+		UploadFile uploadFile = getFile("file");
 		System.out.println(uploadFile.getFileName());
-		setAttr("success", 1);
-		setAttr("msg", "");
-		setAttr("url", "http://static.huding.name/i/f10.jpg");
-		render(ResConsts.Code.SUCCESS, "", "http://static.huding.name/i/f10.jpg");
+		Map<String, String> data = new HashMap<String, String>();
+		data.put("code", "0");
+		data.put("msg", "");
+		data.put("url", "http://static.huding.name/i/f10.jpg");
+		render(ResConsts.Code.SUCCESS, null,data);
 	}
 	
 	/**

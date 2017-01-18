@@ -57,30 +57,40 @@
 <div class="am-g am-g-fixed qing-fixed qing-container">
     <div class="am-u-md-8 am-u-sm-12 am-u-md-centered am-u-sm-centered">
     	<div class="qing-content">
+    		
+    		
+    		<div class="qing-msg-intro qing-margin-bottom">
+    				<span class="qing-msg-tip">留言区的样式设计还没有想好,暂时就这样啦</span>
+    		</div>
 	  
-	  		<div id="commentContainer"></div>
+	  		<div id="commentContainer" class="qing-margin-top"></div>
 	      
-	      <div class="layui-form layui-form-pane">
-	        <form action="/jie/reply/" method="post">
-	        	<div class="layui-form-item">
-					    <div class="layui-input-inline">
-					      <input type="text" name="username" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
-					    </div>
-					    <div class="layui-input-inline">
-					      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
-					    </div>
-					  </div>
-	          <div class="layui-form-item layui-form-text">
-	            <div class="layui-input-block">
-	              <textarea id="L_content" name="content" required lay-verify="required" placeholder="我要回答'"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
-	            </div>
-	          </div>
-	          <div class="layui-form-item">
-	            <input type="hidden" name="jid" value="{{rows.id}}">
-	            <button class="layui-btn" lay-filter="*" lay-submit>提交回答</button>
-	          </div>
-	        </form>
-	      </div>
+	      <!-- 发表评论开始 -->
+	  		<div class="qing-comment-post">
+	  			发表评论
+	  		</div>
+		      <div class="layui-form-pane qing-margin-top">
+		        <form class="layui-form" action="post">
+		        	<div class="layui-form-item">
+						    <div class="layui-input-inline">
+						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input" value="test">
+						    </div>
+						    <div class="layui-input-inline">
+						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input" value="test@qq.com">
+						    </div>
+						  </div>
+		          <div class="layui-form-item layui-form-text">
+		            <div class="layui-input-block">
+		              <textarea id="qing-content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea qing-editor" style="height: 150px;"></textarea>
+		            </div>
+		          </div>
+		          <div class="layui-form-item">
+		            <input type="hidden" name="qingID" value="a232f9e0af9c40f9aa9e6b8882e2b94f">
+		            <button class="layui-btn" lay-filter="comment" lay-submit>提交评论</button>
+		          </div>
+		        </form>
+		      </div>
+		      <!-- 发表评论结束 -->
       </div>
       
     </div>

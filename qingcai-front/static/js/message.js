@@ -88,7 +88,7 @@ layui.define(['layer', 'laytpl', 'form', 'upload', 'util'], function(exports) {
 					picture: function(editor) { //插入图片
 						layer.open({
 							type: 1,
-							id: 'fly-jie-upload',
+							id: 'qing-cmt-upload',
 							title: '插入图片',
 							area: 'auto',
 							shade: false,
@@ -100,7 +100,7 @@ layui.define(['layer', 'laytpl', 'form', 'upload', 'util'], function(exports) {
 
 								layui.upload({
 									url: '/api/upload/',
-									elem: '#fly-jie-upload .layui-upload-file',
+									elem: '#qing-cmt-upload .layui-upload-file',
 									success: function(res) {
 										if(res.status == 0) {
 											image.val(res.url);
@@ -192,7 +192,7 @@ layui.define(['layer', 'laytpl', 'form', 'upload', 'util'], function(exports) {
 						othis = $(that),
 						parent = othis.parent();
 					parent.prepend(html);
-					parent.find('.fly-edit span').on('click', function(event) {
+					parent.find('.qing-edit span').on('click', function(event) {
 						var type = $(this).attr('type');
 						mod[type].call(that, othis, this);
 						if(type === 'face') {

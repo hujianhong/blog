@@ -38,14 +38,13 @@ layui.define(['util','api','layer','laytpl','form','qingleft'], function(exports
 	
 	api.loadBlogs();
 	
+	// 加载左侧内容
 	qingleft.edge({
 		elem:$("#qing-left"),
 	});
 	
 	//右下角固定Bar
 	util.fixbar();
-	
-	
 	
 	var lunboTpl = 
 		'{{# layui.each(d,function(index,item){ }}\
@@ -65,36 +64,37 @@ layui.define(['util','api','layer','laytpl','form','qingleft'], function(exports
 				tpl.render(result.data,function(html){
 					// 渲染数据
 					$("#qing-lunbo").html(html);
-					// 轮播组件设置	
-					$('.am-slider').flexslider({
-					  playAfterPaused: 8000,
-					  before: function(slider) {
-					    if (slider._pausedTimer) {
-					      window.clearTimeout(slider._pausedTimer);
-					      slider._pausedTimer = null;
-					    }
-					  },
-					  after: function(slider) {
-					    var pauseTime = slider.vars.playAfterPaused;
-					    if (pauseTime && !isNaN(pauseTime) && !slider.playing) {
-					      if (!slider.manualPause && !slider.manualPlay && !slider.stopped) {
-					        slider._pausedTimer = window.setTimeout(function() {
-					          slider.play();
-					        }, pauseTime);
-					      }
-					    }
-					  }
-					  // 设置其他参数
-					});
+					// 轮播组件设置
+					lunbo.event();
 				});
 			});
-			
+		},
+		event:function(){
+			// 轮播组件设置	
+			$('.am-slider').flexslider({
+			  playAfterPaused: 8000,
+			  before: function(slider) {
+			    if (slider._pausedTimer) {
+			      window.clearTimeout(slider._pausedTimer);
+			      slider._pausedTimer = null;
+			    }
+			  },
+			  after: function(slider) {
+			    var pauseTime = slider.vars.playAfterPaused;
+			    if (pauseTime && !isNaN(pauseTime) && !slider.playing) {
+			      if (!slider.manualPause && !slider.manualPlay && !slider.stopped) {
+			        slider._pausedTimer = window.setTimeout(function() {
+			          slider.play();
+			        }, pauseTime);
+			      }
+			    }
+			  }
+			  // 设置其他参数
+			});
 		}
 	}
-	
 	lunbo.init();
 	
-
 	exports('index', {});
 });
 

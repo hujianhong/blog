@@ -47,9 +47,9 @@ layui.define(['util','laytpl','api','layer','qingeditor','qingcmt','form','qingl
 	}
 	
 	//加载编辑器
-	/*qingeditor.layEditor({
-		elem: '.fly-editor'
-	});*/
+	qingeditor.layEditor({
+		elem: '.qing-editor'
+	});
 	
 	//右下角固定Bar
 	util.fixbar();

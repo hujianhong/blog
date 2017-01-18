@@ -8,9 +8,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 	var qingad = layui.qingad;
 	var qingbqy = layui.qingbqy;
 	var laytpl = layui.laytpl;
-	
 	var layer = layui.layer;
-	
 	
 	var blogCLTpl = {
 		tpl:

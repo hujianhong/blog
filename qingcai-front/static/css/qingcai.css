@@ -19,8 +19,6 @@
  * css复用 与 规范化
  */
 
-
-
 /* TODO 公共CSS开始 */
 html {
     width:100%;
@@ -32,33 +30,27 @@ body {
     line-height: 24px;
     background-color: #f2f2f2;
 }
-
 .qing-sm-search {
 	margin-top: 0.5rem;
 }
-	
 a {
     color:#474747;
 }
 a:hover {
     color:#10D07A;
 }
-
 .qing-container {
 	margin-top:3rem;
 }
-
 .qing-content {
 	padding: 1rem 2rem;
 	background: #FFF;
 }
-
 .qing-header {
     background-color:#393D49;
     text-align:center;
     top: 0;
 }
-
 .qing-footer {
     padding:3rem 0 2rem 0;
     margin-top:5rem;
@@ -74,7 +66,6 @@ a:hover {
 .qing-footer span {
     color:#fff;
 }
-
 .qing-btn-search {
 	height: 32px !important;
 }
@@ -91,11 +82,9 @@ a:hover {
     background-color:#009688;
     text-align:center;
 }
-
 .am-topbar-nav>li>a:hover:after {
      opacity: 0; 
 }
-
 @media only screen and (min-width: 641px) {
 	.am-topbar-nav>li.am-active>a:after {
     	opacity: 0;
@@ -200,7 +189,6 @@ a:hover {
 .qing-color-comment {
 	color: #01AAED;
 }
-
 .qing-color-heart {
 	color: #ED0156;
 }
@@ -371,33 +359,25 @@ a:hover {
 .icon-chengshi:before {
 	content: "\e61b";
 }
-
 .icon-renshu:before {
 	content: "\e61f";
 }
-
 .icon-huizongzuoyoutuodong:before {
 	content: "\e623";
 }
-
 .icon-404:before {
 	content: "\e627";
 }
-
 .icon-wenda:before {
 	content: "\e626";
 }
-
 .icon-top:before {
 	content: "\e624";
 }
-
 .icon-ui:before {
 	content: "\e625";
 }
 /* TODO iconfont结束 */ 
-
-
 
 /* TODO 公共CSS结束 */
 
@@ -407,23 +387,18 @@ a:hover {
 	padding: 0.25rem 2rem;
 	background: #FFF;
 }
-
 .qing-notice i {
 	color: #FF5722;
 	margin-right: 0.625rem;
 }
-
 .qing-notice span {
 	color: #777;
 	font-size: 12px;
 }
-
 /* 轮播*/
 .am-active {
 	background: #1abc9c !important;
-	/*color: #1abc9c !important;*/
 }
-
 .qing-slider-desc {
     width: 50% !important;
     height: 30px;
@@ -437,49 +412,39 @@ a:hover {
     -webkit-transform: translate(-50%,-50%);
     background-color: transparent;
 }
-
 .qing-slider-img {
 	height: 400px;
 }
-
 .qing-slider {
 	margin-bottom: 3rem;
 }
-
 @media only screen and (min-width: 100px) {
 	.qing-slider-img {
 		height: 200px;
 	}
 }
-
 @media only screen and (min-width: 600px) {
 	.qing-slider-img {
 		height: 400px;
 	}
 }
-
 .qing-share-img {
 	width:250px;
-    /*height:15rem;*/ 
 }
-
 /* 热门排行 */
 .qing-hot-rank {
 	
 }
-
 /* 博文列表*/
 .qing-entry-article {
     padding: 1rem 0;
 }
-
 @media only screen and (max-width:640px) {
     .qing-entry-article {
         padding-bottom:1rem;
         text-align:center;
     }
 }
-
 .qing-entry-text {
     padding-top: 1rem;
     background-color: #FFF;
@@ -488,10 +453,8 @@ a:hover {
     margin-bottom: 0.5rem;
     text-align: left;
 }
-
 .qing-category {
     color: #fff;
-    /*background-color: #009688;*/
     background-color: #1abc9c;
     padding: 3px 6px;
     font-size: 10px;
@@ -499,7 +462,6 @@ a:hover {
     top: -2px;
     margin-right: 5px;
 }
-
 .qing-category i {
     position: absolute;
     top: 50%;
@@ -509,25 +471,20 @@ a:hover {
     width: 0;
     height: 0;
     vertical-align: middle;
-    /*border-left: 4px solid #009688;*/
     border-left: 4px solid #1abc9c;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
 }
-
 .qing-list-title {
 	font-size: 16px;
 }
-
 .qing-list-hint {
 	padding-top: 0.2rem;
 	font-size: 10px;
 }
-
 .qing-list-tips {
 	color: #F7B824;
 }
-
 .qing-list-content {
 	padding: 0.2rem 0;
 	text-indent: 2em;
@@ -535,16 +492,13 @@ a:hover {
     line-height: 22px;
 	color: #777;
 }
-
 .qing-list-foot {
 	font-size: 8px;
 	text-align: left;
 }
-
 .qing-list-foot i {
 	margin-right: 5px;
 }
-
 .qing-list-foot span {
 	display: inline-block;
     min-width: 10px;
@@ -554,14 +508,12 @@ a:hover {
     white-space: nowrap;
     background-color: #EEE;
 }
-
 .qing-list-foot a {
 	margin:0.15rem 0.15rem;
     font-size: 10px;
     float:right;
     color:#009688;
 }
-
 .qing-list-foot a:hover {
 	color:#5FB878;
 }
@@ -570,7 +522,6 @@ a:hover {
 
 
 /* 左侧侧边栏开始 TODO */
-
 .qing-tag {
 	display: inline-block;
     min-width: 10px;
@@ -583,29 +534,23 @@ a:hover {
     white-space: nowrap;
     background-color: #999;
 }
-
 .qing-tag0 {
 	background-color:#FF5722;
 }
-
 .qing-tag1 {
 	background-color:#5FB878;
 }
-
 .qing-tag2 {
 	background-color:#F7B824;
 }
-
 .qing-tag3 {
 	background-color:#01AAED;
 }
 
 /* 单行列表 */
-
 .qing-list-one {
 	margin: 5px 0;
 }
-
 .qing-list-one li {
 	line-height: 20px;
 	white-space: nowrap;
@@ -614,7 +559,6 @@ a:hover {
 	*list-style-type: decimal inside;
 	color: #009E94;
 }
-
 .qing-list-one li a, .qing-list-one li span {
 	display: inline-block;
 	*display: inline;
@@ -622,7 +566,6 @@ a:hover {
 	vertical-align: top;
 	font-style: normal
 }
-
 .qing-list-one li a {
 	max-width: 72%;
 	margin-right: 5px;
@@ -631,18 +574,15 @@ a:hover {
 	white-space: nowrap;
 	font-size: 14px;
 }
-
 .qing-list-one li span {
 	font-size: 14px;
 	color: #ccc;
 }
-
 .qing-tag-cloud {
 	position: relative;
     height: 250px;
     margin: 10px auto 30px auto;
 }
-
 .qing-tag-cloud a {
 	position: absolute;
 	top: 0px;
@@ -653,12 +593,10 @@ a:hover {
 	text-decoration: none;
 	padding: 3px 6px;
 }
-
 .qing-tag-cloud a:hover {
 	color: #FF0000;
 	letter-spacing: 2px;
 }
-
 .qing-tcloud-color0 {
 	color: orangered !important;
 }
@@ -674,7 +612,6 @@ a:hover {
 .qing-tcloud-color4 {
 	color: red !important;
 }
-
 .qing-left-ad {
 	height: 250px;
 	background: #FFF;
@@ -684,10 +621,7 @@ a:hover {
 /* 左侧侧边栏结束TODO */
 
 
-
-
 /* 详情CSS开始 TODO */
-
 .qing-blog-nav {
 	background: #FFFFFF;
     padding: 1rem 1rem;
@@ -708,7 +642,6 @@ a:hover {
 }
 .qing-blog-summary {
 	color: #777;
-	/*text-indent: 2em;*/
 }
 .qing-blog-img {
 	width: 90%;
@@ -932,10 +865,14 @@ a:hover {
 	color: #01AAED;
 }
 .qing-comment-content {
-	/*text-indent: 2em;*/
     text-align: left;
     line-height: 1.5em;
 }
+
+.qing-comment-content img {
+	/*height: 80px;*/
+}
+
 .qing-comment-hint {
 	font-size: 10px;
 }
@@ -959,9 +896,8 @@ a:hover {
 
 /* TODO评论CSS结束 */
 
-/* 简易编辑器 */
-
-.fly-edit {
+/* TODO 简易编辑器CSS开始 */
+.qing-edit {
 	position: relative;
 	display: block;
 	top: 1px;
@@ -971,35 +907,29 @@ a:hover {
 	border-radius: 2px 2px 0 0;
 	background-color: #FBFBFB;
 }
-
-.fly-edit span {
+.qing-edit span {
 	cursor: pointer;
 	padding: 0 10px;
 	line-height: 38px;
 	color: #009E94;
 }
-
-.fly-edit span i {
+.qing-edit span i {
 	padding-right: 6px;
 	font-size: 18px;
 }
-
-.fly-edit span:hover {
+.qing-edit span:hover {
 	color: #5DB276;
 }
-
 body .layui-edit-face {
 	border: none;
 	background: none;
 }
-
 body .layui-edit-face .layui-layer-content {
 	padding: 0;
 	background-color: #fff;
 	color: #666;
 	box-shadow: none
 }
-
 .layui-edit-face .layui-layer-TipsG {
 	display: none;
 }
@@ -1012,7 +942,6 @@ body .layui-edit-face .layui-layer-content {
 	background-color: #fff;
 	box-shadow: 0 0 20px rgba(0, 0, 0, .2);
 }
-
 .layui-edit-face ul li {
 	cursor: pointer;
 	float: left;
@@ -1024,95 +953,13 @@ body .layui-edit-face .layui-layer-content {
 	padding: 4px 2px;
 	text-align: center;
 }
-
 .layui-edit-face ul li:hover {
 	position: relative;
 	z-index: 2;
 	border: 1px solid #eb7350;
 	background: #fff9ec;
 }
-
-
-
-
-
-/* 回答 */
-
-.jieda {
-	margin-bottom: 30px;
-}
-
-.jieda li {
-	position: relative;
-	padding: 20px 0 10px;
-	border-bottom: 1px dotted #DFDFDF;
-}
-
-.jieda .fly-none {
-	height: 50px;
-	min-height: 0;
-	padding: 50px 0 30px;
-}
-
-.jieda .icon-caina {
-	position: absolute;
-	right: 10px;
-	top: 15px;
-	font-size: 60px;
-	color: #58A571;
-}
-
-.jieda-body {
-	margin: 25px 0 20px;
-	min-height: 0;
-	line-height: 24px;
-	font-size: 14px;
-}
-
-.jieda-body p {
-	margin-bottom: 10px;
-}
-
-.jieda-body a {
-	color: #4f99cf
-}
-
-.jieda-reply {
-	position: relative;
-}
-
-.jieda-reply span {
-	padding-right: 20px;
-	color: #999;
-	cursor: pointer;
-}
-
-.jieda-reply span:hover {
-	color: #666;
-}
-
-.jieda-reply span i {
-	margin-right: 5px;
-	font-size: 16px;
-}
-
-.jieda-reply span em {
-	font-style: normal;
-}
-
-.jieda-reply span .icon-zan {
-	font-size: 22px;
-}
-
-.jieda-reply .zanok,
-.jieda-reply .jieda-zan:hover {
-	color: #c00
-}
-
-.jieda-reply span .icon-svgmoban53 {
-	position: relative;
-	top: 1px;
-}
+/* TODO 简易编辑器CSS结束 */
 
 
 .qing-abount {
@@ -1122,192 +969,23 @@ body .layui-edit-face .layui-layer-content {
     background: #fbfbfb;
     padding: 3rem 2rem;
 }
-
 .qing-abount-text {
 	text-indent: 2em;
 }
-
 .qing-abount-hint {
 	padding: 0.5rem 0;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.blog-title {
-    margin-top:-1.5rem;
+.qing-msg-intro {
+	margin-top: 1rem;
+    border: 1px solid #B0E0F9;
+    height: 10rem;
+    background: #f8f8f8;
+    text-align: center;
 }
-.blog-title span{
-    background-color:#fff;
-    padding:0 1.5rem;
+.qing-msg-tip {
+	padding-top: 4rem;
+	color: #01AAED;
 }
-.blog-top-bar {
-	background-color: #333;
-    border-color: #333;
-}
-.blog-sidebar-widget {
-    padding:0 2rem;
-    margin-bottom:4rem;
-    text-align:center;
-}
-h1 span{
-    color:#333;
-}
-.blog-icon {
-    width:3.4rem;
-    border:1px solid #e5e5e5;
-    padding:0.5rem;
-    color:#3d3d3d;
-}
-.blog-icon:hover {
-    color:#fff;
-    background:#10D07A;
-    border:1px solid #10D07A;
-}
-.blog-color {
-    color:#10D07A;
-}
-
-
-.blog-tag {
-    background:#F3F3F3;
-    margin:0.15rem 0.15rem;
-    line-height:2.5rem;
-    float:left;
-    border: 1px solid #eee;
-    padding:0.2rem 0.8rem 0.2rem 0.8rem;
-}
-.blog-tag:hover {
-    background:#10D07A;
-    color:#fff;
-}
-
-
-.blog-clear-margin {
-    margin-left:0rem !important;
-    margin-right:0rem !important;
-}
-.blog-clear-padding {
-    padding:0 0 1.5rem 0 !important;
-}
-.blog-tag-left {
-    text-align:left;
-}
-
-
-.blog-author-img {
-    width:8rem;
-    height:8rem;    
-}
-@media only screen and (max-width:641px) {
-    .blog-author-img {
-    width:6rem;
-    height:6rem;    
-    }
-}
-.blog-article-margin {
-    margin:3rem 0;
-}
-
-.blog-clear-left {
-    padding-left: 0;
-}
-.blog-clear-right {
-    padding-right:0;
-}
-.blog-slider-desc {
-    width:50%;
-    height:50%;
-    overflow:hidden;
-    border:0.3rem solid #fff;
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    -webkit-transform:translate(-50%,-50%);;
-    background-color:transparent;
-}
-.blog-slider-con {
-    position:absolute;
-    left:0.5%;
-    top:1%;
-    width:99%;
-    height:98%;
-    border:0.3rem solid #fff;
-    padding:3rem 8rem;
-    background-color:#fff;
-}
-

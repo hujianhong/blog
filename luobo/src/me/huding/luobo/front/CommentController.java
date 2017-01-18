@@ -15,11 +15,14 @@
  */
 package me.huding.luobo.front;
 
+import java.util.Date;
+
 import me.huding.luobo.BaseController;
 import me.huding.luobo.IConstants;
 import me.huding.luobo.Parameters;
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Comment;
+import me.huding.luobo.utils.KeyUtils;
 
 import com.jfinal.plugin.activerecord.Page;
 
@@ -96,8 +99,29 @@ public class CommentController extends BaseController {
 	/**
 	 * 发表评论
 	 */
-	public void post(){
-
+	public void report(){
+		Comment comment = new Comment();
+		String blogID = getPara("qingID");
+		String content = getPara("content");
+		String email = getPara("email");
+		String nickname = getPara("nickname");
+		
+		
+		comment.setContent(content);
+		comment.setBlogID(blogID);
+		comment.setEmail(email);
+		comment.setNickname(nickname);
+		comment.setId(KeyUtils.getUUID());
+		comment.setLikeNum(0);
+		comment.setHateNum(0);
+		comment.setReplyNum(0);
+		comment.setShareNum(0);
+		comment.setCdate(new Date(System.currentTimeMillis()));
+		
+		if(comment.save()) {
+			render(ResConsts.Code.SUCCESS,"发表成功");
+		} else {
+			render(ResConsts.Code.FAILURE,"发表失败");
+		}
 	}
-
 }
