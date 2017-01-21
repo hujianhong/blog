@@ -16,7 +16,6 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 
 	var pageSize = 10;
 	
-	
 	var api = {
 		/**
 		 * 博文列表请求地址
