@@ -10,9 +10,9 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 	var laytpl = layui.laytpl;
 	var qingtpl = layui.qingtpl;
 	
-	var BASE_PREFIX = "http://www.huding.name";
+//	var BASE_PREFIX = "http://www.huding.name";
 	
-//	var BASE_PREFIX = "http://192.168.1.102";
+	var BASE_PREFIX = "http://localhost";
 
 	var pageSize = 10;
 	
