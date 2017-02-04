@@ -1,0 +1,120 @@
+/**
+ * 
+ * 青菜萝卜 CSS
+ * 
+ * Author: SillyBoy
+ * 
+ * Email：1043244432@qq.com
+ * 
+ */
+
+/**
+ * blog css 
+ * a:hover: #10D07A 
+ * 基本色：#333 
+ * 或者 #3d3d3d   
+ * bgcolor：#10D07A  ， color：#fff
+ * blog-color  单独的颜色突出
+ * .blog-bor    border:1px solid #e5e5e5
+ * css复用 与 规范化
+ */
+
+/* TODO 公共CSS开始 */
+html {
+    width:100%;
+    height:100%;
+}
+body {
+    width:100%;
+    height:100%;
+    line-height: 24px;
+    /*background-color: #f2f2f2;*/
+}
+
+.qing-login {
+	margin-top: 10rem;
+    border: 1px solid #eee;
+    padding: 2rem;
+}
+
+
+.qing-logo {
+    margin-top: 0.7rem;
+    width: 150px;
+    height: 40px;
+    /*display: block*/
+    text-indent: -666px;
+    /*background: url(../img/logo2.png) no-repeat;*/
+}
+
+.qing-report-head {
+	border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+    font-size: 16px;
+    padding-left: 3.3rem;
+}
+
+.qing-report-content {
+	margin-top: 0.5rem;
+	padding: 1rem;
+}
+
+.qing-footer {
+    padding:3rem 0 2rem 0;
+    margin-top:5rem;
+    background-color:#2F4056;
+    color:#fff !important
+}
+.qing-footer-padding {
+    padding:3rem 0;
+}
+.qing-footer a{
+    color:#fff;
+}
+.qing-footer span {
+    color:#fff;
+}
+
+.qing-text-center {
+    text-align:center;
+}
+
+.qing-text-left {
+	text-align: left;
+}
+
+.qing-text-right {
+	text-align: right;
+}
+
+.header-demo {
+    border-bottom-color: #009688;
+    background-color: #fff;
+}
+.header {
+    height: 60px;
+    /*border-bottom: 5px solid #1AA094;*/
+    background-color: #393D49;
+    color: #fff;
+}
+
+.header-demo .layui-nav {
+    top: 0;
+}
+.header .layui-nav {
+    position: absolute;
+    margin-left: 15rem;
+    top: 0;
+    padding: 0;
+    background: none;
+    height: 65px;
+}
+
+.header-demo .logo {
+    /*left: 40px;*/
+}
+.logo {
+    position: absolute;
+    left: 0;
+    top: 12px;
+}

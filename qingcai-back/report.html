@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
+		<title>青菜萝卜-胡丁|发表博文</title>
+		<link rel="stylesheet" type="text/css" href="static/layui/css/layui.css" media="all">
+		<link rel="stylesheet" type="text/css" href="static/css/luobo.css"/>
+		<link rel="stylesheet" href="http://static.huding.name/editor.md/css/editormd.min.css" />
+	</head>
+	<body>
+		<div class="layui-header header header-demo">
+		  <div class="layui-main">
+		   <a class="logo" href="index.html">
+		   		<img src="static/img/logo2.png" />
+		   </a>
+		    <ul class="layui-nav">
+			  <!--<li class="layui-nav-item"><a href="">最新活动</a></li>-->
+			  <li class="layui-nav-item layui-this">
+			    <a href="javascript:;">博文管理</a>
+			    <dl class="layui-nav-child">
+			      <dd><a href="blogs.html">博文列表</a></dd>
+			      <dd class="layui-this"><a href="report.html">发表博文</a></dd>
+			    </dl>
+			  </li>
+			  <!--<li class="layui-nav-item"><a href="">大数据</a></li>-->
+			  <li class="layui-nav-item">
+			    <a href="javascript:;">用户管理</a>
+			    <dl class="layui-nav-child">
+			      <dd><a href="users.html">用户列表</a></dd>
+			      <dd><a href="">添加用户</a></dd>
+			    </dl>
+			  </li>
+			  <!--<li class="layui-nav-item"><a href="">社区</a></li>-->
+			</ul>
+		  </div>
+		</div>
+		
+		
+		
+		<div class="qing-report-head">
+			<label class="">发表博文</label>
+		</div>
+		
+		<div class="qing-report-content">
+			<form class="layui-form" action="">
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">博文类别</label>
+			    <div class="layui-input-block">
+			      <select name="interest" lay-filter="aihao">
+			        <option value=""></option>
+			        <option value="0">写作</option>
+			        <option value="1" selected="">阅读</option>
+			        <option value="2">游戏</option>
+			        <option value="3">音乐</option>
+			        <option value="4">旅行</option>
+			      </select>
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">博文标题</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item layui-form-text">
+			    <label class="layui-form-label">内容摘要</label>
+			    <div class="layui-input-block">
+			      <textarea placeholder="请输入内容摘要" class="layui-textarea"></textarea>
+			    </div>
+			  </div>
+			  <div class="layui-form-item layui-form-text">
+			    <label class="layui-form-label">博文内容</label>
+			    <div class="layui-input-block">
+			    		<div id="publish-editormd"></div>
+			      <!--<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>-->
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">保存方式</label>
+			    <div class="layui-input-block">
+			      <select name="interest" lay-filter="aihao">
+			        <option value=""></option>
+			        <option value="0" selected="">发表</option>
+			        <option value="1">草稿</option>
+			      </select>
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">博文标签</label>
+			    <div class="layui-input-block">
+			      <input type="checkbox" name="like[write]" title="写作">
+			      <input type="checkbox" name="like[read]" title="阅读" checked="">
+			      <input type="checkbox" name="like[game]" title="游戏">
+			    </div>
+			  </div>
+			  <hr />
+			  <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			    </div>
+			  </div>
+			</form>
+		</div>
+		
+		<footer class="qing-footer">
+		    <div class="qing-text-center">
+		       <h3><strong>青菜萝卜-胡丁</strong>简介</h3>
+		       <p class="am-text-sm">青菜萝卜-胡丁博客定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
+		    </div>
+		    <div class="qing-text-center">Copyright © 2016 青菜萝卜 - 胡丁  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+		</footer>
+		
+		<script src="http://static.huding.name/js/jquery.min.js"></script>
+		<script src="http://static.huding.name/editor.md/editormd.min.js"></script> 
+		<script src="static/layui/layui.js"></script>
+		<script src="static/js/report.js"></script>
+		<script>
+			layui.config({base:'static/js/'}).use('report');
+		</script>
+	</body>
+
+</html>

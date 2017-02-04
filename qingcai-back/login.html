@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>青菜萝卜-胡丁博客后台管理登录</title>
+		<link rel="stylesheet" type="text/css" href="static/css/amazeui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="static/layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="static/css/qingcai.css"/>
+	</head>
+	<body>
+		<div class="am-u-sm-6 am-u-md-6 am-u-md-centered qing-login">
+			<div>
+				<label>登录</label>
+			</div>
+			<form class="layui-form layui-form-pane" action="">
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">账号</label>
+			    <div class="layui-input-inline">
+			      <input type="text" name="title" autocomplete="off" placeholder="请输入邮箱／手机号" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">密码</label>
+			    <div class="layui-input-inline">
+			      <input type="text" name="username" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+			    </div>
+			  </div>
+			  <button class="layui-btn">登录</button>
+			</form>
+		</div>
+
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="http://static.huding.name/js/jquery.min.js"></script>
+		<!--<![endif]-->
+		<!--[if lte IE 8 ]>
+		<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+		<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+		<![endif]-->
+		<script src="http://static.huding.name/js/amazeui.min.js"></script>
+		<script src="static/layui/layui.js"></script>
+		
+		<script>
+			//一般直接写在一个js文件中
+//			layui.use(['layer', 'form'], function() {
+//				var layer = layui.layer,
+//					form = layui.form();
+//
+//				layer.msg('Hello World');
+//			});
+		</script>
+
+	</body>
+
+</html>
