@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>青菜萝卜博客管理系统</title>
+		<link rel="stylesheet" href="static/css/admin.css">
+		<link rel="stylesheet" href="static/layui/css/layui.css">
+		<script src="static/layui/layui.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo2.png"></a></h2>
+			<div class="y cl">
+				<a target="_blank" href="http://www.huding.name">网站首页</a>
+				<a href="login.html">退出</a>
+			</div>
+		</div>
+		<div class="admin">
+			<div class="aleft">
+				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe643;</i>操作菜单</h3>
+				<ul class="cl">
+					<li><i class="layui-icon">&#xe601;</i>
+						<a href="navigate.html">导航管理</a>
+					</li>
+					<li><i class="layui-icon">&#xe61f;</i>
+						<a href="category.html">栏目管理</a>
+					</li>
+					<li><i class="layui-icon">&#xe63c;</i>
+						<a href="blog.html">文章管理</a>
+					</li>
+					<li><i class="layui-icon">&#xe64e;</i>
+						<a href="youlian.html">友情连接</a>
+					</li>
+				</ul>
+				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe614;</i>系统管理</h3>
+				<ul class="cl">
+					<li><i class="layui-icon">&#xe62c;</i>
+						<a href="#">网站配置</a>
+					</li>
+					<li><i class="layui-icon">&#xe631;</i>
+						<a href="password.html">密码修改</a>
+					</li>
+					<li><i class="layui-icon">&#xe640;</i>
+						<a href="#">清理缓存</a>
+					</li>
+					<li><i class="layui-icon">&#x1006;</i>
+						<a href="login.html">立即退出</a>
+					</li>
+				</ul>
+				<!--<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe612;</i>帮助中心</h3>
+				<ul class="cl">
+					<li><i class="layui-icon">&#xe63a;</i>
+						<a target="_blank" href="https://www.templet360.com/">技术支持</a>
+					</li>
+					<li><i class="layui-icon">&#xe600;</i>
+						<a target="_blank" href="https://www.templet360.com/">售后服务</a>
+					</li>
+				</ul>-->
+			</div>
+			<div class="aright">
+				<div class="arz cl">
+					<a href="blog-report.html"><i class="layui-icon">&#xe608;</i>添加文章</a>
+				</div>
+				<form method="post" class="aform cl" action="/index.php?m=admin&c=article&a=deletes">
+					<table width="100%">
+						<tr>
+							<th width="5%" align="center"><input type="checkbox" name="checkbox" id="selall" /></th>
+							<th width="5%" align="center">编号</th>
+							<th width="25%" align="center">文章标题</th>
+							<th width="10%" align="center">缩略图</th>
+							<th width="10%" align="center">是否推荐</th>
+							<th width="9%" align="center">是否精选</th>
+							<th width="9%" align="center">所属栏目</th>
+							<th width="9%" align="center">审核显示</th>
+							<th width="9%" align="center">添加时间</th>
+							<th width="9%" align="center">基本操作</th>
+						</tr>
+						<tr>
+							<td align="center"><input type="checkbox" class="selall" name="deletes[]" value="4" /></td>
+							<td align="center">4</td>
+							<td align="center">
+								<a target="_blank" href="/index.php?m=home&c=index&a=article&id=4">41</a>
+							</td>
+							<td align="center">
+								<img src="/Uploads/2017-02-04/5895a66912ba6.jpg" height="30">
+							</td>
+							<td align="center">未推荐</td>
+							<td align="center">未精选</td>
+							<td align="center"><span style="color:#FF5722;">投稿栏目</span></td>
+							<td align="center"><span style="color:#FF5722;">待审核</span></td>
+							<td align="center">2017-2-04</td>
+							<td align="center">
+								<a href="/index.php?m=admin&c=article&a=edit&id=4">修改</a> |
+								<a href="/index.php?m=admin&c=article&a=delete&id=4" onclick="return confirm('您确定要删除吗？');">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><input type="checkbox" class="selall" name="deletes[]" value="3" /></td>
+							<td align="center">3</td>
+							<td align="center">
+								<a target="_blank" href="/index.php?m=home&c=index&a=article&id=3">1232132131</a>
+							</td>
+							<td align="center">
+
+								暂无缩略图 </td>
+							<td align="center"><span style="color:#FF5722;">已推荐</span></td>
+							<td align="center">未精选</td>
+							<td align="center">新闻资讯</td>
+							<td align="center">显示</td>
+							<td align="center">2017-2-04</td>
+							<td align="center">
+								<a href="/index.php?m=admin&c=article&a=edit&id=3">修改</a> |
+								<a href="/index.php?m=admin&c=article&a=delete&id=3" onclick="return confirm('您确定要删除吗？');">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><input type="checkbox" class="selall" name="deletes[]" value="2" /></td>
+							<td align="center">2</td>
+							<td align="center">
+								<a target="_blank" href="/index.php?m=home&c=index&a=article&id=2">科大讯飞发布会，我看到的人工智能</a>
+							</td>
+							<td align="center">
+								<img src="/Uploads/2016-12-04/5843874ce75cf.jpg" height="30">
+							</td>
+							<td align="center"><span style="color:#FF5722;">已推荐</span></td>
+							<td align="center"><span style="color:#FF5722;">已精选</span></td>
+							<td align="center">国际新闻</td>
+							<td align="center">显示</td>
+							<td align="center">2016-12-03</td>
+							<td align="center">
+								<a href="/index.php?m=admin&c=article&a=edit&id=2">修改</a> |
+								<a href="/index.php?m=admin&c=article&a=delete&id=2" onclick="return confirm('您确定要删除吗？');">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><input type="checkbox" class="selall" name="deletes[]" value="1" /></td>
+							<td align="center">1</td>
+							<td align="center">
+								<a target="_blank" href="/index.php?m=home&c=index&a=article&id=1">虚拟现实游戏玩太久会怎样？玩家亲述恍如隔世的 “现实丧失感”</a>
+							</td>
+							<td align="center">
+								<img src="/Uploads/2016-12-04/5843883f8505d.jpg" height="30">
+							</td>
+							<td align="center"><span style="color:#FF5722;">已推荐</span></td>
+							<td align="center"><span style="color:#FF5722;">已精选</span></td>
+							<td align="center">虚拟现实</td>
+							<td align="center">显示</td>
+							<td align="center">2016-12-03</td>
+							<td align="center">
+								<a href="/index.php?m=admin&c=article&a=edit&id=1">修改</a> |
+								<a href="/index.php?m=admin&c=article&a=delete&id=1" onclick="return confirm('您确定要删除吗？');">删除</a>
+							</td>
+						</tr>
+					</table>
+					<div class="layui-form-item">
+						<div style="margin-top: 20px;">
+							<button class="layui-btn" onclick="return confirm('您确定要删除吗？');" type="submit">删除选中</button>
+							<button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+						</div>
+					</div>
+				</form>
+				<div class="pages">
+					<div> </div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$("#selall").click(function() {
+				if($(this).attr("checked")) {
+					$(".selall").attr("checked", "checked");
+				} else {
+					$(".selall").removeAttr("checked");
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

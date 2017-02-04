@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>青菜萝卜博客管理系统</title>
+		<link rel="stylesheet" href="static/css/admin.css">
+		<link rel="stylesheet" href="static/layui/css/layui.css">
+		<script src="static/layui/layui.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo2.png"></a></h2>
+			<div class="y cl">
+				<a target="_blank" href="http://www.huding.name">网站首页</a>
+				<a href="login.html">退出</a>
+			</div>
+		</div>
+		<div class="admin">
+			<div class="aleft">
+				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe643;</i>操作菜单</h3>
+				<ul class="cl">
+					<li><i class="layui-icon">&#xe601;</i>
+						<a href="navigate.html">导航管理</a>
+					</li>
+					<li><i class="layui-icon">&#xe61f;</i>
+						<a href="category.html">栏目管理</a>
+					</li>
+					<li><i class="layui-icon">&#xe63c;</i>
+						<a href="blog.html">文章管理</a>
+					</li>
+					<li><i class="layui-icon">&#xe64e;</i>
+						<a href="youlian.html">友情连接</a>
+					</li>
+				</ul>
+				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe614;</i>系统管理</h3>
+				<ul class="cl">
+					<li><i class="layui-icon">&#xe62c;</i>
+						<a href="#">网站配置</a>
+					</li>
+					<li><i class="layui-icon">&#xe631;</i>
+						<a href="password.html">密码修改</a>
+					</li>
+					<li><i class="layui-icon">&#xe640;</i>
+						<a href="#">清理缓存</a>
+					</li>
+					<li><i class="layui-icon">&#x1006;</i>
+						<a href="login.html">立即退出</a>
+					</li>
+				</ul>
+				<!--<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe612;</i>帮助中心</h3>
+				<ul class="cl">
+					<li><i class="layui-icon">&#xe63a;</i>
+						<a target="_blank" href="https://www.templet360.com/">技术支持</a>
+					</li>
+					<li><i class="layui-icon">&#xe600;</i>
+						<a target="_blank" href="https://www.templet360.com/">售后服务</a>
+					</li>
+				</ul>-->
+			</div>
+			<div class="aright">
+
+				<div class="arz cl">
+					<a><i class="layui-icon">&#xe608;</i>无权限添加导航</a>
+				</div>
+				<form method="post" class="aform cl">
+					<table width="100%">
+						<tr>
+							<th width="10%" align="center">导航排序</th>
+							<th width="20%" align="center">导航名称</th>
+							<th width="10%" align="center">前台显示</th>
+							<th width="40%" align="center">导航连接</th>
+							<th width="10%" align="center">添加时间</th>
+							<th width="10%" align="center">基本操作</th>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">1</td>
+							<td style="padding-left: 20px;">网站首页</td>
+							<td align="center">
+								显示</td>
+							<td style="padding-left: 20px;">http://tpt-blog.templet360.com/</td>
+							<td align="center">2016-12-04</td>
+							<td align="center">
+								无权限操作
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">2</td>
+							<td style="padding-left: 20px;">后台管理</td>
+							<td align="center">
+								显示</td>
+							<td style="padding-left: 20px;">http://tpt-blog.templet360.com/index.php?m=Admin</td>
+							<td align="center">2016-12-04</td>
+							<td align="center">
+								无权限操作
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">3</td>
+							<td style="padding-left: 20px;">账号密码：admin 口令：123456</td>
+							<td align="center">
+								显示</td>
+							<td style="padding-left: 20px;">http://tpt-blog.templet360.com/</td>
+							<td align="center">2016-12-04</td>
+							<td align="center">
+								无权限操作
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 20px;">4</td>
+							<td style="padding-left: 20px;">官方网站</td>
+							<td align="center">
+								隐藏</td>
+							<td style="padding-left: 20px;">https://www.templet360.com/</td>
+							<td align="center">2016-12-04</td>
+							<td align="center">
+								无权限操作
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</body>
+
+</html>

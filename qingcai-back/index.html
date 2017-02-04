@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>Templet360 - 博客管理系统</title>
+		<title>青菜萝卜博客管理系统</title>
 		<link rel="stylesheet" href="static/css/admin.css">
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<script src="static/layui/layui.js"></script>
 	</head>
-
 	<body>
 		<div class="header">
-			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo1.png"></a></h2>
+			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo2.png"></a></h2>
 			<div class="y cl">
-				<a target="_blank" href="/index.php?m=home&c=index&a=index">网站首页</a>
-				<a href="/index.php?m=admin&c=login&a=logout">退出</a>
+				<a target="_blank" href="http://www.huding.name">网站首页</a>
+				<a href="login.html">退出</a>
 			</div>
 		</div>
 		<div class="admin">
@@ -23,37 +21,34 @@
 				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe643;</i>操作菜单</h3>
 				<ul class="cl">
 					<li><i class="layui-icon">&#xe601;</i>
-						<a href="/index.php?m=admin&c=navtop&a=index">导航管理</a>
+						<a href="navigate.html">导航管理</a>
 					</li>
 					<li><i class="layui-icon">&#xe61f;</i>
-						<a href="/index.php?m=admin&c=category&a=index">栏目管理</a>
+						<a href="category.html">栏目管理</a>
 					</li>
 					<li><i class="layui-icon">&#xe63c;</i>
-						<a href="/index.php?m=admin&c=article&a=index">文章管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe60c;</i>
-						<a href="/index.php?m=admin&c=banner&a=index">幻灯管理</a>
+						<a href="blog.html">文章管理</a>
 					</li>
 					<li><i class="layui-icon">&#xe64e;</i>
-						<a href="/index.php?m=admin&c=links&a=index">友情连接</a>
+						<a href="youlian.html">友情连接</a>
 					</li>
 				</ul>
 				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe614;</i>系统管理</h3>
 				<ul class="cl">
 					<li><i class="layui-icon">&#xe62c;</i>
-						<a href="/index.php?m=admin&c=conf&a=index">网站配置</a>
+						<a href="#">网站配置</a>
 					</li>
 					<li><i class="layui-icon">&#xe631;</i>
-						<a href="/index.php?m=admin&c=member&a=index">密码修改</a>
+						<a href="password.html">密码修改</a>
 					</li>
 					<li><i class="layui-icon">&#xe640;</i>
-						<a href="/index.php?m=admin&c=runtime&a=index">清理缓存</a>
+						<a href="#">清理缓存</a>
 					</li>
 					<li><i class="layui-icon">&#x1006;</i>
-						<a href="/index.php?m=admin&c=login&a=logout">立即退出</a>
+						<a href="login.html">立即退出</a>
 					</li>
 				</ul>
-				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe612;</i>帮助中心</h3>
+				<!--<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe612;</i>帮助中心</h3>
 				<ul class="cl">
 					<li><i class="layui-icon">&#xe63a;</i>
 						<a target="_blank" href="https://www.templet360.com/">技术支持</a>
@@ -61,81 +56,80 @@
 					<li><i class="layui-icon">&#xe600;</i>
 						<a target="_blank" href="https://www.templet360.com/">售后服务</a>
 					</li>
-				</ul>
+				</ul>-->
 			</div>
 			<div class="aright">
-
-				<div class="arz cl">
-					<a href="/index.php?m=admin&c=category&a=add"><i class="layui-icon">&#xe608;</i>添加栏目</a>
-				</div>
-				<form method="post" class="aform cl">
+				<div class="aright_1">
+					<blockquote style="padding: 10px;border-left: 5px solid #FF5722;" class="layui-elem-quote">欢迎试用Templet360内容管理系统，先温馨提醒几个常见问题：</blockquote>
 					<table width="100%">
 						<tr>
-							<th width="10%" align="center">栏目编号</th>
-							<th width="20%" align="center">栏目名称</th>
-							<th width="10%" align="center">栏目类型</th>
-							<th width="20%" align="center">栏目图片</th>
-							<th width="20%" align="center">添加时间</th>
-							<th width="20%" align="center">基本操作</th>
-						</tr>
-						<tr>
-							<td align="center">4</td>
-							<td style="padding-left: 20px;">
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=4">科技头条</a>
+							<td width="480px">程序正式上线运营请把index.php里面调试模式关闭；
+								<a href="https://www.templet360.com/thread-2.html" style="color:#FF5722;" target="_blank">查看教程</a>
 							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=4">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=4" onclick="return confirm('您确定删除吗？');">删除</a>
+							<td>确认服务器或空间开启了伪静态；
+								<a href="https://www.templet360.com/thread-3.html" style="color:#FF5722;" target="_blank">查看教程</a>
 							</td>
 						</tr>
 						<tr>
-							<td align="center">1</td>
-							<td style="padding-left: 20px;">————
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=1">新闻资讯</a>
+							<td>安装完成后请将根目录install文件和index.php里面安装代码删除；
+								<a href="https://www.templet360.com/thread-1.html" style="color:#FF5722;" target="_blank">查看教程</a>
 							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=1">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=1" onclick="return confirm('您确定删除吗？');">删除</a>
-							</td>
+							<td>请将程序内的所有文件直接放在根目录下，不要多层目录；</td>
 						</tr>
 						<tr>
-							<td align="center">5</td>
-							<td style="padding-left: 20px;">————
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=5">虚拟现实</a>
-							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=5">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=5" onclick="return confirm('您确定删除吗？');">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">6</td>
-							<td style="padding-left: 20px;">————
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=6">人工智能</a>
-							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=6">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=6" onclick="return confirm('您确定删除吗？');">删除</a>
-							</td>
+							<td>请将根目录下的robots.txt中的templet360.com改为自己的域名；</td>
+							<td>尽管本程序在发布前已经经过了若干严格测试，但我们依然强烈建议您随时备份；</td>
 						</tr>
 					</table>
-				</form>
+					<blockquote style="padding: 10px;border-left: 5px solid #FF5722;" class="layui-elem-quote">系统信息：</blockquote>
+					<table width="100%">
+						<tr>
+							<td width="110px">程序版本</td>
+							<td>Tpt-blog 1.0 博客管理系统
+								<a href="https://www.templet360.com/" style="color:#FF5722;" target="_blank">查看最新版本</a>
+							</td>
+						</tr>
+						<tr>
+							<td>服务器类型</td>
+							<td>Windows NT</td>
+						</tr>
+						<tr>
+							<td>PHP版本</td>
+							<td>5.4.45</td>
+						</tr>
+						<tr>
+							<td>Zend版本</td>
+							<td>2.4.0</td>
+						</tr>
+						<tr>
+							<td>服务器解译引擎</td>
+							<td>Microsoft-IIS/7.5</td>
+						</tr>
+						<tr>
+							<td>服务器语言</td>
+							<td>zh-CN,zh;q=0.8</td>
+						</tr>
+						<tr>
+							<td>服务器Web端口</td>
+							<td>80</td>
+						</tr>
+					</table>
+					<blockquote style="padding: 10px;border-left: 5px solid #FF5722;" class="layui-elem-quote">开发团队：</blockquote>
+					<table width="100%">
+						<tr>
+							<td width="110px">版权所有</td>
+							<td>成都极酷科技有限公司</td>
+						</tr>
+						<tr>
+							<td>感谢贡献者</td>
+							<td>Thinkphp，Layer，里程密，白俊遥，童老师</td>
+						</tr>
+						<tr>
+							<td>特别提醒您</td>
+							<td>本程序均可免费下载使用，但严禁删除、隐藏或更改版权信息，且导致的一切损失由使用者自行承担。</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</body>
