@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>后台管理系统</title>
 		<link rel="stylesheet" href="static/css/admin.css">
 		<link rel="stylesheet" href="static/layui/css/layui.css">
-		<script src="static/layui/layui.js"></script>
 	</head>
 
 	<body id="login">
 		<div class="login">
 			<h2>后台管理系统</h2>
-			<form class="layui-form" method="post" action="/index.php?m=admin&c=login&a=checklogin">
+			<form class="layui-form">
 				<div class="layui-form-item">
 					<input type="username" name="username" placeholder="请输入账号" required lay-verify="required" autocomplete="off" class="layui-input">
 				</div>
@@ -21,18 +19,21 @@
 					<input type="password" name="password" placeholder="请输入密码" required lay-verify="required" autocomplete="off" class="layui-input">
 				</div>
 				<div class="layui-form-item">
-					<input type="password" name="kouling" placeholder="请输入口令" required lay-verify="required" autocomplete="off" class="layui-input">
+					<input type="text" name="valicode" placeholder="请输入验证码" required lay-verify="required" autocomplete="off" class="layui-input input-valicode">
+					<img id="login-valicode" src="/luobo/admin/validateCode" class="img-valicode"/>
+					<i id='login-refresh' class="iconfont login-i" title="刷新">&#xe6aa;</i>
 				</div>
 				<div class="layui-form-item">
-					<button style="padding: 0 102px;" class="layui-btn" lay-submit lay-filter="formDemo">立即登录</button>
+					<button style="padding: 0 102px;" class="layui-btn" lay-submit lay-filter="loginform">立即登录</button>
 				</div>
 			</form>
-			<script>
-				layui.use('form', function() {
-					var form = layui.form();
-				});
-			</script>
 		</div>
 	</body>
+	<script src="static/layui/layui.js"></script>
+	<script type="text/javascript" src="static/js/login.js" ></script>
+	
+	<script>
+		layui.config({base:'static/js/'}).use('login');
+	</script>
 
 </html>

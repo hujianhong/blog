@@ -9,52 +9,36 @@ import com.jfinal.plugin.activerecord.IBean;
 @SuppressWarnings("serial")
 public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implements IBean {
 
-	public void setSequence(java.lang.Integer sequence) {
-		set("sequence", sequence);
+	public void setId(java.lang.Integer id) {
+		set("id", id);
 	}
 
-	public java.lang.Integer getSequence() {
-		return get("sequence");
+	public java.lang.Integer getId() {
+		return get("id");
 	}
 
-	public void setSerialNumber(java.lang.String serialNumber) {
-		set("serialNumber", serialNumber);
+	public void setUsername(java.lang.String username) {
+		set("username", username);
 	}
 
-	public java.lang.String getSerialNumber() {
-		return get("serialNumber");
+	public java.lang.String getUsername() {
+		return get("username");
 	}
 
-	public void setStudentId(java.lang.String studentId) {
-		set("student_id", studentId);
+	public void setPassword(java.lang.String password) {
+		set("password", password);
 	}
 
-	public java.lang.String getStudentId() {
-		return get("student_id");
+	public java.lang.String getPassword() {
+		return get("password");
 	}
 
-	public void setUniversityId(java.lang.String universityId) {
-		set("university_id", universityId);
+	public void setNickname(java.lang.String nickname) {
+		set("nickname", nickname);
 	}
 
-	public java.lang.String getUniversityId() {
-		return get("university_id");
-	}
-
-	public void setOpenid(java.lang.String openid) {
-		set("openid", openid);
-	}
-
-	public java.lang.String getOpenid() {
-		return get("openid");
-	}
-
-	public void setNick(java.lang.String nick) {
-		set("nick", nick);
-	}
-
-	public java.lang.String getNick() {
-		return get("nick");
+	public java.lang.String getNickname() {
+		return get("nickname");
 	}
 
 	public void setHeadurl(java.lang.String headurl) {
@@ -63,38 +47,6 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 
 	public java.lang.String getHeadurl() {
 		return get("headurl");
-	}
-
-	public void setBind(java.lang.Integer bind) {
-		set("bind", bind);
-	}
-
-	public java.lang.Integer getBind() {
-		return get("bind");
-	}
-
-	public void setBdpushid(java.lang.String bdpushid) {
-		set("bdpushid", bdpushid);
-	}
-
-	public java.lang.String getBdpushid() {
-		return get("bdpushid");
-	}
-
-	public void setBdchannelid(java.lang.String bdchannelid) {
-		set("bdchannelid", bdchannelid);
-	}
-
-	public java.lang.String getBdchannelid() {
-		return get("bdchannelid");
-	}
-
-	public void setVersion(java.lang.String version) {
-		set("version", version);
-	}
-
-	public java.lang.String getVersion() {
-		return get("version");
 	}
 
 }

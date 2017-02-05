@@ -18,6 +18,7 @@ import javax.swing.text.html.ListView;
 import me.huding.luobo.Parameters;
 import me.huding.luobo.utils.DBUtils;
 import me.huding.luobo.utils.KeyUtils;
+import me.huding.luobo.utils.crypto.MDCoder;
 
 import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -214,7 +215,7 @@ public class GeneratorDemo {
 			comment.save();
 		}*/
 		
-		String t = null;
+		/*String t = null;
 		String[] titles = new String[100];
 		BufferedReader reader = new BufferedReader(new FileReader("img"));
 		int in = 0;
@@ -227,7 +228,21 @@ public class GeneratorDemo {
 			Blog blog = blogs.get(i);
 			blog.setCoverURL(titles[i]);
 			blog.update();
-		}
+		}*/
+		
+		User user = User.findByUsername("hujianhong");
+		
+		String password = "hubaichuan";
+		
+		password = MDCoder.encodeMD5Hex(password);
+		
+		System.out.println(password);
+		
+		user.setPassword(password);
+		
+		user.update();
+		
+		
 	}
 
 	public static void main(String[] args) throws IOException {

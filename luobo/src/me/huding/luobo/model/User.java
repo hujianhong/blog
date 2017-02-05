@@ -8,4 +8,9 @@ import me.huding.luobo.model.base.BaseUser;
 @SuppressWarnings("serial")
 public class User extends BaseUser<User> {
 	public static final User dao = new User();
+	
+	
+	public static User findByUsername(String username) {
+		return dao.findFirst("select * from user where username = ? limit 1",username);
+	}
 }

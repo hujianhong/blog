@@ -28,7 +28,7 @@ public class _MappingKit {
 		arp.addMapping("tags", "id", Tags.class);
 		arp.addMapping("timeline", "id", Timeline.class);
 		arp.addMapping("track_login", "id", TrackLogin.class);
-		arp.addMapping("user", "sequence", User.class);
+		arp.addMapping("user", "id", User.class);
 		arp.addMapping("user_permission", "user_id", UserPermission.class);
 		arp.addMapping("user_register", "user_id", UserRegister.class);
 	}

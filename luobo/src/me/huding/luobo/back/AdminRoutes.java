@@ -16,6 +16,7 @@
 package me.huding.luobo.back;
 
 import com.jfinal.config.Routes;
+import com.jfinal.core.Controller;
 
 /**
  * 
@@ -28,14 +29,26 @@ import com.jfinal.config.Routes;
 public class AdminRoutes extends Routes {
 	
 	public static final String PREFIX = "/admin";
+	
+	
+	
+
+	@Override
+	public Routes add(String controllerKey, Class<? extends Controller> controllerClass) {
+		controllerKey = PREFIX + controllerKey;
+		return super.add(controllerKey, controllerClass);
+	}
+
+
+
 
 	@Override
 	public void config() {
-		add("/admin",MainController.class);
-		add("/admin/blog",BlogController.class);
-		add("/admin/upload",UploadController.class);
-		add("/admin/category",CategoryController.class);
-		add("/admin/tags",TagsController.class);
+		add("",MainController.class);
+		add("/blog",BlogController.class);
+		add("/upload",UploadController.class);
+		add("/category",CategoryController.class);
+		add("/tags",TagsController.class);
 	}
 
 }
