@@ -13,99 +13,25 @@
 			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo2.png"></a></h2>
 			<div class="y cl">
 				<a target="_blank" href="http://www.huding.name">网站首页</a>
-				<a href="login.html">退出</a>
+				<a id="top-logout" href="javascript:">退出</a>
 			</div>
 		</div>
 		<div class="admin">
-			<div class="aleft">
-				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe643;</i>操作菜单</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe601;</i>
-						<a href="navigate.html">导航管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe61f;</i>
-						<a href="category.html">栏目管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe63c;</i>
-						<a href="blog.html">文章管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe64e;</i>
-						<a href="youlian.html">友情连接</a>
-					</li>
-				</ul>
-				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe614;</i>系统管理</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe62c;</i>
-						<a href="#">网站配置</a>
-					</li>
-					<li><i class="layui-icon">&#xe631;</i>
-						<a href="password.html">密码修改</a>
-					</li>
-					<li><i class="layui-icon">&#xe640;</i>
-						<a href="#">清理缓存</a>
-					</li>
-					<li><i class="layui-icon">&#x1006;</i>
-						<a href="login.html">立即退出</a>
-					</li>
-				</ul>
-				<!--<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe612;</i>帮助中心</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe63a;</i>
-						<a target="_blank" href="https://www.templet360.com/">技术支持</a>
-					</li>
-					<li><i class="layui-icon">&#xe600;</i>
-						<a target="_blank" href="https://www.templet360.com/">售后服务</a>
-					</li>
-				</ul>-->
-			</div>
+			<div class="aleft" id="left-container"></div>
 			<div class="aright">
 				<div class="arz cl">
-					<a href="youlian-add.html"><i class="layui-icon">&#xe608;</i>添加连接</a>
+					<a href="youlian-add.html"><i class="layui-icon">&#xe608;</i>添加链接</a>
 				</div>
-
-				<form method="post" class="aform cl">
-					<table width="100%">
-						<tr>
-							<th width="10%" align="center">连接编号</th>
-							<th width="20%" align="center">连接名称</th>
-							<th width="20%" align="center">连接LOGO</th>
-							<th width="30%" align="center">连接地址</th>
-							<th width="10%" align="center">添加时间</th>
-							<th width="10%" align="center">基本操作</th>
-						</tr>
-						<tr>
-							<td align="center">2</td>
-							<td align="center">360搜索</td>
-							<td align="center">
-								<img src="/Uploads/2016-12-04/5843891d1e739.png" height="30">
-							</td>
-							<td align="center">https://www.so.com/</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=links&a=edit&id=2">修改</a>
-								<a href="/index.php?m=admin&c=links&a=delete&id=2" onclick="return confirm('您确定要删除吗？');">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">1</td>
-							<td align="center">百度一下</td>
-							<td align="center">
-								<img src="/Uploads/2016-12-04/584388b25b051.png" height="30">
-							</td>
-							<td align="center">https://www.baidu.com/</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=links&a=edit&id=1">修改</a>
-								<a href="/index.php?m=admin&c=links&a=delete&id=1" onclick="return confirm('您确定要删除吗？');">删除</a>
-							</td>
-						</tr>
-					</table>
+				<form id="youlian-container" method="post" class="aform cl">
 				</form>
 				<div class="pages">
 					<div> </div>
 				</div>
 			</div>
 		</div>
+		<script>
+			layui.config({base:'static/js/'}).use('youlian');
+		</script>
 	</body>
 
 </html>

@@ -31,6 +31,7 @@ public class _MappingKit {
 		arp.addMapping("user", "id", User.class);
 		arp.addMapping("user_permission", "user_id", UserPermission.class);
 		arp.addMapping("user_register", "user_id", UserRegister.class);
+		arp.addMapping("youlian", "id", Youlian.class);
 	}
 }
 

@@ -16,8 +16,6 @@
 package me.huding.luobo.back;
 
 
-import javax.jws.soap.SOAPBinding.Use;
-
 import me.huding.luobo.BaseController;
 import me.huding.luobo.IConstants;
 import me.huding.luobo.ResConsts;

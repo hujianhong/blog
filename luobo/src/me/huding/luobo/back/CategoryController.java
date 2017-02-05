@@ -17,7 +17,6 @@ package me.huding.luobo.back;
 
 import java.util.List;
 
-import me.huding.luobo.BaseController;
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Category;
 
@@ -28,10 +27,34 @@ import me.huding.luobo.model.Category;
  * @version 1.0
  * @date 2016年11月2日
  */
-public class CategoryController extends BaseController {
+public class CategoryController extends AbstarctBackController {
 
 	public void display(){
 		List<Category> categories = Category.findAll();
 		render(ResConsts.Code.SUCCESS, null, categories);
+	}
+
+	@Override
+	public void doPage(int pageNum, int pageSize) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void add() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void del() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void edit() {
+		// TODO Auto-generated method stub
+		
 	}
 }

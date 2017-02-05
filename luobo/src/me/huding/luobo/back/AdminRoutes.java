@@ -30,17 +30,11 @@ public class AdminRoutes extends Routes {
 	
 	public static final String PREFIX = "/admin";
 	
-	
-	
-
 	@Override
 	public Routes add(String controllerKey, Class<? extends Controller> controllerClass) {
 		controllerKey = PREFIX + controllerKey;
 		return super.add(controllerKey, controllerClass);
 	}
-
-
-
 
 	@Override
 	public void config() {
@@ -49,6 +43,7 @@ public class AdminRoutes extends Routes {
 		add("/upload",UploadController.class);
 		add("/category",CategoryController.class);
 		add("/tags",TagsController.class);
+		add("/youlian",YoulianController.class);
 	}
 
 }

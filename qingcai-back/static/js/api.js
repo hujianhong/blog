@@ -29,6 +29,21 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		 */
 		LOGOUT_URL:BASE_PREFIX + "/luobo/admin/logout",
 		
+		YOULIAN_SHOW_URL:BASE_PREFIX + "/luobo/admin/youlian",
+		YOULIAN_ADD_URL:BASE_PREFIX + "/luobo/admin/youlian/add",
+		YOULIAN_EDIT_URL:BASE_PREFIX + "/luobo/admin/youlian/edit",
+		YOULIAN_DEL_URL:BASE_PREFIX + "/luobo/admin/youlian/del",
+		
+		
+		BLOG_SHOW_URL:BASE_PREFIX + "/luobo/admin/blog",
+		BLOG_ADD_URL:BASE_PREFIX + "/luobo/admin/blog/add",
+		BLOG_EDIT_URL:BASE_PREFIX + "/luobo/admin/blog/edit",
+		BLOG_DEL_URL:BASE_PREFIX + "/luobo/admin/blog/del",
+		
+		
+		PASSWORD_URL:BASE_PREFIX + "/luobo/admin/profile/password",
+		
+		
 
 	}
 	
@@ -89,6 +104,22 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		logout:function(params,success){
 			action.doAjax(api.LOGOUT_URL,params,success);
 		},
+		
+		showYoulian:function(params,success){
+			action.doAjax(api.YOULIAN_SHOW_URL,params,success);
+		},
+		addYoulian:function(params,success){
+			action.doAjax(api.YOULIAN_ADD_URL,params,success);
+		},
+		editYoulian:function(params,success){
+			action.doAjax(api.YOULIAN_EDIT_URL,params,success);
+		},
+		delYoulina:function(params,success){
+			action.doAjax(api.YOULIAN_DEL_URL,params,success);
+		},
+		password:function(params,success){
+			action.doAjax(api.PASSWORD_URL,params,success);
+		}
 	}
 	exports('api', action);
 });
