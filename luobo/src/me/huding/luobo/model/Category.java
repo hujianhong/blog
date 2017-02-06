@@ -2,6 +2,9 @@ package me.huding.luobo.model;
 
 import java.util.List;
 
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.TableMapping;
 
 import me.huding.luobo.model.base.BaseCategory;
@@ -17,5 +20,11 @@ public class Category extends BaseCategory<Category> {
 		String tableName = TableMapping.me().getTable(Category.class).getName();
 		String sql = "select * from " + tableName;
 		return dao.find(sql);
+	}
+
+	public static Page<Record> paginate(int pageNum, int pageSize) {
+		String select = "select category.*,type.name as typeName";
+		String suffix = "from category,type where category.typeID = type.id";
+		return Db.paginate(pageNum, pageSize, select, suffix);
 	}
 }

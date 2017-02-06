@@ -21,14 +21,17 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map.Entry;
 
-import me.huding.luobo.utils.IOUtils;
-
 import org.beetl.core.Configuration;
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.Template;
 import org.beetl.core.resource.FileResourceLoader;
 
 import com.jfinal.kit.PathKit;
+
+import me.huding.luobo.model.Blog;
+import me.huding.luobo.utils.DateStyle;
+import me.huding.luobo.utils.DateUtils;
+import me.huding.luobo.utils.IOUtils;
 
 /**
  * 
@@ -46,7 +49,9 @@ public class StaticsUtils {
 	private static Configuration cfg = null;
 	private static GroupTemplate gt = null;
 	
-	public static final String TEMPLATE_FILE = "/template.html";
+//	public static final String TEMPLATE_FILE = "/template.html";
+	
+	public static final String TEMPLATE_FILE = "/article.html";
 	
 	static {
 		init();
@@ -69,14 +74,21 @@ public class StaticsUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static boolean render(String filePath,StaticsBean bean) throws IOException {
+	public static boolean render(Blog bean) throws IOException {
 		Template t = gt.getTemplate(TEMPLATE_FILE);
-		for(Entry<String, String> entry : bean.entrySet()){
-			t.binding(entry.getKey(),entry.getValue());
+		for(Entry<String, Object> entry : bean._getAttrsEntrySet()){
+			String key = entry.getKey();
+			if(key.equals("publishTime")){
+				String value = DateUtils.DateToString(bean.getPublishTime(), DateStyle.YYYY_MM_DD );
+				t.binding(entry.getKey(),value);
+			} else {
+				t.binding(entry.getKey(),entry.getValue());
+			}
+			
 		}
 		OutputStream stream = null;
 		try {
-			stream = new FileOutputStream(new File(filePath));
+			stream = new FileOutputStream(new File(bean.getPath()));
 			t.renderTo(stream);
 			stream.close();
 		} finally {

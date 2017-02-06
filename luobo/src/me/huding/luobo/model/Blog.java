@@ -17,6 +17,12 @@ import com.jfinal.plugin.activerecord.Record;
 @SuppressWarnings("serial")
 public class Blog extends BaseBlog<Blog> {
 	public static final Blog dao = new Blog();
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * 根据签名查找博客
@@ -33,15 +39,12 @@ public class Blog extends BaseBlog<Blog> {
 		return dao.find(sql,Math.max(5, size));
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public static int count(Map<String, String[]> queryParams){
-		String sql = "select count(*) from blog_display order by publishTime desc";
-		return Db.queryInt(sql);
+	public static Page<Record> paginate4Back(int pageNum,int pageSize){
+		String select = "select * ";
+		// 默认根据时间排序
+		String sqlExceptSelect = "from blog_back_display order by publishTime desc";
+		return Db.paginate(pageNum, pageSize,select, sqlExceptSelect);
 	}
-
 
 
 	/**

@@ -17,7 +17,6 @@ package me.huding.luobo.front;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,17 +60,6 @@ public class MainController extends BaseController {
 		List<Record> data = BlogTags.queryCount();
 		render(ResConsts.Code.SUCCESS, null, data);
 	}
-	
-	
-	
-	public void queryPages(){
-		Map<String, String[]> params = getParaMap();
-		int data = Blog.count(params);
-		render(ResConsts.Code.SUCCESS, null,data);
-	}
-	
-	
-
 	
 	/**
 	 * 显示博文列表

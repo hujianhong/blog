@@ -21,7 +21,15 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import me.huding.luobo.BaseController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.IAtom;
+import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
+
 import me.huding.luobo.Parameters;
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Blog;
@@ -29,13 +37,6 @@ import me.huding.luobo.model.BlogTags;
 import me.huding.luobo.utils.DateStyle;
 import me.huding.luobo.utils.DateUtils;
 import me.huding.luobo.utils.KeyUtils;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.jfinal.kit.StrKit;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.IAtom;
 
 
 /**
@@ -47,30 +48,52 @@ import com.jfinal.plugin.activerecord.IAtom;
  * @version 1.0
  * @date 2016年10月28日
  */
-public class BlogController extends BaseController {
+public class BlogController extends AbstarctBackController {
 	/**
 	 * 日志记录器
 	 */
 	public static final Logger LOG = LoggerFactory.getLogger(BlogController.class);
-
+	
+	
+	@Override
+	public void doPage(int pageNum, int pageSize) {
+		// 查询数据
+		Page<Record> data = Blog.paginate4Back(pageNum, pageSize);
+		if(data.getList().size() > 0){
+			for(Record record : data.getList()){
+				Date date = record.getDate("publishTime");
+				if(date != null){
+					String d = DateUtils.DateToString(date, DateStyle.YYYY_MM_DD);
+					record.set("publishTime", d);
+				}
+			}
+		}
+		// 渲染结果
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
+	
 	/**
-	 * 发表博文Action
+	 * 编辑博文
 	 */
-	public void publish(){
+	@Override
+	public void edit(){
+
+	}
+	
+	
+
+	@Override
+	public void add() {
 		/* 获取参数  */
 		final Blog blog = getModel(Blog.class, "blog");
-		String tagsStr = getPara("tags");
-		final String[] tags = tagsStr.split(",");
-		
-		
+		final String[] tags = blog.getTags().split(",");
 		/* 校验参数 */
 		// TODO validate params
 
 		String signature = KeyUtils.signByMD5(blog.getTitle());
 		// 查询签名是否已经存在
 		if(Blog.findBySignature(signature) != null){
-			setCode(ResConsts.Code.EXISTS);
-			render();
+			render(ResConsts.Code.EXISTS);
 			return;
 		} 
 		blog.setSignature(signature);
@@ -85,18 +108,18 @@ public class BlogController extends BaseController {
 		String fileName = genHtmlFileName(curDate);
 		blog.setPath(genHtmlFilePath(fileName));
 		blog.setUrl(genHtmlURL(fileName));
+		blog.setReadNum(0);
+		blog.setCommentNum(0);
+		blog.setHeartNum(0);
 
 		/* 静态化处理 */
 		
 		boolean st = statics(blog);
 		// 静态化处理失败
 		if(!st){
-			setCode(ResConsts.Code.STATICS_ERROR);
-			render();
+			render(ResConsts.Code.STATICS_ERROR);
 			return;
 		}
-		
-		
 		// 持久化到数据库
 		boolean flag = Db.tx(new IAtom() {
 			@Override
@@ -117,11 +140,16 @@ public class BlogController extends BaseController {
 		
 		// 
 		if(!flag){
-			setCode(ResConsts.Code.FAILURE);
+			render(ResConsts.Code.FAILURE);
 		} else {
-			setCode(ResConsts.Code.SUCCESS);
+			render(ResConsts.Code.SUCCESS,null,blog.getUrl());
 		}
-		render();
+	}
+
+	@Override
+	public void del() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -133,7 +161,7 @@ public class BlogController extends BaseController {
 		if(date == null){
 			date = DateUtils.getCurrentDate();
 		}
-		String prefix = DateUtils.DateToString(date, DateStyle.YYYYMMDDHHMMSS);
+		String prefix = "b" + DateUtils.DateToString(date, DateStyle.YYYYMMDDHHMMSS);
 		return prefix + ".html";
 	}
 
@@ -185,43 +213,6 @@ public class BlogController extends BaseController {
 		}
 	}
 
-	/**
-	 * 分页显示博文
-	 */
-	public void display(){
-
-	}
-
-
-	/**
-	 * 查看博文详情
-	 */
-	public void look(){
-
-	}
-
-	/**
-	 * 编辑博文
-	 */
-	public void edit(){
-
-	}
-
-	/**
-	 * 删除博文
-	 */
-	public void delete(){
-
-	}
-
-
-	/**
-	 * 暂存博文
-	 */
-	public void stage(){
-
-	}
-
 
 	/**
 	 * 将所有的博文重新静态化
@@ -240,19 +231,16 @@ public class BlogController extends BaseController {
 	 * @return
 	 */
 	private boolean statics(Blog blog){
-		/* 静态化处理 */
-		StaticsBean.Builder builder = new StaticsBean.Builder();
-		builder.setID(blog.getId()).setAuthor(blog.getAuthor());
-		builder.setContent(blog.getHtml());
-		builder.setPublishTime(blog.getPublishTime()).setTitle(blog.getTitle());
 		boolean st = false;
 		try {
-			st = StaticsUtils.render(blog.getPath(), builder.build());
+			st = StaticsUtils.render(blog);
 		} catch(IOException e){
 			LOG.error(e.getMessage(),e);
 		}
 		return st;
 	}
+
+	
 
 
 

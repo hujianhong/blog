@@ -11,10 +11,10 @@ layui.define(['common','api','form','layer'],function(exports){
 	
 	//监听提交
   	form.on('submit(formDemo)', function(data){
-    		api.addYoulian(data.field,function(res){
+    		api.addCategory(data.field,function(res){
     			if(res.code == 0){
     				layer.msg(res.msg);
-    				location.href = 'youlian.html';
+    				location.href = 'category.html';
     			} else {
     				layer.msg(res.msg || res.code, {
 					shift: 6
@@ -24,6 +24,6 @@ layui.define(['common','api','form','layer'],function(exports){
     		return false;
   	});
 	
-	exports('youlian-add',{});
+	exports('category-add',{});
 	
 });

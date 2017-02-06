@@ -16,7 +16,6 @@
 package me.huding.luobo.utils;
 
 import java.util.List;
-import java.util.Set;
 
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Table;
@@ -52,5 +51,15 @@ public class DBUtils {
 		builder.append(" from ").append(table.getName());
 		return model.find(builder.toString());
 	}
+	
+	
+	public static <T extends Model<T>> List<T> findAll(Model<T> model){
+		StringBuilder builder = new StringBuilder();
+		builder.append("select * ");
+		Table table = TableMapping.me().getTable(model.getClass());
+		builder.append(" from ").append(table.getName());
+		return model.find(builder.toString());
+	}
+
 
 }

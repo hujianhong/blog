@@ -13,126 +13,22 @@
 			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo2.png"></a></h2>
 			<div class="y cl">
 				<a target="_blank" href="http://www.huding.name">网站首页</a>
-				<a href="login.html">退出</a>
+				<a id="top-logout" href="javascript:">退出</a>
 			</div>
 		</div>
 		<div class="admin">
-			<div class="aleft">
-				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe643;</i>操作菜单</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe601;</i>
-						<a href="navigate.html">导航管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe61f;</i>
-						<a href="category.html">栏目管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe63c;</i>
-						<a href="blog.html">文章管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe64e;</i>
-						<a href="youlian.html">友情连接</a>
-					</li>
-				</ul>
-				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe614;</i>系统管理</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe62c;</i>
-						<a href="#">网站配置</a>
-					</li>
-					<li><i class="layui-icon">&#xe631;</i>
-						<a href="password.html">密码修改</a>
-					</li>
-					<li><i class="layui-icon">&#xe640;</i>
-						<a href="#">清理缓存</a>
-					</li>
-					<li><i class="layui-icon">&#x1006;</i>
-						<a href="login.html">立即退出</a>
-					</li>
-				</ul>
-				<!--<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe612;</i>帮助中心</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe63a;</i>
-						<a target="_blank" href="https://www.templet360.com/">技术支持</a>
-					</li>
-					<li><i class="layui-icon">&#xe600;</i>
-						<a target="_blank" href="https://www.templet360.com/">售后服务</a>
-					</li>
-				</ul>-->
-			</div>
+			<div class="aleft" id="left-container"></div>
 			<div class="aright">
-
 				<div class="arz cl">
-					<a href="catagory-add.html"><i class="layui-icon">&#xe608;</i>添加栏目</a>
+					<a href="catagory-add.html"><i class="layui-icon">&#xe608;</i>添加类别</a>
 				</div>
-				<form method="post" class="aform cl">
-					<table width="100%">
-						<tr>
-							<th width="10%" align="center">栏目编号</th>
-							<th width="20%" align="center">栏目名称</th>
-							<th width="10%" align="center">栏目类型</th>
-							<th width="20%" align="center">栏目图片</th>
-							<th width="20%" align="center">添加时间</th>
-							<th width="20%" align="center">基本操作</th>
-						</tr>
-						<tr>
-							<td align="center">4</td>
-							<td style="padding-left: 20px;">
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=4">科技头条</a>
-							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=4">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=4" onclick="return confirm('您确定删除吗？');">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">1</td>
-							<td style="padding-left: 20px;">————
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=1">新闻资讯</a>
-							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=1">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=1" onclick="return confirm('您确定删除吗？');">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">5</td>
-							<td style="padding-left: 20px;">————
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=5">虚拟现实</a>
-							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=5">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=5" onclick="return confirm('您确定删除吗？');">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">6</td>
-							<td style="padding-left: 20px;">————
-								<a target="_blank" href="/index.php?m=home&c=index&a=category&id=6">人工智能</a>
-							</td>
-							<td align="center">
-								文章</td>
-							<td align="center">暂无图片</td>
-							<td align="center">2016-12-03</td>
-							<td align="center">
-								<a href="/index.php?m=admin&c=category&a=edit&id=6">修改</a> |
-								<a href="/index.php?m=admin&c=category&a=delete&id=6" onclick="return confirm('您确定删除吗？');">删除</a>
-							</td>
-						</tr>
-					</table>
+				<form id="category-container" method="post" class="aform cl">
 				</form>
 			</div>
 		</div>
+		<script>
+			layui.config({base:'static/js/'}).use('category');
+		</script>
 	</body>
 
 </html>

@@ -145,12 +145,28 @@ public abstract class BaseBlog<M extends BaseBlog<M>> extends Model<M> implement
 		return get("status");
 	}
 
+	public void setStatusName(java.lang.String statusName) {
+		set("statusName", statusName);
+	}
+
+	public java.lang.String getStatusName() {
+		return get("statusName");
+	}
+
 	public void setHtml(java.lang.String html) {
 		set("html", html);
 	}
 
 	public java.lang.String getHtml() {
 		return get("html");
+	}
+
+	public void setTags(java.lang.String tags) {
+		set("tags", tags);
+	}
+
+	public java.lang.String getTags() {
+		return get("tags");
 	}
 
 }

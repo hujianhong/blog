@@ -15,10 +15,18 @@
  */
 package me.huding.luobo.back;
 
+import java.util.Date;
 import java.util.List;
+
+import org.beetl.core.resource.AllowAllMatcher;
+
+import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Category;
+import me.huding.luobo.utils.DBUtils;
+import me.huding.luobo.utils.KeyUtils;
 
 /**
  *
@@ -36,14 +44,28 @@ public class CategoryController extends AbstarctBackController {
 
 	@Override
 	public void doPage(int pageNum, int pageSize) {
-		// TODO Auto-generated method stub
-		
+		// 查询数据
+		Page<Record> data = Category.paginate(pageNum, pageSize);
+		// 渲染结果
+		render(ResConsts.Code.SUCCESS, null, data);
 	}
 
 	@Override
 	public void add() {
-		// TODO Auto-generated method stub
-		
+		Category category = getModel(Category.class, "category");
+		category.setId(KeyUtils.getUUID());
+		category.setCdate(new Date(System.currentTimeMillis()));
+		if(category.save()){
+			render(ResConsts.Code.SUCCESS,"保存成功");
+		} else {
+			render(ResConsts.Code.FAILURE,"保存失败");
+		}
+	}
+	
+	public void all(){
+		List<Category> data = DBUtils.findAll(Category.dao);
+		// 渲染结果
+		render(ResConsts.Code.SUCCESS, null, data);
 	}
 
 	@Override

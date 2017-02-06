@@ -45,14 +45,18 @@ public class Parameters {
 	 * 和{@link #STATICS_ROOT_PATH}拼接生成博文最终存储目录
 	 * 
 	 */
-	public static String ARTICLES_PATH = "articles";
+//	public static String ARTICLES_PATH = "articles";
+	
+	public static String ARTICLES_PATH = "";
 	
 	/**
 	 * 博文静态化存储的最终目录
 	 * 
 	 * 即：{@link #STATICS_ROOT_PATH} + {@link #ARTICLES_PATH} 
 	 */
-	public static String STATICS_FINAL_PATH = STATICS_ROOT_PATH + File.separator + ARTICLES_PATH;
+//	public static String STATICS_FINAL_PATH = STATICS_ROOT_PATH + File.separator + ARTICLES_PATH;
+	
+	public static String STATICS_FINAL_PATH = STATICS_ROOT_PATH;
 	
 
 	public static String DB_USERNAME = getParameter("DB_USERNAME", "root");

@@ -230,24 +230,31 @@ public class GeneratorDemo {
 			blog.update();
 		}*/
 		
-		User user = User.findByUsername("hujianhong");
+//		User user = User.findByUsername("hujianhong");
+//		
+//		String password = "hubaichuan";
+//		
+//		password = MDCoder.encodeMD5Hex(password);
+//		
+//		System.out.println(password);
+//		
+//		user.setPassword(password);
+//		
+//		user.update();
 		
-		String password = "hubaichuan";
-		
-		password = MDCoder.encodeMD5Hex(password);
-		
-		System.out.println(password);
-		
-		user.setPassword(password);
-		
-		user.update();
+		List<Blog> blogs = Blog.dao.find("select * from blog");
+		for(int i = 0;i < blogs.size();i ++){
+			Blog blog = blogs.get(i);
+			blog.setStatusName("显示");
+			blog.update();
+		}
 		
 		
 	}
 
 	public static void main(String[] args) throws IOException {
-//		handle();
-		gen();
+		handle();
+//		gen();
 	}
 }
 

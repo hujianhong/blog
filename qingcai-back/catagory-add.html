@@ -13,107 +13,38 @@
 			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo2.png"></a></h2>
 			<div class="y cl">
 				<a target="_blank" href="http://www.huding.name">网站首页</a>
-				<a href="login.html">退出</a>
+				<a id="top-logout" href="javascript:">退出</a>
 			</div>
 		</div>
 		<div class="admin">
-			<div class="aleft">
-				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe643;</i>操作菜单</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe601;</i>
-						<a href="navigate.html">导航管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe61f;</i>
-						<a href="category.html">栏目管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe63c;</i>
-						<a href="blog.html">文章管理</a>
-					</li>
-					<li><i class="layui-icon">&#xe64e;</i>
-						<a href="youlian.html">友情连接</a>
-					</li>
-				</ul>
-				<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe614;</i>系统管理</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe62c;</i>
-						<a href="#">网站配置</a>
-					</li>
-					<li><i class="layui-icon">&#xe631;</i>
-						<a href="password.html">密码修改</a>
-					</li>
-					<li><i class="layui-icon">&#xe640;</i>
-						<a href="#">清理缓存</a>
-					</li>
-					<li><i class="layui-icon">&#x1006;</i>
-						<a href="login.html">立即退出</a>
-					</li>
-				</ul>
-				<!--<h3><i class="layui-icon" style="position: relative;right: 3px;top: 1px;font-size: 18px;color: #009688;">&#xe612;</i>帮助中心</h3>
-				<ul class="cl">
-					<li><i class="layui-icon">&#xe63a;</i>
-						<a target="_blank" href="https://www.templet360.com/">技术支持</a>
-					</li>
-					<li><i class="layui-icon">&#xe600;</i>
-						<a target="_blank" href="https://www.templet360.com/">售后服务</a>
-					</li>
-				</ul>-->
-			</div>
+			<div class="aleft" id="left-container"></div>
 			<div class="aright">
 
 				<fieldset class="layui-elem-field layui-field-title" style="margin: 20px 30px 20px 20px;">
-					<legend>添加栏目</legend>
+					<legend>添加分类</legend>
 				</fieldset>
 
 				<form class="layui-form bform" method="post" action="/index.php?m=admin&c=category&a=doadd" enctype="multipart/form-data">
 
 					<div class="layui-form-item">
-						<label class="layui-form-label">栏目名称</label>
+						<label class="layui-form-label">分类名称</label>
 						<div class="layui-input-block">
-							<input type="text" name="name" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+							<input type="text" name="category.name" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
 						</div>
 					</div>
-
-					<div class="layui-form-item" style="width: 300px;">
-						<label class="layui-form-label">所属栏目</label>
-						<div class="layui-input-block">
-							<select name="tid">
-								<option value="0">顶级栏目</option>
-								<option value="4">科技头条</option>
-							</select>
-						</div>
-					</div>
-
 					<div class="layui-form-item">
 						<label class="layui-form-label">所属类型</label>
 						<div class="layui-input-block">
-							<input type="radio" name="type" value="1" title="文章" checked="">
-							<input type="radio" name="type" value="2" title="产品" disabled="">
+							<select name="category.typeID">
+								<option value="1">技术</option>
+								<option value="2">随笔</option>
+							</select>
 						</div>
 					</div>
-
-					<div class="layui-form-item">
-						<label class="layui-form-label">缩略图</label>
-						<div class="layui-input-block">
-							<div class="file-box">
-								<i class="layui-icon">&#xe61f;</i>
-								<input class="file-btn" type="button" value="选择图片">
-								<input class="file-txt" type="text" name="textfield" id="textfield">
-								<input class="file-file" type="file" name="pic" id="pic" size="28" onchange="document.getElementById('textfield').value=this.value" />
-							</div>
-						</div>
-					</div>
-
 					<div class="layui-form-item">
 						<label class="layui-form-label">关键词</label>
 						<div class="layui-input-block">
-							<input type="text" name="keywords" placeholder="请输入内容" autocomplete="off" class="layui-input">
-						</div>
-					</div>
-
-					<div class="layui-form-item layui-form-text">
-						<label class="layui-form-label">描述</label>
-						<div class="layui-input-block">
-							<textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
+							<input type="text" name="category.keywords" placeholder="请输入内容" autocomplete="off" class="layui-input">
 						</div>
 					</div>
 
@@ -126,9 +57,7 @@
 
 				</form>
 				<script>
-					layui.use('form', function() {
-						var form = layui.form();
-					});
+					layui.config({base:'static/js/'}).use('category-add');
 				</script>
 			</div>
 		</div>
