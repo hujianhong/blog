@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.sql.DataSource;
 import javax.swing.text.html.ListView;
 
+import me.huding.luobo.IConstants;
 import me.huding.luobo.Parameters;
 import me.huding.luobo.utils.DBUtils;
 import me.huding.luobo.utils.KeyUtils;
@@ -22,6 +23,7 @@ import me.huding.luobo.utils.crypto.MDCoder;
 
 import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.generator.Generator;
 import com.jfinal.plugin.druid.DruidPlugin;
 
@@ -56,6 +58,8 @@ public class GeneratorDemo {
 		gernerator.addExcludedTable("blog_display_by_tag");
 		gernerator.addExcludedTable("blog_tags_display");
 		gernerator.addExcludedTable("blog_rel_tags");
+		gernerator.addExcludedTable("blog_back_display");
+		
 		// 设置是否在 Model 中生成 dao 对象
 		gernerator.setGenerateDaoInModel(true);
 		// 设置是否生成字典文件
@@ -76,144 +80,7 @@ public class GeneratorDemo {
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(getDataSource());
 		_MappingKit.mapping(arp);
 		arp.start();
-		/*String t = null;
-		String[] titles = new String[100];
-		BufferedReader reader = new BufferedReader(new FileReader("temp"));
-		int in = 0;
-		while((t= reader.readLine()) != null){
-			titles[in ++] = t;
-		}
-		reader.close();
-		Blog b = Blog.dao.findById("1ca3888bf494480a81db9f577e362d07");
-		Date cDate = new Date(2012, 0, 1);
-		for(int i = 1;i < 40;i ++){
-			Blog bl = new Blog();
-			bl._setAttrs(b);
-			cDate.setMonth(i);
-			bl.setPublishTime(cDate);
-			bl.setId(KeyUtils.getUUID());
-			bl.setTitle(titles[i]);
-			bl.setCommentNum(rand());
-			bl.setHeartNum(rand());
-			bl.setReadNum(rand());
-			bl.setSignature(KeyUtils.signByMD5(titles[i]));
-			bl.save();
-		}*/
-		
-		/*List<Timeline> timelines = DBUtils.findAll(Timeline.dao);
-		System.out.println(timelines);
-		for(Timeline timeline : timelines){
-			System.out.println(timeline.getDisplayName());
-		}*/
-		
-		
-		
-		
-		
-		/*List<Blog> blogs = Blog.findAll("id,publishTime");
-		System.out.println(blogs);
-		Map<String, Timeline> maps = new HashMap<String, Timeline>();
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
-		SimpleDateFormat format2 = new SimpleDateFormat("yyyy年MM月");
-		int i = 1;
-		for(Blog blog : blogs) {
-			java.util.Date date = blog.getPublishTime();
-			//date.setMonth(i ++);
-			//blog.update();
-			String id = format.format(date);
-			System.out.println(date);
-			System.out.println(id);
-			if(!maps.containsKey(id)){
-				Timeline timeline = new Timeline();
-				timeline.setId(id);
-				timeline.setDisplayDate(date);
-				timeline.setCreatedDate(new java.util.Date(System.currentTimeMillis()));
-				timeline.setDisplayName(format2.format(date));
-				timeline.save();
-				maps.put(id, timeline);
-			}
-		}*/
-		
-		
-		
-		/*BufferedReader reader = new BufferedReader(new FileReader("tag"));
-		String t = reader.readLine();
-		System.out.println(t);
-		String arr[] = t.split(" ");
-		List<String> tags = new ArrayList<String>();
-		for(String string : arr){
-//			System.out.println(string);
-			if(string.contains(")")){
-				string = string.substring(string.indexOf(")") + 1);
-			}
-			string = string.trim();
-			System.out.println(string);
-			if(string.length() > 0){
-				tags.add(string);
-			}
-		}
-		List<Tags> list = new ArrayList<Tags>();
-		for(String tagName : tags){
-			Tags tags2 = new Tags();
-			tags2.setId(KeyUtils.getUUID());
-			tags2.setName(tagName);
-			list.add(tags2);
-		}
-		for(Tags tags2 : list){
-			tags2.save();
-		}
-		
-		reader.close();*/
-		
-		/*List<Tags> tags = DBUtils.findAll(Tags.dao);
-		List<Blog> blogs = DBUtils.findAll(Blog.dao);
-		int blen = blogs.size();
-		for(Tags tags2 : tags){
-			int klen = Math.max(5, (int)(Math.random() * 20));
-			Set<Integer> set = new HashSet<Integer>();
-			int k = 0;
-			while(k < klen){
-				int index = 0;
-				while(true){
-					index = (int)(Math.random() * blen);
-					if(!set.contains(index)){
-						set.add(index);
-						break;
-					}
-				}
-				Blog blog = blogs.get(index);
-				BlogTags blogTags = new BlogTags();
-				blogTags.setBlogID(blog.getId());
-				blogTags.setTagID(tags2.getId());
-				blogTags.save();
-				k ++;
-			}
-		}*/
-		
-		/*String t = null;
-		String[] titles = new String[100];
-		BufferedReader reader = new BufferedReader(new FileReader("temp"));
-		int in = 0;
-		while((t= reader.readLine()) != null){
-			titles[in ++] = t;
-		}
-		reader.close();
-		String uuid = KeyUtils.getUUID();
-		System.out.println(uuid);
-		for(int i = 0;i < 1000;i ++){
-			Comment comment = new Comment();
-			comment.setBlogID(uuid);
-			comment.setId(KeyUtils.getUUID());
-			comment.setLikeNum(rand());
-			comment.setHateNum(rand());
-			comment.setShareNum(rand());
-			comment.setReplyNum(rand());
-			comment.setCdate(new java.util.Date(System.currentTimeMillis()));
-			comment.setContent(titles[i % 30]);
-			comment.setNickname("胡建洪");
-			comment.setEmail("1043244432@qq.com");
-			comment.save();
-		}*/
+
 		
 		/*String t = null;
 		String[] titles = new String[100];
@@ -242,11 +109,19 @@ public class GeneratorDemo {
 //		
 //		user.update();
 		
-		List<Blog> blogs = Blog.dao.find("select * from blog");
-		for(int i = 0;i < blogs.size();i ++){
-			Blog blog = blogs.get(i);
-			blog.setStatusName("显示");
-			blog.update();
+//		List<Blog> blogs = Blog.dao.find("select * from blog");
+//		for(int i = 0;i < blogs.size();i ++){
+//			Blog blog = blogs.get(i);
+//			blog.setStatusName("显示");
+//			blog.update();
+//		}
+		
+		List<Comment> comments = DBUtils.findAll(Comment.dao);
+		for(Comment comment: comments){
+			int code = comment.getEmail().hashCode();
+			code = Math.abs(code) % IConstants.HEAD_MOD;
+			comment.setHeadURL(code +".gif");
+			comment.update();
 		}
 		
 		

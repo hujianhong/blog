@@ -43,4 +43,7 @@ public interface IConstants {
 	
 	String PAGE_SIZE = "pageSize";
 	
+	
+	int HEAD_MOD = 74;
+	
 }

@@ -46,7 +46,7 @@ layui.define(['api', 'laytpl','laypage','layer','qingface', 'form'], function(ex
 				<div class="qing-comment-main" data="{{item.id}}">\
 					<div class="qing-comment-avatar">\
 						<div class="qing-comment-img">\
-							<img src="static/img/100.jpg" />\
+							<img src="static/head/{{item.headURL}}" />\
 						</div>\
 					</div>\
 					<div class="qing-comment-body">\

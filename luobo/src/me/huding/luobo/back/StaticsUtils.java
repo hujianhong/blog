@@ -49,9 +49,9 @@ public class StaticsUtils {
 	private static Configuration cfg = null;
 	private static GroupTemplate gt = null;
 	
-//	public static final String TEMPLATE_FILE = "/template.html";
+	public static final String TEMPLATE_FILE = "/template.html";
 	
-	public static final String TEMPLATE_FILE = "/article.html";
+//	public static final String TEMPLATE_FILE = "/article.html";
 	
 	static {
 		init();

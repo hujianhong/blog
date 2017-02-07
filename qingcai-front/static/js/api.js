@@ -3,68 +3,43 @@
  * 所有异步请求的地址
  */
 
-layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
+layui.define(['layer'],function(exports) {
 	var $ = layui.jquery;
-	var laypage = layui.laypage;
 	var layer = layui.layer;
-	var laytpl = layui.laytpl;
-	var qingtpl = layui.qingtpl;
 	
-//	var BASE_PREFIX = "http://www.huding.name";
+	var BASE_PREFIX = "http://www.huding.name/luobo";
 	
-	var BASE_PREFIX = "http://localhost";
+//	var BASE_PREFIX = "http://localhost";
 
 	var pageSize = 10;
 	
 	var api = {
 		/**
-		 * 博文列表请求地址
-		 */
-		BLOG_DISPLAY_URL : BASE_PREFIX + "/luobo/showBlogs",
-		/**
 		 * 博文标签请求地址
 		 */
-		TAGS_DISPLAY_URL : BASE_PREFIX + "/luobo/showTags",
+		TAGS_DISPLAY_URL : BASE_PREFIX + "/showTags",
 		/**
-		 * 博文归档地址
+		 * 博文请求地址
 		 */
-		BLOG_TIMELINE_URL: BASE_PREFIX + "/luobo/blog/timeline",
-		/**
-		 * 热门排行地址
-		 */
-		HOT_RANK_URL: BASE_PREFIX + "/luobo/blog/hotRank",
-		/**
-		 * 猜你喜欢地址
-		 */
-		BLOG_RECOMMEND_URL: BASE_PREFIX + "/luobo/blog/recommend",
-		/**
-		 * 博客轮播地址
-		 */
-		BLOG_LUNBO_URL: BASE_PREFIX + "/luobo/blog/lunbo",
-		/**
-		 * 
-		 */
-		BLOG_TAGS_URL: BASE_PREFIX + "/luobo/blog/blogTags",
+		BLOG_DISPLAY_URL : BASE_PREFIX + "/showBlogs",
+		BLOG_TIMELINE_URL: BASE_PREFIX + "/blog/timeline",
+		BLOG_HOT_RANK_URL: BASE_PREFIX + "/blog/hotRank",
+		BLOG_RECOMMEND_URL: BASE_PREFIX + "/blog/recommend",
+		BLOG_LUNBO_URL: BASE_PREFIX + "/blog/lunbo",
+		BLOG_TAGS_URL: BASE_PREFIX + "/blog/blogTags",
+		BLOG_OPENREAD_URL: BASE_PREFIX + "/blog/openRead",
+		
 		/**
 		 * 博文评论地址
 		 */
-		BLOG_COMMENT_URL: BASE_PREFIX + "/luobo/comment/show",
+		COMMENT_SHOW_URL: BASE_PREFIX + "/comment/show",
+		COMMENT_LIKE_URL: BASE_PREFIX + "/comment/like",
+		COMMENT_HATE_URL: BASE_PREFIX + "/comment/hate",
+		COMMENT_REPORT_URL: BASE_PREFIX + "/comment/report",
 		/**
 		 * 
 		 */
-		COMMENT_LIKE_URL: BASE_PREFIX + "/luobo/comment/like",
-		/**
-		 * 
-		 */
-		COMMENT_HATE_URL: BASE_PREFIX + "/luobo/comment/hate",
-		/**
-		 * 
-		 */
-		COMMENT_REPORT_URL: BASE_PREFIX + "/luobo/comment/report",
-		/**
-		 * 
-		 */
-		UPLOAD_IMG_URL : BASE_PREFIX + "/luobo/upload/uploadImage",
+		UPLOAD_IMG_URL : BASE_PREFIX + "/upload/uploadImage",
 	}
 	
 	var action = {
@@ -99,17 +74,20 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 		blogLunbo:function(params,success){
 			action.doAjax(api.BLOG_LUNBO_URL,params,success);
 		},
-		/*
-		 * 请求博文标签云数据
-		 */
+		blogOpenRead:function(params,success){
+			action.doAjax(api.BLOG_OPENREAD_URL,params,success);
+		},
 		blogTagCloud:function(params,success) {
 			action.doAjax(api.BLOG_TAGS_URL,params,success);
 		},
 		qingComment:function(params,success) {
-			action.doAjax(api.BLOG_COMMENT_URL,params,success);
+			action.doAjax(api.COMMENT_SHOW_URL,params,success);
 		},
 		commentLike:function(params,success){
 			action.doAjax(api.COMMENT_LIKE_URL,params,success);
+		},
+		reportComment:function(params,success){
+			action.doAjax(api.COMMENT_REPORT_URL,params,success);
 		},
 		uploadImage:function(params,success){
 			layui.use('upload', function(){
@@ -119,132 +97,24 @@ layui.define(['laytpl', 'laypage', 'layer','qingtpl'],function(exports) {
 				});
 			});
 		},
-		reportComment:function(params,success){
-			action.doAjax(api.COMMENT_REPORT_URL,params,success);
+		showBlogCategory : function(params,success){
+			action.doAjax(api.TAGS_DISPLAY_URL,params,success);
 		},
-		
-		
-		/* 待修改函数 */
-		loadBlogTags : function (){
-			action.doAjax(api.TAGS_DISPLAY_URL,{},function(result){
-				// 加载模板
-				var tpl = laytpl(qingtpl.blogTagTpl);
-				// 渲染数据
-				tpl.render(result,function(html){
-					// 显示内容
-					$("#blog-tags").html(html);
-				});
-			});
+		showHotRankBlog:function(params,success){
+			action.doAjax(api.BLOG_HOT_RANK_URL,params,success);
 		},
-		
-		loadHotestBlogs : function (){
-			action.doAjax(api.BLOG_DISPLAY_URL,{},function(result){
-				// 加载模板
-				var tpl = laytpl(qingtpl.hotestBlogsTpl);
-				// 渲染数据
-				tpl.render(result,function(html){
-					// 显示内容
-					$("#hotest-blogs").html(html);
-				});
-			});
+		showRecommedBlog:function(params,success){
+			action.doAjax(api.BLOG_RECOMMEND_URL,params,success);
 		},
-		loadHotRankBlogs:function(){
-			var params = {
-				pageNum:1,
-				pageSize:5
-			};
-			action.doAjax(api.HOT_RANK_URL,params,function(result){
-				// 加载模板
-				var tpl = laytpl(qingtpl.hotRankTpl);
-				// 渲染数据
-				tpl.render(result,function(html){
-					// 显示内容
-					$("#hot-rank-blogs").html(html);
-				});
-			});
+		showBlogTimeline:function(params,success){
+			action.doAjax(api.BLOG_TIMELINE_URL,params,success);
 		},
-		loadRecommedBlogs:function(){
-			var params = {
-				pageNum:1,
-				pageSize:5
-			};
-			action.doAjax(api.BLOG_RECOMMEND_URL,params,function(result){
-				// 加载模板
-				var tpl = laytpl(qingtpl.recommendBlogsTpl);
-				// 渲染数据
-				tpl.render(result,function(html){
-					// 显示内容
-					$("#recommend-blogs").html(html);
-				});
-			});
+		showZuixinBlog:function(params,success){
+			action.doAjax(api.BLOG_DISPLAY_URL,params,success);
 		},
-		loadBlogTimeline:function(){
-			action.doAjax(api.BLOG_TIMELINE_URL,{},function(result){
-				// 加载模板
-				var tpl = laytpl(qingtpl.blogTimelineTpl);
-				// 渲染数据
-				tpl.render(result,function(html){
-					// 显示内容
-					$("#blog-timeline").html(html);
-				});
-			});
+		showBlog:function(params,success){
+			action.doAjax(api.BLOG_DISPLAY_URL,params,success);
 		},
-		loadLastestBlogs : function (){
-			action.doAjax(api.BLOG_DISPLAY_URL,{},function(result){
-				// 加载模板
-				var tpl = laytpl(qingtpl.latestBlogsTpl);
-				// 渲染数据
-				tpl.render(result,function(html){
-					// 显示内容
-					$("#lastest-blogs").html(html);
-				});
-			});
-		},
-		pageCallback : function(pageNum,pageSize){
-			var params = {
-				pageNum:pageNum,
-				pageSize:pageSize
-			};
-			action.doAjax(api.BLOG_DISPLAY_URL,params,function(result){
-				// 加载模板
-				//var tpl = laytpl($("#blog-list-template").html());
-				var tpl = laytpl(qingtpl.blogListTpl);
-				// 渲染数据
-				tpl.render(result.data,function(html){
-					// 显示内容
-					$("#blog-list").html(html);
-				});
-				// 回到顶部
-				var speed=200;//滑动的速度
-                $('body').animate({ scrollTop: 0 }, speed);
-			});
-		},
-		loadBlogs : function(){
-			var params = {
-				pageNum:1,
-				pageSize:pageSize
-			};
-			action.doAjax(api.BLOG_DISPLAY_URL,params,function(result){
-				// 加载模板
-				var tpl = laytpl(qingtpl.blogListTpl);
-				// 渲染数据
-				tpl.render(result.data,function(html){
-					// 显示内容
-					$("#blog-list").html(html);
-				});
-				// 调用分页
-				laypage({
-					cont: 'blog-pager',
-					pages: result.data.totalPage, //得到总页数
-					jump: function(conf,first) {
-						if(first){
-							return;
-						}
-						action.pageCallback(conf.curr,pageSize);
-					}
-				});
-			});
-		},
-	}
+	};
 	exports('api', action);
 });

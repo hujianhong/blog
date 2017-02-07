@@ -97,4 +97,12 @@ public abstract class BaseComment<M extends BaseComment<M>> extends Model<M> imp
 		return get("replyNum");
 	}
 
+	public void setHeadURL(java.lang.String headURL) {
+		set("headURL", headURL);
+	}
+
+	public java.lang.String getHeadURL() {
+		return get("headURL");
+	}
+
 }

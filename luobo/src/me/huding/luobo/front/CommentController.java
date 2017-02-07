@@ -116,6 +116,9 @@ public class CommentController extends BaseController {
 		comment.setHateNum(0);
 		comment.setReplyNum(0);
 		comment.setShareNum(0);
+		int code = comment.getEmail().hashCode();
+		code = Math.abs(code) % IConstants.HEAD_MOD;
+		comment.setHeadURL(code +".gif");
 		comment.setCdate(new Date(System.currentTimeMillis()));
 		
 		if(comment.save()) {

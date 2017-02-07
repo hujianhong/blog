@@ -637,6 +637,9 @@ a:hover {
 	padding-top: 0.2rem;
 	font-size: 10px;
 }
+.qing-blog-tips span {
+	margin: auto 4px;
+}
 .qing-blog-tag {
 	font-size: 8px;
 }

@@ -1,6 +1,8 @@
 package me.huding.luobo.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +21,9 @@ public class Blog extends BaseBlog<Blog> {
 	public static final Blog dao = new Blog();
 	
 	
-	
-	
-	
-	
+	public static Blog openRead(String id){
+		return dao.findByIdLoadColumns(id, "id,commentNum,readNum,heartNum");
+	}
 
 	/**
 	 * 根据签名查找博客
@@ -61,45 +62,19 @@ public class Blog extends BaseBlog<Blog> {
 		if(page.getList().isEmpty()){
 			return page;
 		}
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("select * from blog_rel_tags where blogID in ( ");
 		List<Record> records = page.getList();
-		for(int i = 0,len = records.size();i < len;i ++){
-			Record rec = records.get(i);
-			String blogID = rec.getStr("id");
-			buffer.append("\'").append(blogID).append("\'");
-			if(i != len - 1){
-				buffer.append(",");
-			}
-		}
-		buffer.append(" )");
-		/**
-		 * 查询博文的标签
-		 */
-		List<Record> tags = Db.find(buffer.toString());
-		if(tags.isEmpty()){
-			for(Record record : records){
-				record.set("tags", new ArrayList<String>());
-			}
-			return page;
-		}
-		Map<String, List<String>> map = new HashMap<String, List<String>>();
-		for(Record blogTag : tags){
-			String blogID = blogTag.getStr("blogID");
-			List<String> list = map.get(blogID);
-			if(list == null){
-				list = new ArrayList<String>();
-				map.put(blogID, list);
-			} 
-			list.add(blogTag.getStr("tagName"));
-		}
 		for(Record record : records){
-			String blogID = record.get("id");
-			List<String> ts = map.get(blogID);
-			if(ts == null){
-				ts = new ArrayList<String>();
+			String tags = record.get("tags");
+			if(tags == null){
+				record.set("tags", new ArrayList<String>());
+			} else {
+				String[] arr = tags.split(",");
+				List<String> ts = new ArrayList<String>();
+				for(String tag:arr){
+					ts.add(tag);
+				}
+				record.set("tags", ts);
 			}
-			record.set("tags", ts);
 		}
 		return page;
 	}
@@ -122,7 +97,7 @@ public class Blog extends BaseBlog<Blog> {
 	 * @return
 	 */
 	public static List<Blog> lunbo() {
-		String sql = "SELECT id,title,url,coverURL from blog WHERE type = 1 limit 6";
+		String sql = "SELECT id,title,url,coverURL from blog WHERE type = 1 and status = 0 limit 6";
 		return dao.find(sql);
 	}
 }

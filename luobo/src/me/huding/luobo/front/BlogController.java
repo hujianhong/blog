@@ -70,6 +70,26 @@ public class BlogController extends BaseController {
 	}
 	
 	
+	/**
+	 * 增加阅读数, 同时返回博文现有阅读数
+	 * 
+	 */
+	public void openRead(){
+		String id = getPara("id");
+		if(id == null){
+			return;
+		}
+		Blog blog = Blog.openRead(id);
+		int readNum = 0;
+		if(blog != null){
+			readNum = blog.getReadNum() + 1;
+			blog.setReadNum(readNum);
+			blog.update();
+		}
+		render(ResConsts.Code.SUCCESS, null, blog);
+	}
+	
+	
 	
 
 }

@@ -67,14 +67,14 @@
 	    	<div class="qing-content">
 	    		<!-- blog header start -->
 	    		<div class="qing-blog-header qing-text-center">
-	    				<input type="hidden" id="qing-blog-id" value="a232f9e0af9c40f9aa9e6b8882e2b94f" />
+	    				<input type="hidden" id="qing-blog-id" value="${id}" />
 	    				<h1 class="am-article-title">${title}</h1>
 		          <div class="qing-blog-tips">
 					       	<span><i class="am-icon-user qing-color-author" title="作者"></i> ${author} &nbsp;</span>
 						      <span><i class="am-icon-clock-o qing-color-clock" title="时间"></i> ${publishTime}</span>
-						      <span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(${readNum})</span>
-					        <span><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论({${commentNum})</span>
-					        <span><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(${heartNum})</span>
+					        <span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<em id="blog-readNum">${readNum}</em>)</span>
+					        <span><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<em id="blog-commentNum">${commentNum}</em>)</span>
+					        <span><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<em id="blog-heartNum">${heartNum}</em>)</span>
 				      </div>
 			      	<div class="qing-blog-tag">
 			      		<span class="am-icon-tags"> &nbsp;</span>
@@ -146,7 +146,7 @@
 				<div class="qing-margin-top">
 	    		 <div class="qing-panel">
 	    	  	<div class="qing-panel-title">
-	    	  		<h2>热门排行</h2>
+	    	  		<h2>相似文章</h2>
 	    	  	</div>
 	    	  	<div class="qing-panel-body">
 	    	  		<ol class="qing-list-one" id="hot-rank-blogs"></ol>
@@ -170,10 +170,10 @@
 		        <form class="layui-form" action="post">
 		        	<div class="layui-form-item">
 						    <div class="layui-input-inline">
-						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input" value="test">
+						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
 						    </div>
 						    <div class="layui-input-inline">
-						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input" value="test@qq.com">
+						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
 						    </div>
 						  </div>
 		          <div class="layui-form-item layui-form-text">
@@ -234,6 +234,7 @@
 	      });
 	   });
 	</script>
-	<script type="text/javascript" src="static/js/badutongji.js" ></script>
+	<script src="static/js/badutongji.js" ></script>
+	<script src="static/js/alibaba.js"></script>
 </body>
 </html>

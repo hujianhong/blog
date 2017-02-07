@@ -34,6 +34,7 @@ import me.huding.luobo.Parameters;
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Blog;
 import me.huding.luobo.model.BlogTags;
+import me.huding.luobo.utils.DBUtils;
 import me.huding.luobo.utils.DateStyle;
 import me.huding.luobo.utils.DateUtils;
 import me.huding.luobo.utils.KeyUtils;
@@ -218,7 +219,7 @@ public class BlogController extends AbstarctBackController {
 	 * 将所有的博文重新静态化
 	 */
 	public void reStaticsAll(){
-		List<Blog> blogs = Blog.findAll("id,html,author,title,publishTime,path");
+		List<Blog> blogs = DBUtils.findAll(Blog.dao);
 		for(Blog blog : blogs){
 			statics(blog);
 		}
