@@ -38,7 +38,7 @@ layui.define(['api','layer','laytpl','laypage','form','common'], function(export
 			<article class="qing-entry-article">\
 		    <div class="am-u-lg-12 am-u-md-12 am-u-sm-12 qing-entry-text">\
 		    	 <div class="qing-list-title">\
-		    	 		<span class="qing-category">{{item.categoryName}}<i></i></span><a href="{{item.url}}"> {{item.title}}</a>\
+		    	 		<span class="qing-category">{{item.typeName}}<i></i></span><a href="{{item.url}}"> {{item.title}}</a>\
 		    	 </div>\
 		       <div class="qing-list-hint">\
 			       	<span><i class="am-icon-user qing-color-author" title="作者"></i> {{item.author}} &nbsp;</span>\
