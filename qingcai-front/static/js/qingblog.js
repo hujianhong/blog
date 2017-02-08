@@ -29,8 +29,7 @@ layui.define(['common','laytpl','api','layer','qingeditor','qingcmt','form'],fun
 		hotRankTpl:
 		'{{#  layui.each(d.data, function(index, item){ }}\
 			<li>\
-				<!--<a href="{{item.url}}">{{item.title}}</a>-->\
-				<a href="article.html">{{item.title}}</a>\
+				<a href="{{item.url}}">{{item.title}}</a>\
 				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
 				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.commentNum}}</span>\
 				<span><i class="am-icon-heart-o" title="评论数"> </i> {{item.heartNum}}</span>\
