@@ -47,6 +47,8 @@ layui.define(['common','laytpl','api','layer','qingeditor','qingcmt','form'],fun
     			$("#blog-readNum").html(res.data.readNum);
     			$("#blog-commentNum").html(res.data.commentNum);
     			$("#blog-heartNum").html(res.data.heartNum);
+    			$("#blog-content-like").html(res.data.heartNum);
+    			$("#blog-content-share").html(res.data.shareNum);
     		});
     	},
     	showHotRankBlog:function(){
@@ -67,9 +69,24 @@ layui.define(['common','laytpl','api','layer','qingeditor','qingcmt','form'],fun
     action.openRead();
     action.showHotRankBlog();
 	
+	
 	$(".qing-btn-donate").on("click",function(event){
 		window.open("donate.html","_blank");
 	});
+	$(".qing-blog-share").on("click",function(event){
+		layer.msg("sorry,该功能暂时尚未实现")
+	});
+	$(".qing-blog-like").on("click",function(event){
+		var para = {
+			id:$("#qing-blog-id").val()
+		}
+		api.blogLike(para,function(res){
+			$("#blog-content-like").html(res.data);
+			layer.msg("喜欢成功");
+		});
+	});
+	
+	
 	
 	//加载特定模块
 	if(layui.cache.page && layui.cache.page !== 'index') {

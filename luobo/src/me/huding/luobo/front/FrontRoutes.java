@@ -30,12 +30,10 @@ public class FrontRoutes extends Routes {
 	@Override
 	public void config() {
 		add("/",MainController.class);
-		
 		add("/blog",BlogController.class);
-		
 		add("/comment",CommentController.class);
-		
 		add("/upload",UploadController.class);
+		add("/youlian",YoulianController.class);
 	}
 
 }

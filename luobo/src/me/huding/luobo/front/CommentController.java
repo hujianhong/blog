@@ -21,6 +21,7 @@ import me.huding.luobo.BaseController;
 import me.huding.luobo.IConstants;
 import me.huding.luobo.Parameters;
 import me.huding.luobo.ResConsts;
+import me.huding.luobo.model.Blog;
 import me.huding.luobo.model.Comment;
 import me.huding.luobo.utils.KeyUtils;
 
@@ -34,7 +35,6 @@ import com.jfinal.plugin.activerecord.Page;
  * @date 2016年11月2日
  */
 public class CommentController extends BaseController {
-
 
 	/**
 	 * 显示评论
@@ -122,6 +122,9 @@ public class CommentController extends BaseController {
 		comment.setCdate(new Date(System.currentTimeMillis()));
 		
 		if(comment.save()) {
+			Blog blog = Blog.findById(blogID,"id,commentNum");
+			blog.setCommentNum(blog.getCommentNum() + 1);
+			blog.update();
 			render(ResConsts.Code.SUCCESS,"发表成功");
 		} else {
 			render(ResConsts.Code.FAILURE,"发表失败");

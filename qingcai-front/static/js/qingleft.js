@@ -19,7 +19,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 			  		<h2>文章分类</h2>\
 			  	</div>\
 			  	<div class="qing-panel-body">\
-			  		<div id="blog-tags"></div>\
+			  		<div id="blog-category"></div>\
 			  	</div>\
 			  </div>\
 			</div>',
@@ -93,10 +93,8 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 		            <p class="am-text-left">QQ交流群：545418785</p>\
 		            <p class="am-text-left">\
 	            	       社交账号：\
-		                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>\
-		                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>\
-		                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>\
-		                <a href=""><span class="am-icon-twitter am-icon-fw blog-icon blog-icon"></span></a>\
+		                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw am-icon-sm"></span></a>\
+		                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw am-icon-sm"></span></a>\
 	           		</p>\
 	    	  	</div>\
 	    	  </div>\
@@ -110,15 +108,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 		    	  	<div class="qing-panel-title">\
 		    	  		<h2>友情链接</h2>\
 		    	  	</div>\
-		    	  	<div class="qing-panel-body">\
-		    	  		<p>\
-						  <ul>\
-		                    <li><a href="https://www.oschina.net" target="_blank">开源中国社区</a></li>\
-		                    <li><a href="http://amazeui.org" target="_blank">Amaze ~ 妹子 UI</a></li>\
-		                    <li><a href="https://github.com/hujianhong" target="_blank">我的GitHub</a></li>\
-		                    <li><a href="https://www.qiniu.com" target="_blank">七牛云存储</a></li>\
-		                  </ul>\
-						</p>\
+		    	  	<div class="qing-panel-body" id="qing-youlian">\
 		    	  	</div>\
 		    	</div>\
 		    </div>',
@@ -128,10 +118,10 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 	
 	var leftCTpl = {
 		// 博客分类标签模板
-		blogTagTpl: 
+		blogCategoryTpl: 
 		'{{#  layui.each(d.data, function(index, item){ }}\
-			<span class="qing-tag qing-tag{{ index % 4}} am-radius" >\
-				{{item.tagName}}({{item.blogNum}})\
+			<span id="{{item.id}}" class="qing-left-category qing-left-category{{ index % 4}} am-radius" >\
+				{{item.name}}({{item.blogNum}})\
 			</span>\
 		{{# });}}'
 		,
@@ -179,6 +169,15 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 			<a class="qing-tcloud-color{{index % 5}}"\
 			href="javascript:;" data="{{item.id}}"title="{{item.name}}">{{item.name}}</a>\
 		{{# });}}'
+		,
+		youlianTpl:
+		'<p>\
+		  <ul>\
+		  {{# layui.each(d.data,function(index,item){ }}\
+            <li><a href="{{item.url}}" target="_blank">{{item.name}}</a></li>\
+          </ul>\
+          {{# });}}\
+		</p>'
 	}
 	
 	leftPTpls.sort(function(a,b){
@@ -198,11 +197,16 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 		showBlogCategory:function(){
 			api.showBlogCategory({},function(result){
 				// 加载模板
-				var tpl = laytpl(leftCTpl.blogTagTpl);
+				var tpl = laytpl(leftCTpl.blogCategoryTpl);
 				// 渲染数据
 				tpl.render(result,function(html){
 					// 显示内容
-					$("#blog-tags").html(html);
+					$("#blog-category").html(html);
+					// 添加事件
+					$(".qing-left-category").on("click",function(event){
+						var id=$(event.target).attr("id");
+						location.href="category.html?id="+id;
+					});
 				});
 			});
 		},
@@ -244,7 +248,15 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 			});
 		},
 		showYoulian:function(){
-			
+			api.showYoulian({},function(result){
+				// 加载模板
+				var tpl = laytpl(leftCTpl.youlianTpl);
+				// 渲染数据
+				tpl.render(result,function(html){
+					// 显示内容
+					$("#qing-youlian").html(html);
+				});
+			});
 		}
 	};
 	
@@ -258,7 +270,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 		 */
 		edge:function(options){
 			// 加载广告
-			leftPTpls.push(qingad.leftAD());
+			//leftPTpls.push(qingad.leftAD());
 			// 渲染数据
 			laytpl(leftMTpl.tpl).render(leftPTpls,function(html){
 				// 显示内容
@@ -268,6 +280,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 				action.showZuixinBlog();
 //				action.showBlogTimeline();
 				action.showRecommedBlog();
+				action.showYoulian();
 			});
 			// 标签云数据
 			api.blogTagCloud({},function(result){

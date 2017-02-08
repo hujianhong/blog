@@ -63,7 +63,7 @@ layui.define(['api', 'laytpl','laypage','layer','qingface', 'form'], function(ex
 				</div>\
 			{{# }); }}\
 		{{# } else { }}\
-			<div class="qing-comment-no"><div class="qing-comment-tip">暂无评论,<span class="qing-comment-shafa">快抢沙发</span></div></div>\
+			<div class="qing-comment-no qing-margin-bottom"><div class="qing-comment-tip">暂无评论,<span class="qing-comment-shafa">快抢沙发</span></div></div>\
 		{{# } }}'
 	};
 	

@@ -16,6 +16,12 @@ import me.huding.luobo.model.base.BaseCategory;
 public class Category extends BaseCategory<Category> {
 	public static final Category dao = new Category();
 	
+	
+	public static List<Category> show(){
+		String sql = "select id,name,blogNum from category order by blogNum desc";
+		return dao.find(sql);
+	}
+	
 	public static List<Category> findAll(){
 		String tableName = TableMapping.me().getTable(Category.class).getName();
 		String sql = "select * from " + tableName;

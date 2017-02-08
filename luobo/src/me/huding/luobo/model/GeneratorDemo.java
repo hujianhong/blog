@@ -128,8 +128,8 @@ public class GeneratorDemo {
 	}
 
 	public static void main(String[] args) throws IOException {
-		handle();
-//		gen();
+//		handle();
+		gen();
 	}
 }
 

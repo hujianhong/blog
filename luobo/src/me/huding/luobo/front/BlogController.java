@@ -15,14 +15,23 @@
  */
 package me.huding.luobo.front;
 
+import java.util.Date;
 import java.util.List;
 
 import me.huding.luobo.BaseController;
+import me.huding.luobo.IConstants;
+import me.huding.luobo.Parameters;
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Blog;
+import me.huding.luobo.model.Category;
 import me.huding.luobo.model.Tags;
 import me.huding.luobo.model.Timeline;
 import me.huding.luobo.utils.DBUtils;
+import me.huding.luobo.utils.DateStyle;
+import me.huding.luobo.utils.DateUtils;
+
+import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 
 /**
  *
@@ -34,6 +43,68 @@ import me.huding.luobo.utils.DBUtils;
 public class BlogController extends BaseController {
 	
 	
+	public void index(){
+		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
+		if(pageNum == null){
+			pageNum = 1;
+		}
+		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
+		if(pageSize == null){
+			pageSize = Parameters.DEFAULT_PAGE_SIZE;
+		}
+		
+		// 查询数据
+		Page<Record> data = Blog.paginate(pageNum, pageSize);
+		if(data.getList().size() > 0){
+			for(Record record : data.getList()){
+				Date date = record.getDate("publishTime");
+				if(date != null){
+					String d = DateUtils.DateToString(date, DateStyle.YYYY_MM_DD);
+					record.set("publishTime", d);
+				}
+			}
+		}
+		// 渲染结果
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
+	
+	
+	public void showByCategory(){
+		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
+		if(pageNum == null){
+			pageNum = 1;
+		}
+		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
+		if(pageSize == null){
+			pageSize = Parameters.DEFAULT_PAGE_SIZE;
+		}
+		String categoryID = getPara("id");
+		// 查询数据
+		Page<Record> data = null;
+		if(categoryID == null || categoryID.trim().length() == 0){
+			data = Blog.paginate(pageNum, pageSize);
+		} else {
+			data = Blog.paginateByCategory(pageNum, pageSize,categoryID);
+		}
+		if(data.getList().size() > 0){
+			for(Record record : data.getList()){
+				Date date = record.getDate("publishTime");
+				if(date != null){
+					String d = DateUtils.DateToString(date, DateStyle.YYYY_MM_DD);
+					record.set("publishTime", d);
+				}
+			}
+		}
+		// 渲染结果
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
+	/**
+	 * 显示标签
+	 */
+	public void category(){
+		List<Category> data = Category.show();
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
 	
 	public void lunbo() {
 		List<Blog> data = Blog.lunbo();
@@ -87,6 +158,22 @@ public class BlogController extends BaseController {
 			blog.update();
 		}
 		render(ResConsts.Code.SUCCESS, null, blog);
+	}
+	
+	
+	public void like(){
+		String id = getPara("id");
+		if(id == null){
+			return;
+		}
+		Blog blog = Blog.findById(id, "id,heartNum");
+		int heartNum = 0;
+		if(blog != null){
+			heartNum = blog.getHeartNum() + 1;
+			blog.setHeartNum(heartNum);
+			blog.update();
+		}
+		render(ResConsts.Code.SUCCESS, null, heartNum);
 	}
 	
 	

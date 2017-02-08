@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.beetl.core.Configuration;
@@ -28,6 +30,7 @@ import org.beetl.core.resource.FileResourceLoader;
 
 import com.jfinal.kit.PathKit;
 
+import me.huding.luobo.Parameters;
 import me.huding.luobo.model.Blog;
 import me.huding.luobo.utils.DateStyle;
 import me.huding.luobo.utils.DateUtils;
@@ -68,6 +71,48 @@ public class StaticsUtils {
 	}
 	
 	/**
+	 * 生成静态化的HTML的文件路径
+	 * @return
+	 */
+	public static String genHtmlFilePath(String value){
+		return Parameters.STATICS_FINAL_PATH + File.separator + value;
+	}
+	
+	private static String genPath(String url){
+		return Parameters.STATICS_FINAL_PATH + url;
+	}
+
+	/**
+	 * 生成静态化的HTML的相对URL
+	 * @param value
+	 * @return
+	 */
+	public static String genHtmlURL(String value){
+		return Parameters.ARTICLES_PATH + "/" + value;
+	}
+	
+	
+	private static Blog findNextBlog(Blog bean){
+		String sql = "select title,url from blog where publishTime > ? limit 1";
+		Blog nextBlog = Blog.dao.findFirst(sql,bean.getPublishTime());
+		if(nextBlog == null){
+			sql = "select title,url from blog order by publishTime limit 1";
+			nextBlog = Blog.dao.findFirst(sql);
+		}
+		return nextBlog;
+	}
+	
+    private static Blog findPreBlog(Blog bean){
+    	String sql = "select title,url from blog where publishTime < ? limit 1";
+    	Blog preBlog = Blog.dao.findFirst(sql,bean.getPublishTime());
+		if(preBlog == null){
+			sql = "select title,url from blog order by publishTime desc limit 1";
+			preBlog = Blog.dao.findFirst(sql);
+		}
+		return preBlog;
+    }
+	
+	/**
 	 * 
 	 * @param filePath
 	 * @param bean
@@ -84,11 +129,27 @@ public class StaticsUtils {
 			} else {
 				t.binding(entry.getKey(),entry.getValue());
 			}
-			
 		}
+		// 查找
+		Blog nextBlog = findNextBlog(bean);
+		t.binding("nextURL",nextBlog.getUrl());
+		t.binding("nextTitle",nextBlog.getTitle());
+		Blog preBlog = findPreBlog(bean);
+		t.binding("preURL",preBlog.getUrl());
+		t.binding("preTitle",preBlog.getTitle());
+		
+		List<String> blogTags = new ArrayList<String>();
+		if(bean.getTags() != null){
+			String[] arr = bean.getTags().split(",");
+			for(String tag:arr){
+				blogTags.add(tag);
+			}
+		}
+		t.binding("blogTags",blogTags);
+		
 		OutputStream stream = null;
 		try {
-			stream = new FileOutputStream(new File(bean.getPath()));
+			stream = new FileOutputStream(new File(genPath(bean.getUrl())));
 			t.renderTo(stream);
 			stream.close();
 		} finally {

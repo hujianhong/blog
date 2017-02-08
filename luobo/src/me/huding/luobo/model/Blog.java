@@ -21,8 +21,13 @@ public class Blog extends BaseBlog<Blog> {
 	public static final Blog dao = new Blog();
 	
 	
+	public static Blog findById(String id,String columns){
+		return dao.findByIdLoadColumns(id, columns);
+	}
+	
+	
 	public static Blog openRead(String id){
-		return dao.findByIdLoadColumns(id, "id,commentNum,readNum,heartNum");
+		return dao.findByIdLoadColumns(id, "id,commentNum,readNum,heartNum,shareNum");
 	}
 
 	/**
@@ -59,6 +64,37 @@ public class Blog extends BaseBlog<Blog> {
 		String sqlExceptSelect = "from blog_display order by publishTime desc";
 		String select = "select * ";
 		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect);
+		if(page.getList().isEmpty()){
+			return page;
+		}
+		List<Record> records = page.getList();
+		for(Record record : records){
+			String tags = record.get("tags");
+			if(tags == null){
+				record.set("tags", new ArrayList<String>());
+			} else {
+				String[] arr = tags.split(",");
+				List<String> ts = new ArrayList<String>();
+				for(String tag:arr){
+					ts.add(tag);
+				}
+				record.set("tags", ts);
+			}
+		}
+		return page;
+	}
+	
+	/**
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public static Page<Record> paginateByCategory(int pageNum,int pageSize,String categoryID){
+		// 默认根据时间排序
+		String sqlExceptSelect = "from blog_display where categoryID = ? order by publishTime desc";
+		String select = "select * ";
+		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect,categoryID);
 		if(page.getList().isEmpty()){
 			return page;
 		}

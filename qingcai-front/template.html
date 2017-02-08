@@ -70,16 +70,12 @@
 	    				<input type="hidden" id="qing-blog-id" value="${id}" />
 	    				<h1 class="am-article-title">${title}</h1>
 		          <div class="qing-blog-tips">
-					       	<span><i class="am-icon-user qing-color-author" title="作者"></i> ${author} &nbsp;</span>
-						      <span><i class="am-icon-clock-o qing-color-clock" title="时间"></i> ${publishTime}</span>
-					        <span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<em id="blog-readNum">${readNum}</em>)</span>
-					        <span><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<em id="blog-commentNum">${commentNum}</em>)</span>
-					        <span><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<em id="blog-heartNum">${heartNum}</em>)</span>
+					       	<span class="qing-blog-tip-c"><i class="am-icon-user qing-color-author" title="作者"></i> ${author} &nbsp;</span>
+						      <span class="qing-blog-tip-c"><i class="am-icon-clock-o qing-color-clock" title="时间"></i> ${publishTime}</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<span id="blog-readNum">${readNum}</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<span id="blog-commentNum">${commentNum}</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<span id="blog-heartNum">${heartNum}</span>)</span>
 				      </div>
-			      	<div class="qing-blog-tag">
-			      		<span class="am-icon-tags"> &nbsp;</span>
-			      		<a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
-			      	</div>
 	    		</div>
 	    		<!-- blog header end -->
 	    		<!-- blog summary start -->
@@ -88,7 +84,7 @@
 	    		</div>
 	    		<!-- blog summary end -->
 	    		<!-- blog content start -->
-	    		<div class="qing-margin-top" id="article-editormd-view">
+	    		<div class="qing-margin-top qing-blog-content" id="article-editormd-view">
 	    				 ${html}
 	    		</div>
 	    		<!-- blog content end -->
@@ -99,11 +95,11 @@
 	    		
 	    		<div class="qing-blog-social">
 	    				<span class="qing-blog-action qing-blog-like"> 
-	    					<i class="am-icon-heart"></i> 喜欢 (<span class="count">${heartNum}</span>)
+	    					<i class="am-icon-heart"></i> 喜欢 (<span id="blog-content-like" class="count">${heartNum}</span>)
 	    				</span>
 							<span class="or">or</span>
 							<span class="qing-blog-action qing-blog-share">
-								<i class="am-icon-share-alt"></i> 分享 (<span class="bds_count" data-cmd="count" title="累计分享0次">0</span>)
+								<i class="am-icon-share-alt"></i> 分享 (<span id="blog-content-share" class="bds_count" data-cmd="count" title="累计分享0次">0</span>)
 								<!-- <div class="action-popover">
 									<div class="popover top in">
 										<div class="arrow"></div>
@@ -129,7 +125,12 @@
 	    		<!-- blog tag  start -->
     			<div class="qing-margin-top qing-blog-tag">
 	            <span class="am-icon-tags"> &nbsp;</span>
-	            <a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
+	            <a href="#">标签</a>
+	            <%
+								for(blogTag in blogTags){
+								     , <a href="#">blogTag</a>
+								}
+							%>
 	        </div>
 	    		<!-- blog tag  end -->
 	    	</div>
@@ -137,8 +138,8 @@
 	    	
 	    	<!-- blog footer start-->
     		<div class="qing-blog-foot">
-    				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="">新汽车产业还有三道坎要迈刘旷</a></span>
-    				<span class="right"><a href="">神州专车百亿融资流产可能性增大GPLP</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
+    				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="${preURL}">${preTitle}</a></span>
+    				<span class="right"><a href="${nextURL}">${nextTitle}</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
     		</div>
 	    	<!-- blog footer end-->
 	    	

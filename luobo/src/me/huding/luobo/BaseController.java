@@ -25,6 +25,7 @@ import com.jfinal.core.Controller;
  * @date 2016年10月29日
  */
 public class BaseController extends Controller {
+	
 	/**
 	 * 设置响应码
 	 * @param code

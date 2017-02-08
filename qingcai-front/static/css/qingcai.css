@@ -193,6 +193,16 @@ a:hover {
 	color: #ED0156;
 }
 
+.qing-content-empty{
+	height: 10rem;
+	background: #FFF;
+}
+
+.qing-empty-tip {
+	padding-top: 4rem;
+    color: #01AAED;
+}
+
 
 /* TODO iconfont定义开始  */
 /**
@@ -384,8 +394,9 @@ a:hover {
 
 /* 主页CSS开始 TODO */
 .qing-notice {
-	padding: 0.25rem 2rem;
+	padding: 0.25rem 0.625rem;
 	background: #FFF;
+	margin-bottom: 0.5rem;
 }
 .qing-notice i {
 	color: #FF5722;
@@ -411,6 +422,9 @@ a:hover {
     transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     background-color: transparent;
+}
+.qing-lunbo-a {
+	color: #FFF;
 }
 .qing-slider-img {
 	height: 400px;
@@ -522,7 +536,7 @@ a:hover {
 
 
 /* 左侧侧边栏开始 TODO */
-.qing-tag {
+.qing-left-category {
 	display: inline-block;
     min-width: 10px;
     margin: 0.25em 0;
@@ -533,17 +547,18 @@ a:hover {
     vertical-align: baseline;
     white-space: nowrap;
     background-color: #999;
+    cursor: pointer;
 }
-.qing-tag0 {
+.qing-left-category0 {
 	background-color:#FF5722;
 }
-.qing-tag1 {
+.qing-left-category1 {
 	background-color:#5FB878;
 }
-.qing-tag2 {
+.qing-left-category2 {
 	background-color:#F7B824;
 }
-.qing-tag3 {
+.qing-left-category3 {
 	background-color:#01AAED;
 }
 
@@ -624,8 +639,8 @@ a:hover {
 /* 详情CSS开始 TODO */
 .qing-blog-nav {
 	background: #FFFFFF;
-    padding: 1rem 1rem;
-    margin-bottom: 0.5rem;
+    padding: 0.25rem 1rem;
+    margin-bottom: 0.1rem;
 }
 .qing-blog-nav a {
 	color: #1abc9c;
@@ -637,14 +652,28 @@ a:hover {
 	padding-top: 0.2rem;
 	font-size: 10px;
 }
-.qing-blog-tips span {
+.qing-blog-tip-c {
 	margin: auto 4px;
 }
 .qing-blog-tag {
 	font-size: 8px;
 }
+.qing-blog-tag span {
+	display: inline-block;
+    min-width: 10px;
+    padding: .25em 0.25em;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    background-color: #EEE;
+    margin: auto 0.25rem;
+}
 .qing-blog-summary {
 	color: #777;
+}
+
+.qing-blog-content {
+	padding: 20px 0 !important;
 }
 .qing-blog-img {
 	width: 90%;
@@ -764,6 +793,7 @@ a:hover {
 	background: #F8F8F8;
 	margin: 1rem -2rem;
 	padding: 1rem 0rem;
+	border-left: 3px solid #FF5722;
 }
 .qing-donate-account {
 	width: 310px;
@@ -890,8 +920,8 @@ a:hover {
 .qing-comment-post {
 	/*height: 40px;*/
     border-bottom: 1px solid #E2E2E2;
-    border-top: 1px solid #E2E2E2;
-    padding: 1rem 0;
+    /*border-top: 1px solid #E2E2E2;*/
+    padding: 0.5rem 0;
 }
 .qing-comment-ok {
 	color: red !important;

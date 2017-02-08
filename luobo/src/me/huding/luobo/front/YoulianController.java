@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-2016, Silly Boy 胡建洪(1043244432@qq.com).
+ * Copyright (c) 2015-2017, Silly Boy 胡建洪(1043244432@qq.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,24 @@
  */
 package me.huding.luobo.front;
 
-import me.huding.luobo.BaseController;
+import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import me.huding.luobo.BaseController;
+import me.huding.luobo.ResConsts;
+import me.huding.luobo.model.Youlian;
+import me.huding.luobo.utils.DBUtils;
 
 /**
  *
  *
  * @author JianhongHu
  * @version 1.0
- * @date 2016年10月28日
+ * @date 2017年2月8日
  */
-public class MainController extends BaseController {
-	/**
-	 * 日志记录器
-	 */
-	public static final Logger LOG = LoggerFactory.getLogger(MainController.class);
+public class YoulianController extends BaseController {
 
-	/**
-	 * 
-	 */
-	public void index(){
-		
+	public void index() {
+		List<Youlian> data = DBUtils.findAll(Youlian.dao);
+		render(ResConsts.Code.SUCCESS, null, data);
 	}
-	
 }

@@ -14,23 +14,26 @@ layui.define(['layer'],function(exports) {
 	var pageSize = 10;
 	
 	var api = {
+		
+		
+		YOULIAN_URL:BASE_PREFIX + "/youlian",
+		
 		/**
-		 * 博文标签请求地址
+		 * 博文相关地址
 		 */
-		TAGS_DISPLAY_URL : BASE_PREFIX + "/showTags",
-		/**
-		 * 博文请求地址
-		 */
-		BLOG_DISPLAY_URL : BASE_PREFIX + "/showBlogs",
+		BLOG_DISPLAY_URL : BASE_PREFIX + "/blog",
+		BLOG_CATEGORY_URL : BASE_PREFIX + "/blog/category",
 		BLOG_TIMELINE_URL: BASE_PREFIX + "/blog/timeline",
 		BLOG_HOT_RANK_URL: BASE_PREFIX + "/blog/hotRank",
 		BLOG_RECOMMEND_URL: BASE_PREFIX + "/blog/recommend",
+		BLOG_LIKE_URL:BASE_PREFIX + "/blog/like",
 		BLOG_LUNBO_URL: BASE_PREFIX + "/blog/lunbo",
 		BLOG_TAGS_URL: BASE_PREFIX + "/blog/blogTags",
 		BLOG_OPENREAD_URL: BASE_PREFIX + "/blog/openRead",
+		BLOG_SHOW_BY_CATEGORY_URL:BASE_PREFIX + "/blog/showByCategory",
 		
 		/**
-		 * 博文评论地址
+		 * 评论相关地址
 		 */
 		COMMENT_SHOW_URL: BASE_PREFIX + "/comment/show",
 		COMMENT_LIKE_URL: BASE_PREFIX + "/comment/like",
@@ -98,7 +101,7 @@ layui.define(['layer'],function(exports) {
 			});
 		},
 		showBlogCategory : function(params,success){
-			action.doAjax(api.TAGS_DISPLAY_URL,params,success);
+			action.doAjax(api.BLOG_CATEGORY_URL,params,success);
 		},
 		showHotRankBlog:function(params,success){
 			action.doAjax(api.BLOG_HOT_RANK_URL,params,success);
@@ -114,6 +117,15 @@ layui.define(['layer'],function(exports) {
 		},
 		showBlog:function(params,success){
 			action.doAjax(api.BLOG_DISPLAY_URL,params,success);
+		},
+		showBlogByCategory:function(params,success){
+			action.doAjax(api.BLOG_SHOW_BY_CATEGORY_URL,params,success);
+		},
+		showYoulian:function(params,success){
+			action.doAjax(api.YOULIAN_URL,params,success);
+		},
+		blogLike:function(params,success){
+			action.doAjax(api.BLOG_LIKE_URL,params,success);
 		},
 	};
 	exports('api', action);

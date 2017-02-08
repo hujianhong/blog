@@ -63,36 +63,28 @@ layui.define(['api','layer','laytpl','laypage','form','common'], function(export
 		       </div> \
 		    </div>\
 			</article>\
-		{{# });}}'
-		,
-		lunboTpl: 
-		'{{# layui.each(d,function(index,item){ }}\
-			<li>\
-				<a href="{{item.url}}">\
-		    		<img src="{{item.coverURL}}" class="qing-slider-img"/>\
-		    	</a>\
-			    <div class="am-slider-desc qing-slider-desc">\
-			      <span><a class="qing-lunbo-a" href="{{item.url}}">{{item.title}}</a></span>\
-			    </div>\
-		    </li>\
-	    {{# });}}'
-	    ,
-	    // 热门排行模板
-		hotRankTpl:
-		'{{#  layui.each(d.data, function(index, item){ }}\
-			<li>\
-				<!--<a href="{{item.url}}">{{item.title}}</a>-->\
-				<a href="article.html">{{item.title}}</a>\
-				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
-				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.commentNum}}</span>\
-				<span><i class="am-icon-heart-o" title="评论数"> </i> {{item.heartNum}}</span>\
-			</li>\
-		{{# });}}'
+		{{# });}}\
+		{{#  if(d.list.length === 0){ }}\
+		  <div class="qing-content-empty qing-text-center">\
+		  	<div class="qing-empty-tip">该分类下暂无文章</div>\
+		  </div>\
+		{{#  } }}' 
 	}
     
     var pageSize = 10;
 	    
 	var action = {
+		getUrlParam :function(name){
+			//构造一个含有目标参数的正则表达式对象
+			var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			//匹配目标参数
+			var r = window.location.search.substr(1).match(reg);  
+			if(r!=null){
+				return unescape(r[2]);
+			}
+			return null; //返回参数值
+		},
+
 		callback : function(params){
 			api.showBlog(params,function(result){
 				// 渲染数据
@@ -105,12 +97,14 @@ layui.define(['api','layer','laytpl','laypage','form','common'], function(export
                 $('body').animate({ scrollTop: 0 }, speed);
 			});
 		},
-		showBlog:function(){
+		showBlogByCategory:function(){
+			var blogID = action.getUrlParam("id");
 			var params = {
 				pageNum:1,
-				pageSize:pageSize
+				pageSize:pageSize,
+				id:blogID
 			};
-			api.showBlog(params,function(result){
+			api.showBlogByCategory(params,function(result){
 				// 渲染数据
 				laytpl(tpl.blogListTpl).render(result.data,function(html){
 					// 显示内容
@@ -126,63 +120,16 @@ layui.define(['api','layer','laytpl','laypage','form','common'], function(export
 						}
 						action.callback({
 							pageNum:conf.curr,
-							pageSize:pageSize
+							pageSize:pageSize,
+							id:blogID
 						});
 					}
 				});
 			});
 		},
-		showLunbo:function(){
-			// 加载轮播
-			api.blogLunbo({},function(result){
-				laytpl(tpl.lunboTpl).render(result.data,function(html){
-					// 渲染数据
-					$("#qing-lunbo").html(html);
-					// 轮播组件设置
-					action.event();
-				});
-			});
-		},
-		event:function(){
-			// 轮播组件设置	
-			$('.am-slider').flexslider({
-			  playAfterPaused: 8000,
-			  before: function(slider) {
-			    if (slider._pausedTimer) {
-			      window.clearTimeout(slider._pausedTimer);
-			      slider._pausedTimer = null;
-			    }
-			  },
-			  after: function(slider) {
-			    var pauseTime = slider.vars.playAfterPaused;
-			    if (pauseTime && !isNaN(pauseTime) && !slider.playing) {
-			      if (!slider.manualPause && !slider.manualPlay && !slider.stopped) {
-			        slider._pausedTimer = window.setTimeout(function() {
-			          slider.play();
-			        }, pauseTime);
-			      }
-			    }
-			  }
-			});
-		},
-		showHotRankBlog:function(){
-    		var p = {
-				pageNum:1,
-				pageSize:5
-			};
-			api.showHotRankBlog(p,function(result){
-				// 渲染数据
-				laytpl(tpl.hotRankTpl).render(result,function(html){
-					// 显示内容
-					$("#hot-rank-blogs").html(html);
-				});
-			});
-    	}
 	}
-	action.showLunbo();
-	action.showBlog();
-	action.showHotRankBlog();
-	exports('index', {});
+	action.showBlogByCategory();
+	exports('category', {});
 });
 
 

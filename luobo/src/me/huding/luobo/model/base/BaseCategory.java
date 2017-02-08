@@ -49,4 +49,12 @@ public abstract class BaseCategory<M extends BaseCategory<M>> extends Model<M> i
 		return get("keywords");
 	}
 
+	public void setBlogNum(java.lang.Integer blogNum) {
+		set("blogNum", blogNum);
+	}
+
+	public java.lang.Integer getBlogNum() {
+		return get("blogNum");
+	}
+
 }

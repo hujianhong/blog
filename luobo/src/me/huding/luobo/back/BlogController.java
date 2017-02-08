@@ -107,8 +107,8 @@ public class BlogController extends AbstarctBackController {
 		blog.setLastUpdateTime(curDate);
 
 		String fileName = genHtmlFileName(curDate);
-		blog.setPath(genHtmlFilePath(fileName));
-		blog.setUrl(genHtmlURL(fileName));
+		blog.setPath(StaticsUtils.genHtmlFilePath(fileName));
+		blog.setUrl(StaticsUtils.genHtmlURL(fileName));
 		blog.setReadNum(0);
 		blog.setCommentNum(0);
 		blog.setHeartNum(0);
@@ -162,28 +162,9 @@ public class BlogController extends AbstarctBackController {
 		if(date == null){
 			date = DateUtils.getCurrentDate();
 		}
-		String prefix = "b" + DateUtils.DateToString(date, DateStyle.YYYYMMDDHHMMSS);
+		String prefix = "B" + DateUtils.DateToString(date, DateStyle.YYYYMMDDHHMMSS);
 		return prefix + ".html";
 	}
-
-	/**
-	 * 生成静态化的HTML的文件路径
-	 * @return
-	 */
-	private String genHtmlFilePath(String value){
-		return Parameters.STATICS_FINAL_PATH + File.separator + value;
-	}
-
-	/**
-	 * 生成静态化的HTML的相对URL
-	 * @param value
-	 * @return
-	 */
-	private String genHtmlURL(String value){
-		return Parameters.ARTICLES_PATH + "/" + value;
-	}
-
-
 
 	/**
 	 * 
