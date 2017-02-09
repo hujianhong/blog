@@ -16,10 +16,11 @@
 package me.huding.luobo.utils;
 
 import java.io.File;
-import java.io.IOException;
 
+import com.jfinal.kit.PathKit;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
+import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 
@@ -36,53 +37,66 @@ import com.qiniu.util.Auth;
 public class QiniuUtils {
 
 	//设置好账号的ACCESS_KEY和SECRET_KEY
-	private static final String ACCESS_KEY = "32Z6ZkLnHwjnY6zixMguhvDorGvgi8fLbZLjsrZ8";
-	private static final String SECRET_KEY = "HLQmPDKLQ0u4tmyvyPcxUcbSuT_CxyH5rCgHXvDf";
+	private static final String ACCESS_KEY = "32Z6ZkLnHwjnY6z";
+	private static final String SECRET_KEY = "HLQmPDKLQ0u4tmy";
 	//要上传的空间
 	private static final String bucketname = "qingcai";
 
 	//密钥配置
 	private static final Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
 	//创建上传对象
-	static UploadManager uploadManager = new UploadManager();
-
-	public static void main(String args[]) throws IOException {
-		System.out.println(31536000 / 60 / 60/24);
-		upload();
+	private static UploadManager uploadManager = new UploadManager();
+	
+	public static UploadManager getUploadManager(){
+		return uploadManager;
 	}
 
 	//简单上传，使用默认策略，只需要设置上传的空间名就可以了
 	public static String getUpToken() {
+		return getUpToken(bucketname);
+	}
+	
+	public static String getUpToken(String bucketname) {
 		return auth.uploadToken(bucketname);
 	}
 
+	private static String sub(String path,String prefix){
+		String dd = path.substring(path.indexOf(prefix));
+		if(dd.contains("\\")){
+			dd = dd.replaceAll("\\\\", "/");
+		}
+		return dd;
+	}
 
-	public static void listFiles(File file){
-		if(file.isDirectory()){
-			File[] file2 = file.listFiles();
-			for(File file3 : file2){
-				if(file3.isDirectory()){
-					listFiles(file3);
+	public static void uploadFiles(File dir,String prefix){
+		if(dir.isDirectory()){
+			File[] files = dir.listFiles();
+			for(File subFile : files){
+				if(subFile.isDirectory()){
+					upload(subFile,prefix);
 				} else {
-					String path = file3.getAbsolutePath();
-					upload(path, sub(path), token);
+					upload(subFile, sub(subFile.getAbsolutePath(),prefix));
 				}
 			}
 		} else {
-			String path = file.getAbsolutePath();
-			upload(path, sub(path), token);
+			upload(dir, sub(dir.getAbsolutePath(),prefix));
 		}
 	}
-
-
-	public static void upload(String filePath,String key,String token){
+	
+	public static void download(String key){
+		
+	}
+	
+	
+	public static void delete(String key){
+		delete(bucketname, key);
+	}
+	
+	
+	public static void delete(String bucketname,String key){
 		try {
-			// BucketManager bucketManager = new BucketManager(auth);
-			//bucketManager.delete(bucketname, key);
-			//调用put方法上传
-			Response res = uploadManager.put(filePath, key, getUpToken());
-			//打印返回的信息
-			System.out.println(res.bodyString());
+			 BucketManager bucketManager = new BucketManager(auth);
+			 bucketManager.delete(bucketname, key);
 		} catch (QiniuException e) {
 			Response r = e.response;
 			// 请求失败时打印的异常的信息
@@ -94,25 +108,36 @@ public class QiniuUtils {
 				//ignore
 			}
 		}
-		System.out.println(filePath);
-		System.out.println(key);
 	}
 
-	public static String pathPrefix = "css";
 
-	public static String sub(String path){
-		String dd = path.substring(path.indexOf(pathPrefix));
-		if(dd.contains("\\")){
-			dd = dd.replaceAll("\\\\", "/");
+	public static boolean upload(File file,String key){
+		try {
+			//调用put方法上传
+			Response res = uploadManager.put(file, key, getUpToken());
+			//打印返回的信息
+			System.out.println(res.bodyString());
+			return true;
+		} catch (QiniuException e) {
+			Response r = e.response;
+			// 请求失败时打印的异常的信息
+			System.out.println(r.toString());
+			try {
+				//响应的文本信息
+				System.out.println(r.bodyString());
+			} catch (QiniuException e1) {
+				//ignore
+			}
+			return false;
 		}
-		return dd;
+	}
+	
+	public static void main(String args[]){
+		File file = new File(PathKit.getWebRootPath() + "/upload/0.gif");
+		
+		upload(file, "head/0.gif");
 	}
 
-	private static String token = getUpToken();
-
-	public static void upload() throws IOException {
-		File file = new File(pathPrefix);
-		listFiles(file);
-	}
+	
 
 }
