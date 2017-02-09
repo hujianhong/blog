@@ -53,6 +53,9 @@
 	<div class="am-g am-g-fixed qing-fixed qing-container">
 		  <!-- 正文内容开始-->
 	    <div class="am-u-md-8 am-u-sm-12">
+	    		<!-- 通知公告开始 -->
+	    		<div id="qing-notice-cnt"></div>
+	    		<!-- 通知公告结束 -->
 	    	<!--nav start-->
 	    	<div class="qing-blog-nav">
 	    		<a href="index.html"><i class="am-icon-home"></i>首页</a> <i class="am-icon-angle-double-right"></i> <a href="${url}">${title}</a>
@@ -124,13 +127,12 @@
 	    		
 	    		<!-- blog tag  start -->
     			<div class="qing-margin-top qing-blog-tag">
-	            <span class="am-icon-tags"> &nbsp;</span>
-	            <a href="#">标签</a>
+	            <i class="am-icon-tags"> &nbsp;</i>
 	            <%
 								for(blogTag in blogTags){
-								     , <a href="#">blogTag</a>
+								   print('<span class="am-radius">#' + blogTag + '</span>');
 								}
-							%>
+						  %>
 	        </div>
 	    		<!-- blog tag  end -->
 	    	</div>
@@ -144,16 +146,7 @@
 	    	<!-- blog footer end-->
 	    	
 	    	<!-- dynamic more blog start-->
-				<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>相似文章</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="hot-rank-blogs"></ol>
-	    	  	</div>
-	    	  </div>
-	    	</div>
+				<div class="qing-margin-top" id="hot-rank-blogs"></div>
 	    	<!-- dynamic more blog end-->
     		<!-- ad start-->
     		<div id="blog-content-bottom-ad" class="qing-blog-ad qing-margin-top">
@@ -161,35 +154,7 @@
     		</div>
     		<!-- ad start-->
     		<!-- comment start-->
-    		<div class="qing-content qing-margin-top">
-	    		<div id="commentContainer"></div>
-      		<!-- 发表评论开始 -->
-      		<div class="qing-comment-post">
-      			发表评论
-      		</div>
-		      <div class="layui-form-pane qing-margin-top">
-		        <form class="layui-form" action="post">
-		        	<div class="layui-form-item">
-						    <div class="layui-input-inline">
-						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
-						    </div>
-						    <div class="layui-input-inline">
-						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
-						    </div>
-						  </div>
-		          <div class="layui-form-item layui-form-text">
-		            <div class="layui-input-block">
-		              <textarea id="qing-content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea qing-editor" style="height: 150px;"></textarea>
-		            </div>
-		          </div>
-		          <div class="layui-form-item">
-		            <input type="hidden" name="qingID" value="${id}">
-		            <button class="layui-btn" lay-filter="comment" lay-submit>提交评论</button>
-		          </div>
-		        </form>
-		      </div>
-		      <!-- 发表评论结束 -->
-	    	</div>
+    		<div class="qing-content qing-margin-top" id="commentContainer"></div>
 	    	<!-- comment end-->
 	    </div>
 	    <!--正文内容结束-->

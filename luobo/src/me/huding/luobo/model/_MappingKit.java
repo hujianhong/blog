@@ -17,7 +17,6 @@ public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
 		arp.addMapping("admin_user", "user_id", AdminUser.class);
-		arp.addMapping("announcement", "id", Announcement.class);
 		arp.addMapping("attachment", "id", Attachment.class);
 		arp.addMapping("blog", "id", Blog.class);
 		// Composite Primary Key order: blogID,tagID
@@ -25,6 +24,7 @@ public class _MappingKit {
 		arp.addMapping("category", "id", Category.class);
 		arp.addMapping("comment", "id", Comment.class);
 		arp.addMapping("message", "id", Message.class);
+		arp.addMapping("notice", "id", Notice.class);
 		arp.addMapping("tags", "id", Tags.class);
 		arp.addMapping("timeline", "id", Timeline.class);
 		arp.addMapping("track_login", "id", TrackLogin.class);

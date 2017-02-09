@@ -35,6 +35,12 @@ import com.jfinal.plugin.activerecord.Page;
  * @date 2016年11月2日
  */
 public class CommentController extends BaseController {
+	
+	
+	public static final String SPCMT_MSG = "qingcailuobo-msg-cmt";
+	
+	public static final String SPCMT_DNT = "qingcailuo_donate_cmt";
+	
 
 	/**
 	 * 显示评论
@@ -88,7 +94,34 @@ public class CommentController extends BaseController {
 	}
 	
 	public void hate() {
-		
+		String id = getPara("id");
+		boolean ok = getParaToBoolean("ok");
+		Comment comment = Comment.dao.findById(id);
+		if(comment == null) {
+			// 渲染结果
+			render(ResConsts.Code.FAILURE, "评论不存在");
+			return;
+		}
+		int num = comment.getHateNum();
+		// 取消赞
+		if(ok) {
+			comment.setHateNum(num - 1);
+			if(comment.update()){
+				// 渲染结果
+				render(ResConsts.Code.SUCCESS, "取消踩成功");
+			} else {
+				render(ResConsts.Code.FAILURE, "取消踩失败");
+			}
+			return;
+		}
+		// 点赞
+		comment.setHateNum(num + 1);
+		if(comment.update()){
+			// 渲染结果
+			render(ResConsts.Code.SUCCESS, "踩成功");
+		} else {
+			render(ResConsts.Code.FAILURE, "踩失败");
+		}
 	}
 	
 	
@@ -105,7 +138,7 @@ public class CommentController extends BaseController {
 		String content = getPara("content");
 		String email = getPara("email");
 		String nickname = getPara("nickname");
-		
+		String parent = getPara("parent");
 		
 		comment.setContent(content);
 		comment.setBlogID(blogID);
@@ -116,15 +149,19 @@ public class CommentController extends BaseController {
 		comment.setHateNum(0);
 		comment.setReplyNum(0);
 		comment.setShareNum(0);
+		comment.setParent(parent);
+		
 		int code = comment.getEmail().hashCode();
 		code = Math.abs(code) % IConstants.HEAD_MOD;
 		comment.setHeadURL(code +".gif");
 		comment.setCdate(new Date(System.currentTimeMillis()));
 		
 		if(comment.save()) {
-			Blog blog = Blog.findById(blogID,"id,commentNum");
-			blog.setCommentNum(blog.getCommentNum() + 1);
-			blog.update();
+			if(!SPCMT_DNT.equals(blogID) && !SPCMT_MSG.equals(blogID)){
+				Blog blog = Blog.findById(blogID,"id,commentNum");
+				blog.setCommentNum(blog.getCommentNum() + 1);
+				blog.update();
+			}
 			render(ResConsts.Code.SUCCESS,"发表成功");
 		} else {
 			render(ResConsts.Code.FAILURE,"发表失败");

@@ -15,10 +15,14 @@
  */
 package me.huding.luobo.back;
 
+import java.io.File;
+
 import com.jfinal.upload.UploadFile;
 
 import me.huding.luobo.BaseController;
 import me.huding.luobo.ResConsts;
+import me.huding.luobo.utils.KeyUtils;
+import me.huding.luobo.utils.QiniuUtils;
 
 /**
  * 上传文件控制器
@@ -29,28 +33,55 @@ import me.huding.luobo.ResConsts;
  */
 public class UploadController extends BaseController {
 	
+	public static final String HOST = "http://static.huding.name/";
+	
+	public static final String IMAGE_BUKECT = "image/";
+	
+	public static final String FILE_BUKECT = "file/";
+	
+	public static final String PARA_FILE_KEY = "editormd-image-file";
 	
 	/**
 	 * 上传图片
 	 */
 	public void uploadImage(){
-		UploadFile uploadFile = getFile("editormd-image-file");
-		String name = getPara("name");
-		System.out.println(name);
-		String filename = getPara("filename");
-		System.out.println(filename);
-		System.out.println(uploadFile.getFileName());
-		setAttr("success", 1);
-		setAttr("msg", "");
-		setAttr("url", "http://static.huding.name/i/f10.jpg");
-		render(ResConsts.Code.SUCCESS, "", "http://static.huding.name/i/f10.jpg");
+		UploadFile uploadFile = getFile(PARA_FILE_KEY);
+		upload(uploadFile, IMAGE_BUKECT);
 	}
 	
 	/**
 	 * 上传文件
 	 */
 	public void uploadFile(){
-		
+		UploadFile uploadFile = getFile(PARA_FILE_KEY);
+		upload(uploadFile, FILE_BUKECT);
+	}
+	
+	private void upload(UploadFile uploadFile,String bucket){
+		if(uploadFile != null){
+			File file = uploadFile.getFile();
+			String fileName = file.getName();
+			int index = fileName.lastIndexOf('.');
+			String suffix = fileName.substring(index);
+			String key = bucket + KeyUtils.getUUID() + suffix;
+			if(QiniuUtils.upload(file, key)){
+				String url = HOST + key;
+				setAttr("success", 1);
+				setAttr("msg", "");
+				setAttr("url", url);
+				render(ResConsts.Code.SUCCESS, "",url);
+			} else {
+				setAttr("success", 0);
+				setAttr("msg", "上传失败");
+				setAttr("url", "");
+				render(ResConsts.Code.FAILURE, "上传失败");
+			}
+		} else {
+			setAttr("success", 0);
+			setAttr("msg", "上传失败");
+			setAttr("url", "");
+			render(ResConsts.Code.FAILURE, "文件为空");
+		}
 	}
 
 }

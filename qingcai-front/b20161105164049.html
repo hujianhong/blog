@@ -53,6 +53,9 @@
 	<div class="am-g am-g-fixed qing-fixed qing-container">
 		  <!-- 正文内容开始-->
 	    <div class="am-u-md-8 am-u-sm-12">
+	    		<!-- 通知公告开始 -->
+	    		<div id="qing-notice-cnt"></div>
+	    		<!-- 通知公告结束 -->
 	    	<!--nav start-->
 	    	<div class="qing-blog-nav">
 	    		<a href="index.html"><i class="am-icon-home"></i>首页</a> <i class="am-icon-angle-double-right"></i> <a href="/b20161105164049.html">从零开始搭建个人博客站(三)</a>
@@ -72,15 +75,15 @@
 		          <div class="qing-blog-tips">
 					       	<span class="qing-blog-tip-c"><i class="am-icon-user qing-color-author" title="作者"></i> 胡建洪 &nbsp;</span>
 						      <span class="qing-blog-tip-c"><i class="am-icon-clock-o qing-color-clock" title="时间"></i> 2016-11-05</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<span id="blog-readNum">30</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<span id="blog-readNum">40</span>)</span>
 					        <span class="qing-blog-tip-c"><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<span id="blog-commentNum">0</span>)</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<span id="blog-heartNum">5</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<span id="blog-heartNum">6</span>)</span>
 				      </div>
 	    		</div>
 	    		<!-- blog header end -->
 	    		<!-- blog summary start -->
 	    		<div class="qing-margin-top"> 
-        		 <p><div class="qing-blog-summary"><strong>摘要：不过需要注意的是，code 范围内，不论是行内还是区块， < 和 & 两个符号都一定会被转换成 HTML 实体，这项特性让你可以很容易地用 Markdown 写 HTML code （和 HTML 相对而言， HTML 语法中，你要把所有的 < 和 & 都转换为 HTML 实体，才能在 HTML 文件里面写出 HTML code。）</strong></div></p> 
+        		 <p><div class="qing-blog-summary"><strong>内容摘要：不过需要注意的是，code 范围内，不论是行内还是区块， < 和 & 两个符号都一定会被转换成 HTML 实体，这项特性让你可以很容易地用 Markdown 写 HTML code （和 HTML 相对而言， HTML 语法中，你要把所有的 < 和 & 都转换为 HTML 实体，才能在 HTML 文件里面写出 HTML code。）</strong></div></p> 
 	    		</div>
 	    		<!-- blog summary end -->
 	    		<!-- blog content start -->
@@ -288,7 +291,7 @@
 	    		
 	    		<div class="qing-blog-social">
 	    				<span class="qing-blog-action qing-blog-like"> 
-	    					<i class="am-icon-heart"></i> 喜欢 (<span id="blog-content-like" class="count">5</span>)
+	    					<i class="am-icon-heart"></i> 喜欢 (<span id="blog-content-like" class="count">6</span>)
 	    				</span>
 							<span class="or">or</span>
 							<span class="qing-blog-action qing-blog-share">
@@ -325,22 +328,13 @@
 	    	
 	    	<!-- blog footer start-->
     		<div class="qing-blog-foot">
-    				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="/b20170207234246.html">15年9月CCF真题4 高速公路</a></span>
+    				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="/B20170209114837.html">测试图片上传测试</a></span>
     				<span class="right"><a href="/b20170207223754.html">从零开始搭建个人博客站</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
     		</div>
 	    	<!-- blog footer end-->
 	    	
 	    	<!-- dynamic more blog start-->
-				<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>相似文章</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="hot-rank-blogs"></ol>
-	    	  	</div>
-	    	  </div>
-	    	</div>
+				<div class="qing-margin-top" id="hot-rank-blogs"></div>
 	    	<!-- dynamic more blog end-->
     		<!-- ad start-->
     		<div id="blog-content-bottom-ad" class="qing-blog-ad qing-margin-top">
@@ -348,35 +342,7 @@
     		</div>
     		<!-- ad start-->
     		<!-- comment start-->
-    		<div class="qing-content qing-margin-top">
-	    		<div id="commentContainer"></div>
-      		<!-- 发表评论开始 -->
-      		<div class="qing-comment-post">
-      			发表评论
-      		</div>
-		      <div class="layui-form-pane qing-margin-top">
-		        <form class="layui-form" action="post">
-		        	<div class="layui-form-item">
-						    <div class="layui-input-inline">
-						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
-						    </div>
-						    <div class="layui-input-inline">
-						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
-						    </div>
-						  </div>
-		          <div class="layui-form-item layui-form-text">
-		            <div class="layui-input-block">
-		              <textarea id="qing-content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea qing-editor" style="height: 150px;"></textarea>
-		            </div>
-		          </div>
-		          <div class="layui-form-item">
-		            <input type="hidden" name="qingID" value="9b07036e1c04405f997aafd301e32bf0">
-		            <button class="layui-btn" lay-filter="comment" lay-submit>提交评论</button>
-		          </div>
-		        </form>
-		      </div>
-		      <!-- 发表评论结束 -->
-	    	</div>
+    		<div class="qing-content qing-margin-top" id="commentContainer"></div>
 	    	<!-- comment end-->
 	    </div>
 	    <!--正文内容结束-->

@@ -15,11 +15,21 @@
  */
 package me.huding.luobo.back;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import me.huding.luobo.ResConsts;
+import me.huding.luobo.model.Blog;
+import me.huding.luobo.model.BlogTags;
+import me.huding.luobo.model.Category;
+import me.huding.luobo.model.Tags;
+import me.huding.luobo.utils.DBUtils;
+import me.huding.luobo.utils.DateStyle;
+import me.huding.luobo.utils.DateUtils;
+import me.huding.luobo.utils.KeyUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,15 +39,6 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IAtom;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
-
-import me.huding.luobo.Parameters;
-import me.huding.luobo.ResConsts;
-import me.huding.luobo.model.Blog;
-import me.huding.luobo.model.BlogTags;
-import me.huding.luobo.utils.DBUtils;
-import me.huding.luobo.utils.DateStyle;
-import me.huding.luobo.utils.DateUtils;
-import me.huding.luobo.utils.KeyUtils;
 
 
 /**
@@ -87,10 +88,8 @@ public class BlogController extends AbstarctBackController {
 	public void add() {
 		/* 获取参数  */
 		final Blog blog = getModel(Blog.class, "blog");
-		final String[] tags = blog.getTags().split(",");
 		/* 校验参数 */
 		// TODO validate params
-
 		String signature = KeyUtils.signByMD5(blog.getTitle());
 		// 查询签名是否已经存在
 		if(Blog.findBySignature(signature) != null){
@@ -114,37 +113,68 @@ public class BlogController extends AbstarctBackController {
 		blog.setHeartNum(0);
 
 		/* 静态化处理 */
-		
 		boolean st = statics(blog);
-		// 静态化处理失败
-		if(!st){
+		if(!st){ // 静态化处理失败
 			render(ResConsts.Code.STATICS_ERROR);
 			return;
 		}
 		// 持久化到数据库
-		boolean flag = Db.tx(new IAtom() {
-			@Override
-			public boolean run() throws SQLException {
-				boolean f1 = blog.save();
-				boolean f2 = true;
-				for(String tagID : tags){
-					BlogTags blogTags = new BlogTags();
-					blogTags.setBlogID(blogID);
-					blogTags.setTagID(tagID);
-					if(!(f2 = blogTags.save())){
-						break;
-					}
-				}
-				return f1 && f2;
-			}
-		});
-		
-		// 
-		if(!flag){
+		if(!storage(blog)){
 			render(ResConsts.Code.FAILURE);
 		} else {
 			render(ResConsts.Code.SUCCESS,null,blog.getUrl());
 		}
+	}
+	
+	
+	
+	private boolean storage(final Blog blog){
+		return Db.tx(new IAtom() {
+			@Override
+			public boolean run() throws SQLException {
+				// 保存博客
+				if(!blog.save()){
+					return false;
+				}
+				// 修改类别中的博文数
+				Category category = Category.dao.findById(blog.getCategoryID(),"id,blogNum");
+				category.setBlogNum(category.getBlogNum() + 1);
+				if(!category.update()){
+					return false;
+				}
+				// 保存标签
+				List<Tags> tags = new ArrayList<Tags>();
+				if(blog.getTags() != null){
+					String[] arr = blog.getTags().split(",");
+					for(String tag : arr){
+						if(StrKit.isBlank(tag)){
+							continue;
+						}
+						String tagID = KeyUtils.signByMD5(tag);
+						Tags ttag = Tags.dao.findById(tagID);
+						if(ttag == null){
+							ttag = new Tags();
+							ttag.setId(tagID);
+							ttag.setName(tag);
+							if(!ttag.save()){
+								return false;
+							}
+						}
+						tags.add(ttag);
+					}
+				}
+				// 保存博客与标签的映射
+				for(Tags tag : tags){
+					BlogTags blogTags = new BlogTags();
+					blogTags.setBlogID(blog.getId());
+					blogTags.setTagID(tag.getId());
+					if(!blogTags.save()){
+						return false;
+					}
+				}
+				return true;
+			}
+		});
 	}
 
 	@Override

@@ -22,6 +22,7 @@ import me.huding.luobo.utils.KeyUtils;
 import me.huding.luobo.utils.crypto.MDCoder;
 
 import com.jfinal.kit.PathKit;
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.generator.Generator;
@@ -56,10 +57,8 @@ public class GeneratorDemo {
 		// 添加不需要生成的表名
 		gernerator.addExcludedTable("blog_display");
 		gernerator.addExcludedTable("blog_display_by_tag");
-		gernerator.addExcludedTable("blog_tags_display");
-		gernerator.addExcludedTable("blog_rel_tags");
 		gernerator.addExcludedTable("blog_back_display");
-		
+
 		// 设置是否在 Model 中生成 dao 对象
 		gernerator.setGenerateDaoInModel(true);
 		// 设置是否生成字典文件
@@ -69,19 +68,59 @@ public class GeneratorDemo {
 		// 生成
 		gernerator.generate();
 	}
-	
-	
+
+
 	public static int rand(){
 		return (int)(Math.random() * 100);
 	}
-	
-	
+
+
+
+
+
 	public static void handle() throws IOException {
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(getDataSource());
 		_MappingKit.mapping(arp);
 		arp.start();
 
-		
+		List<Blog> blogs = DBUtils.findAll(Blog.dao,"id,tags");
+
+		for(Blog blog: blogs) {
+			List<Tags> tags = new ArrayList<Tags>();
+			if(blog.getTags() != null){
+				String[] arr = blog.getTags().split(",");
+				for(String tag : arr){
+					if(StrKit.isBlank(tag)){
+						continue;
+					}
+					String tagID = KeyUtils.signByMD5(tag);
+					Tags ttag = Tags.dao.findById(tagID);
+					if(ttag == null){
+						ttag = new Tags();
+						ttag.setId(tagID);
+						ttag.setName(tag);
+						if(!ttag.save()){
+							System.out.println("save tag error");
+						}
+					}
+					tags.add(ttag);
+				}
+			}
+			// 保存博客与标签的映射
+			for(Tags tag : tags){
+				BlogTags blogTags = BlogTags.dao.findById(blog.getId(),tag.getId());
+				if(blogTags == null){
+					blogTags = new BlogTags();
+					blogTags.setBlogID(blog.getId());
+					blogTags.setTagID(tag.getId());
+					if(!blogTags.save()){
+						System.out.println("save blogtag error");
+					}
+				}
+			}
+		}
+
+
 		/*String t = null;
 		String[] titles = new String[100];
 		BufferedReader reader = new BufferedReader(new FileReader("img"));
@@ -96,26 +135,26 @@ public class GeneratorDemo {
 			blog.setCoverURL(titles[i]);
 			blog.update();
 		}*/
-		
-//		User user = User.findByUsername("hujianhong");
-//		
-//		String password = "hubaichuan";
-//		
-//		password = MDCoder.encodeMD5Hex(password);
-//		
-//		System.out.println(password);
-//		
-//		user.setPassword(password);
-//		
-//		user.update();
-		
-//		List<Blog> blogs = Blog.dao.find("select * from blog");
-//		for(int i = 0;i < blogs.size();i ++){
-//			Blog blog = blogs.get(i);
-//			blog.setStatusName("显示");
-//			blog.update();
-//		}
-		
+
+		//		User user = User.findByUsername("hujianhong");
+		//		
+		//		String password = "hubaichuan";
+		//		
+		//		password = MDCoder.encodeMD5Hex(password);
+		//		
+		//		System.out.println(password);
+		//		
+		//		user.setPassword(password);
+		//		
+		//		user.update();
+
+		//		List<Blog> blogs = Blog.dao.find("select * from blog");
+		//		for(int i = 0;i < blogs.size();i ++){
+		//			Blog blog = blogs.get(i);
+		//			blog.setStatusName("显示");
+		//			blog.update();
+		//		}
+
 		List<Comment> comments = DBUtils.findAll(Comment.dao);
 		for(Comment comment: comments){
 			int code = comment.getEmail().hashCode();
@@ -123,12 +162,12 @@ public class GeneratorDemo {
 			comment.setHeadURL(code +".gif");
 			comment.update();
 		}
-		
-		
+
+
 	}
 
 	public static void main(String[] args) throws IOException {
-//		handle();
+//				handle();
 		gen();
 	}
 }

@@ -1,11 +1,7 @@
 package me.huding.luobo.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import me.huding.luobo.model.base.BaseBlog;
 
@@ -95,6 +91,38 @@ public class Blog extends BaseBlog<Blog> {
 		String sqlExceptSelect = "from blog_display where categoryID = ? order by publishTime desc";
 		String select = "select * ";
 		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect,categoryID);
+		if(page.getList().isEmpty()){
+			return page;
+		}
+		List<Record> records = page.getList();
+		for(Record record : records){
+			String tags = record.get("tags");
+			if(tags == null){
+				record.set("tags", new ArrayList<String>());
+			} else {
+				String[] arr = tags.split(",");
+				List<String> ts = new ArrayList<String>();
+				for(String tag:arr){
+					ts.add(tag);
+				}
+				record.set("tags", ts);
+			}
+		}
+		return page;
+	}
+	
+	
+	/**
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public static Page<Record> paginateByTag(int pageNum,int pageSize,String tagID){
+		// 默认根据时间排序
+		String sqlExceptSelect = "from blog_display_by_tag where tagID = ? order by publishTime desc";
+		String select = "select * ";
+		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect,tagID);
 		if(page.getList().isEmpty()){
 			return page;
 		}

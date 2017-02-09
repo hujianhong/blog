@@ -32,8 +32,8 @@ public class FrontRoutes extends Routes {
 		add("/",MainController.class);
 		add("/blog",BlogController.class);
 		add("/comment",CommentController.class);
-		add("/upload",UploadController.class);
 		add("/youlian",YoulianController.class);
+		add("/notice",NoticeController.class);
 	}
 
 }

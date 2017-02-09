@@ -98,6 +98,41 @@ public class BlogController extends BaseController {
 		// 渲染结果
 		render(ResConsts.Code.SUCCESS, null, data);
 	}
+	
+	
+	public void showByTag(){
+		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
+		if(pageNum == null){
+			pageNum = 1;
+		}
+		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
+		if(pageSize == null){
+			pageSize = Parameters.DEFAULT_PAGE_SIZE;
+		}
+		String tagID = getPara("id");
+		// 查询数据
+		Page<Record> data = null;
+		if(tagID == null || tagID.trim().length() == 0){
+			data = Blog.paginate(pageNum, pageSize);
+		} else {
+			data = Blog.paginateByTag(pageNum, pageSize,tagID);
+		}
+		if(data.getList().size() > 0){
+			for(Record record : data.getList()){
+				Date date = record.getDate("publishTime");
+				if(date != null){
+					String d = DateUtils.DateToString(date, DateStyle.YYYY_MM_DD);
+					record.set("publishTime", d);
+				}
+			}
+		}
+		// 渲染结果
+		render(ResConsts.Code.SUCCESS, null, data);
+	}
+	
+	
+	
+	
 	/**
 	 * 显示标签
 	 */

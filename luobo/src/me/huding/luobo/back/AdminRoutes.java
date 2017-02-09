@@ -43,6 +43,7 @@ public class AdminRoutes extends Routes {
 		add("/upload",UploadController.class);
 		add("/category",CategoryController.class);
 		add("/youlian",YoulianController.class);
+		add("/donate",DonateController.class);
 	}
 
 }

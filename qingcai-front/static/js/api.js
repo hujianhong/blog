@@ -31,6 +31,7 @@ layui.define(['layer'],function(exports) {
 		BLOG_TAGS_URL: BASE_PREFIX + "/blog/blogTags",
 		BLOG_OPENREAD_URL: BASE_PREFIX + "/blog/openRead",
 		BLOG_SHOW_BY_CATEGORY_URL:BASE_PREFIX + "/blog/showByCategory",
+		BLOG_SHOW_BY_TAG_URL:BASE_PREFIX + "/blog/showByTag",
 		
 		/**
 		 * 评论相关地址
@@ -42,7 +43,7 @@ layui.define(['layer'],function(exports) {
 		/**
 		 * 
 		 */
-		UPLOAD_IMG_URL : BASE_PREFIX + "/upload/uploadImage",
+		NOTICE_SHOW_URL:BASE_PREFIX + "/notice",
 	}
 	
 	var action = {
@@ -89,6 +90,9 @@ layui.define(['layer'],function(exports) {
 		commentLike:function(params,success){
 			action.doAjax(api.COMMENT_LIKE_URL,params,success);
 		},
+		commentHate:function(params,success){
+			action.doAjax(api.COMMENT_HATE_URL,params,success);
+		},
 		reportComment:function(params,success){
 			action.doAjax(api.COMMENT_REPORT_URL,params,success);
 		},
@@ -121,11 +125,17 @@ layui.define(['layer'],function(exports) {
 		showBlogByCategory:function(params,success){
 			action.doAjax(api.BLOG_SHOW_BY_CATEGORY_URL,params,success);
 		},
+		showBlogByTag:function(params,success){
+			action.doAjax(api.BLOG_SHOW_BY_TAG_URL,params,success);
+		},
 		showYoulian:function(params,success){
 			action.doAjax(api.YOULIAN_URL,params,success);
 		},
 		blogLike:function(params,success){
 			action.doAjax(api.BLOG_LIKE_URL,params,success);
+		},
+		showNotice:function(params,success){
+			action.doAjax(api.NOTICE_SHOW_URL,params,success);
 		},
 	};
 	exports('api', action);

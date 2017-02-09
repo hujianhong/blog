@@ -9,11 +9,7 @@ layui.define(['common', 'api','form','layer','laytpl'], function(exports){
 	var api = layui.api;
 	var layer = layui.layer;
 	var laytpl = layui.laytpl;
-	
 	var form = layui.form();
-
-	var UPLOAD_IMG_URL = "http://localhost/luobo/admin/upload/uploadImage";
-	
 	
 	var categoryTpl = 
 	'<select  name="blog.categoryID">\
@@ -66,11 +62,11 @@ layui.define(['common', 'api','form','layer','laytpl'], function(exports){
 		taskList: true,
 		imageUpload: true,
 		imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-		imageUploadURL: UPLOAD_IMG_URL,
+		imageUploadURL: api.UPLOAD_IMAGE_URL,
 		onload: function() {
-			$.get("test.md", function(data) {
+			/*$.get("test.md", function(data) {
 				publishEditor.setMarkdown(data);
-			});
+			});*/
 		}
 	});
 	

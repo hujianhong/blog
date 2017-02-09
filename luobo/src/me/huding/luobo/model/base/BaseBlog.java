@@ -169,4 +169,12 @@ public abstract class BaseBlog<M extends BaseBlog<M>> extends Model<M> implement
 		return get("tags");
 	}
 
+	public void setShareNum(java.lang.Integer shareNum) {
+		set("shareNum", shareNum);
+	}
+
+	public java.lang.Integer getShareNum() {
+		return get("shareNum");
+	}
+
 }

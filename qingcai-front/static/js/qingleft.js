@@ -32,9 +32,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 	    	  	<div class="qing-panel-title">\
 	    	  		<h2>最新文章</h2>\
 	    	  	</div>\
-	    	  	<div class="qing-panel-body">\
-	    	  		<ol class="qing-list-one" id="lastest-blogs"></ol>\
-	    	  	</div>\
+	    	  	<div class="qing-panel-body" id="lastest-blogs"></div>\
 	    	  </div>\
 	    	</div>',
 			sort:2
@@ -60,9 +58,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 	    	  	<div class="qing-panel-title">\
 	    	  		<h2>猜你喜欢</h2>\
 	    	  	</div>\
-	    	  	<div class="qing-panel-body">\
-	    	  		<ol class="qing-list-one" id="recommend-blogs"></ol>\
-	    	  	</div>\
+	    	  	<div class="qing-panel-body" id="recommend-blogs"></div>\
 	    	  </div>\
 	    	</div>',
 	    	sort:4,
@@ -127,32 +123,36 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 		,
 		// 热门排行模板
 		hotRankTpl:
-		'{{#  layui.each(d.data, function(index, item){ }}\
-			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
-				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
-				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.commentNum}}</span>\
-				<span><i class="am-icon-heart-o" title="评论数"> </i> {{item.heartNum}}</span>\
-			</li>\
-		{{# });}}'
+		'<div class="qing-item-cnt">\
+			{{#  layui.each(d.data, function(index, item){ }}\
+				<div class="qing-item-list">\
+					<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
+					<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+				</div>\
+			{{# });}}\
+  		</<div>'
 		,
 		// 猜你喜欢模板
 		recommendBlogsTpl:
-		'{{#  layui.each(d.data, function(index, item){ }}\
-			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
-				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
-			</li>\
-		{{# });}}'
+		'<div class="qing-item-cnt">\
+			{{#  layui.each(d.data, function(index, item){ }}\
+				<div class="qing-item-list">\
+					<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
+					<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+				</div>\
+			{{# });}}\
+  		</<div>'
 		,
 		// 最新博客模板
 		latestBlogsTpl:
-		'{{#  layui.each(d.data.list, function(index, item){ }}\
-			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
-				<span><i class="am-icon-eye" title="阅读数"> </i> {{item.readNum}}</span>\
-			</li>\
-		{{# });}}'
+		'<div class="qing-item-cnt">\
+			{{#  layui.each(d.data.list, function(index, item){ }}\
+				<div class="qing-item-list">\
+					<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
+					<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+				</div>\
+			{{# });}}\
+  		</<div>'
 		,
 		blogTimelineTpl:
 		'{{#  layui.each(d.data, function(index, item){ }}\
@@ -293,8 +293,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 					$(".qing-tag-cloud a").on("click",function(event){
 						var data = $(this).attr("data");
 						var title = $(this).attr("title");
-						layer.msg("你选中了:" + title + ", sorry,尚未实现该功能....");
-						
+						location.href="tag.html?id="+data + "&name=" + title;
 					});
 				});
 			});

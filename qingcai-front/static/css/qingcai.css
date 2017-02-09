@@ -29,12 +29,10 @@ body {
     height:100%;
     line-height: 24px;
     background-color: #f2f2f2;
+    color: #333;
 }
 .qing-sm-search {
 	margin-top: 0.5rem;
-}
-a {
-    color:#474747;
 }
 a:hover {
     color:#10D07A;
@@ -203,6 +201,45 @@ a:hover {
     color: #01AAED;
 }
 
+.qing-item-cnt {
+	margin: 5px 0;
+}
+.qing-item-list {
+	line-height: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	list-style: decimal-leading-zero inside;
+	*list-style-type: decimal inside;
+	color: #009E94;
+	display: flex;
+	justify-content: space-between;
+}
+.qing-item-link {
+	max-width: 72%;
+    position: relative;
+    font-size: 14px;
+    padding: 0 0 0 13px;
+    transition: color .2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.qing-item-link:before {
+    position: absolute;
+    display: block;
+    content: '';
+    left: 0;
+    top: 50%;
+    margin-top: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #CFCFCF;
+}
+.qing-item-list span {
+	color: #AAA;
+	font-size: 12px;
+}
 
 /* TODO iconfont定义开始  */
 /**
@@ -449,23 +486,29 @@ a:hover {
 .qing-hot-rank {
 	
 }
-/* 博文列表*/
-.qing-entry-article {
-    padding: 1rem 0;
+.qing-hot-tip {
+	display: inline-block;
+	
 }
-@media only screen and (max-width:640px) {
-    .qing-entry-article {
-        padding-bottom:1rem;
-        text-align:center;
-    }
+.qing-hot-a {
+	display: inline-block;
+	max-width: 410px;
 }
+
 .qing-entry-text {
-    padding-top: 1rem;
+    padding: 1rem 2rem;
     background-color: #FFF;
-    border: 1px solid;
-    border-color: #eee;
+    /*border: 1px solid;*/
+    /*border-color: #eee;*/
     margin-bottom: 0.5rem;
     text-align: left;
+}
+.qing-blog-cnt {
+	/*background-color: #FFF;*/
+}
+.qing-blog-fenge {
+	border-bottom: 0.5rem solid;
+    border-color: #F2F2F2;
 }
 .qing-category {
     color: #fff;
@@ -532,6 +575,10 @@ a:hover {
 	color:#5FB878;
 }
 
+.qing-page {
+	background: #FFF;
+}
+
 /* 主页CSS结束 TODO */
 
 
@@ -560,38 +607,6 @@ a:hover {
 }
 .qing-left-category3 {
 	background-color:#01AAED;
-}
-
-/* 单行列表 */
-.qing-list-one {
-	margin: 5px 0;
-}
-.qing-list-one li {
-	line-height: 20px;
-	white-space: nowrap;
-	overflow: hidden;
-	list-style: decimal-leading-zero inside;
-	*list-style-type: decimal inside;
-	color: #009E94;
-}
-.qing-list-one li a, .qing-list-one li span {
-	display: inline-block;
-	*display: inline;
-	*zoom: 1;
-	vertical-align: top;
-	font-style: normal
-}
-.qing-list-one li a {
-	max-width: 72%;
-	margin-right: 5px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	font-size: 14px;
-}
-.qing-list-one li span {
-	font-size: 14px;
-	color: #ccc;
 }
 .qing-tag-cloud {
 	position: relative;
@@ -829,6 +844,12 @@ a:hover {
     border-top-color: #c0c0c0;
     border-left-color: #d0d0d0;
 }
+.qing-donate-fill {
+	height: 20rem;
+}
+.qing-donate-qrcode {
+	display: inline-block;
+}
 
 /* TODO捐赠CSS结束 */
 
@@ -1021,4 +1042,13 @@ body .layui-edit-face .layui-layer-content {
 .qing-msg-tip {
 	padding-top: 4rem;
 	color: #01AAED;
+}
+
+.qing-msg-header {
+	margin-bottom: 2px;
+	padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.qing-msg-header span {
+	font-size: 18px;
 }

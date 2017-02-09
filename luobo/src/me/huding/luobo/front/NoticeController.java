@@ -15,40 +15,26 @@
  */
 package me.huding.luobo.front;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.jfinal.upload.UploadFile;
+import java.util.List;
 
 import me.huding.luobo.BaseController;
 import me.huding.luobo.ResConsts;
+import me.huding.luobo.model.Notice;
 
 /**
  *
  *
  * @author JianhongHu
  * @version 1.0
- * @date 2017年1月17日
+ * @date 2017年2月9日
  */
-public class UploadController extends BaseController {
-
-	/**
-	 * 上传图片
-	 */
-	public void uploadImage(){
-		UploadFile uploadFile = getFile("file");
-		System.out.println(uploadFile.getFileName());
-		Map<String, String> data = new HashMap<String, String>();
-		data.put("code", "0");
-		data.put("msg", "");
-		data.put("url", "http://static.huding.name/i/f10.jpg");
-		render(ResConsts.Code.SUCCESS, null,data);
-	}
+public class NoticeController extends BaseController {
 	
-	/**
-	 * 上传文件
-	 */
-	public void uploadFile(){
-		
+	
+	
+	public void index(){
+		List<Notice> data = Notice.showNotices();
+		render(ResConsts.Code.SUCCESS, "", data);
 	}
+
 }

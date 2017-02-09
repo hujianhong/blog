@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="${title}">
+  <meta name="description" content="4年12月CCF真题1 门禁系统">
   <meta name="keywords" content="青菜萝卜 | 个人博客">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>青菜萝卜-胡丁 | 程序员技术分享博客</title>
@@ -58,7 +58,7 @@
 	    		<!-- 通知公告结束 -->
 	    	<!--nav start-->
 	    	<div class="qing-blog-nav">
-	    		<a href="index.html"><i class="am-icon-home"></i>首页</a> <i class="am-icon-angle-double-right"></i> <a href="${url}">${title}</a>
+	    		<a href="index.html"><i class="am-icon-home"></i>首页</a> <i class="am-icon-angle-double-right"></i> <a href="/B20170208161523.html">4年12月CCF真题1 门禁系统</a>
 	    	</div>
 	    	<!--nav end-->
 	    	<!-- ad start-->
@@ -70,35 +70,68 @@
 	    	<div class="qing-content">
 	    		<!-- blog header start -->
 	    		<div class="qing-blog-header qing-text-center">
-	    				<input type="hidden" id="qing-blog-id" value="${id}" />
-	    				<h1 class="am-article-title">${title}</h1>
+	    				<input type="hidden" id="qing-blog-id" value="cb7fdf7d43924bd198d86fa6208db44b" />
+	    				<h1 class="am-article-title">4年12月CCF真题1 门禁系统</h1>
 		          <div class="qing-blog-tips">
-					       	<span class="qing-blog-tip-c"><i class="am-icon-user qing-color-author" title="作者"></i> ${author} &nbsp;</span>
-						      <span class="qing-blog-tip-c"><i class="am-icon-clock-o qing-color-clock" title="时间"></i> ${publishTime}</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<span id="blog-readNum">${readNum}</span>)</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<span id="blog-commentNum">${commentNum}</span>)</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<span id="blog-heartNum">${heartNum}</span>)</span>
+					       	<span class="qing-blog-tip-c"><i class="am-icon-user qing-color-author" title="作者"></i> 胡建洪 &nbsp;</span>
+						      <span class="qing-blog-tip-c"><i class="am-icon-clock-o qing-color-clock" title="时间"></i> 2017-02-08</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<span id="blog-readNum">15</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<span id="blog-commentNum">1</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<span id="blog-heartNum">2</span>)</span>
 				      </div>
 	    		</div>
 	    		<!-- blog header end -->
 	    		<!-- blog summary start -->
 	    		<div class="qing-margin-top"> 
-        		 <p><div class="qing-blog-summary"><strong>内容摘要：${summary}</strong></div></p> 
+        		 <p><div class="qing-blog-summary"><strong>内容摘要：涛涛最近要负责图书馆的管理工作，需要记录下每天读者的到访情况。每位读者有一个编号，每条记录用读者的编号来表示。给出读者的来访记录，请问每一条记录中的读者是第几次出现。</strong></div></p> 
 	    		</div>
 	    		<!-- blog summary end -->
 	    		<!-- blog content start -->
 	    		<div class="qing-margin-top qing-blog-content" id="article-editormd-view">
-	    				 ${html}
+	    				 <p>问题描述</p>
+<p>　　涛涛最近要负责图书馆的管理工作，需要记录下每天读者的到访情况。每位读者有一个编号，每条记录用读者的编号来表示。给出读者的来访记录，请问每一条记录中的读者是第几次出现。</p>
+<p>输入格式</p>
+<p>　　输入的第一行包含一个整数n，表示涛涛的记录条数。<br>　　第二行包含n个整数，依次表示涛涛的记录中每位读者的编号。
+<p>输出格式</p>
+<p>　　输出一行，包含n个整数，由空格分隔，依次表示每条记录中的读者编号是第几次出现。</p>
+<p>样例输入</p>
+<p>5<br>1 2 1 1 3
+<p>样例输出</p>
+<p>1 1 2 3 1</p>
+<p>评测用例规模与约定</p>
+<p>　　1≤n≤1,000，读者的编号为不超过n的正整数。</p>
+<pre><code>import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int num[] = new int[n];
+        for(int i = 0; i &lt; n; i ++){
+            int k = scanner.nextInt();
+            num[k] ++;
+            if(i != n - 1){
+                System.out.print(num[k] + " ");
+            } else {
+                System.out.print(num[k]);
+            }
+        }
+        System.out.println();
+        scanner.close();
+    }
+}
+</code></pre>
 	    		</div>
 	    		<!-- blog content end -->
 	    		
 	    		<div class="qing-blog-zhuanzai">
-	    			转载请注明：<a href="http://www.huding.name">青菜萝卜-胡丁博客</a> » <a href="http://www.huding.name/${url}">${title}</a>
+	    			转载请注明：<a href="http://www.huding.name">青菜萝卜-胡丁博客</a> » <a href="http://www.huding.name//B20170208161523.html">4年12月CCF真题1 门禁系统</a>
 	    		</div>
 	    		
 	    		<div class="qing-blog-social">
 	    				<span class="qing-blog-action qing-blog-like"> 
-	    					<i class="am-icon-heart"></i> 喜欢 (<span id="blog-content-like" class="count">${heartNum}</span>)
+	    					<i class="am-icon-heart"></i> 喜欢 (<span id="blog-content-like" class="count">2</span>)
 	    				</span>
 							<span class="or">or</span>
 							<span class="qing-blog-action qing-blog-share">
@@ -128,20 +161,15 @@
 	    		<!-- blog tag  start -->
     			<div class="qing-margin-top qing-blog-tag">
 	            <span class="am-icon-tags"> &nbsp;</span>
-	            <%
-								for(blogTag in blogTags){
-								   print('<span class="am-radius">#' + blogTag + '</span>');
-								}
-						  %>
-	        </div>
+<span class="am-radius">#CCF</span><span class="am-radius">#java</span><span class="am-radius">#数据结构</span>	        </div>
 	    		<!-- blog tag  end -->
 	    	</div>
 	    	<!--blog end -->
 	    	
 	    	<!-- blog footer start-->
     		<div class="qing-blog-foot">
-    				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="${preURL}">${preTitle}</a></span>
-    				<span class="right"><a href="${nextURL}">${nextTitle}</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
+    				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="/b20170207223754.html">从零开始搭建个人博客站</a></span>
+    				<span class="right"><a href="/B20170209114418.html">测试图片上传功能</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
     		</div>
 	    	<!-- blog footer end-->
 	    	

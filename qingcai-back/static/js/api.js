@@ -9,10 +9,8 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 	var layer = layui.layer;
 	var laytpl = layui.laytpl;
 	
-//	var BASE_PREFIX = "http://www.huding.name";
+	var BASE_PREFIX = "http://www.huding.name/luobo/admin";
 	
-	var BASE_PREFIX = "http://localhost/luobo/admin";
-
 	var pageSize = 10;
 	
 	var api = {
@@ -40,13 +38,19 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		CATEGORY_EDIT_URL:BASE_PREFIX + "/category/edit",
 		CATEGORY_DEL_URL:BASE_PREFIX + "/category/del",
 		
+		DONATE_SHOW_URL:BASE_PREFIX + "/donate",
+		DONATE_ADD_URL:BASE_PREFIX + "/donate/add",
+		DONATE_EDIT_URL:BASE_PREFIX + "/donate/edit",
+		DONATE_DEL_URL:BASE_PREFIX + "/donate/del",
+		
 		BLOG_SHOW_URL:BASE_PREFIX + "/blog",
 		BLOG_ADD_URL:BASE_PREFIX + "/blog/add",
 		BLOG_EDIT_URL:BASE_PREFIX + "/blog/edit",
 		BLOG_DEL_URL:BASE_PREFIX + "/blog/del",
 		
 		PASSWORD_URL:BASE_PREFIX + "/profile/password",
-
+		
+		UPLOAD_IMAGE_URL:BASE_PREFIX + "/upload/uploadImage",
 	}
 	
 	var action = {
@@ -136,6 +140,19 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 			action.doAjax(api.CATEGORY_DEL_URL,params,success);
 		},
 		
+		showDonate:function(params,success){
+			action.doAjax(api.DONATE_SHOW_URL,params,success);
+		},
+		addDonate:function(params,success){
+			action.doAjax(api.DONATE_ADD_URL,params,success);
+		},
+		editDonate:function(params,success){
+			action.doAjax(api.DONATE_EDIT_URL,params,success);
+		},
+		delDonate:function(params,success){
+			action.doAjax(api.DONATE_DEL_URL,params,success);
+		},
+		
 		showBlog:function(params,success){
 			action.doAjax(api.BLOG_SHOW_URL,params,success);
 		},
@@ -151,7 +168,8 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		
 		password:function(params,success){
 			action.doAjax(api.PASSWORD_URL,params,success);
-		}
+		},
+		UPLOAD_IMAGE_URL:api.UPLOAD_IMAGE_URL,
 	}
 	exports('api', action);
 });

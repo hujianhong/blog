@@ -3,7 +3,8 @@
  * 青菜萝卜 主入口
  * 
  */
-layui.define(['api','layer','laytpl','laypage','form','common'], function(exports) {
+layui.define(['api','layer','laytpl','laypage','form','common','notice'], function(exports) {
+	var notice = layui.notice;
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var api = layui.api;
@@ -35,8 +36,7 @@ layui.define(['api','layer','laytpl','laypage','form','common'], function(export
 	var tpl = {
 		blogListTpl:
 		'{{#  layui.each(d.list, function(index, item){ }}\
-			<article class="qing-entry-article">\
-		    <div class="am-u-lg-12 am-u-md-12 am-u-sm-12 qing-entry-text">\
+		    <div class="qing-entry-text">\
 		    	 <div class="qing-list-title">\
 		    	 		<span class="qing-category">{{item.typeName}}<i></i></span><a href="{{item.url}}"> {{item.title}}</a>\
 		    	 </div>\
@@ -62,7 +62,6 @@ layui.define(['api','layer','laytpl','laypage','form','common'], function(export
 	            <a href="{{item.url}}" class="qing-read-more">阅读全文>></a>\
 		       </div> \
 		    </div>\
-			</article>\
 		{{# });}}\
 		{{#  if(d.list.length === 0){ }}\
 		  <div class="qing-content-empty qing-text-center">\
@@ -86,7 +85,7 @@ layui.define(['api','layer','laytpl','laypage','form','common'], function(export
 		},
 
 		callback : function(params){
-			api.showBlog(params,function(result){
+			api.showBlogByCategory(params,function(result){
 				// 渲染数据
 				laytpl(tpl.blogListTpl).render(result.data,function(html){
 					// 显示内容

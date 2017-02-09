@@ -3,14 +3,14 @@
  * 所有前端模板的定义
  */
 
-layui.define(['common','laytpl','api','layer','qingeditor','qingcmt','form'],function(exports) {
+layui.define(['common','laytpl','api','layer','qingcmt','form','notice'], function(exports) {
+	var notice = layui.notice;
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var common = layui.common;
 	var api = layui.api;
 	var laytpl = layui.laytpl;
 	var laypage = layui.laypage;
-	var qingeditor = layui.qingeditor;
 	var qingcmt = layui.qingcmt;
 	
 	qingcmt.comment({
@@ -20,6 +20,7 @@ layui.define(['common','laytpl','api','layer','qingeditor','qingcmt','form'],fun
 			pageSize:10,
 			id:$("#qing-blog-id").val()
 		},
+		blogID:$("#qing-blog-id").val()
     });
     /**
      * 模板数据
@@ -27,14 +28,22 @@ layui.define(['common','laytpl','api','layer','qingeditor','qingcmt','form'],fun
     var tpl = {
     	// 热门排行模板
 		hotRankTpl:
-		'{{#  layui.each(d.data, function(index, item){ }}\
-			<li>\
-				<a href="{{item.url}}">{{item.title}}</a>\
-				<span><i class="am-icon-eye-slash" title="评论数"> </i> {{item.readNum}}</span>\
-				<span><i class="am-icon-comments-o" title="评论数"> </i> {{item.commentNum}}</span>\
-				<span><i class="am-icon-heart-o" title="评论数"> </i> {{item.heartNum}}</span>\
-			</li>\
-		{{# });}}'
+		'<div class="qing-panel">\
+		  	<div class="qing-panel-title">\
+		  		<h2>热门排行</h2>\
+		  	</div>\
+		  	<div class="qing-panel-body">\
+		  		<div class="qing-item-cnt">\
+		  		{{#  layui.each(d.data, function(index, item){ }}\
+					<div class="qing-item-list">\
+						<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
+						<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+					</div>\
+				{{# });}}\
+		  		</<div>\
+		  	</div>\
+		  </div>'
+		  ,
 	}
     
     var action = {
@@ -92,11 +101,6 @@ layui.define(['common','laytpl','api','layer','qingeditor','qingcmt','form'],fun
 		var extend = {};
 		layui.use(layui.cache.page);
 	}
-	
-	//加载编辑器
-	qingeditor.layEditor({
-		elem: '.qing-editor'
-	});
 	
 	exports('qingblog', {});
 });

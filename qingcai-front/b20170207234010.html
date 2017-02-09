@@ -53,6 +53,9 @@
 	<div class="am-g am-g-fixed qing-fixed qing-container">
 		  <!-- 正文内容开始-->
 	    <div class="am-u-md-8 am-u-sm-12">
+	    		<!-- 通知公告开始 -->
+	    		<div id="qing-notice-cnt"></div>
+	    		<!-- 通知公告结束 -->
 	    	<!--nav start-->
 	    	<div class="qing-blog-nav">
 	    		<a href="index.html"><i class="am-icon-home"></i>首页</a> <i class="am-icon-angle-double-right"></i> <a href="/b20170207234010.html">14年12月CCF真题4 最优灌溉</a>
@@ -72,15 +75,15 @@
 		          <div class="qing-blog-tips">
 					       	<span class="qing-blog-tip-c"><i class="am-icon-user qing-color-author" title="作者"></i> 胡建洪 &nbsp;</span>
 						      <span class="qing-blog-tip-c"><i class="am-icon-clock-o qing-color-clock" title="时间"></i> 2017-02-07</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<span id="blog-readNum">5</span>)</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<span id="blog-commentNum">0</span>)</span>
-					        <span class="qing-blog-tip-c"><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<span id="blog-heartNum">0</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i> 阅读(<span id="blog-readNum">9</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-comments-o qing-color-comment" title="评论"></i> 评论(<span id="blog-commentNum">2</span>)</span>
+					        <span class="qing-blog-tip-c"><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<span id="blog-heartNum">1</span>)</span>
 				      </div>
 	    		</div>
 	    		<!-- blog header end -->
 	    		<!-- blog summary start -->
 	    		<div class="qing-margin-top"> 
-        		 <p><div class="qing-blog-summary"><strong>摘要：雷雷承包了很多片麦田，为了灌溉这些麦田，雷雷在第一个麦田挖了一口很深的水井，所有的麦田都从这口井来引水灌溉。</strong></div></p> 
+        		 <p><div class="qing-blog-summary"><strong>内容摘要：雷雷承包了很多片麦田，为了灌溉这些麦田，雷雷在第一个麦田挖了一口很深的水井，所有的麦田都从这口井来引水灌溉。</strong></div></p> 
 	    		</div>
 	    		<!-- blog summary end -->
 	    		<!-- blog content start -->
@@ -175,7 +178,7 @@ public class Main {
 	    		
 	    		<div class="qing-blog-social">
 	    				<span class="qing-blog-action qing-blog-like"> 
-	    					<i class="am-icon-heart"></i> 喜欢 (<span id="blog-content-like" class="count">0</span>)
+	    					<i class="am-icon-heart"></i> 喜欢 (<span id="blog-content-like" class="count">1</span>)
 	    				</span>
 							<span class="or">or</span>
 							<span class="qing-blog-action qing-blog-share">
@@ -204,7 +207,7 @@ public class Main {
 	    		
 	    		<!-- blog tag  start -->
     			<div class="qing-margin-top qing-blog-tag">
-	            <i class="am-icon-tags"> &nbsp;</i>
+	            <span class="am-icon-tags"> &nbsp;</span>
 <span class="am-radius">#CCF</span>	        </div>
 	    		<!-- blog tag  end -->
 	    	</div>
@@ -213,21 +216,12 @@ public class Main {
 	    	<!-- blog footer start-->
     		<div class="qing-blog-foot">
     				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="/b20170207223754.html">从零开始搭建个人博客站</a></span>
-    				<span class="right"><a href="/b20170207234246.html">15年9月CCF真题4 高速公路</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
+    				<span class="right"><a href="/B20170209114418.html">测试图片上传功能</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
     		</div>
 	    	<!-- blog footer end-->
 	    	
 	    	<!-- dynamic more blog start-->
-				<div class="qing-margin-top">
-	    		 <div class="qing-panel">
-	    	  	<div class="qing-panel-title">
-	    	  		<h2>相似文章</h2>
-	    	  	</div>
-	    	  	<div class="qing-panel-body">
-	    	  		<ol class="qing-list-one" id="hot-rank-blogs"></ol>
-	    	  	</div>
-	    	  </div>
-	    	</div>
+				<div class="qing-margin-top" id="hot-rank-blogs"></div>
 	    	<!-- dynamic more blog end-->
     		<!-- ad start-->
     		<div id="blog-content-bottom-ad" class="qing-blog-ad qing-margin-top">
@@ -235,35 +229,7 @@ public class Main {
     		</div>
     		<!-- ad start-->
     		<!-- comment start-->
-    		<div class="qing-content qing-margin-top">
-	    		<div id="commentContainer"></div>
-      		<!-- 发表评论开始 -->
-      		<div class="qing-comment-post">
-      			发表评论
-      		</div>
-		      <div class="layui-form-pane qing-margin-top">
-		        <form class="layui-form" action="post">
-		        	<div class="layui-form-item">
-						    <div class="layui-input-inline">
-						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
-						    </div>
-						    <div class="layui-input-inline">
-						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
-						    </div>
-						  </div>
-		          <div class="layui-form-item layui-form-text">
-		            <div class="layui-input-block">
-		              <textarea id="qing-content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea qing-editor" style="height: 150px;"></textarea>
-		            </div>
-		          </div>
-		          <div class="layui-form-item">
-		            <input type="hidden" name="qingID" value="495fa978801d418a9b6ed475c989eaa1">
-		            <button class="layui-btn" lay-filter="comment" lay-submit>提交评论</button>
-		          </div>
-		        </form>
-		      </div>
-		      <!-- 发表评论结束 -->
-	    	</div>
+    		<div class="qing-content qing-margin-top" id="commentContainer"></div>
 	    	<!-- comment end-->
 	    </div>
 	    <!--正文内容结束-->

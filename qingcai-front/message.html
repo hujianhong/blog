@@ -17,8 +17,6 @@
   <meta name="msapplication-TileColor" content="#0e90d2">
   <link rel="stylesheet" href="static/css/amazeui.min.css">
   <link rel="stylesheet" href="static/layui/css/layui.css"/>
-  <!--<link rel="stylesheet" href="fly/res/css/global.css" />-->
-  <link rel="stylesheet" href="static/css/iconfont.css"/>
   <link rel="stylesheet" href="static/css/qingcai.css" />
 </head>
 
@@ -35,8 +33,6 @@
 			    <ul class="am-nav am-nav-pills am-topbar-nav">
 			      <li><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
 			      <li><a href="about.html"><i class="am-icon-info"></i> 关于本站</a></li>
-			      <!--<li><a href="articles.html"><i class="am-icon-folder"></i> 文章存档</a></li>-->
-			      <!--<li><a href="resources.html"><i class="am-icon-share"></i> 实用资源</a></li>-->
 			      <li><a href="works.html"><i class="am-icon-code"></i> 我的作品</a></li>
 			      <li  class="am-active"><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
 			      <li><a href="donate.html"><i class="am-icon-share-alt"></i> 赞助作者</a></li>
@@ -56,41 +52,20 @@
 <!-- content srart -->
 <div class="am-g am-g-fixed qing-fixed qing-container">
     <div class="am-u-md-8 am-u-sm-12 am-u-md-centered am-u-sm-centered">
-    	<div class="qing-content">
-    		
-    		
-    		<div class="qing-msg-intro qing-margin-bottom">
-    				<span class="qing-msg-tip">留言区的样式设计还没有想好,暂时就这样啦</span>
+    	<!-- 通知公告开始 -->
+			<div id="qing-notice-cnt"></div>
+			<!-- 通知公告结束 -->
+    	<div class="qing-content qing-msg-header">
+    		<span>给我留言</span>
+    		<div>
+    			
     		</div>
-	  
-	  		<div id="commentContainer" class="qing-margin-top"></div>
-	      
-	      <!-- 发表评论开始 -->
-	  		<div class="qing-comment-post">
-	  			发表评论
-	  		</div>
-		      <div class="layui-form-pane qing-margin-top">
-		        <form class="layui-form" action="post">
-		        	<div class="layui-form-item">
-						    <div class="layui-input-inline">
-						      <input type="text" name="nickname" lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input">
-						    </div>
-						    <div class="layui-input-inline">
-						      <input type="text" name="email" lay-verify="email" placeholder="邮箱" autocomplete="off" class="layui-input">
-						    </div>
-						  </div>
-		          <div class="layui-form-item layui-form-text">
-		            <div class="layui-input-block">
-		              <textarea id="qing-content" name="content" required lay-verify="required" placeholder="我要发表评论"  class="layui-textarea qing-editor" style="height: 150px;"></textarea>
-		            </div>
-		          </div>
-		          <div class="layui-form-item">
-		            <input type="hidden" name="qingID" value="a232f9e0af9c40f9aa9e6b8882e2b94f">
-		            <button class="layui-btn" lay-filter="comment" lay-submit>提交评论</button>
-		          </div>
-		        </form>
-		      </div>
-		      <!-- 发表评论结束 -->
+		  </div>
+    	<div class="qing-content">
+    		<!--<div class="qing-msg-intro qing-margin-bottom">
+    				<span class="qing-msg-tip">留言区的样式设计还没有想好,暂时就这样啦</span>
+    		</div>-->
+	  		<div id="commentContainer"></div>
       </div>
       
     </div>
