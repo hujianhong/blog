@@ -300,6 +300,7 @@ layui.define(['api', 'laytpl','laypage','layer','qingface', 'form','qingeditor']
 					}
 				});
 			});
+			
 		},
 		
 		onClick : function(){
