@@ -3,8 +3,7 @@
  * 青菜萝卜 主入口
  * 
  */
-layui.define(['api','layer','laytpl','laypage','form','common','notice'], function(exports) {
-	var notice = layui.notice;
+layui.define(['api','layer','laytpl','laypage','common','qingleft'], function(exports) {
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var api = layui.api;
@@ -12,26 +11,6 @@ layui.define(['api','layer','laytpl','laypage','form','common','notice'], functi
 	var laytpl = layui.laytpl;
 	var common = layui.common;
 	var laypage = layui.laypage;
-  
-    //监听提交
-    form.on('submit(search)', function(data){
-    	var searchKey = JSON.stringify(data.field.search);
-	    layer.msg("你要搜索的内容是" + searchKey +"，对不起，搜索功能暂时还没有实现。。。");
-	    return false;
-    });
-    
-    form.on('submit(search-sm)', function(data){
-    	var searchKey = $("#search-sm").val()
-	    layer.msg("你要搜索的内容是" + searchKey +"，对不起，搜索功能暂时还没有实现。。。");
-	    return false;
-    });
-    
-    //监听提交
-    form.on('submit',function(data){
-    	var searchKey = $("#search").val() || $("#search-sm").val();
-	    layer.msg("你要搜索的内容是" + searchKey +"，对不起，搜索功能暂时还没有实现。。。");
-	    return false;
-    });
 	
 	var tpl = {
 		blogListTpl:
@@ -90,6 +69,8 @@ layui.define(['api','layer','laytpl','laypage','form','common','notice'], functi
 				laytpl(tpl.blogListTpl).render(result.data,function(html){
 					// 显示内容
 					$("#blog-list").html(html);
+					$("#qing-name").html(action.getUrlParam("name"));
+					$("#qing-num").html(result.data.totalRow);
 				});
 				// 回到顶部
 				var speed=200;//滑动的速度
@@ -108,6 +89,8 @@ layui.define(['api','layer','laytpl','laypage','form','common','notice'], functi
 				laytpl(tpl.blogListTpl).render(result.data,function(html){
 					// 显示内容
 					$("#blog-list").html(html);
+					$("#qing-name").html(action.getUrlParam("name"));
+					$("#qing-num").html(result.data.totalRow);
 				});
 				// 调用分页
 				laypage({
@@ -128,6 +111,7 @@ layui.define(['api','layer','laytpl','laypage','form','common','notice'], functi
 		},
 	}
 	action.showBlogByCategory();
+	var qingleft = layui.qingleft;
 	exports('category', {});
 });
 

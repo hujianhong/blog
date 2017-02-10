@@ -3,35 +3,13 @@
  * 青菜萝卜 主入口
  * 
  */
-layui.define(['api','layer','laytpl','laypage','form','common','notice'], function(exports) {
-	var notice = layui.notice;
+layui.define(['api','layer','laytpl','laypage','common','qingleft'], function(exports) {
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var api = layui.api;
-	var form = layui.form();
 	var laytpl = layui.laytpl;
 	var common = layui.common;
 	var laypage = layui.laypage;
-  
-    //监听提交
-    form.on('submit(search)', function(data){
-    	var searchKey = JSON.stringify(data.field.search);
-	    layer.msg("你要搜索的内容是" + searchKey +"，对不起，搜索功能暂时还没有实现。。。");
-	    return false;
-    });
-    
-    form.on('submit(search-sm)', function(data){
-    	var searchKey = $("#search-sm").val()
-	    layer.msg("你要搜索的内容是" + searchKey +"，对不起，搜索功能暂时还没有实现。。。");
-	    return false;
-    });
-    
-    //监听提交
-    form.on('submit',function(data){
-    	var searchKey = $("#search").val() || $("#search-sm").val();
-	    layer.msg("你要搜索的内容是" + searchKey +"，对不起，搜索功能暂时还没有实现。。。");
-	    return false;
-    });
 	
 	var tpl = {
 		blogListTpl:
@@ -92,7 +70,7 @@ layui.define(['api','layer','laytpl','laypage','form','common','notice'], functi
 		  		{{#  layui.each(d.data, function(index, item){ }}\
 					<div class="qing-item-list">\
 						<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
-						<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+						<span>{{item.readNum}}阅/{{item.commentNum}}评/{{item.heartNum}}赞</span>\
 					</div>\
 				{{# });}}\
 		  		</<div>\
@@ -193,6 +171,8 @@ layui.define(['api','layer','laytpl','laypage','form','common','notice'], functi
 	action.showLunbo();
 	action.showBlog();
 	action.showHotRankBlog();
+	
+	var qingleft = layui.qingleft;
 	exports('index', {});
 });
 

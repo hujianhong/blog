@@ -11,7 +11,6 @@ layui.define(['api','layer','laytpl','laypage','common','qingleft'], function(ex
 	var laytpl = layui.laytpl;
 	var common = layui.common;
 	var laypage = layui.laypage;
-  
 	
 	var tpl = {
 		blogListTpl:
@@ -45,7 +44,7 @@ layui.define(['api','layer','laytpl','laypage','common','qingleft'], function(ex
 		{{# });}}\
 		{{#  if(d.list.length === 0){ }}\
 		  <div class="qing-content-empty qing-text-center">\
-		  	<div class="qing-empty-tip">该标签下暂无文章</div>\
+		  	<div class="qing-empty-tip">该分类下暂无文章</div>\
 		  </div>\
 		{{#  } }}' 
 	}
@@ -65,33 +64,29 @@ layui.define(['api','layer','laytpl','laypage','common','qingleft'], function(ex
 		},
 
 		callback : function(params){
-			api.showBlogByTag(params,function(result){
+			api.showBlogByQuery(params,function(result){
 				// 渲染数据
 				laytpl(tpl.blogListTpl).render(result.data,function(html){
 					// 显示内容
 					$("#blog-list").html(html);
-					$("#qing-name").html(action.getUrlParam("name"));
-					$("#qing-num").html(result.data.totalRow);
 				});
 				// 回到顶部
 				var speed=200;//滑动的速度
                 $('body').animate({ scrollTop: 0 }, speed);
 			});
 		},
-		showBlogByTag:function(){
+		showBlogByQuery:function(){
 			var blogID = action.getUrlParam("id");
 			var params = {
 				pageNum:1,
 				pageSize:pageSize,
 				id:blogID
 			};
-			api.showBlogByTag(params,function(result){
+			api.showBlogByQuery(params,function(result){
 				// 渲染数据
 				laytpl(tpl.blogListTpl).render(result.data,function(html){
 					// 显示内容
 					$("#blog-list").html(html);
-					$("#qing-name").html(action.getUrlParam("name"));
-					$("#qing-num").html(result.data.totalRow);
 				});
 				// 调用分页
 				laypage({
@@ -111,11 +106,8 @@ layui.define(['api','layer','laytpl','laypage','common','qingleft'], function(ex
 			});
 		},
 	}
-	action.showBlogByTag();
-	
-	var qingleft = layui.qingleft;
-	
-	exports('tag', {});
+	action.showBlogByQuery();
+	exports('category', {});
 });
 
 

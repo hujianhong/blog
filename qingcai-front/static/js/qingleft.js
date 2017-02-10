@@ -87,11 +87,11 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 	    	  	<div class="qing-panel-body">\
 	    	  		<p class="am-text-left">邮箱：1043244432@qq.com</p>\
 		            <p class="am-text-left">QQ交流群：545418785</p>\
-		            <p class="am-text-left">\
+		            <!--<p class="am-text-left">\
 	            	       社交账号：\
 		                <a href="https://github.com/hujianhong" target="_blank"><span class="am-icon-github am-icon-fw am-icon-sm"></span></a>\
 		                <a href="http://weibo.com/p/1005055576062761?is_all=1" target="_blank"><span class="am-icon-weibo am-icon-fw am-icon-sm"></span></a>\
-	           		</p>\
+	           		</p>-->\
 	    	  	</div>\
 	    	  </div>\
 	    	</div>',
@@ -116,7 +116,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 		// 博客分类标签模板
 		blogCategoryTpl: 
 		'{{#  layui.each(d.data, function(index, item){ }}\
-			<span id="{{item.id}}" class="qing-left-category qing-left-category{{ index % 4}} am-radius" >\
+			<span id="{{item.id}}" val="{{item.name}}" class="qing-left-category qing-left-category{{ index % 4}} am-radius" >\
 				{{item.name}}({{item.blogNum}})\
 			</span>\
 		{{# });}}'
@@ -127,7 +127,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 			{{#  layui.each(d.data, function(index, item){ }}\
 				<div class="qing-item-list">\
 					<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
-					<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+					<span>{{item.readNum}}阅/{{item.commentNum}}评/{{item.heartNum}}赞</span>\
 				</div>\
 			{{# });}}\
   		</<div>'
@@ -138,7 +138,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 			{{#  layui.each(d.data, function(index, item){ }}\
 				<div class="qing-item-list">\
 					<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
-					<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+					<span>{{item.readNum}}阅/{{item.commentNum}}评/{{item.heartNum}}赞</span>\
 				</div>\
 			{{# });}}\
   		</<div>'
@@ -149,7 +149,7 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 			{{#  layui.each(d.data.list, function(index, item){ }}\
 				<div class="qing-item-list">\
 					<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
-					<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+					<span>{{item.readNum}}阅/{{item.commentNum}}评/{{item.heartNum}}赞</span>\
 				</div>\
 			{{# });}}\
   		</<div>'
@@ -202,7 +202,8 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 					// 添加事件
 					$(".qing-left-category").on("click",function(event){
 						var id=$(event.target).attr("id");
-						location.href="category.html?id="+id;
+						var name=$(event.target).attr("val");
+						location.href="category.html?id=" + id + "&name=" + name;
 					});
 				});
 			});
@@ -293,13 +294,19 @@ layui.define(['layer','laytpl','api','qingad','qingbqy'],function(exports){
 					$(".qing-tag-cloud a").on("click",function(event){
 						var data = $(this).attr("data");
 						var title = $(this).attr("title");
-						location.href="tag.html?id="+data + "&name=" + title;
+						location.href="tag.html?id=" + data + "&name=" + title;
 					});
 				});
 			});
 		}
 	};
-	exports('qingleft',leftEdge);
+	
+	// 加载左侧内容
+	leftEdge.edge({
+		elem:$("#qing-left"),
+	});
+	
+	exports('qingleft',{});
 });
 
 

@@ -6,7 +6,7 @@
    <meta name="description" content="青菜萝卜|百川博客我的作品">
   <meta name="keywords" content="青菜萝卜,百川,博客,我的作品">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>青菜萝卜 | 我的作品</title>
+  <title>我的作品 | 青菜萝卜胡丁程序员技术分享博客</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
@@ -15,9 +15,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="青菜萝卜"/>
   <meta name="msapplication-TileColor" content="#0e90d2">
-  <link rel="stylesheet" href="static/css/amazeui.min.css">
+  <link rel="stylesheet" href="static/css/amazeui.min.css" />
+  <link rel="stylesheet" href="static/layui/css/layui.css"/>
   <link rel="stylesheet" href="static/css/qingcai.css" />
-  <link rel="stylesheet" type="text/css" href="static/layui/css/layui.css"/>
 </head>
 
 <body id="blog">
@@ -51,48 +51,37 @@
 		</div>
 	<!-- nav end -->
 	</header>
-<!-- content srart -->
-<div class="am-g am-g-fixed blog-fixed">
-	<!-- left content start-->
-    <div class="am-u-md-10 am-u-sm-12 am-u-md-centered am-u-sm-centered">
-    	<div class="qing-container qing-content qing-text-center">
-    		<div style="color: red;height: 800px;">
-    			<div class="qing-msg-intro qing-margin-bottom">
-    				<span class="qing-msg-tip">博客的其他页面还在开发中，这个页面暂时空着</span>
-    		  </div>
-    		</div>
+	<!-- content srart -->
+	<div class="am-g am-g-fixed blog-fixed qing-container">
+		<!-- left content start-->
+	    <div class="am-u-md-10 am-u-sm-12 am-u-md-centered am-u-sm-centered">
+	    	<!-- 通知公告开始 -->
+			<div id="qing-notice-cnt"></div>
+			<!-- 通知公告结束 -->
+    	<!-- header start  -->
+    	<div class="qing-content qing-page-header">
+    		 <span>我的作品</span>
     	</div>
-    </div>
-    <!-- left content end-->
-    <!--<div class="am-u-md-4 am-u-sm-12 blog-sidebar">
-        <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-text-center blog-title"><span>关于我</span></h2>
-            <img src="http://static.huding.name/i/f14.jpg" alt="about me" class="blog-entry-img" >
-            <p>青菜萝卜</p>
-            <p class="am-text-left">
-        			一枚在校研究生，非著名程序员。主要开发语言为Java， Android，Html等。专长领域为Web开发，Android开发，服务器端开发。目前主要研究方向为海量信息处理，文本新闻挖掘等。 
-        		</p>
-        		<p>更多信息请点击：<a href="about.html">关于本站</a></p>
-        </div>
-        <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-title"><span>生活精选</span></h2>
-            <ul class="am-list">
-                <li><a href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
-                <li><a href="#">我把最深沉的秘密放在那里。</a></li>
-                <li><a href="#">你不懂我，我不怪你。</a></li>
-                <li><a href="#">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a></li>
-            </ul>
-        </div>
-    </div>-->
-</div>
-<!-- content end -->
+    	<!-- header end  -->
+	    	<div class="qing-content qing-text-center">
+	    		<div style="color: red;height: 800px;">
+	    			<div class="qing-msg-intro qing-margin-bottom">
+	    				<span class="qing-msg-tip">博客的其他页面还在开发中，这个页面暂时空着</span>
+	    		  </div>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- left content end-->
+	</div>
+	<!-- content end -->
 
+  <!-- content end -->
   <footer class="qing-footer">
     <div class="qing-text-center">
-       <h3>青菜萝卜简介</h3>
-       <p class="am-text-sm">青菜萝卜定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
+       <h3><strong>青菜萝卜胡丁程序员技术分享博客简介</strong></h3>
+       <p class="am-text-sm">青菜萝卜胡丁程序员技术分享博客定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
     </div>
-    <div class="qing-text-center">Copyright © 2016 青菜萝卜  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+    <div class="qing-text-center">Copyright © 2016 青菜萝卜 胡丁  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
   </footer>
 
 <!--[if (gte IE 9)|!(IE)]><!-->
@@ -106,32 +95,8 @@
 <script src="http://static.huding.name/js/amazeui.min.js"></script>
 <script src="static/layui/layui.js"></script>
 	<script>
-		layui.config({base:'static/js/'}).use('index');
+		layui.config({base:'static/js/'}).use('works');
 	</script>
-<!--百度站长统计 实现访问统计-->
-<script>
-		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "//hm.baidu.com/hm.js?d2aa4dc60247f9f5c173748e3f9ac548";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
-		})();
-</script>
-<!--百度页面主动推送 实现页面百度索引-->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
+<script type="text/javascript" src="static/js/badutongji.js" ></script>
 </body>
 </html>

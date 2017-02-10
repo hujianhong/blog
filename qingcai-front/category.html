@@ -6,7 +6,7 @@
   <meta name="description" content="青菜萝卜 - 胡丁 |定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料">
   <meta name="keywords" content="青菜萝卜,胡丁,博客,程序员,程序猿,程序媛">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>青菜萝卜-胡丁 | 程序员技术分享博客</title>
+  <title>文章分类 | 青菜萝卜胡丁程序员技术分享博客</title>
   <meta name="renderer" content="webkit">
   <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
@@ -51,13 +51,14 @@
 	</header>
 	<!--mobile search input start -->
 	<div class="am-show-sm-only am-u-sm-12 qing-sm-search">
-		<form class="m-topbar-form am-topbar-right am-form-inline layui-form" lay-submit lay-filter="search-sm" role="search">
+		<form class="m-topbar-form am-topbar-right am-form-inline layui-form" lay-submit lay-filter="searchSM" role="search">
 	      <div class="am-form-group am-form-icon">
-	        <input id="search-sm" name="search" type="text" required lay-verify="required"  class="am-form-field am-form-field am-radius" placeholder="请输入要搜索的关键词">
-	        <i class="am-icon-search"></i>
+	      	<i class="am-icon-search"></i>
+	        <input id="search-sm" name="search" type="text" class="am-form-field am-form-field am-radius" placeholder="请输入要搜索的关键词" required lay-verify="required">
 	      </div>
 			</form>
 	</div>
+	<!--mobile search input end -->
 	<!--mobile search input end -->
 	<!-- content srart -->
 	<div class="am-g am-g-fixed qing-fixed qing-container">
@@ -66,6 +67,10 @@
 	    		<!-- 通知公告开始 -->
 	    		<div id="qing-notice-cnt"></div>
 	    		<!-- 通知公告结束 -->
+	    		<!-- header start  -->
+		    	<div class="qing-content qing-query-header">
+		    		 <span>类别"<span id="qing-name"></span>"结果共有(<span id="qing-num"></span>)条</span>
+		    	</div>
 	    		<!-- 博文列表 -->
 					<div id="blog-list"></div>
 					<!-- 博文分页-->
@@ -82,10 +87,10 @@
 
   <footer class="qing-footer">
     <div class="qing-text-center">
-       <h3><strong>青菜萝卜-胡丁</strong>简介</h3>
-       <p class="am-text-sm">青菜萝卜-胡丁博客定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
+       <h3><strong>青菜萝卜胡丁程序员技术分享博客简介</strong></h3>
+       <p class="am-text-sm">青菜萝卜胡丁程序员技术分享博客定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
     </div>
-    <div class="qing-text-center">Copyright © 2016 青菜萝卜 - 胡丁  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+    <div class="qing-text-center">Copyright © 2016 青菜萝卜 胡丁  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
   </footer>
 	
 	<script src="http://static.huding.name/js/jquery.min.js"></script>

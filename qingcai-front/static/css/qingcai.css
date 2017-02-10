@@ -799,8 +799,8 @@ a:hover {
 .qing-donate-header span {
 	font-size: 16px;
 }
-.qing-donate-container {
-	margin: 3rem 0 1rem 0;
+.qing-donate-cnt {
+	1rem 0 1rem 0;
 }
 .qing-donate-title {
 	font-size: 16px;
@@ -849,6 +849,10 @@ a:hover {
 }
 .qing-donate-qrcode {
 	display: inline-block;
+}
+.qing-donate-tip {
+	color: #666;
+	font-size: 12px;
 }
 
 /* TODO捐赠CSS结束 */
@@ -1016,18 +1020,19 @@ body .layui-edit-face .layui-layer-content {
 /* TODO 简易编辑器CSS结束 */
 
 
-.qing-abount {
+.qing-about {
 	margin-top: 10rem;
     border: 1px solid;
     border-color: #eee;
     background: #fbfbfb;
     padding: 3rem 2rem;
 }
-.qing-abount-text {
+.qing-about-text {
 	text-indent: 2em;
 }
-.qing-abount-hint {
-	padding: 0.5rem 0;
+
+.qing-about-cnt {
+	padding-bottom: 10rem;
 }
 
 
@@ -1044,11 +1049,21 @@ body .layui-edit-face .layui-layer-content {
 	color: #01AAED;
 }
 
-.qing-msg-header {
+.qing-page-header {
 	margin-bottom: 2px;
 	padding: 0.5rem 2rem 0.5rem 2rem;
 }
 
-.qing-msg-header span {
+.qing-page-header span {
 	font-size: 18px;
+}
+
+
+.qing-query-header {
+	margin-bottom: 2px;
+	padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.qing-query-header span {
+	font-size: 14px;
 }

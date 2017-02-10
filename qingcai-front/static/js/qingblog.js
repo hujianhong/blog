@@ -3,8 +3,7 @@
  * 所有前端模板的定义
  */
 
-layui.define(['common','laytpl','api','layer','qingcmt','form','notice'], function(exports) {
-	var notice = layui.notice;
+layui.define(['common','laytpl','api','layer','qingcmt','qingleft'], function(exports) {
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	var common = layui.common;
@@ -37,7 +36,7 @@ layui.define(['common','laytpl','api','layer','qingcmt','form','notice'], functi
 		  		{{#  layui.each(d.data, function(index, item){ }}\
 					<div class="qing-item-list">\
 						<a class="qing-item-link" href="{{item.url}}">{{item.title}}</a>\
-						<span>{{item.commentNum}}评/{{item.readNum}}阅/{{item.heartNum}}赞</span>\
+						<span>{{item.readNum}}阅/{{item.commentNum}}评/{{item.heartNum}}赞</span>\
 					</div>\
 				{{# });}}\
 		  		</<div>\
@@ -94,13 +93,13 @@ layui.define(['common','laytpl','api','layer','qingcmt','form','notice'], functi
 		});
 	});
 	
-	
-	
 	//加载特定模块
 	if(layui.cache.page && layui.cache.page !== 'index') {
 		var extend = {};
 		layui.use(layui.cache.page);
 	}
+	
+	var qingleft = layui.qingleft;
 	
 	exports('qingblog', {});
 });

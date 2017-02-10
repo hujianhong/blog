@@ -28,7 +28,7 @@
 	    </h1>
 			<!-- nav start -->
 			<nav class="am-g am-g-fixed qing-fixed qing-nav">
-				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only qing-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only qing-btn-mobile" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
 			  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
 			    <ul class="am-nav am-nav-pills am-topbar-nav">
 			      <li><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
@@ -49,6 +49,16 @@
 		</div>
 	<!-- nav end -->
 	</header>
+	<!--mobile search input start -->
+	<div class="am-show-sm-only am-u-sm-12 qing-sm-search">
+		<form class="m-topbar-form am-topbar-right am-form-inline layui-form" lay-submit lay-filter="searchSM" role="search">
+	      <div class="am-form-group am-form-icon">
+	      	<i class="am-icon-search"></i>
+	        <input id="search-sm" name="search" type="text" class="am-form-field am-form-field am-radius" placeholder="请输入要搜索的关键词" required lay-verify="required">
+	      </div>
+			</form>
+	</div>
+	<!--mobile search input end -->
 	<!-- content srart -->
 	<div class="am-g am-g-fixed qing-fixed qing-container">
 		  <!-- 正文内容开始-->
@@ -327,9 +337,14 @@
 	    	<!--blog end -->
 	    	
 	    	<!-- blog footer start-->
-    		<div class="qing-blog-foot">
+    		<!-- blog footer start-->
+    		<div class="qing-blog-foot am-hide-sm-only">
     				<span class="left"><i class="am-icon-angle-double-left"></i>&nbsp;<a href="/B20170209114837.html">测试图片上传测试</a></span>
     				<span class="right"><a href="/b20170207223754.html">从零开始搭建个人博客站</a>&nbsp;<i class="am-icon-angle-double-right"></i></span>
+    		</div>
+    		<div class="qing-blog-foot am-show-sm-only">
+    				<span><i class="am-icon-angle-double-left"></i>&nbsp;<a href="/B20170209114837.html">测试图片上传测试</a></span><br>
+    				<span><i class="am-icon-angle-double-right"></i>&nbsp;<a href="/b20170207223754.html">从零开始搭建个人博客站</a></span>
     		</div>
 	    	<!-- blog footer end-->
 	    	

@@ -1,9 +1,8 @@
 
 
-layui.define(['util','qingcmt','notice'], function(exports) {
-	var notice = layui.notice;
+layui.define(['common','qingcmt',], function(exports) {
+	var common = layui.common;
 	var qingcmt = layui.qingcmt;
-	var util = layui.util;
 	qingcmt.comment({
 		elem:$("#commentContainer"),
 		params:{
@@ -17,7 +16,5 @@ layui.define(['util','qingcmt','notice'], function(exports) {
 		report:false,
 		type:'赞助'
     });
-    //右下角固定Bar
-	util.fixbar();
 	exports('qingdonate',{});
 });

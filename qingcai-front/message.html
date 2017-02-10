@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="青菜萝卜 | 百川博客留言板">
+  <meta name="description" content="青菜萝卜 | 博客留言板">
   <meta name="keywords" content="青菜萝卜,百川,博客,留言板">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>青菜萝卜 | 给我留言</title>
+  <title>给我留言  | 青菜萝卜胡丁程序员技术分享博客</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
@@ -28,7 +28,7 @@
 	    </h1>
 			<!-- nav start -->
 			<nav class="am-g am-g-fixed qing-fixed qing-nav">
-				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only qing-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-show-sm-only qing-btn-mobile" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
 			  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
 			    <ul class="am-nav am-nav-pills am-topbar-nav">
 			      <li><a href="index.html"><i class="am-icon-home"></i> 首页</a></li>
@@ -37,6 +37,7 @@
 			      <li  class="am-active"><a href="message.html"><i class="am-icon-paper-plane"></i> 留言墙</a></li>
 			      <li><a href="donate.html"><i class="am-icon-share-alt"></i> 赞助作者</a></li>
 			    </ul>
+			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form am-hide-sm-only" role="search">
 			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form am-hide-sm-only" role="search">
 			      <div class="am-form-group am-form-icon">
 			        <input id="search" name="search" type="text" required lay-verify="required" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
@@ -49,22 +50,16 @@
 		</div>
 	<!-- nav end -->
 	</header>
-<!-- content srart -->
-<div class="am-g am-g-fixed qing-fixed qing-container">
+	<!-- content srart -->
+	<div class="am-g am-g-fixed qing-fixed qing-container">
     <div class="am-u-md-8 am-u-sm-12 am-u-md-centered am-u-sm-centered">
     	<!-- 通知公告开始 -->
 			<div id="qing-notice-cnt"></div>
 			<!-- 通知公告结束 -->
-    	<div class="qing-content qing-msg-header">
+    	<div class="qing-content qing-page-header">
     		<span>给我留言</span>
-    		<div>
-    			
-    		</div>
 		  </div>
     	<div class="qing-content">
-    		<!--<div class="qing-msg-intro qing-margin-bottom">
-    				<span class="qing-msg-tip">留言区的样式设计还没有想好,暂时就这样啦</span>
-    		</div>-->
 	  		<div id="commentContainer"></div>
       </div>
       
@@ -77,10 +72,10 @@
 
   <footer class="qing-footer">
     <div class="qing-text-center">
-       <h3>青菜萝卜简介</h3>
-       <p class="am-text-sm">青菜萝卜定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
+       <h3><strong>青菜萝卜胡丁程序员技术分享博客简介</strong></h3>
+       <p class="am-text-sm">青菜萝卜胡丁程序员技术分享博客定位为IT技术博客站，博客内容主要涉及编程语言、推荐算法、数据挖掘等方面，分享实用的学习和开发资料。 </p>
     </div>
-    <div class="qing-text-center">Copyright © 2016 青菜萝卜  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
+    <div class="qing-text-center">Copyright © 2016 青菜萝卜 胡丁  |  联系我 : 1043244432@qq.com  |  All Rights Reserved.  |  蜀ICP备16028381</div>    
   </footer>
   
 	<script src="http://static.huding.name/js/jquery.min.js"></script>

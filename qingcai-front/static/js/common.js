@@ -2,18 +2,14 @@
 
 
 
-layui.define(['util','qingleft'],function(exports){
+layui.define(['util','notice','query'],function(exports){
+	var notice = layui.notice;
 	var util = layui.util;
-	var qingleft = layui.qingleft;
 	
-	// 加载左侧内容
-	qingleft.edge({
-		elem:$("#qing-left"),
-	});
 	
 	//右下角固定Bar
 	util.fixbar();
-	
 	exports('common',{});
 	
 });
+

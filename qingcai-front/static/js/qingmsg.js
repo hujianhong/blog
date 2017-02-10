@@ -1,10 +1,8 @@
 /**
  * 青菜萝卜留言
  */
-layui.define(['util','qingcmt','qingleft','notice'], function(exports) {
-	var notice = layui.notice;
+layui.define(['common','qingcmt'], function(exports) {
 	var qingcmt = layui.qingcmt;
-	var util = layui.util;
 	
 	qingcmt.comment({
 		elem:$("#commentContainer"),
@@ -18,9 +16,5 @@ layui.define(['util','qingcmt','qingleft','notice'], function(exports) {
 		type:'留言',
 		blogID:'qingcailuobo-msg-cmt'
     });
-    
-    //右下角固定Bar
-	util.fixbar();
-    
 	exports('qingmsg',{});
 });
