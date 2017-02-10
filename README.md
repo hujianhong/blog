@@ -1,13 +1,24 @@
-## 青菜萝卜-胡丁博客源代码说明
+## 青菜萝卜胡丁程序员技术分享博客源代码说明
 
-开发采用的语言为java + css + js
+开发采用的语言为：
+
+1. 前端为html，css，jquery
+2. 后端为java
+
 采用前后端完全分离开发方式，采用的框架为：
-1.前端：amazeui,layui
-2.后端：jfinal
 
-本目录共计包含5个文件夹：
-1. back:后台管理的前端代码
-2. front:博客前台的前端代码（老版本）
-3. luobo:java开发的后端
-4. qingcai-front:现在使用的前端代码
-5. qingcai:七牛云demo代码
+1. 前端：amazeui,layui
+2. 后端：jfinal
+
+本目录共计包含3个文件夹，分别是：
+
+1. luobo:java开发的后端代码
+2. qingcai-front:前台博客展示系统的前端代码
+3. qingcai-back:后台博客管理系统的前端代码
+
+开发环境为：
+
+1. 前端开发使用Hbuilder.
+2. 后端开发使用Eclipse
+
+采用的数据为MySQL.
