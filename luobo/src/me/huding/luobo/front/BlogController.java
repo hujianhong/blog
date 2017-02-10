@@ -44,40 +44,15 @@ public class BlogController extends BaseController {
 	
 	
 	public void index(){
-		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
-		if(pageNum == null){
-			pageNum = 1;
-		}
-		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
-		if(pageSize == null){
-			pageSize = Parameters.DEFAULT_PAGE_SIZE;
-		}
-		
 		// 查询数据
-		Page<Record> data = Blog.paginate(pageNum, pageSize);
-		if(data.getList().size() > 0){
-			for(Record record : data.getList()){
-				Date date = record.getDate("publishTime");
-				if(date != null){
-					String d = DateUtils.DateToString(date, DateStyle.YYYY_MM_DD);
-					record.set("publishTime", d);
-				}
-			}
-		}
-		// 渲染结果
-		render(ResConsts.Code.SUCCESS, null, data);
+		Page<Record> data = Blog.paginate(getPageNum(), getPageSize());
+		doRender(data);
 	}
 	
 	
 	public void showByCategory(){
-		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
-		if(pageNum == null){
-			pageNum = 1;
-		}
-		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
-		if(pageSize == null){
-			pageSize = Parameters.DEFAULT_PAGE_SIZE;
-		}
+		Integer pageNum = getPageNum();
+		Integer pageSize = getPageSize();
 		String categoryID = getPara("id");
 		// 查询数据
 		Page<Record> data = null;
@@ -86,29 +61,13 @@ public class BlogController extends BaseController {
 		} else {
 			data = Blog.paginateByCategory(pageNum, pageSize,categoryID);
 		}
-		if(data.getList().size() > 0){
-			for(Record record : data.getList()){
-				Date date = record.getDate("publishTime");
-				if(date != null){
-					String d = DateUtils.DateToString(date, DateStyle.YYYY_MM_DD);
-					record.set("publishTime", d);
-				}
-			}
-		}
-		// 渲染结果
-		render(ResConsts.Code.SUCCESS, null, data);
+		doRender(data);
 	}
 	
 	
 	public void showByTag(){
-		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
-		if(pageNum == null){
-			pageNum = 1;
-		}
-		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
-		if(pageSize == null){
-			pageSize = Parameters.DEFAULT_PAGE_SIZE;
-		}
+		Integer pageNum = getPageNum();
+		Integer pageSize = getPageSize();
 		String tagID = getPara("id");
 		// 查询数据
 		Page<Record> data = null;
@@ -117,6 +76,25 @@ public class BlogController extends BaseController {
 		} else {
 			data = Blog.paginateByTag(pageNum, pageSize,tagID);
 		}
+		doRender(data);
+	}
+	
+	public void showByQuery(){
+		Integer pageNum = getPageNum();
+		Integer pageSize = getPageSize();
+		String keyword = getPara("keyword");
+		// 查询数据
+		Page<Record> data = null;
+		if(keyword == null || keyword.trim().length() == 0){
+			data = Blog.paginate(pageNum, pageSize);
+		} else {
+			data = Blog.paginateByQuery(pageNum, pageSize,keyword);
+		}
+		doRender(data);
+	}
+	
+	
+	private void doRender(Page<Record> data){
 		if(data.getList().size() > 0){
 			for(Record record : data.getList()){
 				Date date = record.getDate("publishTime");

@@ -26,6 +26,23 @@ import com.jfinal.core.Controller;
  */
 public class BaseController extends Controller {
 	
+	
+	protected Integer getPageSize(){
+		Integer pageSize = getParaToInt(IConstants.PAGE_SIZE);
+		if(pageSize == null){
+			pageSize = Parameters.DEFAULT_PAGE_SIZE;
+		}
+		return pageSize;
+	}
+	
+	protected Integer getPageNum(){
+		Integer pageNum = getParaToInt(IConstants.PAGE_NUM);
+		if(pageNum == null){
+			pageNum = 1;
+		}
+		return pageNum;
+	}
+	
 	/**
 	 * 设置响应码
 	 * @param code

@@ -37,7 +37,7 @@ layui.define(['api', 'laytpl','laypage','layer','qingface', 'form','qingeditor']
 		</div>\
 		{{#  if(d.report){ }}\
   			<div class="qing-comment-post">发表评论</div>\
-	      	<div class="layui-form-pane qing-margin-top">\
+	      	<div class="layui-form-pane qing-margin-top qing-margin-bottom">\
 		        <form class="layui-form" action="post">\
 		        	<div class="layui-form-item">\
 					    <div class="layui-input-inline">\

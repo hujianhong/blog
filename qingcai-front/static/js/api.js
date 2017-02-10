@@ -32,6 +32,7 @@ layui.define(['layer'],function(exports) {
 		BLOG_OPENREAD_URL: BASE_PREFIX + "/blog/openRead",
 		BLOG_SHOW_BY_CATEGORY_URL:BASE_PREFIX + "/blog/showByCategory",
 		BLOG_SHOW_BY_TAG_URL:BASE_PREFIX + "/blog/showByTag",
+		BLOG_SHOW_BY_QUERY_URL:BASE_PREFIX + "/blog/showByQuery",
 		
 		/**
 		 * 评论相关地址
@@ -127,6 +128,9 @@ layui.define(['layer'],function(exports) {
 		},
 		showBlogByTag:function(params,success){
 			action.doAjax(api.BLOG_SHOW_BY_TAG_URL,params,success);
+		},
+		showBlogByQuery:function(params,success){
+			action.doAjax(api.BLOG_SHOW_BY_QUERY_URL,params,success);
 		},
 		showYoulian:function(params,success){
 			action.doAjax(api.YOULIAN_URL,params,success);

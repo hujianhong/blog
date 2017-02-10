@@ -137,7 +137,7 @@ public class BlogController extends AbstarctBackController {
 					return false;
 				}
 				// 修改类别中的博文数
-				Category category = Category.dao.findById(blog.getCategoryID(),"id,blogNum");
+				Category category = Category.dao.findByIdLoadColumns(blog.getCategoryID(),"id,blogNum");
 				category.setBlogNum(category.getBlogNum() + 1);
 				if(!category.update()){
 					return false;

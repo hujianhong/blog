@@ -48,6 +48,8 @@ public class Blog extends BaseBlog<Blog> {
 		return Db.paginate(pageNum, pageSize,select, sqlExceptSelect);
 	}
 
+	
+	public static final String SHOW_SELECT = "select categoryName,id,title,author,summary,commentNum,readNum,url,publishTime,type,status,coverURL,heartNum,tags,typeName,typeID,categoryID";
 
 	/**
 	 * 
@@ -58,28 +60,9 @@ public class Blog extends BaseBlog<Blog> {
 	public static Page<Record> paginate(int pageNum,int pageSize){
 		// 默认根据时间排序
 		String sqlExceptSelect = "from blog_display order by publishTime desc";
-		String select = "select * ";
-		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect);
-		if(page.getList().isEmpty()){
-			return page;
-		}
-		List<Record> records = page.getList();
-		for(Record record : records){
-			String tags = record.get("tags");
-			if(tags == null){
-				record.set("tags", new ArrayList<String>());
-			} else {
-				String[] arr = tags.split(",");
-				List<String> ts = new ArrayList<String>();
-				for(String tag:arr){
-					ts.add(tag);
-				}
-				record.set("tags", ts);
-			}
-		}
-		return page;
+		Page<Record> page = Db.paginate(pageNum, pageSize,SHOW_SELECT, sqlExceptSelect);
+		return doPage(page);
 	}
-	
 	/**
 	 * 
 	 * @param pageNum
@@ -89,26 +72,8 @@ public class Blog extends BaseBlog<Blog> {
 	public static Page<Record> paginateByCategory(int pageNum,int pageSize,String categoryID){
 		// 默认根据时间排序
 		String sqlExceptSelect = "from blog_display where categoryID = ? order by publishTime desc";
-		String select = "select * ";
-		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect,categoryID);
-		if(page.getList().isEmpty()){
-			return page;
-		}
-		List<Record> records = page.getList();
-		for(Record record : records){
-			String tags = record.get("tags");
-			if(tags == null){
-				record.set("tags", new ArrayList<String>());
-			} else {
-				String[] arr = tags.split(",");
-				List<String> ts = new ArrayList<String>();
-				for(String tag:arr){
-					ts.add(tag);
-				}
-				record.set("tags", ts);
-			}
-		}
-		return page;
+		Page<Record> page = Db.paginate(pageNum, pageSize,SHOW_SELECT, sqlExceptSelect,categoryID);
+		return doPage(page);
 	}
 	
 	
@@ -121,8 +86,25 @@ public class Blog extends BaseBlog<Blog> {
 	public static Page<Record> paginateByTag(int pageNum,int pageSize,String tagID){
 		// 默认根据时间排序
 		String sqlExceptSelect = "from blog_display_by_tag where tagID = ? order by publishTime desc";
-		String select = "select * ";
-		Page<Record> page = Db.paginate(pageNum, pageSize,select, sqlExceptSelect,tagID);
+		Page<Record> page = Db.paginate(pageNum, pageSize,SHOW_SELECT, sqlExceptSelect,tagID);
+		return doPage(page);
+	}
+	
+	/**
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public static Page<Record> paginateByQuery(int pageNum,int pageSize,String keyword){
+		// 默认根据时间排序
+		String sqlExceptSelect = "from blog_display where title like ? or content like ? order by publishTime desc";
+		keyword = "%" + keyword + "%";
+		Page<Record> page = Db.paginate(pageNum, pageSize,SHOW_SELECT, sqlExceptSelect,keyword,keyword);
+		return doPage(page);
+	}
+	
+	private static Page<Record> doPage(Page<Record> page){
 		if(page.getList().isEmpty()){
 			return page;
 		}
