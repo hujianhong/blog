@@ -256,7 +256,7 @@ layui.define(['api', 'laytpl','laypage','layer','qingface', 'form','qingeditor']
 			$('#qingCmtParent').val(elem.attr('data'));
 			if(val.indexOf(aite) !== -1){
 				return;
-			} 
+			}
 			content.val(aite + ' ' + val);
 		},
 		
