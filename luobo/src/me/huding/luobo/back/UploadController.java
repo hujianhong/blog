@@ -17,6 +17,8 @@ package me.huding.luobo.back;
 
 import java.io.File;
 
+import org.antlr.v4.runtime.atn.PlusBlockStartState;
+
 import com.jfinal.upload.UploadFile;
 
 import me.huding.luobo.BaseController;
@@ -55,6 +57,11 @@ public class UploadController extends BaseController {
 	public void uploadFile(){
 		UploadFile uploadFile = getFile(PARA_FILE_KEY);
 		upload(uploadFile, FILE_BUKECT);
+	}
+	
+	public void uploadBlogCover() {
+		UploadFile uploadFile = getFile("image");
+		upload(uploadFile, IMAGE_BUKECT);
 	}
 	
 	private void upload(UploadFile uploadFile,String bucket){

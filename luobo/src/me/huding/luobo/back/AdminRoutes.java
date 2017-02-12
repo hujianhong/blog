@@ -42,6 +42,9 @@ public class AdminRoutes extends Routes {
 		add("/blog",BlogController.class);
 		add("/upload",UploadController.class);
 		add("/category",CategoryController.class);
+		add("/notice",NoticeController.class);
+		add("/type",TypeController.class);
+		
 		add("/youlian",YoulianController.class);
 		add("/donate",DonateController.class);
 	}

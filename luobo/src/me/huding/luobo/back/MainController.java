@@ -16,9 +16,12 @@
 package me.huding.luobo.back;
 
 
+import com.jfinal.aop.Clear;
+
 import me.huding.luobo.BaseController;
 import me.huding.luobo.IConstants;
 import me.huding.luobo.ResConsts;
+import me.huding.luobo.interceptor.AuthInterceptor;
 import me.huding.luobo.model.User;
 import me.huding.luobo.utils.KeyUtils;
 
@@ -32,7 +35,7 @@ import me.huding.luobo.utils.KeyUtils;
 public class MainController extends BaseController {
 	
 	
-	
+	@Clear(AuthInterceptor.class)
 	public void validateCode() {
 		renderCaptcha();
 	}
@@ -40,6 +43,7 @@ public class MainController extends BaseController {
 	/**
 	 * 登录
 	 */
+	@Clear(AuthInterceptor.class)
 	public void login(){
 		String username = getPara("username");
 		String password = getPara("password");
@@ -75,6 +79,7 @@ public class MainController extends BaseController {
 	/**
 	 * 检查登录
 	 */
+	@Clear(AuthInterceptor.class)
 	public void checkLogin(){
 		if(getSessionAttr(IConstants.SESSION_USERID_KEY) != null){
 			render(ResConsts.Code.SUCCESS);

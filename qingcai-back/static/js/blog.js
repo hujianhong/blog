@@ -8,56 +8,42 @@ layui.define(['common','api','laytpl','laypage'],function(exports){
 	var $ = layui.jquery;
 	
 	var laypage = layui.laypage;
-	
-	
-	var tpl = 
-	'<table width="100%">\
-		<tr>\
-			<th width="5%" align="center"><input type="checkbox" name="checkbox" id="selall" /></th>\
-			<th width="25%" align="center">文章标题</th>\
-			<th width="7%" align="center">作者</th>\
-			<th width="5%" align="center">所属分类</th>\
-			<th width="5%" align="center">评论数</th>\
-			<th width="5%" align="center">阅读数</th>\
-			<th width="5%" align="center">喜欢数</th>\
-			<th width="5%" align="center">状态</th>\
-			<th width="9%" align="center">添加时间</th>\
-			<th width="10%" align="center">基本操作</th>\
-		</tr>\
-		{{#  layui.each(d.list, function(index, item){ }}\
-			<tr>\
-				<td align="center"><input type="checkbox" class="selall" name="deletes[]" value="4" /></td>\
-				<td align="center">{{item.title}}</td>\
-				<td align="center">{{item.author}}</td>\
-				<td align="center">{{item.categoryName}}</td>\
-				<td align="center">{{item.commentNum}}</td>\
-				<td align="center">{{item.readNum}}</td>\
-				<td align="center">{{item.heartNum}}</td>\
-				<td align="center"><span style="color:#FF5722;">{{item.statusName}}</span></td>\
-				<td align="center">{{item.publishTime}}</td>\
-				<td align="center">\
-					<a href="">修改</a> | <a href="">删除</a>\
-				</td>\
-			</tr>\
-		{{# }); }}\
-	</table>';
-	
-	
+		
 	var pageSize = 10;
 	
 	var action = {
-		callback:function(pageNum,pageSize){
-			// 请求数据
-			var params = {
-				pageNum:pageNum,
-				pageSize:pageSize || 10
-			};
+		
+		render:function(res){
+			laytpl($("#template").html()).render(res.data,function(html){
+				$("#blog-container").html(html);
+				// 监听事件
+				$(".row-del").on("click",function(event){
+					var id = $(event.target).attr("data");
+					//询问框
+					layer.confirm('是否确认删除？', {
+					  btn: ['是','否'] //按钮
+					}, function(){
+					  api.delBlog({id:id},function(res){
+					  	if(res.code == 0){
+							layer.msg("删除成功");
+							location.reload();
+						} else {
+							layer.msg(res.msg || res.code, {
+								shift: 6
+							});
+						}
+					  });
+					}, function(){
+					  //location.href='blog.html';
+					});
+				});
+			});
+		},
+		callback:function(params){
 			api.showBlog(params,function(res){
 				console.log(res)
 				if(res.code == 0){
-					laytpl(tpl).render(res.data,function(html){
-						$("#blog-container").html(html);
-					});
+					action.render(res);
 				} else {
 					layer.msg(res.msg || res.code, {
 						shift: 6
@@ -75,9 +61,7 @@ layui.define(['common','api','laytpl','laypage'],function(exports){
 			api.showBlog(params,function(res){
 				console.log(res)
 				if(res.code == 0){
-					laytpl(tpl).render(res.data,function(html){
-						$("#blog-container").html(html);
-					});
+					action.render(res);
 					// 调用分页
 					laypage({
 						cont: 'blog-pager',
@@ -86,7 +70,10 @@ layui.define(['common','api','laytpl','laypage'],function(exports){
 							if(first){
 								return;
 							}
-							action.callback(conf.curr,pageSize);
+							action.callback({
+								pageNum:conf.curr,
+								pageSize:pageSize || 10
+							});
 						}
 					});
 				} else {
@@ -99,6 +86,23 @@ layui.define(['common','api','laytpl','laypage'],function(exports){
 	};
 	
 	action.display();
+	
+	$("#blog-restatic-all").on("click",function(res){
+		//询问框
+		layer.confirm('确认要重新静态化全部博文？', {
+		  btn: ['是','否'] //按钮
+		}, function(){
+			api.blogRestaticAll({},function(res){
+				if(res.code == 0){
+					layer.msg("全部重新静态化成功!");
+				} else {
+					common.error(res);
+				}
+			});
+		}, function(){
+		  
+		});
+	});
 	
 	exports('blog',{});
 	

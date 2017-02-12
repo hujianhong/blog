@@ -50,6 +50,6 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
   	
   	action.getCategory();
 	
-	exports('category-edit',{});
+	exports('categoryedit',{});
 	
 });

@@ -15,21 +15,15 @@
  */
 package me.huding.luobo.back;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-
-import me.huding.luobo.ResConsts;
-import me.huding.luobo.model.Blog;
-import me.huding.luobo.model.BlogTags;
-import me.huding.luobo.model.Category;
-import me.huding.luobo.model.Tags;
-import me.huding.luobo.utils.DBUtils;
-import me.huding.luobo.utils.DateStyle;
-import me.huding.luobo.utils.DateUtils;
-import me.huding.luobo.utils.KeyUtils;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +33,17 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IAtom;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
+
+import me.huding.luobo.IConstants;
+import me.huding.luobo.ResConsts;
+import me.huding.luobo.model.Blog;
+import me.huding.luobo.model.BlogTags;
+import me.huding.luobo.model.Category;
+import me.huding.luobo.model.Tags;
+import me.huding.luobo.utils.DBUtils;
+import me.huding.luobo.utils.DateStyle;
+import me.huding.luobo.utils.DateUtils;
+import me.huding.luobo.utils.KeyUtils;
 
 
 /**
@@ -79,7 +84,68 @@ public class BlogController extends AbstarctBackController {
 	 */
 	@Override
 	public void edit(){
-
+		/* 获取参数  */
+		final Blog blog = getModel(Blog.class, "blog");
+		final Blog t = Blog.dao.findById(blog.getId());
+		if(t== null){
+			render(ResConsts.Code.FAILURE,"文章不存在");
+			return;
+		}
+		// 更新流程：1.处理类别：类别中博文数 2.处理标签:解除映射关系 3.更新博客，重新静态化
+		boolean editFlag = Db.tx(new IAtom() {
+			
+			@Override
+			public boolean run() throws SQLException {
+				// 处理类别
+				if(!t.getCategoryID().equals(blog.getCategoryID())){
+					Category c1 = Category.dao.findById(t.getCategoryID());
+					Category c2 = Category.dao.findById(blog.getCategoryID());
+					c1.setBlogNum(c1.getBlogNum() - 1);
+					c2.setBlogNum(c2.getBlogNum() + 1);
+					c1.update();
+					c2.update();
+				}
+				// 处理标签
+				String tags = t.getTags();
+				delBlogTag(t.getId(), tags);
+				if(!doHandleTag(blog)){
+					return false;
+				}
+				for(Entry<String, Object> entry : blog._getAttrsEntrySet()){
+					t.set(entry.getKey(), entry.getValue());
+				}
+				return t.update();
+			}
+		});
+		if(!editFlag){
+			render(ResConsts.Code.FAILURE,"更新失败");
+			return;
+		}
+		if(t.getStatus() == IConstants.REPORT) {
+			/* 静态化处理 */
+			if(!statics(t)){ // 静态化处理失败
+				render(ResConsts.Code.STATICS_ERROR);
+				return;
+			}
+			render(ResConsts.Code.SUCCESS,null,t.getUrl());
+		} else {
+			File file = new File(StaticsUtils.genPath(t.getUrl()));
+			if(file.exists()){
+				file.delete();
+			} 
+			render(ResConsts.Code.SUCCESS,null,t.getUrl());
+		}
+	}
+	
+	
+	private void delBlogTag(String blogID,String tags){
+		if(StrKit.notBlank(tags)){
+			String arr[] = tags.split(",");
+			for(String key:arr){
+				String tagID = KeyUtils.signByMD5(key);
+				BlogTags.dao.deleteById(blogID,tagID);
+			}
+		}
 	}
 	
 	
@@ -90,7 +156,8 @@ public class BlogController extends AbstarctBackController {
 		final Blog blog = getModel(Blog.class, "blog");
 		/* 校验参数 */
 		// TODO validate params
-		String signature = KeyUtils.signByMD5(blog.getTitle());
+		
+		String signature = KeyUtils.signByMD5(blog.getContent() + blog.getTitle());
 		// 查询签名是否已经存在
 		if(Blog.findBySignature(signature) != null){
 			render(ResConsts.Code.EXISTS);
@@ -111,12 +178,13 @@ public class BlogController extends AbstarctBackController {
 		blog.setReadNum(0);
 		blog.setCommentNum(0);
 		blog.setHeartNum(0);
-
-		/* 静态化处理 */
-		boolean st = statics(blog);
-		if(!st){ // 静态化处理失败
-			render(ResConsts.Code.STATICS_ERROR);
-			return;
+		
+		if(blog.getStatus() == IConstants.REPORT) {
+			/* 静态化处理 */
+			if(!statics(blog)){ // 静态化处理失败
+				render(ResConsts.Code.STATICS_ERROR);
+				return;
+			}
 		}
 		// 持久化到数据库
 		if(!storage(blog)){
@@ -143,48 +211,51 @@ public class BlogController extends AbstarctBackController {
 					return false;
 				}
 				// 保存标签
-				List<Tags> tags = new ArrayList<Tags>();
-				if(blog.getTags() != null){
-					String[] arr = blog.getTags().split(",");
-					for(String tag : arr){
-						if(StrKit.isBlank(tag)){
-							continue;
-						}
-						String tagID = KeyUtils.signByMD5(tag);
-						Tags ttag = Tags.dao.findById(tagID);
-						if(ttag == null){
-							ttag = new Tags();
-							ttag.setId(tagID);
-							ttag.setName(tag);
-							if(!ttag.save()){
-								return false;
-							}
-						}
-						tags.add(ttag);
-					}
-				}
-				// 保存博客与标签的映射
-				for(Tags tag : tags){
-					BlogTags blogTags = new BlogTags();
-					blogTags.setBlogID(blog.getId());
-					blogTags.setTagID(tag.getId());
-					if(!blogTags.save()){
-						return false;
-					}
-				}
-				return true;
+				return doHandleTag(blog);
 			}
 		});
 	}
-
-	@Override
-	public void del() {
-		// TODO Auto-generated method stub
-		
+	
+	
+	
+	private boolean doHandleTag(Blog blog){
+		List<Tags> tags = new ArrayList<Tags>();
+		if(blog.getTags() != null){
+			String[] arr = blog.getTags().split(",");
+			for(String tag : arr){
+				if(StrKit.isBlank(tag)){
+					continue;
+				}
+				String tagID = KeyUtils.signByMD5(tag);
+				Tags ttag = Tags.dao.findById(tagID);
+				if(ttag == null){
+					ttag = new Tags();
+					ttag.setId(tagID);
+					ttag.setName(tag);
+					if(!ttag.save()){
+						return false;
+					}
+				}
+				tags.add(ttag);
+			}
+		}
+		// 保存博客与标签的映射
+		for(Tags tag : tags){
+			BlogTags blogTags = new BlogTags();
+			blogTags.setBlogID(blog.getId());
+			blogTags.setTagID(tag.getId());
+			if(!blogTags.save()){
+				return false;
+			}
+		}
+		return true;
 	}
+
 
 	/**
 	 * 使用时间生成博文的文件名，精确到秒
+	 * 
+	 * 
 	 * @param date
 	 * @return
 	 */
@@ -229,7 +300,7 @@ public class BlogController extends AbstarctBackController {
 	/**
 	 * 将所有的博文重新静态化
 	 */
-	public void reStaticsAll(){
+	public void restaticsAll(){
 		List<Blog> blogs = DBUtils.findAll(Blog.dao);
 		for(Blog blog : blogs){
 			statics(blog);
@@ -252,9 +323,47 @@ public class BlogController extends AbstarctBackController {
 		return st;
 	}
 
-	
+	@Override
+	protected boolean doDel(String id) {
+		// 删除流程：1.删除磁盘文件，2.类别数减1 3.博客的标签映射关系删除，4.删除博文
+		final Blog blog = Blog.dao.findById(id);
+		if(blog== null){
+			return false;
+		}
+		
+		boolean delFlag = Db.tx(new IAtom() {
+			
+			@Override
+			public boolean run() throws SQLException {
+				Category category = Category.dao.findById(blog.getCategoryID());
+				category.setBlogNum(category.getBlogNum() - 1);
+				if(!category.update()){
+					return false;
+				}
+				delBlogTag(blog.getId(), blog.getTags());
+				return blog.delete();
+			}
+		});
+		if(!delFlag){
+			return false;
+		}
+		File file = new File(StaticsUtils.genPath(blog.getUrl()));
+		if(file.exists()){
+			file.delete();
+		} 
+		return true;
+	}
 
-
-
-
+	@Override
+	protected Object doGet(String id) {
+		Blog blog = Blog.dao.findById(id);
+		if(blog == null){
+			return null;
+		}
+		List<Category> categories = Category.findAll();
+		Map<String, Object> data = new HashMap<String,Object>();
+		data.put("category", categories);
+		data.put("blog", blog);
+		return data;
+	}
 }

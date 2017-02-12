@@ -22,15 +22,9 @@
 			<div class="aright">
 				<div class="arz cl">
 					<a href="blog-add.html"><i class="layui-icon">&#xe608;</i>添加文章</a>
-					<a href="blog-add.html"><i class="layui-icon">&#xe608;</i>重新静态</a>
+					<a href="javascript:;" id="blog-restatic-all"><i class="layui-icon">&#xe608;</i>重新静态</a>
 				</div>
 				<form id="blog-container" method="post" class="aform cl">
-					<!--<div class="layui-form-item">
-						<div style="margin-top: 20px;">
-							<button class="layui-btn" onclick="return confirm('您确定要删除吗？');" type="submit">删除选中</button>
-							<button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
-						</div>
-					</div>-->
 				</form>
 				<div id="blog-pager" class="qing-text-center"></div>
 			</div>
@@ -38,15 +32,37 @@
 		<script>
 			layui.config({base:'static/js/'}).use('blog');
 		</script>
-		<script>
-//			$("#selall").click(function() {
-//				if($(this).attr("checked")) {
-//					$(".selall").attr("checked", "checked");
-//				} else {
-//					$(".selall").removeAttr("checked");
-//				}
-//
-//			})
+		<script id="template" type="text/template">
+			<table width="100%">
+				<tr>
+					<th width="5%" align="center"><input type="checkbox" name="checkbox" id="selall" /></th>
+					<th width="25%" align="center">文章标题</th>
+					<th width="7%" align="center">作者</th>
+					<th width="5%" align="center">所属分类</th>
+					<th width="5%" align="center">评论数</th>
+					<th width="5%" align="center">阅读数</th>
+					<th width="5%" align="center">喜欢数</th>
+					<th width="5%" align="center">状态</th>
+					<th width="9%" align="center">添加时间</th>
+					<th width="10%" align="center">基本操作</th>
+				</tr>
+				{{#  layui.each(d.list, function(index, item){ }}
+					<tr>
+						<td align="center"><input type="checkbox" class="selall" name="deletes[]" value="4" /></td>
+						<td align="center">{{item.title}}</td>
+						<td align="center">{{item.author}}</td>
+						<td align="center">{{item.categoryName}}</td>
+						<td align="center">{{item.commentNum}}</td>
+						<td align="center">{{item.readNum}}</td>
+						<td align="center">{{item.heartNum}}</td>
+						<td align="center"><span style="color:#FF5722;">{{item.statusName}}</span></td>
+						<td align="center">{{item.publishTime}}</td>
+						<td align="center">
+							<a href="blog-edit.html?id={{item.id}}">修改</a> | <a href="javascript:;" class="row-del" data="{{item.id}}">删除</a>
+						</td>
+					</tr>
+				{{# }); }}
+			</table>
 		</script>
 	</body>
 

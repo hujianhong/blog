@@ -12,38 +12,13 @@ layui.define(['common','api','laytpl','laypage','layer'],function(exports){
 	
 	var action = {
 		
-		render:function(res){
-			laytpl($("#template").html()).render(res.data,function(html){
-				$("#category-container").html(html);
-				// 监听事件
-				$(".row-del").on("click",function(event){
-					var id = $(event.target).attr("data");
-					//询问框
-					layer.confirm('是否确认删除？', {
-					  btn: ['是','否'] //按钮
-					}, function(){
-					  api.delCategory({id:id},function(res){
-					  	if(res.code == 0){
-							layer.msg("删除成功");
-							location.reload();
-						} else {
-							layer.msg(res.msg || res.code, {
-								shift: 6
-							});
-						}
-					  });
-					}, function(){
-					  //location.href='blog.html';
-					});
-				});
-			});
-		},
-		
 		callback:function(params){
 			api.showCategory(params,function(res){
 				console.log(res)
 				if(res.code == 0){
-					action.render(res);
+					laytpl($("#template").html()).render(res.data,function(html){
+						$("#category-container").html(html);
+					});
 				} else {
 					layer.msg(res.msg || res.code, {
 						shift: 6
@@ -61,7 +36,30 @@ layui.define(['common','api','laytpl','laypage','layer'],function(exports){
 			api.showCategory(params,function(res){
 				console.log(res)
 				if(res.code == 0){
-					action.render(res);
+					laytpl($("#template").html()).render(res.data,function(html){
+						$("#category-container").html(html);
+						// 监听事件
+						$(".row-del").on("click",function(event){
+							var id = $(event.target).attr("data");
+							//询问框
+							layer.confirm('是否确认删除？', {
+							  btn: ['是','否'] //按钮
+							}, function(){
+							  api.delCategory({id:id},function(res){
+							  	if(res.code == 0){
+									layer.msg("删除成功");
+									location.reload();
+								} else {
+									layer.msg(res.msg || res.code, {
+										shift: 6
+									});
+								}
+							  });
+							}, function(){
+							  //location.href='blog.html';
+							});
+						});
+					});
 					// 调用分页
 					laypage({
 						cont: 'category-pager',

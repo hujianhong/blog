@@ -17,6 +17,12 @@ package me.huding.luobo.interceptor;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import com.jfinal.core.Controller;
+
+import me.huding.luobo.BaseController;
+import me.huding.luobo.IConstants;
+import me.huding.luobo.ResConsts;
+import me.huding.luobo.back.AdminRoutes;
 
 /**
  * 
@@ -35,8 +41,21 @@ public class AuthInterceptor implements Interceptor {
 	 */
 	@Override
 	public void intercept(Invocation inv) {
-		// TODO Auto-generated method stub
-		inv.invoke();
+		String actionKey = inv.getActionKey();
+		if(actionKey.startsWith(AdminRoutes.PREFIX)){
+			Controller controller = inv.getController();
+			Object object = controller.getSessionAttr(IConstants.SESSION_USER_KEY);
+			if(object == null){
+				controller.setAttr(ResConsts.KEY_CODE, ResConsts.Code.NO_AUTH);
+				controller.setAttr(ResConsts.KEY_MSG, "没有访问权限");
+				controller.renderJson();
+				return;
+			} else {
+				inv.invoke();
+			}
+		} else {
+			inv.invoke();
+		}
 	}
 
 }

@@ -74,6 +74,9 @@ public class ResConsts {
 		public static final int PASS_ERROR = 2001;
 		
 		public static final int CODE_ERROR = 2002;
+		
+		
+		public static final int NO_AUTH = 3000;
 	}
 	
 	/**

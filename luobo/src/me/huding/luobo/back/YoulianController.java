@@ -2,6 +2,7 @@ package me.huding.luobo.back;
 
 import java.util.Date;
 
+import com.jfinal.i18n.Res;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 
@@ -30,15 +31,21 @@ public class YoulianController extends AbstarctBackController {
 	}
 
 	@Override
-	public void del() {
+	protected boolean doDel(String id) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
+
 
 	@Override
 	public void edit() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	
+	protected Object doGet(String id){
+		return Youlian.dao.findById(id);
 	}
 	
 	

@@ -76,13 +76,16 @@ public class DonateController extends AbstarctBackController {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see me.huding.luobo.back.AbstarctBackController#del()
-	 */
 	@Override
-	public void del() {
+	protected boolean doDel(String id) {
 		// TODO Auto-generated method stub
-		
+		return false;
+	}
+
+	@Override
+	protected Object doGet(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

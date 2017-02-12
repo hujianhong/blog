@@ -2,9 +2,9 @@
 
 
 
-layui.define(['left','system'],function(exports){
+layui.define(['left','system','layer'],function(exports){
 	var left = layui.left;
-	
+	var layer = layui.layer;
 	var system = layui.system;
 	
 	var common = {
@@ -18,6 +18,12 @@ layui.define(['left','system'],function(exports){
 		    //返回参数值
 		    return result ? decodeURIComponent(result[2]) : null;
 		},
+		
+		errorTip:function(res) {
+			layer.msg(res.msg || res.code, {
+				shift: 6
+			});
+		}
 	};
 	
 	exports('common',common);

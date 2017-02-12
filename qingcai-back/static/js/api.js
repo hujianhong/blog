@@ -46,12 +46,15 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		
 		BLOG_SHOW_URL:BASE_PREFIX + "/blog",
 		BLOG_ADD_URL:BASE_PREFIX + "/blog/add",
+		BLOG_GET_URL:BASE_PREFIX + "/blog/get",
 		BLOG_EDIT_URL:BASE_PREFIX + "/blog/edit",
 		BLOG_DEL_URL:BASE_PREFIX + "/blog/del",
+		BLOG_RESTATIC_ALL_URL:BASE_PREFIX + "/blog/restaticsAll",
 		
 		PASSWORD_URL:BASE_PREFIX + "/profile/password",
 		
 		UPLOAD_IMAGE_URL:BASE_PREFIX + "/upload/uploadImage",
+		UPLOAD_BLOG_COVER_URL:BASE_PREFIX + "/upload/uploadBlogCover",
 	}
 	
 	var action = {
@@ -160,6 +163,9 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		showBlog:function(params,success){
 			action.doAjax(api.BLOG_SHOW_URL,params,success);
 		},
+		getBlog:function(params,success){
+			action.doAjax(api.BLOG_GET_URL,params,success);
+		},
 		addBlog:function(params,success){
 			action.doAjax(api.BLOG_ADD_URL,params,success);
 		},
@@ -169,11 +175,14 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		delBlog:function(params,success){
 			action.doAjax(api.BLOG_DEL_URL,params,success);
 		},
-		
+		blogRestaticAll:function(params,success){
+			action.doAjax(api.BLOG_RESTATIC_ALL_URL,params,success);
+		},
 		password:function(params,success){
 			action.doAjax(api.PASSWORD_URL,params,success);
 		},
 		UPLOAD_IMAGE_URL:api.UPLOAD_IMAGE_URL,
+		UPLOAD_BLOG_COVER_URL:api.UPLOAD_BLOG_COVER_URL,
 	}
 	exports('api', action);
 });

@@ -17,6 +17,7 @@ package me.huding.luobo;
 
 import me.huding.luobo.back.AdminRoutes;
 import me.huding.luobo.front.FrontRoutes;
+import me.huding.luobo.interceptor.AuthInterceptor;
 import me.huding.luobo.interceptor.CrossDomainInterceptor;
 import me.huding.luobo.model._MappingKit;
 
@@ -68,6 +69,7 @@ public class AppConfig extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		me.add(new CrossDomainInterceptor());
+		me.add(new AuthInterceptor());
 	}
 
 	@Override

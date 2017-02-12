@@ -92,6 +92,7 @@ public class BaseController extends Controller {
 		renderJson();
 	}
 	
+	
 	/**
 	 * 渲染响应结果
 	 * 

@@ -25,6 +25,7 @@ import me.huding.luobo.model.Blog;
 import me.huding.luobo.model.Comment;
 import me.huding.luobo.utils.KeyUtils;
 
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -123,11 +124,6 @@ public class CommentController extends BaseController {
 			render(ResConsts.Code.FAILURE, "踩失败");
 		}
 	}
-	
-	
-	public void reply() {
-		
-	}
 
 	/**
 	 * 发表评论
@@ -135,9 +131,25 @@ public class CommentController extends BaseController {
 	public void report(){
 		Comment comment = new Comment();
 		String blogID = getPara("qingID");
+		if(StrKit.isBlank(blogID)){
+			render(ResConsts.Code.FAILURE, "评论所属ID不能为空");
+			return;
+		}
 		String content = getPara("content");
+		if(StrKit.isBlank(blogID)){
+			render(ResConsts.Code.FAILURE, "评论内容不能为空");
+			return;
+		}
 		String email = getPara("email");
+		if(StrKit.isBlank(blogID)){
+			render(ResConsts.Code.FAILURE, "邮箱不能为空");
+			return;
+		}
 		String nickname = getPara("nickname");
+		if(StrKit.isBlank(blogID)){
+			render(ResConsts.Code.FAILURE, "昵称不能为空");
+			return;
+		}
 		String parent = getPara("parent");
 		
 		comment.setContent(content);

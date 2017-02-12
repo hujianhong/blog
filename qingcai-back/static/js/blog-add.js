@@ -61,6 +61,20 @@ layui.define(['common', 'api','form','layer','laytpl'], function(exports){
 		}
 	});
 	
+	layui.use('upload', function(){
+		layui.upload({
+			url: api.UPLOAD_IMG_URL,
+			elem:"#blog-cover-file",
+			success: function(res){
+				if(res.code == 0){
+					$("#blog-cover").val(res.data);
+				} else {
+					common.errorTip(res);
+				}
+			}
+		});
+	});
+	
 	
 	//监听提交
 	form.on('submit(blogReport)', function(data) {

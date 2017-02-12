@@ -18,14 +18,14 @@ package me.huding.luobo.back;
 import java.util.Date;
 import java.util.List;
 
-import com.jfinal.kit.StrKit;
+import org.beetl.core.resource.AllowAllMatcher;
+
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Category;
 import me.huding.luobo.utils.DBUtils;
-import me.huding.luobo.utils.DateUtils;
 import me.huding.luobo.utils.KeyUtils;
 
 /**
@@ -35,7 +35,7 @@ import me.huding.luobo.utils.KeyUtils;
  * @version 1.0
  * @date 2016年11月2日
  */
-public class CategoryController extends AbstarctBackController {
+public class TypeController extends AbstarctBackController {
 
 	public void display(){
 		List<Category> categories = Category.findAll();
@@ -70,33 +70,19 @@ public class CategoryController extends AbstarctBackController {
 
 	@Override
 	protected boolean doDel(String id) {
-		return Category.dao.deleteById(id);
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	protected Object doGet(String id) {
-		return Category.dao.findById(id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void edit() {
-		Category category = getModel(Category.class, "category");
-		Category t = Category.dao.findById(category.getId());
-		if(t== null){
-			render(ResConsts.Code.FAILURE,"记录不存在");
-			return;
-		}
-		t.setName(category.getName());
-		t.setTypeID(category.getTypeID());
-		String keywords = category.getKeywords();
-		t.setKeywords(StrKit.isBlank(keywords) ? "" : keywords);
-		if(t.getCdate() == null){
-			t.setCdate(DateUtils.getCurrentDate());
-		}
-		if(t.update()){
-			render(ResConsts.Code.SUCCESS,"修改成功");
-		} else {
-			render(ResConsts.Code.FAILURE,"修改失败");
-		}
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -78,7 +78,7 @@ public class StaticsUtils {
 		return Parameters.STATICS_FINAL_PATH + File.separator + value;
 	}
 	
-	private static String genPath(String url){
+	public static String genPath(String url){
 		return Parameters.STATICS_FINAL_PATH + url;
 	}
 
