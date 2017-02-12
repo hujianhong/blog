@@ -210,7 +210,7 @@ layui.define(['api','layer','form'], function(exports) {
 			content = qingeditor.escape(content || '') //XSS
 				.replace(/img\[([^\s]+?)\]/g, function(img) { //转义图片
 					return '<img src="' + img.replace(/(^img\[)|(\]$)/g, '') + '">';
-				}).replace(/@(\S+)(\s+?|$)/g, '@<a href="javascript:;" class="fly-aite">$1</a>$2') //转义@
+				}).replace(/@(\S+)(\s+?|$)/g, '<a href="javascript:;" class="qing-comment-aite">@$1</a>$2') //转义@
 				.replace(/face\[([^\s\[\]]+?)\]/g, function(face) { //转义表情
 					var alt = face.replace(/^face/g, '');
 					return '<img alt="' + alt + '" title="' + alt + '" src="' + qingeditor.faces[alt] + '">';
@@ -229,28 +229,19 @@ layui.define(['api','layer','form'], function(exports) {
 	// 表单提交
   	form.on('submit(comment)', function(data){
 	    var button = $(data.elem);
-	    api.reportComment(data.field, function(res){
-	    	layer.alert(res.msg, {
-	          icon: 1,
-	          time: 1000,
-	          end:function(){
-	          	location.reload();
-	          }
-	       });
-	      /*var end = function(){
-	        if(res.action){
-	          location.href = res.action;
-	        } else {
-	          gather.form[action||button.attr('key')](data.field, data.form);
-	        }
-	      };
-	      button.attr('alert') ? layer.alert(res.msg, {
-	          icon: 1,
-	          time: 10*1000,
-	          end: end
-	      }) : end();*/
+	    var params = data.field;
+	    params['nickname'] = qingeditor.escape(params.nickname);
+	    params['content']  = qingeditor.content(params.content);
+	    api.reportComment(params, function(res){
+		    	layer.alert(res.msg, {
+		          icon: 1,
+		          time: 1000,
+		          end:function(){
+		          	location.reload();
+		          }
+		    });
 	    });
-    	return false;
+    		return false;
 	});
 	
 	exports('qingeditor',qingeditor);
