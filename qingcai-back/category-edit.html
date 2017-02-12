@@ -25,12 +25,15 @@
 					<legend>添加分类</legend>
 				</fieldset>
 
-				<form class="layui-form bform" method="post">
-
+				<form class="layui-form bform" id="content-cnt"></form>
+				<script>
+					layui.config({base:'static/js/'}).use('category-edit');
+				</script>
+				<script id ="template" type="text/template">
 					<div class="layui-form-item">
 						<label class="layui-form-label">分类名称</label>
 						<div class="layui-input-block">
-							<input type="text" name="category.name" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+							<input type="text" name="category.name" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input" value="{{d.name}}">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -45,20 +48,16 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">关键词</label>
 						<div class="layui-input-block">
-							<input type="text" name="category.keywords" placeholder="请输入内容" autocomplete="off" class="layui-input">
+							<input type="text" name="category.keywords" placeholder="请输入内容" autocomplete="off" class="layui-input" value="{{d.keywords}}">
 						</div>
 					</div>
-
+					<input type="hidden" name="category.id"  value="{{d.id}}"/>
 					<div class="layui-form-item">
 						<div class="layui-input-block">
 							<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
 							<button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
 						</div>
 					</div>
-
-				</form>
-				<script>
-					layui.config({base:'static/js/'}).use('category-add');
 				</script>
 			</div>
 		</div>

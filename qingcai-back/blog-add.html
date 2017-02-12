@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>青菜萝卜博客管理系统</title>
+		<link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
 		<link rel="stylesheet" href="static/css/admin.css">
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<link rel="stylesheet" href="http://static.huding.name/editor.md/css/editormd.min.css" />
@@ -11,7 +12,7 @@
 	</head>
 	<body>
 		<div class="header">
-			<h2 class="z cl"><a href="/index.php?m=admin&c=index&a=index"><img src="static/img/logo2.png"></a></h2>
+			<h2 class="z cl"><a href="index.html"><img src="static/img/logo2.png"></a></h2>
 			<div class="y cl">
 				<a target="_blank" href="http://www.huding.name">网站首页</a>
 				<a id="top-logout" href="javascript:">退出</a>
@@ -132,6 +133,13 @@
 				<script src="http://static.huding.name/editor.md/editormd.min.js"></script> 
 				<script>
 					layui.config({base:'static/js/'}).use('blog-add');
+				</script>
+				<script id ="template" type="text/template">
+					<select name="blog.categoryID">
+						{{#  layui.each(d.data, function(index, item){ }}
+							<option value="{{item.id}}">{{item.name}}</option>
+						{{# });}}
+					</select>
 				</script>
 			</div>
 		</div>

@@ -11,21 +11,12 @@ layui.define(['common', 'api','form','layer','laytpl'], function(exports){
 	var laytpl = layui.laytpl;
 	var form = layui.form();
 	
-	var categoryTpl = 
-	'<select  name="blog.categoryID">\
-		{{#  layui.each(d.data, function(index, item){ }}\
-			<option value="{{item.id}}">{{item.name}}</option>\
-		{{# });}}\
-	</select>';
-	
-	
 	var action = {
-		
 		loadCategory:function(){
 			api.allCategory({},function(res){
 				console.log(res)
 				if(res.code == 0){
-					laytpl(categoryTpl).render(res,function(html){
+					laytpl($("#template").html()).render(res,function(html){
 						$("#category").html(html);
 						form.render();
 					});

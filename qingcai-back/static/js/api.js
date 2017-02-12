@@ -34,6 +34,7 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		
 		CATEGORY_SHOW_URL:BASE_PREFIX + "/category",
 		CATEGORY_ALL_URL:BASE_PREFIX + "/category/all",
+		CATEGORY_GET_URL:BASE_PREFIX + "/category/get",
 		CATEGORY_ADD_URL:BASE_PREFIX + "/category/add",
 		CATEGORY_EDIT_URL:BASE_PREFIX + "/category/edit",
 		CATEGORY_DEL_URL:BASE_PREFIX + "/category/del",
@@ -126,6 +127,9 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 		
 		showCategory:function(params,success){
 			action.doAjax(api.CATEGORY_SHOW_URL,params,success);
+		},
+		getCategory:function(params,success){
+			action.doAjax(api.CATEGORY_GET_URL,params,success);
 		},
 		allCategory:function(params,success){
 			action.doAjax(api.CATEGORY_ALL_URL,params,success);
