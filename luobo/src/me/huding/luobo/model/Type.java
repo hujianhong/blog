@@ -1,5 +1,9 @@
 package me.huding.luobo.model;
 
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
+
 import me.huding.luobo.model.base.BaseType;
 
 /**
@@ -8,4 +12,10 @@ import me.huding.luobo.model.base.BaseType;
 @SuppressWarnings("serial")
 public class Type extends BaseType<Type> {
 	public static final Type dao = new Type();
+	
+	public static Page<Record> paginate(int pageNum, int pageSize) {
+		String select = "select *";
+		String suffix = "from type";
+		return Db.paginate(pageNum, pageSize, select, suffix);
+	}
 }

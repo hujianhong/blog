@@ -15,10 +15,10 @@
  */
 package me.huding.luobo.front;
 
-import me.huding.luobo.BaseController;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import me.huding.luobo.BaseController;
 
 /**
  *

@@ -19,7 +19,6 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 
-import me.huding.luobo.BaseController;
 import me.huding.luobo.IConstants;
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.back.AdminRoutes;

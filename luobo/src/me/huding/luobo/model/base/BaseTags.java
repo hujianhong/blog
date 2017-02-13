@@ -25,4 +25,12 @@ public abstract class BaseTags<M extends BaseTags<M>> extends Model<M> implement
 		return get("name");
 	}
 
+	public void setCdate(java.util.Date cdate) {
+		set("cdate", cdate);
+	}
+
+	public java.util.Date getCdate() {
+		return get("cdate");
+	}
+
 }

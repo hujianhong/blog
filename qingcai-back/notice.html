@@ -21,35 +21,39 @@
 			<div class="aleft" id="left-container"></div>
 			<div class="aright">
 				<div class="arz cl">
-					<a href="category-add.html"><i class="layui-icon">&#xe608;</i>添加类别</a>
+					<a href="notice-add.html"><i class="layui-icon">&#xe608;</i>添加公告</a>
 				</div>
-				<form id="category-container" method="post" class="aform cl">
+				<form id="container" method="post" class="aform cl">
 				</form>
-				<div id="category-pager" class="qing-text-center"></div>
+				<div id="pager" class="qing-text-center"></div>
 			</div>
 		</div>
 		<script>
-			layui.config({base:'static/js/'}).use('category');
+			layui.config({base:'static/js/'}).use('notice');
 		</script>
 		<script id="template" type="text/template">
 			<table width="100%">
 				<tr>
-					<th width="15%" align="center">分类名称</th>
-					<th width="15%" align="center">所属类型</th>
-					<th width="20%" align="center">关键字</th>
-					<th width="10%" align="center">博客数</th>
-					<th width="20%" align="center">添加时间</th>
-					<th width="20%" align="center">基本操作</th>
+					<th width="40%" align="center">公告内容</th>
+					<th width="20%" align="center">开始时间</th>
+					<th width="20%" align="center">结束时间</th>
+					<th width="10%" align="center">是否可见</th>
+					<th width="10%" align="center">基本操作</th>
 				</tr>
-				{{#  layui.each(d.list, function(index, item){ }}
+				{{#  layui.each(d.list, function(index, item) { }}
 					<tr>
-						<td align="center">{{item.name}}</td>
-						<td align="center">{{item.typeName}}</td>
-						<td align="center">{{item.keywords}}</td>
-						<td align="center">{{item.blogNum}}</td>
-						<td align="center">{{item.cdate}}</td>
+						<td align="center">{{item.content}}</td>
+						<td align="center">{{item.start}}</td>
+						<td align="center">{{item.end}}</td>
 						<td align="center">
-							<a href="category-edit.html?id={{item.id}}">修改</a> | <a href="javascript:;" class="row-del" data="{{item.id}}">删除</a>
+							{{# if(item.visible == 1) { }} 
+				                <span style="color: red;">是</span>
+				            {{# } else { }}
+				            		<span style="color: red;">否</span>
+				            {{# } }}
+						</td>
+						<td align="center">
+							<a href="notice-edit.html?id={{item.id}}">修改</a> | <a href="javascript:;" class="row-del" data="{{item.id}}">删除</a>
 						</td>
 					</tr>
 				{{# }); }}

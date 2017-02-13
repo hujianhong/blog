@@ -16,14 +16,18 @@
 package me.huding.luobo.back;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Category;
+import me.huding.luobo.model.Type;
 import me.huding.luobo.utils.DBUtils;
 import me.huding.luobo.utils.DateUtils;
 import me.huding.luobo.utils.KeyUtils;
@@ -53,6 +57,8 @@ public class CategoryController extends AbstarctBackController {
 	@Override
 	public void add() {
 		Category category = getModel(Category.class, "category");
+		String keywords = category.getKeywords();
+		category.setKeywords(StrKit.isBlank(keywords) ? "": keywords);
 		category.setId(KeyUtils.getUUID());
 		category.setCdate(new Date(System.currentTimeMillis()));
 		if(category.save()){
@@ -67,6 +73,21 @@ public class CategoryController extends AbstarctBackController {
 		// 渲染结果
 		render(ResConsts.Code.SUCCESS, null, data);
 	}
+	
+	@Override
+	public void del() {
+		String id = getPara("id");
+		Record record = Db.findFirst("select id from blog where categoryID = ?  limit 1",id);
+		if(record == null){
+			if(doDel(id)){
+				render(ResConsts.Code.SUCCESS, "删除成功");
+			} else {
+				render(ResConsts.Code.FAILURE, "删除失败");
+			}
+		} else {
+			render(ResConsts.Code.FAILURE, "存在使用该分类的的博文，禁止删除该分类");
+		}
+	}
 
 	@Override
 	protected boolean doDel(String id) {
@@ -75,7 +96,15 @@ public class CategoryController extends AbstarctBackController {
 
 	@Override
 	protected Object doGet(String id) {
-		return Category.dao.findById(id);
+		Category category = Category.dao.findById(id);
+		if(category == null){
+			return null;
+		}
+		List<Type> types = DBUtils.findAll(Type.dao);
+		Map<String, Object> data = new HashMap<String,Object>();
+		data.put("category", category);
+		data.put("type", types);
+		return data;
 	}
 
 	@Override

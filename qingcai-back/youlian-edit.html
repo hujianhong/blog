@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>青菜萝卜博客管理系统</title>
+		<link rel="shortcut icon" type="image/png" href="static/i/favicon.png">
+		<link rel="stylesheet" href="static/css/admin.css">
+		<link rel="stylesheet" href="static/layui/css/layui.css">
+		<script src="static/layui/layui.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="z cl"><a href="index.html"><img src="static/img/logo2.png"></a></h2>
+			<div class="y cl">
+				<a target="_blank" href="http://www.huding.name">网站首页</a>
+				<a id="top-logout" href="javascript:">退出</a>
+			</div>
+		</div>
+		<div class="admin">
+			<div class="aleft" id="left-container"></div>
+			<div class="aright">
+
+				<fieldset class="layui-elem-field layui-field-title" style="margin: 20px 30px 20px 20px;">
+					<legend>修改链接</legend>
+				</fieldset>
+
+				<form class="layui-form bform"  id="content-cnt">
+
+					
+				</form>
+				<script>
+					layui.config({base:'static/js/'}).use('youlian-edit');
+				</script>
+				<script id="template" type="text/template">
+					<div class="layui-form-item">
+						<label class="layui-form-label">链接名称</label>
+						<div class="layui-input-block">
+							<input type="text" value="{{d.name}}" name="youlian.name" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">链接地址</label>
+						<div class="layui-input-block">
+							<input type="text" value="{{d.url}}" name="youlian.url" required lay-verify="url" placeholder="必填内容" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+
+					<!--<div class="layui-form-item">
+						<label class="layui-form-label">LOGO</label>
+						<div class="layui-input-block">
+							<div class="file-box">
+								<i class="layui-icon">&#xe61f;</i>
+								<input class="file-btn" type="button" value="选择图片">
+								<input class="file-txt" type="text" name="youlian.logo" id="textfield">
+								<input class="file-file" type="file" name="pic" id="pic" size="28" onchange="document.getElementById('textfield').value=this.value" />
+							</div>
+						</div>
+					</div>-->
+					<input type="hidden" value="{{d.id}}" name="youlian.id" />
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+							<button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+						</div>
+					</div>
+
+				</script>
+			</div>
+		</div>
+	</body>
+
+</html>

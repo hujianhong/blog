@@ -22,19 +22,27 @@ layui.define(['layer','form','api'],function(exports){
 	form.on('submit(loginform)', function(data){
 	   //layer.msg(JSON.stringify(data.field));
 	   api.login(data.field,function(res){
-			console.log(res);
 			switch(res.code) {
 			case 0: 
 				location.href='index.html';
 				break;
 			case 2002:
-			    refresh.change();
+				layer.alert(res.msg, {
+			          icon: 1,
+			          time: 1000,
+			          end:function(){
+			          	refresh.change();
+			          }
+			    });
 			    break;
 			default:
-				layer.msg(res.msg || res.code, {
-					shift: 6
-				});
-				refresh.change();
+				layer.alert(res.msg, {
+			          icon: 1,
+			          time: 1000,
+			          end:function(){
+			          	refresh.change();
+			          }
+			    });
 			}
 	   });
 	   return false;

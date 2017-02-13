@@ -15,18 +15,15 @@
  */
 package me.huding.luobo.back;
 
-import java.util.Date;
 import java.util.List;
-
-import org.beetl.core.resource.AllowAllMatcher;
 
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Category;
+import me.huding.luobo.model.Notice;
 import me.huding.luobo.utils.DBUtils;
-import me.huding.luobo.utils.KeyUtils;
 
 /**
  *
@@ -37,25 +34,19 @@ import me.huding.luobo.utils.KeyUtils;
  */
 public class NoticeController extends AbstarctBackController {
 
-	public void display(){
-		List<Category> categories = Category.findAll();
-		render(ResConsts.Code.SUCCESS, null, categories);
-	}
-
 	@Override
 	public void doPage(int pageNum, int pageSize) {
 		// 查询数据
-		Page<Record> data = Category.paginate(pageNum, pageSize);
+		Page<Record> data = Notice.paginate(pageNum, pageSize);
 		// 渲染结果
 		render(ResConsts.Code.SUCCESS, null, data);
 	}
 
 	@Override
 	public void add() {
-		Category category = getModel(Category.class, "category");
-		category.setId(KeyUtils.getUUID());
-		category.setCdate(new Date(System.currentTimeMillis()));
-		if(category.save()){
+		Notice notice = getModel(Notice.class, "notice");
+		// TODO
+		if(notice.save()){
 			render(ResConsts.Code.SUCCESS,"保存成功");
 		} else {
 			render(ResConsts.Code.FAILURE,"保存失败");
@@ -70,19 +61,23 @@ public class NoticeController extends AbstarctBackController {
 
 	@Override
 	protected boolean doDel(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return Notice.dao.deleteById(id);
 	}
 
 	@Override
 	protected Object doGet(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return Notice.dao.findById(id);
 	}
 
 	@Override
 	public void edit() {
-		// TODO Auto-generated method stub
+		Notice notice = getModel(Notice.class, "notice");
+		// TODO
+		if(notice.update()){
+			render(ResConsts.Code.SUCCESS,"保存成功");
+		} else {
+			render(ResConsts.Code.FAILURE,"保存失败");
+		}
 		
 	}
 }

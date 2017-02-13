@@ -13,8 +13,13 @@ layui.define(['common','api','form','layer'],function(exports){
   	form.on('submit(formDemo)', function(data){
     		api.addDonate(data.field,function(res){
     			if(res.code == 0){
-    				layer.msg(res.msg);
-    				location.href = 'donate.html';
+    				layer.alert(res.msg, {
+			          icon: 1,
+			          time: 1000,
+			          end:function(){
+			          	location.href = 'donate.html';
+			          }
+			    });
     			} else {
     				layer.msg(res.msg || res.code, {
 					shift: 6

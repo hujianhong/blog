@@ -35,11 +35,7 @@
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">所属类型</label>
-						<div class="layui-input-block">
-							<select name="category.typeID">
-								<option value="1">技术</option>
-								<option value="2">随笔</option>
-							</select>
+						<div class="layui-input-block" id="type-cnt">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -59,6 +55,13 @@
 				</form>
 				<script>
 					layui.config({base:'static/js/'}).use('category-add');
+				</script>
+				<script id="template" type="text/template">
+					<select name="category.typeID">
+						{{#  layui.each(d.data, function(index, item){ }}
+							<option value="{{item.id}}">{{item.name}}</option>
+						{{# });}}
+					</select>
 				</script>
 			</div>
 		</div>

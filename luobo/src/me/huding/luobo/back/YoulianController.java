@@ -2,7 +2,6 @@ package me.huding.luobo.back;
 
 import java.util.Date;
 
-import com.jfinal.i18n.Res;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 
@@ -32,14 +31,18 @@ public class YoulianController extends AbstarctBackController {
 
 	@Override
 	protected boolean doDel(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return Youlian.dao.deleteById(id);
 	}
 
 
 	@Override
 	public void edit() {
-		// TODO Auto-generated method stub
+		Youlian youlian = getModel(Youlian.class, "youlian");
+		if(youlian.update()){
+			render(ResConsts.Code.SUCCESS,"保存成功");
+		} else {
+			render(ResConsts.Code.FAILURE,"保存失败");
+		}
 		
 	}
 	

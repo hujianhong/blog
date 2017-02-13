@@ -18,15 +18,13 @@ package me.huding.luobo.back;
 import java.util.Date;
 import java.util.List;
 
-import org.beetl.core.resource.AllowAllMatcher;
-
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Category;
+import me.huding.luobo.model.Type;
 import me.huding.luobo.utils.DBUtils;
-import me.huding.luobo.utils.KeyUtils;
 
 /**
  *
@@ -38,24 +36,23 @@ import me.huding.luobo.utils.KeyUtils;
 public class TypeController extends AbstarctBackController {
 
 	public void display(){
-		List<Category> categories = Category.findAll();
-		render(ResConsts.Code.SUCCESS, null, categories);
+		List<Type> data = DBUtils.findAll(Type.dao);
+		render(ResConsts.Code.SUCCESS, null, data);
 	}
 
 	@Override
 	public void doPage(int pageNum, int pageSize) {
 		// 查询数据
-		Page<Record> data = Category.paginate(pageNum, pageSize);
+		Page<Record> data = Type.paginate(pageNum, pageSize);
 		// 渲染结果
 		render(ResConsts.Code.SUCCESS, null, data);
 	}
 
 	@Override
 	public void add() {
-		Category category = getModel(Category.class, "category");
-		category.setId(KeyUtils.getUUID());
-		category.setCdate(new Date(System.currentTimeMillis()));
-		if(category.save()){
+		Type type = getModel(Type.class, "type");
+		type.setCdate(new Date(System.currentTimeMillis()));
+		if(type.save()){
 			render(ResConsts.Code.SUCCESS,"保存成功");
 		} else {
 			render(ResConsts.Code.FAILURE,"保存失败");
@@ -63,26 +60,46 @@ public class TypeController extends AbstarctBackController {
 	}
 	
 	public void all(){
-		List<Category> data = DBUtils.findAll(Category.dao);
+		List<Type> data = DBUtils.findAll(Type.dao);
 		// 渲染结果
 		render(ResConsts.Code.SUCCESS, null, data);
+	}
+	
+	
+
+	@Override
+	public void del() {
+		String id = getPara("id");
+		Category category = Category.dao.findFirst("select id from category where typeID = ? limit 1",id);
+		if(category == null){
+			if(doDel(id)){
+				render(ResConsts.Code.SUCCESS, "删除成功");
+			} else {
+				render(ResConsts.Code.FAILURE, "删除失败");
+			}
+		} else {
+			render(ResConsts.Code.FAILURE, "存在使用该类型的分类，禁止删除该类型");
+		}
 	}
 
 	@Override
 	protected boolean doDel(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return Type.dao.deleteById(id);
 	}
 
 	@Override
 	protected Object doGet(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return Type.dao.findById(id);
 	}
 
 	@Override
 	public void edit() {
-		// TODO Auto-generated method stub
-		
+		Type type = getModel(Type.class, "type");
+		type.setCdate(new Date(System.currentTimeMillis()));
+		if(type.update()){
+			render(ResConsts.Code.SUCCESS,"保存成功");
+		} else {
+			render(ResConsts.Code.FAILURE,"保存失败");
+		}
 	}
 }

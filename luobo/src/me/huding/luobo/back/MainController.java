@@ -17,6 +17,7 @@ package me.huding.luobo.back;
 
 
 import com.jfinal.aop.Clear;
+import com.jfinal.kit.StrKit;
 
 import me.huding.luobo.BaseController;
 import me.huding.luobo.IConstants;
@@ -93,6 +94,37 @@ public class MainController extends BaseController {
 	 */
 	public void logout() {
 		getSession().invalidate();
+	}
+	
+	
+	public void password(){
+		String pass1 = getPara("pass1");
+		String pass2 = getPara("pass2");
+		if(StrKit.isBlank(pass1)){
+			render(ResConsts.Code.FAILURE,"密码不能为空");
+			return;
+		}
+		if(StrKit.isBlank(pass2)){
+			render(ResConsts.Code.FAILURE,"密码不能为空");
+			return;
+		}
+		if(!pass1.equals(pass2)){
+			render(ResConsts.Code.FAILURE,"两次密码不一致");
+			return;
+		}
+		Integer userID = getSessionAttr(IConstants.SESSION_USERID_KEY);
+		User user = User.dao.findById(userID);
+		if(user == null){
+			render(ResConsts.Code.FAILURE,"用户不存在");
+			return;
+		} 
+		String password = KeyUtils.signByMD5(pass1);
+		user.setPassword(password);
+		if(user.update()){
+			render(ResConsts.Code.SUCCESS,"修改成功");
+		} else {
+			render(ResConsts.Code.FAILURE,"修改失败");
+		}
 	}
 
 }

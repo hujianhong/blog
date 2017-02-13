@@ -25,13 +25,33 @@
 				</div>
 				<form id="youlian-container" method="post" class="aform cl">
 				</form>
-				<div class="pages">
-					<div> </div>
-				</div>
+				<div id="pager" class="qing-text-center"></div>
 			</div>
 		</div>
 		<script>
 			layui.config({base:'static/js/'}).use('youlian');
+		</script>
+		<script id="template" type="text/template">
+			<table width="100%">
+				<tr>
+					<th width="10%" align="center">链接编号</th>
+					<th width="20%" align="center">链接名称</th>
+					<th width="30%" align="center">链接地址</th>
+					<th width="20%" align="center">添加时间</th>
+					<th width="15%" align="center">基本操作</th>
+				</tr>
+				{{#  layui.each(d.list, function(index, item){ }}
+					<tr>
+						<td align="center">{{item.id}}</td>
+						<td align="center">{{item.name}}</td>
+						<td align="center">{{item.url}}</td>
+						<td align="center">{{item.cdate}}</td>
+						<td align="center">
+							<a href="youlian-edit.html?id={{item.id}}">修改</a> | <a href="javascript:;" class="row-del" data="{{item.id}}">删除</a>
+						</td>
+					</tr>
+				{{# }); }}
+			</table>
 		</script>
 	</body>
 

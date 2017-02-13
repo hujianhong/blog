@@ -15,12 +15,6 @@
  */
 package me.huding.luobo;
 
-import me.huding.luobo.back.AdminRoutes;
-import me.huding.luobo.front.FrontRoutes;
-import me.huding.luobo.interceptor.AuthInterceptor;
-import me.huding.luobo.interceptor.CrossDomainInterceptor;
-import me.huding.luobo.model._MappingKit;
-
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -31,6 +25,12 @@ import com.jfinal.core.JFinal;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
+
+import me.huding.luobo.back.AdminRoutes;
+import me.huding.luobo.front.FrontRoutes;
+import me.huding.luobo.interceptor.AuthInterceptor;
+import me.huding.luobo.interceptor.CrossDomainInterceptor;
+import me.huding.luobo.model._MappingKit;
 
 /**
  * 

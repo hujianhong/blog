@@ -105,4 +105,20 @@ public abstract class BaseComment<M extends BaseComment<M>> extends Model<M> imp
 		return get("headURL");
 	}
 
+	public void setCheck(java.lang.Integer check) {
+		set("check", check);
+	}
+
+	public java.lang.Integer getCheck() {
+		return get("check");
+	}
+
+	public void setStatus(java.lang.Integer status) {
+		set("status", status);
+	}
+
+	public java.lang.Integer getStatus() {
+		return get("status");
+	}
+
 }

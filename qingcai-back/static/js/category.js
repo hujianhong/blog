@@ -24,8 +24,13 @@ layui.define(['common','api','laytpl','laypage','layer'],function(exports){
 					}, function(){
 					  api.delCategory({id:id},function(res){
 					  	if(res.code == 0){
-							layer.msg("删除成功");
-							location.reload();
+						  	layer.alert("删除成功", {
+						          icon: 1,
+						          time: 1000,
+						          end:function(){
+						          	location.reload();
+						          }
+						    });
 						} else {
 							layer.msg(res.msg || res.code, {
 								shift: 6

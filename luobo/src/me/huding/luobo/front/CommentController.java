@@ -17,6 +17,9 @@ package me.huding.luobo.front;
 
 import java.util.Date;
 
+import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.activerecord.Page;
+
 import me.huding.luobo.BaseController;
 import me.huding.luobo.IConstants;
 import me.huding.luobo.Parameters;
@@ -24,9 +27,6 @@ import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Blog;
 import me.huding.luobo.model.Comment;
 import me.huding.luobo.utils.KeyUtils;
-
-import com.jfinal.kit.StrKit;
-import com.jfinal.plugin.activerecord.Page;
 
 /**
  *
@@ -36,12 +36,6 @@ import com.jfinal.plugin.activerecord.Page;
  * @date 2016年11月2日
  */
 public class CommentController extends BaseController {
-	
-	
-	public static final String SPCMT_MSG = "qingcailuobo-msg-cmt";
-	
-	public static final String SPCMT_DNT = "qingcailuo_donate_cmt";
-	
 
 	/**
 	 * 显示评论
@@ -124,7 +118,7 @@ public class CommentController extends BaseController {
 			render(ResConsts.Code.FAILURE, "踩失败");
 		}
 	}
-
+	
 	/**
 	 * 发表评论
 	 */
@@ -136,17 +130,17 @@ public class CommentController extends BaseController {
 			return;
 		}
 		String content = getPara("content");
-		if(StrKit.isBlank(blogID)){
+		if(StrKit.isBlank(content)){
 			render(ResConsts.Code.FAILURE, "评论内容不能为空");
 			return;
 		}
 		String email = getPara("email");
-		if(StrKit.isBlank(blogID)){
+		if(StrKit.isBlank(email)){
 			render(ResConsts.Code.FAILURE, "邮箱不能为空");
 			return;
 		}
 		String nickname = getPara("nickname");
-		if(StrKit.isBlank(blogID)){
+		if(StrKit.isBlank(nickname)){
 			render(ResConsts.Code.FAILURE, "昵称不能为空");
 			return;
 		}
@@ -163,13 +157,19 @@ public class CommentController extends BaseController {
 		comment.setShareNum(0);
 		comment.setParent(parent);
 		
-		int code = comment.getEmail().hashCode();
-		code = Math.abs(code) % IConstants.HEAD_MOD;
-		comment.setHeadURL(code +".gif");
+		
+		if(IConstants.EMAIL.equals(comment.getEmail())) {
+			comment.setHeadURL("author.jpg");
+		} else {
+			int code = comment.getEmail().hashCode();
+			code = Math.abs(code) % IConstants.HEAD_MOD;
+			comment.setHeadURL(code +".gif");
+		}
+		
 		comment.setCdate(new Date(System.currentTimeMillis()));
 		
 		if(comment.save()) {
-			if(!SPCMT_DNT.equals(blogID) && !SPCMT_MSG.equals(blogID)){
+			if(!IConstants.SPCMT_DNT.equals(blogID) && !IConstants.SPCMT_MSG.equals(blogID)){
 				Blog blog = Blog.findById(blogID,"id,commentNum");
 				blog.setCommentNum(blog.getCommentNum() + 1);
 				blog.update();

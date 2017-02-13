@@ -12,10 +12,15 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
 	
 	//监听提交
   	form.on('submit(formDemo)', function(data){
-    		api.editCategory(data.field,function(res){
+    		api.editDonate(data.field,function(res){
     			if(res.code == 0){
-    				layer.msg(res.msg);
-    				location.href = 'category.html';
+    				layer.alert(res.msg, {
+			          icon: 1,
+			          time: 1000,
+			          end:function(){
+			          	location.href = 'donate.html';
+			          }
+			    });
     			} else {
     				layer.msg(res.msg || res.code, {
 					shift: 6
@@ -27,12 +32,12 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
   	
   	
   	var action = {
-  		getCategory:function(){
+  		getDonate:function(){
   			var id = common.getUrlParam("id");
   			var params = {
   				id:id
   			}
-  			api.getCategory(params,function(res){
+  			api.getDonate(params,function(res){
   				console.log(res);
   				if(res.code == 0){
 	    				laytpl($("#template").html()).render(res.data,function(html){
@@ -48,8 +53,8 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
   		}
   	}
   	
-  	action.getCategory();
+  	action.getDonate();
 	
-	exports('categoryedit',{});
+	exports('donate-edit',{});
 	
 });

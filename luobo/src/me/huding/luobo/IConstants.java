@@ -15,7 +15,6 @@
  */
 package me.huding.luobo;
 
-
 /**
  *
  *
@@ -28,28 +27,29 @@ public interface IConstants {
 	 * 
 	 */
 	String SESSION_USER_KEY = "user";
-	
+
 	String SESSION_USERID_KEY = "userID";
-	
+
 	String SESSION_ADMINID_KEY = "adminID";
-	
+
 	String SESSION_REMAIN_KEY = "remain";
-	
-	
+
 	String DEFAULT_PASSWORD = "123456";
-	
-	
+
 	String PAGE_NUM = "pageNum";
-	
+
 	String PAGE_SIZE = "pageSize";
-	
-	
+
 	int HEAD_MOD = 74;
-	
-	
+
 	int REPORT = 0;
-	
-	
-	
-	
+
+	String EMAIL = "1043244432@qq.com";
+
+	String AUTHOR = "胡建洪";
+
+	String SPCMT_MSG = "qingcailuobo-msg-cmt";
+
+	String SPCMT_DNT = "qingcailuo_donate_cmt";
+
 }

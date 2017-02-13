@@ -12,10 +12,15 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
 	
 	//监听提交
   	form.on('submit(formDemo)', function(data){
-    		api.editCategory(data.field,function(res){
+    		api.editYoulian(data.field,function(res){
     			if(res.code == 0){
-    				layer.msg(res.msg);
-    				location.href = 'category.html';
+    				layer.alert(res.msg, {
+			          icon: 1,
+			          time: 1000,
+			          end:function(){
+			          	location.href = 'youlian.html';
+			          }
+			    });
     			} else {
     				layer.msg(res.msg || res.code, {
 					shift: 6
@@ -27,12 +32,12 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
   	
   	
   	var action = {
-  		getCategory:function(){
+  		getYoulian:function(){
   			var id = common.getUrlParam("id");
   			var params = {
   				id:id
   			}
-  			api.getCategory(params,function(res){
+  			api.getYoulian(params,function(res){
   				console.log(res);
   				if(res.code == 0){
 	    				laytpl($("#template").html()).render(res.data,function(html){
@@ -48,8 +53,8 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
   		}
   	}
   	
-  	action.getCategory();
+  	action.getYoulian();
 	
-	exports('categoryedit',{});
+	exports('youlian-edit',{});
 	
 });

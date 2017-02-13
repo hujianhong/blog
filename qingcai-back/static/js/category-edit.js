@@ -14,8 +14,13 @@ layui.define(['common','api','form','layer','laytpl'],function(exports){
   	form.on('submit(formDemo)', function(data){
     		api.editCategory(data.field,function(res){
     			if(res.code == 0){
-    				layer.msg(res.msg);
-    				location.href = 'category.html';
+    				layer.alert(res.msg, {
+			          icon: 1,
+			          time: 1000,
+			          end:function(){
+			          	location.href = 'category.html';
+			          }
+			    });
     			} else {
     				layer.msg(res.msg || res.code, {
 					shift: 6

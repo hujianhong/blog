@@ -1,13 +1,13 @@
 package me.huding.luobo.interceptor;
 
-import me.huding.luobo.ResConsts;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
+
+import me.huding.luobo.ResConsts;
 
 /**
  * 

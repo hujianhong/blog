@@ -232,6 +232,7 @@ public class BlogController extends AbstarctBackController {
 					ttag = new Tags();
 					ttag.setId(tagID);
 					ttag.setName(tag);
+					ttag.setCdate(DateUtils.getCurrentDate());
 					if(!ttag.save()){
 						return false;
 					}

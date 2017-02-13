@@ -15,12 +15,12 @@
  */
 package me.huding.luobo.back;
 
+import com.jfinal.plugin.activerecord.Page;
+
 import me.huding.luobo.ResConsts;
 import me.huding.luobo.model.Comment;
 import me.huding.luobo.utils.DateUtils;
 import me.huding.luobo.utils.KeyUtils;
-
-import com.jfinal.plugin.activerecord.Page;
 
 /**
  *
@@ -78,14 +78,12 @@ public class DonateController extends AbstarctBackController {
 
 	@Override
 	protected boolean doDel(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return Comment.dao.deleteById(id);
 	}
 
 	@Override
 	protected Object doGet(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return Comment.dao.findById(id);
 	}
 
 
@@ -94,7 +92,12 @@ public class DonateController extends AbstarctBackController {
 	 */
 	@Override
 	public void edit() {
-		// TODO Auto-generated method stub
+		Comment comment = getModel(Comment.class,"donate");
+		if(comment.update()){
+			render(ResConsts.Code.SUCCESS,"保存成功");
+		} else {
+			render(ResConsts.Code.FAILURE,"保存失败");
+		}
 		
 	}
 
