@@ -143,7 +143,7 @@ public class Blog extends BaseBlog<Blog> {
 	 * @return
 	 */
 	public static List<Blog> lunbo() {
-		String sql = "SELECT id,title,url,coverURL from blog WHERE type = 1 and status = 0 limit 6";
+		String sql = "SELECT id,title,url,coverURL from blog WHERE type = 1 and status = 0 order by publishTime desc limit 6";
 		return dao.find(sql);
 	}
 }
