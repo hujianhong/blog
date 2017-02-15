@@ -75,21 +75,17 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">缩略图</label>
 						<div class="layui-input-block">
-							<div class="file-box">
-								<i class="layui-icon">&#xe61f;</i>
-								<input class="file-btn" type="button" value="选择图片">
-								<input class="file-txt" type="text" name="blog.coverURL" id="blog-cover">
-								<input class="file-file" type="file" name="pic" id="pic" size="28" id="blog-cover-file" />
-							</div>
+							<input type="hidden" name="blog.coverURL" id="blog-cover"/>
+							<input type="file" name="image" id="blog-cover-file" class="layui-upload-file"/>
 						</div>
 					</div>
-
-					<!--<div class="layui-form-item">
-						<label class="layui-form-label">关键字</label>
-						<div class="layui-input-block">
-							<input type="text" name="keywords" placeholder="请输入内容" autocomplete="off" class="layui-input">
+					
+					<div class="layui-form-item" id="cover-preview-cnt">
+						<label class="layui-form-label"></label>
+						<div>
+							<img id="cover-preview-img" class="blog-report-cover"/>
 						</div>
-					</div>-->
+					</div>
 
 					<div class="layui-form-item layui-form-text">
 						<label class="layui-form-label">文章摘要</label>

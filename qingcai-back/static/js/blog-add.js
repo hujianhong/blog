@@ -61,13 +61,18 @@ layui.define(['common', 'api','form','layer','laytpl'], function(exports){
 		}
 	});
 	
+	$("#cover-preview-cnt").hide();
+	
 	layui.use('upload', function(){
 		layui.upload({
-			url: api.UPLOAD_IMG_URL,
+			url: api.UPLOAD_BLOG_COVER_URL,
 			elem:"#blog-cover-file",
 			success: function(res){
+				console.log(res);
 				if(res.code == 0){
 					$("#blog-cover").val(res.data);
+					$("#cover-preview-cnt").show();
+					$("#cover-preview-img").attr('src',res.data);
 				} else {
 					common.errorTip(res);
 				}
