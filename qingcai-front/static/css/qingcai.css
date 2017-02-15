@@ -690,12 +690,18 @@ a:hover {
 .qing-blog-content {
 	padding: 20px 0 !important;
 }
+.markdown-body ol li {line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    list-style: decimal inside;
+    color: #333;
+}
 .qing-blog-img {
 	width: 90%;
 	margin: 1rem 0;
 }
 .qing-blog-zhuanzai {
-	margin-top: 10rem;
+	margin-top: 5rem;
 }
 .qing-blog-social {
     margin-bottom: 30px;

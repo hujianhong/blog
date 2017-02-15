@@ -28,7 +28,12 @@
 .qing-text-right {
 	text-align: right;
 }
-
+.markdown-body ol li {line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    list-style: decimal inside;
+    color: #333;
+}
 
 .blog-report-cover {
 	max-height: 200px;
