@@ -39,15 +39,6 @@ layui.define(['api','layer','form'], function(exports) {
 		//简易编辑器
 		,
 		layEditor: function(options) {
-			/*var html = 
-			'<div class="qing-edit">\
-				<span type="face" title="插入表情"><i class=""></i>表情</span>\
-				<span type="picture" title="插入图片：img[src]"><i class="iconfont icon-tupian"></i>图片</span>\
-				<span type="href" title="超链接格式：a(href)[text]"><i class="iconfont icon-lianjie"></i>链接</span>\
-				<span type="code" title="插入代码"><i class="am-icon-code"></i>代码</span>\
-				<span type="yulan" title="预览"><i class="am-icon-"></i>预览</span>\
-			</div>';*/
-			
 			var html = 
 			'<div class="qing-edit">\
 				<span type="face" title="插入表情"><i class=""></i>表情</span>\

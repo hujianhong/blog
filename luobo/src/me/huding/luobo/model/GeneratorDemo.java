@@ -1,32 +1,14 @@
 package me.huding.luobo.model;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.sql.DataSource;
-import javax.swing.text.html.ListView;
-
-import me.huding.luobo.IConstants;
-import me.huding.luobo.Parameters;
-import me.huding.luobo.utils.DBUtils;
-import me.huding.luobo.utils.KeyUtils;
-import me.huding.luobo.utils.crypto.MDCoder;
 
 import com.jfinal.kit.PathKit;
-import com.jfinal.kit.StrKit;
-import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.generator.Generator;
 import com.jfinal.plugin.druid.DruidPlugin;
+
+import me.huding.luobo.Parameters;
 
 /**
  * GeneratorDemo
@@ -69,105 +51,7 @@ public class GeneratorDemo {
 		gernerator.generate();
 	}
 
-
-	public static int rand(){
-		return (int)(Math.random() * 100);
-	}
-
-
-
-
-
-	public static void handle() throws IOException {
-		ActiveRecordPlugin arp = new ActiveRecordPlugin(getDataSource());
-		_MappingKit.mapping(arp);
-		arp.start();
-
-		List<Blog> blogs = DBUtils.findAll(Blog.dao,"id,tags");
-
-		for(Blog blog: blogs) {
-			List<Tags> tags = new ArrayList<Tags>();
-			if(blog.getTags() != null){
-				String[] arr = blog.getTags().split(",");
-				for(String tag : arr){
-					if(StrKit.isBlank(tag)){
-						continue;
-					}
-					String tagID = KeyUtils.signByMD5(tag);
-					Tags ttag = Tags.dao.findById(tagID);
-					if(ttag == null){
-						ttag = new Tags();
-						ttag.setId(tagID);
-						ttag.setName(tag);
-						if(!ttag.save()){
-							System.out.println("save tag error");
-						}
-					}
-					tags.add(ttag);
-				}
-			}
-			// 保存博客与标签的映射
-			for(Tags tag : tags){
-				BlogTags blogTags = BlogTags.dao.findById(blog.getId(),tag.getId());
-				if(blogTags == null){
-					blogTags = new BlogTags();
-					blogTags.setBlogID(blog.getId());
-					blogTags.setTagID(tag.getId());
-					if(!blogTags.save()){
-						System.out.println("save blogtag error");
-					}
-				}
-			}
-		}
-
-
-		/*String t = null;
-		String[] titles = new String[100];
-		BufferedReader reader = new BufferedReader(new FileReader("img"));
-		int in = 0;
-		while((t= reader.readLine()) != null){
-			titles[in ++] = t.trim();
-		}
-		reader.close();
-		List<Blog> blogs = Blog.dao.find("select * from blog where type = 1 limit ?",in);
-		for(int i = 0;i < in;i ++){
-			Blog blog = blogs.get(i);
-			blog.setCoverURL(titles[i]);
-			blog.update();
-		}*/
-
-		//		User user = User.findByUsername("hujianhong");
-		//		
-		//		String password = "hubaichuan";
-		//		
-		//		password = MDCoder.encodeMD5Hex(password);
-		//		
-		//		System.out.println(password);
-		//		
-		//		user.setPassword(password);
-		//		
-		//		user.update();
-
-		//		List<Blog> blogs = Blog.dao.find("select * from blog");
-		//		for(int i = 0;i < blogs.size();i ++){
-		//			Blog blog = blogs.get(i);
-		//			blog.setStatusName("显示");
-		//			blog.update();
-		//		}
-
-		List<Comment> comments = DBUtils.findAll(Comment.dao);
-		for(Comment comment: comments){
-			int code = comment.getEmail().hashCode();
-			code = Math.abs(code) % IConstants.HEAD_MOD;
-			comment.setHeadURL(code +".gif");
-			comment.update();
-		}
-
-
-	}
-
 	public static void main(String[] args) throws IOException {
-//				handle();
 		gen();
 	}
 }

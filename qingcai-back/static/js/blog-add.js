@@ -34,7 +34,7 @@ layui.define(['common', 'api','form','layer','laytpl'], function(exports){
 	
 	var publishEditor = editormd("publish-editormd", {
 		height: 740,
-		path: 'http://static.huding.name/editor.md/lib/',
+		path: 'static/editor.md/lib/',
 		toolbarIcons:function(){
 			return  [
 	            "undo", "redo", "|", 

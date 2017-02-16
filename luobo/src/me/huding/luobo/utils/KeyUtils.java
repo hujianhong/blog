@@ -17,6 +17,7 @@ package me.huding.luobo.utils;
 
 import java.util.UUID;
 
+import me.huding.luobo.IConstants;
 import me.huding.luobo.utils.crypto.MDCoder;
 
 /**
@@ -46,6 +47,11 @@ public class KeyUtils {
 	public static String signByMD5(String value) {
 		// 
 		return MDCoder.encodeMD5Hex(value);
+	}
+	
+	
+	public static void main(String[] args){
+		System.out.println(signByMD5(IConstants.DEFAULT_PASSWORD));
 	}
 
 }

@@ -7,9 +7,8 @@ layui.define(['layer'],function(exports) {
 	var $ = layui.jquery;
 	var layer = layui.layer;
 	
-	var BASE_PREFIX = "http://www.huding.name/luobo";
 	
-//	var BASE_PREFIX = "http://localhost";
+    var BASE_PREFIX = "http://localhost:8080/luobo";
 
 	var pageSize = 10;
 	

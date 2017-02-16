@@ -9,7 +9,7 @@ layui.define(['laytpl', 'laypage', 'layer'],function(exports) {
 	var layer = layui.layer;
 	var laytpl = layui.laytpl;
 	
-	var BASE_PREFIX = "http://www.huding.name/luobo/admin";
+	var BASE_PREFIX = "http://localhost:8080/luobo/admin";
 	
 	var pageSize = 10;
 	

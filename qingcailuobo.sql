@@ -20,57 +20,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table admin_user
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `admin_user`;
-
-CREATE TABLE `admin_user` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'User ID',
-  `firstname` varchar(32) DEFAULT NULL COMMENT 'User First Name',
-  `lastname` varchar(32) DEFAULT NULL COMMENT 'User Last Name',
-  `email` varchar(128) DEFAULT NULL COMMENT 'User Email',
-  `username` varchar(40) DEFAULT NULL COMMENT 'User Login',
-  `password` varchar(100) DEFAULT NULL COMMENT 'User Password',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'User Created Time',
-  `modified` timestamp NULL DEFAULT NULL COMMENT 'User Modified Time',
-  `logdate` timestamp NULL DEFAULT NULL COMMENT 'User Last Login Time',
-  `lognum` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'User Login Number',
-  `reload_acl_flag` smallint(6) NOT NULL DEFAULT '0' COMMENT 'Reload ACL',
-  `is_active` smallint(6) NOT NULL DEFAULT '1' COMMENT 'User Is Active',
-  `extra` text COMMENT 'User Extra Data',
-  `rp_token` text COMMENT 'Reset Password Link Token',
-  `rp_token_created_at` timestamp NULL DEFAULT NULL COMMENT 'Reset Password Link Token Creation Date',
-  `failures_num` smallint(6) DEFAULT '0' COMMENT 'Failure Number',
-  `first_failure` timestamp NULL DEFAULT NULL COMMENT 'First Failure',
-  `lock_expires` timestamp NULL DEFAULT NULL COMMENT 'Expiration Lock Dates',
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `UNQ_ADMIN_USER_USERNAME` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Admin User Table';
-
-
-
-# Dump of table attachment
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `attachment`;
-
-CREATE TABLE `attachment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) DEFAULT NULL,
-  `old_name` varchar(200) DEFAULT NULL,
-  `new_name` varchar(200) DEFAULT NULL,
-  `ext_name` varchar(30) DEFAULT NULL,
-  `mime_type` varchar(30) DEFAULT NULL,
-  `size` int(11) DEFAULT NULL,
-  `url` tinytext,
-  `creation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `type` varchar(30) DEFAULT NULL,
-  `ref_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`),
-  KEY `ref_id` (`ref_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -240,25 +189,6 @@ CREATE TABLE `comment` (
 
 
 
-# Dump of table message
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `message`;
-
-CREATE TABLE `message` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` text,
-  `receiver` int(11) NOT NULL,
-  `sender` int(11) DEFAULT NULL,
-  `sender_name` varchar(50) DEFAULT NULL,
-  `send_time` datetime DEFAULT NULL,
-  `is_read` tinyint(1) DEFAULT '0',
-  `read_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `receiver_id` (`receiver`),
-  KEY `sender_id` (`sender`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 
 # Dump of table notice
@@ -306,23 +236,7 @@ CREATE TABLE `timeline` (
 
 
 
-# Dump of table track_login
-# ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `track_login`;
-
-CREATE TABLE `track_login` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login_user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `login_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `login_ip` varchar(39) NOT NULL DEFAULT '',
-  `logout_date` datetime DEFAULT NULL,
-  `session_id` char(32) DEFAULT NULL,
-  `browser` char(20) DEFAULT NULL,
-  `user_agent` tinytext,
-  PRIMARY KEY (`id`),
-  KEY `login_user_id` (`login_user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -363,45 +277,6 @@ UNLOCK TABLES;
 
 
 
-# Dump of table user_permission
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `user_permission`;
-
-CREATE TABLE `user_permission` (
-  `user_id` varchar(32) NOT NULL,
-  `username` varchar(50) DEFAULT NULL,
-  `permission` int(11) NOT NULL,
-  `permission_name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
-
-
-
-# Dump of table user_register
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `user_register`;
-
-CREATE TABLE `user_register` (
-  `user_id` varchar(32) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `reg_status` tinyint(4) DEFAULT '0',
-  `ref_user_id` varchar(32) DEFAULT '0',
-  `firstname` varchar(60) DEFAULT NULL,
-  `password` varchar(50) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `sex` tinyint(1) DEFAULT '1',
-  `reg_date` datetime DEFAULT '0000-00-00 00:00:00',
-  `reg_ip` char(15) DEFAULT NULL,
-  `mobile` varchar(32) DEFAULT NULL,
-  `description` tinytext,
-  PRIMARY KEY (`user_id`),
-  KEY `username` (`username`),
-  KEY `ref_user_id` (`ref_user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 
 # Dump of table youlian
@@ -427,7 +302,7 @@ CREATE TABLE `youlian` (
 
 DROP TABLE `blog_display`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`luobo`@`%` SQL SECURITY DEFINER VIEW `blog_display`
+CREATE VIEW `blog_display`
 AS SELECT
    `category`.`name` AS `categoryName`,
    `blog`.`id` AS `id`,
@@ -455,7 +330,7 @@ FROM ((`category` join `blog`) join `type`) where ((`category`.`id` = `blog`.`ca
 
 DROP TABLE `blog_back_display`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`luobo`@`%` SQL SECURITY DEFINER VIEW `blog_back_display`
+CREATE VIEW `blog_back_display`
 AS SELECT
    `category`.`name` AS `categoryName`,
    `blog`.`id` AS `id`,
@@ -477,7 +352,7 @@ FROM (`category` join `blog`) where (`category`.`id` = `blog`.`categoryID`);
 
 DROP TABLE `blog_display_by_tag`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`luobo`@`%` SQL SECURITY DEFINER VIEW `blog_display_by_tag`
+CREATE VIEW `blog_display_by_tag`
 AS SELECT
    `category`.`name` AS `categoryName`,
    `blog`.`id` AS `id`,

@@ -16,22 +16,16 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
-		arp.addMapping("admin_user", "user_id", AdminUser.class);
-		arp.addMapping("attachment", "id", Attachment.class);
 		arp.addMapping("blog", "id", Blog.class);
 		// Composite Primary Key order: blogID,tagID
 		arp.addMapping("blog_tags", "blogID,tagID", BlogTags.class);
 		arp.addMapping("category", "id", Category.class);
 		arp.addMapping("comment", "id", Comment.class);
-		arp.addMapping("message", "id", Message.class);
 		arp.addMapping("notice", "id", Notice.class);
 		arp.addMapping("tags", "id", Tags.class);
 		arp.addMapping("timeline", "id", Timeline.class);
-		arp.addMapping("track_login", "id", TrackLogin.class);
 		arp.addMapping("type", "id", Type.class);
 		arp.addMapping("user", "id", User.class);
-		arp.addMapping("user_permission", "user_id", UserPermission.class);
-		arp.addMapping("user_register", "user_id", UserRegister.class);
 		arp.addMapping("youlian", "id", Youlian.class);
 	}
 }
