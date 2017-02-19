@@ -132,11 +132,21 @@ public class StaticsUtils {
 		}
 		// 查找
 		Blog nextBlog = findNextBlog(bean);
-		t.binding("nextURL",nextBlog.getUrl());
-		t.binding("nextTitle",nextBlog.getTitle());
+		if(nextBlog == null){
+			t.binding("nextURL","javascript:;");
+			t.binding("nextTitle","无");
+		}else {
+			t.binding("nextURL",nextBlog.getUrl());
+			t.binding("nextTitle",nextBlog.getTitle());
+		}
 		Blog preBlog = findPreBlog(bean);
-		t.binding("preURL",preBlog.getUrl());
-		t.binding("preTitle",preBlog.getTitle());
+		if(preBlog == null){
+			t.binding("preURL","javascript:;");
+			t.binding("preTitle","无");
+		} else {
+			t.binding("preURL",preBlog.getUrl());
+			t.binding("preTitle",preBlog.getTitle());
+		}
 		
 		List<String> blogTags = new ArrayList<String>();
 		if(bean.getTags() != null){
