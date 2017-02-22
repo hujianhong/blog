@@ -21,8 +21,6 @@ import com.jfinal.upload.UploadFile;
 
 import me.huding.luobo.BaseController;
 import me.huding.luobo.ResConsts;
-import me.huding.luobo.utils.KeyUtils;
-import me.huding.luobo.utils.QiniuUtils;
 
 /**
  * 上传文件控制器
@@ -32,15 +30,15 @@ import me.huding.luobo.utils.QiniuUtils;
  * @date 2016年10月29日
  */
 public class UploadController extends BaseController {
-	
-	public static final String HOST = "http://static.huding.name/";
-	
+
+	public static final String HOST = "upload";
+
 	public static final String IMAGE_BUKECT = "image/";
-	
+
 	public static final String FILE_BUKECT = "file/";
-	
+
 	public static final String PARA_FILE_KEY = "editormd-image-file";
-	
+
 	/**
 	 * 上传图片
 	 */
@@ -48,7 +46,7 @@ public class UploadController extends BaseController {
 		UploadFile uploadFile = getFile(PARA_FILE_KEY);
 		upload(uploadFile, IMAGE_BUKECT);
 	}
-	
+
 	/**
 	 * 上传文件
 	 */
@@ -56,31 +54,21 @@ public class UploadController extends BaseController {
 		UploadFile uploadFile = getFile(PARA_FILE_KEY);
 		upload(uploadFile, FILE_BUKECT);
 	}
-	
+
 	public void uploadBlogCover() {
 		UploadFile uploadFile = getFile("image");
 		upload(uploadFile, IMAGE_BUKECT);
 	}
-	
+
 	private void upload(UploadFile uploadFile,String bucket){
 		if(uploadFile != null){
 			File file = uploadFile.getFile();
-			String fileName = file.getName();
-			int index = fileName.lastIndexOf('.');
-			String suffix = fileName.substring(index);
-			String key = bucket + KeyUtils.getUUID() + suffix;
-			if(QiniuUtils.upload(file, key)){
-				String url = HOST + key;
-				setAttr("success", 1);
-				setAttr("msg", "");
-				setAttr("url", url);
-				render(ResConsts.Code.SUCCESS, "",url);
-			} else {
-				setAttr("success", 0);
-				setAttr("msg", "上传失败");
-				setAttr("url", "");
-				render(ResConsts.Code.FAILURE, "上传失败");
-			}
+			String filename  = file.getName();
+			String url = getBaseURL() + "/upload/" + filename;
+			setAttr("success", 1);
+			setAttr("msg", "");
+			setAttr("url", url);
+			render(ResConsts.Code.SUCCESS, "",url);
 		} else {
 			setAttr("success", 0);
 			setAttr("msg", "上传失败");

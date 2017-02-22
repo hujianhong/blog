@@ -15,6 +15,8 @@
  */
 package me.huding.luobo;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.jfinal.core.Controller;
 
 /**
@@ -25,6 +27,15 @@ import com.jfinal.core.Controller;
  * @date 2016年10月29日
  */
 public class BaseController extends Controller {
+	
+	
+	protected String getBaseURL() {
+		HttpServletRequest request = getRequest();
+		String context = getRequest().getContextPath();
+		String base = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort() + context;
+		System.out.println(base);
+		return base;
+	}
 	
 	
 	protected Integer getPageSize(){

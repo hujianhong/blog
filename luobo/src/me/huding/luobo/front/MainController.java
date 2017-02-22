@@ -37,7 +37,7 @@ public class MainController extends BaseController {
 	 * 
 	 */
 	public void index(){
-		
+		getBaseURL();
 	}
 	
 }

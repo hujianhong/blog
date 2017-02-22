@@ -87,6 +87,10 @@ public class BlogController extends AbstarctBackController {
 		/* 获取参数  */
 		final Blog blog = getModel(Blog.class, "blog");
 		final Blog t = Blog.dao.findById(blog.getId());
+		if(blog.getCoverURL() == null || blog.getCoverURL().length() < 5){
+			blog.setCoverURL(null);
+			blog.setType(0);
+		}
 		if(t== null){
 			render(ResConsts.Code.FAILURE,"文章不存在");
 			return;
@@ -273,30 +277,7 @@ public class BlogController extends AbstarctBackController {
 	 */
 	public static final String PARAM_CHECK = "validateValue";
 
-	/**
-	 * 检查文章是否重复
-	 */
-	public void checkDuplicate(){
-		String value = getPara(PARAM_CHECK);
-		// 校验参数
-		if(StrKit.isBlank(value)){
-
-			return;
-		}
-
-		String signature = KeyUtils.signByMD5(value);
-		// 查询签名是否已经存在
-		Blog blog = Blog.findBySignature(signature);
-		// 文章不存在
-		if(blog == null){
-
-		} 
-		// 文章已存在
-		else {
-
-		}
-	}
-
+	
 
 	/**
 	 * 将所有的博文重新静态化
